@@ -5,7 +5,7 @@ from datetime import datetime, timedelta
 
 from bs4 import BeautifulSoup
 import pandas as pd
-import requests
+from curl_cffi import requests
 
 HEADERS = {
     "User-Agent": "AO3StatsComparator/1.1 (Educational Scraping Script)"
@@ -36,7 +36,7 @@ WARNING_MAP = {
     "4": "18",
 }
 
-SESSION = requests.Session()
+SESSION = requests.Session(impersonate="chrome120")
 SESSION.headers.update(HEADERS)
 SESSION.cookies.update(COOKIES)
 
@@ -332,7 +332,7 @@ def scrape_fandom_cohort(
         if i % 10 == 0 or i == len(pages_to_fetch):
             print(f"  ...page {i}/{len(pages_to_fetch)} done, {len(fics)} qualifying works so far")
 
-        time.sleep(3)
+        time.sleep(5)
 
     return pd.DataFrame(fics)
 
