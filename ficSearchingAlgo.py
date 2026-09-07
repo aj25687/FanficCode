@@ -13,7 +13,7 @@ HEADERS = {
 
 
 def parse_ao3_work(work_url):
-    """Fetches details and stats for a single target AO3 work."""
+    """Fetches details and stats for a target AO3 work."""
     if "/chapters/" in work_url:
         work_url = work_url.split("/chapters/")[0]
 
@@ -52,6 +52,7 @@ def parse_ao3_work(work_url):
         if soup.find("h2", class_="title")
         else "Unknown",
         "fandom": fandom,
+        "fandom_count": len(fandoms),
         "hits": hits,
         "kudos": kudos,
         "comments": comments,
@@ -62,38 +63,35 @@ def parse_ao3_work(work_url):
     }
 
 
-def build_search_url(
-    fandom, category, warning, complete_only, timeframe, page=1
+def build_tag_url(
+    fandom, category, warning, crossover, complete_only, timeframe, page=1
 ):
-    """Constructs the search URL for AO3 based on user criteria."""
-    base_url = "https://archiveofourown.org/works/search?"
+    """Constructs a clean AO3 tag filter URL that correctly executes sorting parameters."""
+    if fandom:
+        encoded_fandom = urllib.parse.quote(fandom, safe="")
+        base_url = f"https://archiveofourown.org/tags/{encoded_fandom}/works?"
+    else:
+        base_url = "https://archiveofourown.org/works/search?"
 
-    # Category Mapping (Internal AO3 Database IDs)
-    cat_map = {
-        "1": "23",  # M/M
-        "2": "22",  # F/F
-        "3": "21",  # F/M
-        "4": "2246",  # Multi
-        "5": "24",  # Gen
-    }
+    cat_map = {"1": "23", "2": "22", "3": "21", "4": "2246", "5": "24"}
+    warn_map = {"1": "16", "2": "14", "3": "17", "4": "18"}
 
-    # Archive Warning Mapping (Internal AO3 Database IDs)
-    warn_map = {
-        "1": "16",  # No Archive Warnings Apply
-        "2": "14",  # Creator Chose Not To Use
-        "3": "17",  # Graphic Depictions Of Violence
-        "4": "18",  # Major Character Death
-    }
-
+    # Fix: Added 'commit' and 'utf8' so AO3 properly handles sort_column on tag endpoints
     params = [
-        ("commit", "Search"),
+        ("utf8", "✓"),
+        ("commit", "Sort and Filter"),
         ("page", str(page)),
-        ("work_search[fandom_names]", fandom if fandom else ""),
-        ("work_search[sort_column]", "revised_at"),
-        ("work_search[sort_direction]", "desc"),
     ]
 
-    # Only filter if the user did NOT select 0 ("All")
+    # Sorting logic
+    if timeframe == "0":
+        params.append(("work_search[sort_column]", "kudos_count"))
+        params.append(("work_search[sort_direction]", "desc"))
+    else:
+        params.append(("work_search[sort_column]", "revised_at"))
+        params.append(("work_search[sort_direction]", "desc"))
+
+    # Metadata Filters
     if category in cat_map:
         params.append(("work_search[category_ids][]", cat_map[category]))
 
@@ -102,10 +100,63 @@ def build_search_url(
             ("work_search[archive_warning_ids][]", warn_map[warning])
         )
 
+    # Crossover Filter
+    if crossover == "1":
+        params.append(("work_search[crossover]", "F"))
+    elif crossover == "2":
+        params.append(("work_search[crossover]", "T"))
+
     if complete_only == "1":
         params.append(("work_search[complete]", "1"))
 
-    # Timeframe handling
+    if timeframe == "1":
+        params.append(("work_search[revised_at]", "< 1 week"))
+    elif timeframe == "2":
+        params.append(("work_search[revised_at]", "< 1 month"))
+    elif timeframe == "3":
+        params.append(("work_search[revised_at]", "< 1 year"))
+
+    return base_url + urllib.parse.urlencode(params)
+    """Constructs a clean AO3 tag filter URL that enforces sorting and metadata filtering."""
+    if fandom:
+        encoded_fandom = urllib.parse.quote(fandom, safe="")
+        base_url = f"https://archiveofourown.org/tags/{encoded_fandom}/works?"
+    else:
+        base_url = "https://archiveofourown.org/works/search?"
+
+    cat_map = {"1": "23", "2": "22", "3": "21", "4": "2246", "5": "24"}
+    warn_map = {"1": "16", "2": "14", "3": "17", "4": "18"}
+
+    params = [
+        ("page", str(page)),
+    ]
+
+    # Sorting logic
+    if timeframe == "0":
+        params.append(("work_search[sort_column]", "kudos_count"))
+        params.append(("work_search[sort_direction]", "desc"))
+    else:
+        params.append(("work_search[sort_column]", "revised_at"))
+        params.append(("work_search[sort_direction]", "desc"))
+
+    # Metadata Filters
+    if category in cat_map:
+        params.append(("work_search[category_ids][]", cat_map[category]))
+
+    if warning in warn_map:
+        params.append(
+            ("work_search[archive_warning_ids][]", warn_map[warning])
+        )
+
+    # Crossover Filter: 'F' = Exclude Crossovers, 'T' = Include ONLY Crossovers
+    if crossover == "1":
+        params.append(("work_search[crossover]", "F"))
+    elif crossover == "2":
+        params.append(("work_search[crossover]", "T"))
+
+    if complete_only == "1":
+        params.append(("work_search[complete]", "1"))
+
     if timeframe == "1":
         params.append(("work_search[revised_at]", "< 1 week"))
     elif timeframe == "2":
@@ -117,14 +168,28 @@ def build_search_url(
 
 
 def scrape_fandom_cohort(
-    fandom, category, warning, complete_only, timeframe, max_pages=3
+    fandom,
+    category,
+    warning,
+    crossover,
+    complete_only,
+    timeframe,
+    chapter_choice,
+    target_chapters,
+    max_pages=5,
 ):
-    """Collects baseline data from matching AO3 search pages."""
+    """Scrapes a cohort from AO3 matching category, warning, crossover, and chapter depth criteria."""
     fics = []
 
     for page in range(1, max_pages + 1):
-        url = build_search_url(
-            fandom, category, warning, complete_only, timeframe, page
+        url = build_tag_url(
+            fandom,
+            category,
+            warning,
+            crossover,
+            complete_only,
+            timeframe,
+            page,
         )
         resp = requests.get(url, headers=HEADERS)
 
@@ -157,7 +222,16 @@ def scrape_fandom_cohort(
                 if m:
                     chapters = int(m.group(1))
 
-            if hits > 0:
+            # --- CHAPTER FILTERING LOGIC ---
+            if chapter_choice == "1" and chapters != 1:
+                continue
+            elif chapter_choice == "2" and chapters != target_chapters:
+                continue
+            elif chapter_choice == "3" and chapters <= 1:
+                continue
+
+            # Require minimum hits to exclude newly posted works with unsettled traffic
+            if hits >= 50:
                 fics.append(
                     {
                         "hits": hits,
@@ -172,7 +246,6 @@ def scrape_fandom_cohort(
                     }
                 )
 
-        # 3-second delay to comply with AO3 rate limits
         time.sleep(3)
 
     return pd.DataFrame(fics)
@@ -207,6 +280,16 @@ def main():
     )
     warn_in = input("Select Warning (0-4): ").strip()
 
+    print(
+        "\nCrossovers: [0] All Works, [1] No Crossovers (Single Fandom), [2] Crossovers Only"
+    )
+    cross_in = input("Select Crossover Option (0-2): ").strip()
+
+    print(
+        "\nChapters: [0] All Works, [1] One-Shots Only, [2] Same Chapters as Target Fic, [3] Multi-Chapters Only"
+    )
+    chap_in = input("Select Chapter Filter (0-3): ").strip()
+
     print("\nCompletion: [0] All Works, [1] Complete Works Only")
     comp_in = input("Select Completion Status (0-1): ").strip()
 
@@ -217,7 +300,15 @@ def main():
 
     print("\nCollecting cohort comparison data from AO3...")
     df = scrape_fandom_cohort(
-        fandom_query, cat_in, warn_in, comp_in, time_in, max_pages=3
+        fandom_query,
+        cat_in,
+        warn_in,
+        cross_in,
+        comp_in,
+        time_in,
+        chap_in,
+        target["chapters"],
+        max_pages=5,
     )
 
     if df.empty:
@@ -228,7 +319,6 @@ def main():
         f"\n--- COHORT COMPARISON RESULTS (Sample size: {len(df)} works) ---"
     )
 
-    # Calculate Percentiles
     k_perc = (
         (df["kudos_to_hits"] < target["kudos_to_hits"]).mean() * 100
     )

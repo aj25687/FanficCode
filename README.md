@@ -1,1 +1,2 @@
 # FanficCode
+Run pip3 install requests beautifulsoup4 feedparser and python3 -m pip install numpy pandas before using ficSearchingAlgo.py
