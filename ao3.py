@@ -41,6 +41,35 @@ SESSION.headers.update(HEADERS)
 SESSION.cookies.update(COOKIES)
 
 
+def parse_cookie_string(cookie_str):
+    """Parses a raw 'Cookie:' header value (as copied from browser dev
+    tools, e.g. "_otwarchive_session=abc123; remember_user_token=xyz789")
+    into a dict suitable for requests.Session.cookies.update()."""
+    cookies = {}
+    for part in cookie_str.split(";"):
+        part = part.strip()
+        if not part or "=" not in part:
+            continue
+        key, _, value = part.partition("=")
+        cookies[key.strip()] = value.strip()
+    return cookies
+
+
+def apply_session_cookie(cookie_str):
+    """Adds a user-supplied logged-in AO3 session cookie to the shared
+    SESSION, so subsequent requests are authenticated and can see works
+    marked 'restricted to registered users' that anonymous requests can't.
+    """
+    if not cookie_str:
+        return
+    parsed = parse_cookie_string(cookie_str)
+    if parsed:
+        SESSION.cookies.update(parsed)
+        print(f"  Applied session cookie ({len(parsed)} field(s)). Requests will be sent as a logged-in user.")
+    else:
+        print("  Could not parse that cookie string — continuing without it (anonymous requests).")
+
+
 def get_with_retry(url, max_retries=3, backoff=10):
     """GET with basic handling for AO3 rate-limiting (429s)."""
     for attempt in range(max_retries):
@@ -135,13 +164,16 @@ def build_tag_url(
     ]
 
     if fandom:
-        params.append(("work_search[fandom_names]", fandom))
+        # Wrapped in quotes for an exact-phrase match against the fandom
+        # tag rather than a loose keyword search, which is closer to what
+        # AO3's own tag-page browsing does.
+        params.append(("work_search[fandom_names]", f'"{fandom}"'))
 
-    # Sorting
-    if timeframe == "0":
-        params.append(("work_search[sort_column]", "kudos_count"))
-    else:
-        params.append(("work_search[sort_column]", "revised_at"))
+    # Sorting: neutral (last-updated). Since scrape_fandom_cohort() now walks
+    # every result page rather than taking a sample, the sort order here has
+    # no effect on which works end up in the cohort — it's only relevant to
+    # the order pages are returned in.
+    params.append(("work_search[sort_column]", "revised_at"))
     params.append(("work_search[sort_direction]", "desc"))
 
     # Category / Warning filters
@@ -171,6 +203,26 @@ def build_tag_url(
     return base_url + urllib.parse.urlencode(params)
 
 
+def get_result_page_count(fandom, category, warning, crossover, complete_only, timeframe):
+    """Fetches page 1 of the filtered search and reads AO3's own pagination
+    controls to find the total number of result pages, so scrape_fandom_cohort
+    knows how many pages it needs to walk to cover every matching work."""
+    url = build_tag_url(fandom, category, warning, crossover, complete_only, timeframe, page=1)
+    resp = get_with_retry(url)
+
+    if resp.status_code != 200:
+        return 0, resp
+
+    soup = BeautifulSoup(resp.text, "html.parser")
+    if not soup.select("li.work.blurb"):
+        return 0, resp
+
+    page_links = soup.select("ol.pagination li a")
+    page_numbers = [int(a.text) for a in page_links if a.text.strip().isdigit()]
+    total_pages = max(page_numbers) if page_numbers else 1
+    return total_pages, resp
+
+
 def scrape_fandom_cohort(
     fandom,
     category,
@@ -180,27 +232,58 @@ def scrape_fandom_cohort(
     timeframe,
     chapter_choice,
     target_chapters,
-    max_pages=5,
+    max_pages=None,
 ):
-    """Scrapes a cohort from AO3 matching category, warning, crossover, and
-    chapter depth criteria."""
+    """Scrapes EVERY work on AO3 matching the given category, warning,
+    crossover, and chapter-depth criteria (not a sample).
+
+    Walks every result page of the filtered search sequentially. Sort order
+    doesn't matter for correctness here since we're covering the whole
+    result set — sorting only mattered when this used to take a partial
+    sample and needed to avoid a popularity/sort bias.
+
+    max_pages, if given, caps how many pages are fetched (mainly useful for
+    testing on a smaller slice); leave it as None to fetch everything.
+    """
     fics = []
 
-    for page in range(1, max_pages + 1):
-        url = build_tag_url(
-            fandom, category, warning, crossover, complete_only, timeframe, page
-        )
-        resp = get_with_retry(url)
+    total_pages, first_page_resp = get_result_page_count(
+        fandom, category, warning, crossover, complete_only, timeframe
+    )
+
+    if total_pages == 0:
+        return pd.DataFrame(fics)
+
+    pages_to_fetch = list(range(1, total_pages + 1))
+    if max_pages is not None:
+        pages_to_fetch = pages_to_fetch[:max_pages]
+
+    est_seconds = len(pages_to_fetch) * 3
+    print(
+        f"  Found {total_pages} result page(s) (~{total_pages * 20} works). "
+        f"Fetching {len(pages_to_fetch)} page(s), roughly {est_seconds // 60}m "
+        f"{est_seconds % 60}s minimum at AO3's rate limit..."
+    )
+
+    for i, page in enumerate(pages_to_fetch, start=1):
+        # Reuse the already-fetched page 1 response instead of refetching it.
+        if page == 1:
+            resp = first_page_resp
+        else:
+            url = build_tag_url(
+                fandom, category, warning, crossover, complete_only, timeframe, page
+            )
+            resp = get_with_retry(url)
 
         if resp.status_code != 200:
-            print(f"  Page {page}: HTTP {resp.status_code}, stopping.")
-            break
+            print(f"  Page {page}: HTTP {resp.status_code}, skipping.")
+            continue
 
         soup = BeautifulSoup(resp.text, "html.parser")
         work_nodes = soup.select("li.work.blurb")
 
         if not work_nodes:
-            break
+            continue
 
         for work in work_nodes:
             stats = work.find("dl", class_="stats")
@@ -246,13 +329,23 @@ def scrape_fandom_cohort(
                     }
                 )
 
+        if i % 10 == 0 or i == len(pages_to_fetch):
+            print(f"  ...page {i}/{len(pages_to_fetch)} done, {len(fics)} qualifying works so far")
+
         time.sleep(3)
 
     return pd.DataFrame(fics)
 
 
 def main():
-    target_url = input("Enter target AO3 work URL: ").strip()
+    print("Optional: paste a logged-in AO3 session cookie to include works")
+    print("restricted to registered users (copy the 'Cookie' request header")
+    print("from your browser's dev tools while logged into AO3).")
+    print("Leave blank to continue anonymously (restricted works excluded).")
+    cookie_in = input("AO3 session cookie (optional): ").strip()
+    apply_session_cookie(cookie_in)
+
+    target_url = input("\nEnter target AO3 work URL: ").strip()
 
     print("\nFetching target work details...")
     target = parse_ao3_work(target_url)
@@ -299,7 +392,10 @@ def main():
     print("\nTimeframe: [0] All Time, [1] Last Week, [2] Last Month, [3] Last Year")
     time_in = input("Select Timeframe (0-3): ").strip()
 
-    print("\nCollecting cohort comparison data from AO3...")
+    print(
+        "\nCollecting cohort comparison data from AO3 "
+        "(scanning every matching work — this can take a while)..."
+    )
     df = scrape_fandom_cohort(
         fandom_query,
         cat_in,
@@ -309,7 +405,6 @@ def main():
         time_in,
         chap_in,
         target["chapters"],
-        max_pages=5,
     )
 
     if df.empty:
