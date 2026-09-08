@@ -104,12 +104,24 @@ def polite_delay():
 
 
 def get_with_retry(url, max_retries=3):
-    """GET with backoff on 429 (rate limited). Distinguishes a transient
-    rate-limit (worth waiting out) from a hard block (403/503/525), which
-    we do not try to retry past — see HardBlockError."""
+    """GET with backoff on 429 (rate limited) and on transient network
+    errors (timeouts, connection resets, DNS hiccups). Distinguishes those
+    from a hard block (403/503/525), which we do not try to retry past —
+    see HardBlockError. Returns None if every attempt fails with a network
+    error, so callers can treat that the same as a failed request."""
     resp = None
     for attempt in range(max_retries):
-        resp = SESSION.get(url, timeout=30)
+        try:
+            resp = SESSION.get(url, timeout=30)
+        except requests.exceptions.RequestException as e:
+            wait = 10 * (attempt + 1)
+            print(
+                f"  Network error ({e.__class__.__name__}: {e}). "
+                f"Waiting {wait}s before retrying ({attempt + 1}/{max_retries})..."
+            )
+            time.sleep(wait)
+            resp = None
+            continue
 
         if resp.status_code == 429:
             wait = 15 * (attempt + 1)
@@ -180,11 +192,16 @@ def parse_ao3_work(work_url):
         work_url = work_url.split("/chapters/")[0]
 
     resp = get_with_retry(work_url)
-    if resp is None or resp.status_code in (403, 503, 525):
-        code = resp.status_code if resp is not None else "no response"
+    if resp is None:
         raise HardBlockError(
-            f"AO3 returned HTTP {code} for the target work — likely a "
-            f"temporary block. Wait a while before trying again."
+            "Could not reach AO3 after several retries (network error or "
+            "timeout each time). Check your connection, or AO3 may be "
+            "temporarily unreachable — wait a bit and try again."
+        )
+    if resp.status_code in (403, 503, 525):
+        raise HardBlockError(
+            f"AO3 returned HTTP {resp.status_code} for the target work — "
+            f"likely a temporary block. Wait a while before trying again."
         )
     if resp.status_code != 200:
         raise Exception(f"Could not load work page. HTTP Status: {resp.status_code}")
