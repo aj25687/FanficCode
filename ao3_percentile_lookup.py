@@ -49,15 +49,19 @@ def main():
         print("Invalid selection.")
         return
 
-    hits = int(input("Fic's hits: ").strip())
-    kudos = int(input("Fic's kudos: ").strip())
-    comments = int(input("Fic's comments: ").strip())
+    try:
+        hits = int(input("Fic's hits: ").strip())
+        kudos = int(input("Fic's kudos: ").strip())
+        comments = int(input("Fic's comments: ").strip())
+    except ValueError:
+        print("Please enter whole numbers for hits/kudos/comments.")
+        return
 
     kudos_to_hits = (kudos / hits * 100) if hits else 0
     comments_to_hits = (comments / hits * 100) if hits else 0
     comments_to_kudos = (comments / kudos * 100) if kudos else 0
 
-    print(f"\n--- Ratios ---")
+    print("\n--- Ratios ---")
     print(f"Kudos:Hits     {kudos_to_hits:.2f}%")
     print(f"Comments:Hits  {comments_to_hits:.2f}%")
     print(f"Comments:Kudos {comments_to_kudos:.2f}%")

@@ -58,17 +58,89 @@ SESSION.cookies.update(COOKIES)
 # ---------------------------------------------------------------------------
 
 def parse_cookie_string(cookie_str):
-    """Parses a raw 'Cookie:' header value (as copied from browser dev
-    tools, e.g. "_otwarchive_session=abc123; remember_user_token=xyz789")
-    into a dict suitable for requests.Session.cookies.update()."""
+    """Parses a pasted cookie value into a dict suitable for
+    requests.Session.cookies.update().
+
+    Handles the formats people actually paste:
+    - A full 'Cookie:' header value: "_otwarchive_session=abc; other=xyz"
+    - The same, but including the header NAME (a common result of
+      right-click > Copy Value on the Cookie row in browser dev tools):
+      "cookie: _otwarchive_session=abc; other=xyz" or "Cookie: ..."
+    - A bare single token with no "name=value" structure at all (what you
+      get copying a single cell's value from the Application/Storage tab) —
+      assumed to be the _otwarchive_session value itself, since that's the
+      one cookie AO3 actually needs to recognize a logged-in session.
+
+    Rails-signed cookie VALUES (like _otwarchive_session's) routinely
+    contain "=" characters of their own (base64 padding), so a bare value
+    can't just be detected by "no '=' anywhere in the string" — that breaks
+    on real tokens. Instead we first look for the literal, known cookie
+    name "_otwarchive_session=" anywhere in the string and, if found,
+    capture everything up to the next ";" as its value (correctly handling
+    any "=" inside that value). Only if that anchor isn't found at all do
+    we fall back to treating the whole string as a bare token.
+    """
+    cookie_str = cookie_str.strip().strip('"').strip("'").strip()
+
+    # Strip a leading "Cookie:" / "cookie:" header-name prefix if present.
+    cookie_str = re.sub(r"^\s*cookie\s*:\s*", "", cookie_str, flags=re.IGNORECASE)
+
     cookies = {}
+
+    # Anchor on the known cookie name first, since its value legitimately
+    # contains "=" characters that break naive split-on-"=" parsing.
+    m = re.search(r"_otwarchive_session\s*=\s*([^;]+)", cookie_str, flags=re.IGNORECASE)
+    if m:
+        cookies["_otwarchive_session"] = m.group(1).strip().strip('"').strip("'")
+        cookie_str = cookie_str[: m.start()] + cookie_str[m.end():]
+
+    # Pick up any other plausible "name=value" pairs on remaining
+    # ";"-separated parts. Cookie NAMES are short simple tokens (letters,
+    # digits, underscore, hyphen) per RFC 6265 — real cookie names never
+    # contain "/", "+", or run 60+ characters, so requiring that here stops
+    # us from misreading a chunk of an unrelated base64 blob as a "name".
+    name_re = re.compile(r"^[A-Za-z0-9_\-]{1,60}$")
     for part in cookie_str.split(";"):
         part = part.strip()
         if not part or "=" not in part:
             continue
         key, _, value = part.partition("=")
-        cookies[key.strip()] = value.strip()
+        key = key.strip()
+        if name_re.match(key):
+            cookies[key] = value.strip().strip('"').strip("'")
+
+    if not cookies and cookie_str:
+        # Nothing recognizable as name=value at all -- assume they pasted
+        # the bare _otwarchive_session value directly.
+        cookies["_otwarchive_session"] = cookie_str
+
     return cookies
+
+
+def verify_login(session_label="this cookie"):
+    """Makes one lightweight request to AO3's homepage and checks for a
+    logged-in indicator, so the user finds out immediately whether their
+    pasted cookie actually authenticated -- rather than discovering it much
+    later when a restricted work silently fails."""
+    resp = get_with_retry("https://archiveofourown.org/")
+    if resp is None or resp.status_code != 200:
+        print("  Could not verify login (request failed) — continuing anyway.")
+        return None
+
+    # Logged-in AO3 pages include a log-out link/form; logged-out pages show
+    # a login link instead.
+    is_logged_in = "/users/logout" in resp.text or 'action="/users/logout"' in resp.text
+
+    if is_logged_in:
+        print(f"  Login verified: AO3 recognizes {session_label} as a logged-in session.")
+    else:
+        print(
+            f"  Warning: AO3's homepage does NOT show a logged-in state with "
+            f"{session_label}. Restricted works will likely still fail. "
+            f"This usually means the cookie value was cut off, expired, or "
+            f"copied in a format the parser didn't expect."
+        )
+    return is_logged_in
 
 
 def apply_session_cookie(cookie_str):
@@ -79,11 +151,19 @@ def apply_session_cookie(cookie_str):
     if not cookie_str:
         return
     parsed = parse_cookie_string(cookie_str)
-    if parsed:
-        SESSION.cookies.update(parsed)
-        print(f"  Applied session cookie ({len(parsed)} field(s)). Requests will be sent as a logged-in user.")
-    else:
+    if not parsed:
         print("  Could not parse that cookie string — continuing without it (anonymous requests).")
+        return
+
+    SESSION.cookies.update(parsed)
+    print(f"  Parsed cookie name(s): {', '.join(sorted(parsed.keys()))}")
+    if "_otwarchive_session" not in parsed:
+        print(
+            "  Warning: no '_otwarchive_session' cookie found in what you pasted. "
+            "That's the specific cookie AO3 uses to recognize a logged-in session — "
+            "without it, restricted works will still be invisible."
+        )
+    verify_login()
 
 
 # ---------------------------------------------------------------------------
@@ -602,12 +682,44 @@ def compute_and_save_distribution(csv_path, dist_path, fandom, filter_meta):
     return entry, key
 
 
-def main():
+COOKIE_FILE = "ao3_cookie.txt"
+
+
+def get_session_cookie_input():
+    """Gets the optional session cookie either from ao3_cookie.txt (if
+    present) or by prompting interactively.
+
+    Many terminals have a hard length limit on a single pasted line before
+    the line-editing buffer stops accepting input (a long-standing quirk on
+    macOS in particular) — a 5-cookie header including Cloudflare's
+    cf_clearance/cf_bm cookies can easily be 500-1500+ characters and blow
+    right past that limit, making Enter appear to do nothing. Reading from
+    a file sidesteps this entirely, since text editors don't have that
+    restriction.
+    """
+    if os.path.exists(COOKIE_FILE):
+        with open(COOKIE_FILE, "r", encoding="utf-8") as f:
+            content = f.read().strip()
+        if content:
+            print(f"Found {COOKIE_FILE} — using the cookie from that file (skipping the prompt).")
+            return content
+        print(f"{COOKIE_FILE} exists but is empty — falling back to the prompt.")
+
     print("Optional: paste a logged-in AO3 session cookie to include works")
     print("restricted to registered users (copy the 'Cookie' request header")
     print("from your browser's dev tools while logged into AO3).")
-    print("Leave blank to continue anonymously (restricted works excluded).")
-    cookie_in = input("AO3 session cookie (optional): ").strip()
+    print(
+        f"If pasting into this prompt doesn't work (very long cookie strings can "
+        f"exceed your terminal's paste limit), instead create a plain text file "
+        f"named '{COOKIE_FILE}' in this same folder, paste the cookie into it, "
+        f"save it, and re-run the script — it'll be picked up automatically."
+    )
+    print("Leave blank here to continue anonymously (restricted works excluded).")
+    return input("AO3 session cookie (optional): ").strip()
+
+
+def main():
+    cookie_in = get_session_cookie_input()
     apply_session_cookie(cookie_in)
 
     target_url = input("\nEnter target AO3 work URL: ").strip()
