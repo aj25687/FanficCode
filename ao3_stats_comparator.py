@@ -296,23 +296,39 @@ def build_tag_url(
     return base_url + urllib.parse.urlencode(params)
 
 
-def get_result_page_count(fandom, category, warning, crossover, complete_only, timeframe):
-    """Fetches page 1 of the filtered search and reads AO3's pagination
-    controls to find the total number of result pages."""
+def get_result_page_count(fandom, category, warning, crossover, complete_only, timeframe, cache):
+    """Finds the total number of result pages for these filters. If we've
+    already learned this from a previous run (cache["page_counts"]), reuses
+    that instead of making a request — handy when you're about to scan a
+    later page range (e.g. 200-300) and don't need to re-check page 1
+    first. Otherwise fetches page 1, reads AO3's pagination controls, and
+    opportunistically caches page 1's own blurb data too, since we already
+    have it in hand."""
     url = build_tag_url(fandom, category, warning, crossover, complete_only, timeframe, page=1)
+
+    cached_count = cache.get("page_counts", {}).get(url)
+    if cached_count is not None:
+        print(f"  Using cached page count for these filters: {cached_count} page(s) (no request made).")
+        return cached_count, url
+
     resp = get_with_retry(url)
 
     if resp is None or resp.status_code != 200:
-        return 0, resp, url
+        return 0, url
 
     soup = BeautifulSoup(resp.text, "html.parser")
     if not soup.select("li.work.blurb"):
-        return 0, resp, url
+        return 0, url
 
     page_links = soup.select("ol.pagination li a")
     page_numbers = [int(a.text) for a in page_links if a.text.strip().isdigit()]
     total_pages = max(page_numbers) if page_numbers else 1
-    return total_pages, resp, url
+
+    cache.setdefault("page_counts", {})[url] = total_pages
+    cache.setdefault("pages", {})[url] = parse_blurb_page(resp.text)
+    save_cache(cache)
+
+    return total_pages, url
 
 
 def parse_blurb_page(html):
@@ -364,23 +380,29 @@ def scrape_fandom_cohort(
     chapter_choice,
     target_chapters,
     total_pages,
-    first_page_html,
     cache,
-    max_pages=None,
+    start_page=1,
+    end_page=None,
 ):
-    """Walks result pages of the filtered search, extracting stats purely
-    from search blurbs (no per-work page visits). Uses the on-disk page
-    cache to avoid re-requesting pages already scraped in a prior run, and
-    stops the whole run (rather than trying to push through) if AO3 sends
-    repeated hard blocks.
+    """Walks result pages [start_page, end_page] of the filtered search,
+    extracting stats purely from search blurbs (no per-work page visits).
+    Uses the on-disk page cache to avoid re-requesting pages already
+    scraped in a prior run (page 1 is often already cached by
+    get_result_page_count), and stops the whole run (rather than trying to
+    push through) if AO3 sends repeated hard blocks.
+
+    start_page/end_page let you split one big fandom into separate runs
+    (e.g. pages 1-100 today, 200-300 next week) — each run only touches its
+    own slice, and results still accumulate into the same CSV/cache/
+    distribution files regardless of which pages were covered when.
     """
     fics = []
 
-    pages_to_fetch = list(range(1, total_pages + 1))
-    if max_pages is not None:
-        pages_to_fetch = pages_to_fetch[:max_pages]
+    end_page = min(end_page, total_pages) if end_page is not None else total_pages
+    start_page = max(1, start_page)
+    pages_to_fetch = list(range(start_page, end_page + 1))
 
-    print(f"  Scanning {len(pages_to_fetch)} of {total_pages} total result page(s).")
+    print(f"  Scanning pages {start_page}-{end_page} ({len(pages_to_fetch)} of {total_pages} total result page(s)).")
 
     consecutive_hard_failures = 0
 
@@ -392,36 +414,33 @@ def scrape_fandom_cohort(
             page_results = cached
             print(f"  Page {page}: loaded from cache ({len(page_results)} works), no request made.")
         else:
-            if page == 1 and first_page_html is not None:
-                html = first_page_html
-            else:
-                polite_delay()
-                resp = get_with_retry(url)
+            polite_delay()
+            resp = get_with_retry(url)
 
-                if resp is None or resp.status_code in (403, 503, 525):
-                    code = resp.status_code if resp is not None else "no response"
-                    consecutive_hard_failures += 1
+            if resp is None or resp.status_code in (403, 503, 525):
+                code = resp.status_code if resp is not None else "no response"
+                consecutive_hard_failures += 1
+                print(
+                    f"  Page {page}: HTTP {code} — AO3 is blocking or failing "
+                    f"this request ({consecutive_hard_failures}/{MAX_CONSECUTIVE_HARD_FAILURES})."
+                )
+                if consecutive_hard_failures >= MAX_CONSECUTIVE_HARD_FAILURES:
                     print(
-                        f"  Page {page}: HTTP {code} — AO3 is blocking or failing "
-                        f"this request ({consecutive_hard_failures}/{MAX_CONSECUTIVE_HARD_FAILURES})."
+                        "\n  Stopping the scrape: AO3 has blocked several requests in a "
+                        "row. This usually means you've been rate-limited. Save what you "
+                        "have and wait at least an hour (ideally longer) before running "
+                        "again — running again immediately is likely to extend the block, "
+                        "not get past it."
                     )
-                    if consecutive_hard_failures >= MAX_CONSECUTIVE_HARD_FAILURES:
-                        print(
-                            "\n  Stopping the scrape: AO3 has blocked several requests in a "
-                            "row. This usually means you've been rate-limited. Save what you "
-                            "have and wait at least an hour (ideally longer) before running "
-                            "again — running again immediately is likely to extend the block, "
-                            "not get past it."
-                        )
-                        break
-                    continue
+                    break
+                continue
 
-                if resp.status_code != 200:
-                    print(f"  Page {page}: HTTP {resp.status_code}, skipping.")
-                    continue
+            if resp.status_code != 200:
+                print(f"  Page {page}: HTTP {resp.status_code}, skipping.")
+                continue
 
-                consecutive_hard_failures = 0
-                html = resp.text
+            consecutive_hard_failures = 0
+            html = resp.text
 
             page_results = parse_blurb_page(html)
             cache["pages"][url] = page_results
@@ -635,8 +654,9 @@ def main():
     time_in = input("Select Timeframe (0-3): ").strip()
 
     print("\nChecking how many result pages match these filters...")
-    total_pages, first_page_resp, first_page_url = get_result_page_count(
-        fandom_query, cat_in, warn_in, cross_in, comp_in, time_in
+    cache = load_cache()
+    total_pages, first_page_url = get_result_page_count(
+        fandom_query, cat_in, warn_in, cross_in, comp_in, time_in, cache
     )
 
     if total_pages == 0:
@@ -649,13 +669,15 @@ def main():
         f"Scanning all of them would take roughly "
         f"{int(est_seconds_full // 60)}m at AO3's rate limit."
     )
-    cap_in = input(
-        f"How many pages do you want to scan? (Enter a number, or press "
-        f"Enter to scan all {total_pages}): "
-    ).strip()
-    max_pages = int(cap_in) if cap_in.isdigit() else None
-
-    cache = load_cache()
+    print(
+        "You can scan the whole thing, or just a slice of pages (e.g. pages "
+        "1-100 now, 200-300 in a later run). Cached/already-CSV'd pages are "
+        "always skipped automatically, so slices can overlap safely."
+    )
+    start_in = input(f"Start page (1-{total_pages}, blank = 1): ").strip()
+    end_in = input(f"End page (1-{total_pages}, blank = {total_pages}): ").strip()
+    start_page = int(start_in) if start_in.isdigit() else 1
+    end_page = int(end_in) if end_in.isdigit() else total_pages
 
     print(
         "\nCollecting cohort comparison data from AO3 "
@@ -665,9 +687,9 @@ def main():
         fandom_query, cat_in, warn_in, cross_in, comp_in, time_in,
         chap_in, target["chapters"],
         total_pages=total_pages,
-        first_page_html=(first_page_resp.text if first_page_resp is not None and first_page_resp.status_code == 200 else None),
         cache=cache,
-        max_pages=max_pages,
+        start_page=start_page,
+        end_page=end_page,
     )
 
     # --- Persist results to the running CSV, deduped by work_id ---
