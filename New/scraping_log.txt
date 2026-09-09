@@ -415,3 +415,18 @@
 [2026-09-09 13:01:54] 
 [2026-09-09 13:02:04] Enter target AO3 work URL: 
 [2026-09-09 13:02:04] Fetching target work details...
+
+===== Run started 2026-09-09T13:05:53 =====
+[2026-09-09 13:05:53] (Logging this run's output to scraping_log.txt as well as the terminal.)
+[2026-09-09 13:05:53] Found ao3_cookie.txt — using the cookie from that file (skipping the prompt).
+[2026-09-09 13:05:53]   Parsed cookie name(s): __cf_bm, _cfuvid, _otwarchive_session, cf_clearance, user_credentials
+[2026-09-09 13:06:24]   Network error (ReadTimeout: HTTPSConnectionPool(host='archiveofourown.org', port=443): Read timed out. (read timeout=30)). Waiting 10s before retrying (1/3)...
+[2026-09-09 13:07:54]   Network error (ConnectionError: HTTPSConnectionPool(host='archiveofourown.org', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("HTTPSConnection(host='archiveofourown.org', port=443): Failed to resolve 'archiveofourown.org' ([Errno 8] nodename nor servname provided, or not known)"))). Waiting 20s before retrying (2/3)...
+[2026-09-09 13:08:14]   Could not verify login (request failed) — continuing anyway.
+[2026-09-09 13:08:14] 
+
+===== Run started 2026-09-09T14:28:28 =====
+[2026-09-09 14:28:28] (Logging this run's output to scraping_log.txt as well as the terminal.)
+[2026-09-09 14:28:28] Found ao3_cookie.txt — using the cookie from that file (skipping the prompt).
+[2026-09-09 14:28:28]   Parsed cookie name(s): __cf_bm, _cfuvid, _otwarchive_session, cf_clearance, user_credentials
+[2026-09-09 14:28:58]   Network error (ReadTimeout: HTTPSConnectionPool(host='archiveofourown.org', port=443): Read timed out. (read timeout=30)). Waiting 10s before retrying (1/3)...
