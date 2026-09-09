@@ -157,3 +157,109 @@
 [2026-09-08 21:34:43]   Target Fic Ratio:     1.30%
 [2026-09-08 21:34:43]   Cohort Average Ratio: 1.90%
 [2026-09-08 21:34:43]   Performance:          Outperforms 54.3% of cohort fics (Top 45.7%)
+
+===== Run started 2026-09-08T21:36:26 =====
+[2026-09-08 21:36:26] (Logging this run's output to scraping_log.txt as well as the terminal.)
+[2026-09-08 21:36:26] Found ao3_cookie.txt — using the cookie from that file (skipping the prompt).
+[2026-09-08 21:36:26]   Parsed cookie name(s): _cfuvid, _otwarchive_session, cf_clearance, user_credentials
+[2026-09-08 21:36:26]   Login verified: AO3 recognizes this cookie as a logged-in session.
+[2026-09-08 21:36:26] 
+[2026-09-08 21:37:18] Enter target AO3 work URL: 
+[2026-09-08 21:37:18] Fetching target work details...
+[2026-09-08 21:37:18] 
+[2026-09-08 21:37:18] --- Target Fic: 'Severus Snape and the Insufferable Multiverse' ---
+[2026-09-08 21:37:18] Fandom: Harry Potter - J. K. Rowling
+[2026-09-08 21:37:18] Hits: 2452 | Kudos: 150 | Comments: 311 | Chapters: 31
+[2026-09-08 21:37:18] Kudos/Hits Ratio: 6.12%
+[2026-09-08 21:37:18] Comments/Hits Ratio: 12.68%
+[2026-09-08 21:37:18] 
+[2026-09-08 21:37:18] --- Configure Filter Criteria ---
+[2026-09-08 21:37:18] Fandom: [0] Same Fandom, [1] Search Across All Fandoms
+[2026-09-08 21:37:20] Select Fandom Scope (0-1): 
+[2026-09-08 21:37:20] Category: [0] All Categories, [1] M/M, [2] F/F, [3] F/M, [4] Multi, [5] Gen
+[2026-09-08 21:37:21] Select Category (0-5): 
+[2026-09-08 21:37:21] Archive Warnings: [0] All Warnings, [1] No Warnings Apply, [2] Creator Chose Not To Use, [3] Violence, [4] Major Character Death
+[2026-09-08 21:37:21] Select Warning (0-4): 
+[2026-09-08 21:37:21] Crossovers: [0] All Works, [1] No Crossovers (Single Fandom), [2] Crossovers Only
+[2026-09-08 21:37:21] Select Crossover Option (0-2): 
+[2026-09-08 21:37:21] Chapters: [0] All Works, [1] One-Shots Only, [2] Same Chapters as Target Fic, [3] Multi-Chapters Only
+[2026-09-08 21:37:22] Select Chapter Filter (0-3): 
+[2026-09-08 21:37:22] Completion: [0] All Works, [1] Complete Works Only
+[2026-09-08 21:37:22] Select Completion Status (0-1): 
+[2026-09-08 21:37:22] Timeframe: [0] All Time, [1] Last Week, [2] Last Month, [3] Last Year
+[2026-09-08 21:37:23] Select Timeframe (0-3): 
+[2026-09-08 21:37:23] Checking how many result pages match these filters...
+[2026-09-08 21:37:23]   Using cached page count for these filters: 5000 page(s) (no request made).
+[2026-09-08 21:37:23] Found 5000 result page(s) (~100000 works). Scanning all of them would take roughly 625m at AO3's rate limit.
+[2026-09-08 21:37:23] You can scan the whole thing, or just a slice of pages (e.g. pages 1-100 now, 200-300 in a later run). Cached/already-CSV'd pages are always skipped automatically, so slices can overlap safely.
+[2026-09-08 21:37:30] Start page (1-5000, blank = 1): End page (1-5000, blank = 5000): 
+[2026-09-08 21:37:30] Collecting cohort comparison data from AO3 (scraping search result cards only, no per-work page visits)...
+[2026-09-08 21:37:30]   Scanning pages 500-600 (101 of 5000 total result page(s)).
+[2026-09-08 21:37:55]   --- Full 429 (Too Many Requests) response ---
+[2026-09-08 21:37:55]   URL: https://archiveofourown.org/works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=502&work_search%5Bfandom_names%5D=%22Harry+Potter+-+J.+K.+Rowling%22&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc
+[2026-09-08 21:37:55]   Status: 429 Too Many Requests
+[2026-09-08 21:37:55]   Retry-After header: 525
+[2026-09-08 21:37:55]   All response headers: {'Date': 'Wed, 09 Sep 2026 01:37:55 GMT', 'Content-Type': 'text/plain', 'Content-Length': '12', 'Connection': 'keep-alive', 'Set-Cookie': '_otwarchive_session=eyJfcmFpbHMiOnsibWVzc2FnZSI6ImV5SnpaWE56YVc5dVgybGtJam9pWWpWbU1EYzBNbUprWVdSbE5tUmlNVGs1TlRNeU5tRXpOMkZpTUdVMk9HRWlMQ0ozWVhKa1pXNHVkWE5sY2k1MWMyVnlMbXRsZVNJNlcxc3pNVGs0Tnpnd01WMHNJaVF5WVNReE5DUmpWekl3WWpsbWRrOTJTblphZUZkeFowcEpUbWxQSWwwc0lsOWpjM0ptWDNSdmEyVnVJam9pU1ZkSlVHOXBiVWhUT1ZKR1VtTkxVemhGTkZOb1FXZEhYMVpUY2s1dU4ydHhlSGszV0hOaWVsWnZheUlzSW14aGJtZDFZV2RsWDJsa0lqb2laVzRpZlE9PSIsImV4cCI6IjIwMjYtMDktMjNUMDE6Mzc6NTUuOTI2WiIsInB1ciI6ImNvb2tpZS5fb3R3YXJjaGl2ZV9zZXNzaW9uIn19--9a476a39e1102908ed346d63cc264e80f6f62dd9; path=/; expires=Wed, 23 Sep 2026 01:37:55 GMT; HttpOnly; SameSite=Lax, _cfuvid=fmP7UDHzQi3f3Llp7rqlyXF2MUFHFo60jJrK.XLk6fU-1788917875.797938-1.0.1.1-YXkkp8wHG5aO0h0smAjMs0LKOojVHkOlQMNQxVNVX9g; HttpOnly; SameSite=None; Secure; Path=/; Domain=archiveofourown.org', 'CF-Ray': 'a3827873ba9559da-IAD', 'CF-Cache-Status': 'DYNAMIC', 'Cache-Control': 'no-cache', 'Retry-After': '525', 'Server': 'cloudflare', 'x-request-id': '4224a658-4708-4eee-9627-ec00def07e38', 'x-runtime': '0.002308', 'x-meaning-of-life': '42', 'alt-svc': 'h3=":443"; ma=86400'}
+[2026-09-08 21:37:55]   Response body:
+[2026-09-08 21:37:55]   Retry later
+[2026-09-08 21:37:55]   -----------------------------------------------
+[2026-09-08 21:37:55]   Server told us to wait 525s (Retry-After) before retrying...
+[2026-09-08 21:47:37]   ...page 10/101 done, 159 qualifying works so far
+[2026-09-08 21:48:25]   --- Full 429 (Too Many Requests) response ---
+[2026-09-08 21:48:25]   URL: https://archiveofourown.org/works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=515&work_search%5Bfandom_names%5D=%22Harry+Potter+-+J.+K.+Rowling%22&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc
+[2026-09-08 21:48:25]   Status: 429 Too Many Requests
+[2026-09-08 21:48:25]   Retry-After header: 695
+[2026-09-08 21:48:25]   All response headers: {'Date': 'Wed, 09 Sep 2026 01:48:25 GMT', 'Content-Type': 'text/plain', 'Content-Length': '12', 'Connection': 'keep-alive', 'Set-Cookie': '_otwarchive_session=eyJfcmFpbHMiOnsibWVzc2FnZSI6ImV5SnpaWE56YVc5dVgybGtJam9pWWpWbU1EYzBNbUprWVdSbE5tUmlNVGs1TlRNeU5tRXpOMkZpTUdVMk9HRWlMQ0ozWVhKa1pXNHVkWE5sY2k1MWMyVnlMbXRsZVNJNlcxc3pNVGs0Tnpnd01WMHNJaVF5WVNReE5DUmpWekl3WWpsbWRrOTJTblphZUZkeFowcEpUbWxQSWwwc0lsOWpjM0ptWDNSdmEyVnVJam9pU1ZkSlVHOXBiVWhUT1ZKR1VtTkxVemhGTkZOb1FXZEhYMVpUY2s1dU4ydHhlSGszV0hOaWVsWnZheUlzSW14aGJtZDFZV2RsWDJsa0lqb2laVzRpZlE9PSIsImV4cCI6IjIwMjYtMDktMjNUMDE6NDg6MjUuOTQ1WiIsInB1ciI6ImNvb2tpZS5fb3R3YXJjaGl2ZV9zZXNzaW9uIn19--7f2f1b6d44837d75c944263099b0a9536f16ec06; path=/; expires=Wed, 23 Sep 2026 01:48:25 GMT; HttpOnly; SameSite=Lax, _cfuvid=EKaHrHnjhQWTK8.luBxRJev9KNS8rqebVccWDlqE32o-1788918505.5078099-1.0.1.1-2MtxQ0hcPyeBnA2XF1f1YDYvXZciE3bSaBfA9Mb2QyY; HttpOnly; SameSite=None; Secure; Path=/; Domain=archiveofourown.org', 'CF-Ray': 'a38287d36d04207c-IAD', 'CF-Cache-Status': 'DYNAMIC', 'Cache-Control': 'no-cache', 'Retry-After': '695', 'Server': 'cloudflare', 'x-request-id': '2598cac0-0fd2-4f49-928f-7d4e8759f22b', 'x-runtime': '0.002554', 'x-meaning-of-life': '42', 'alt-svc': 'h3=":443"; ma=86400'}
+[2026-09-08 21:48:25]   Response body:
+[2026-09-08 21:48:25]   Retry later
+[2026-09-08 21:48:25]   -----------------------------------------------
+[2026-09-08 21:48:25]   Server told us to wait 695s (Retry-After) before retrying...
+[2026-09-08 22:00:02]   Network error (SSLError: HTTPSConnectionPool(host='archiveofourown.org', port=443): Max retries exceeded with url: /works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=515&work_search%5Bfandom_names%5D=%22Harry+Potter+-+J.+K.+Rowling%22&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc (Caused by SSLError(SSLCertVerificationError(1, "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'archiveofourown.org'. (_ssl.c:1081)")))). Waiting 20s before retrying (2/3)...
+
+===== Run started 2026-09-08T22:06:06 =====
+[2026-09-08 22:06:06] (Logging this run's output to scraping_log.txt as well as the terminal.)
+[2026-09-08 22:06:06] Found ao3_cookie.txt — using the cookie from that file (skipping the prompt).
+[2026-09-08 22:06:06]   Parsed cookie name(s): _cfuvid, _otwarchive_session, cf_clearance, user_credentials
+[2026-09-08 22:06:06]   Login verified: AO3 recognizes this cookie as a logged-in session.
+[2026-09-08 22:06:06] 
+[2026-09-08 22:06:13] Enter target AO3 work URL: 
+[2026-09-08 22:06:13] Fetching target work details...
+[2026-09-08 22:06:14] 
+[2026-09-08 22:06:14] --- Target Fic: 'Severus Snape and the Insufferable Multiverse' ---
+[2026-09-08 22:06:14] Fandom: Harry Potter - J. K. Rowling
+[2026-09-08 22:06:14] Hits: 2453 | Kudos: 150 | Comments: 311 | Chapters: 31
+[2026-09-08 22:06:14] Kudos/Hits Ratio: 6.11%
+[2026-09-08 22:06:14] Comments/Hits Ratio: 12.68%
+[2026-09-08 22:06:14] 
+[2026-09-08 22:06:14] --- Configure Filter Criteria ---
+[2026-09-08 22:06:14] Fandom: [0] Same Fandom, [1] Search Across All Fandoms
+[2026-09-08 22:06:18] Select Fandom Scope (0-1): 
+[2026-09-08 22:06:18] Category: [0] All Categories, [1] M/M, [2] F/F, [3] F/M, [4] Multi, [5] Gen
+[2026-09-08 22:06:19] Select Category (0-5): 
+[2026-09-08 22:06:19] Archive Warnings: [0] All Warnings, [1] No Warnings Apply, [2] Creator Chose Not To Use, [3] Violence, [4] Major Character Death
+[2026-09-08 22:06:19] Select Warning (0-4): 
+[2026-09-08 22:06:19] Crossovers: [0] All Works, [1] No Crossovers (Single Fandom), [2] Crossovers Only
+[2026-09-08 22:06:22] Select Crossover Option (0-2): 
+[2026-09-08 22:06:22] Chapters: [0] All Works, [1] One-Shots Only, [2] Same Chapters as Target Fic, [3] Multi-Chapters Only
+[2026-09-08 22:06:22] Select Chapter Filter (0-3): 
+[2026-09-08 22:06:22] Completion: [0] All Works, [1] Complete Works Only
+[2026-09-08 22:06:23] Select Completion Status (0-1): 
+[2026-09-08 22:06:23] Timeframe: [0] All Time, [1] Last Week, [2] Last Month, [3] Last Year
+[2026-09-08 22:06:23] Select Timeframe (0-3): 
+[2026-09-08 22:06:23] Checking how many result pages match these filters...
+[2026-09-08 22:06:23]   Using cached page count for these filters: 5000 page(s) (no request made).
+[2026-09-08 22:06:23] Found 5000 result page(s) (~100000 works). Scanning all of them would take roughly 625m at AO3's rate limit.
+[2026-09-08 22:06:23] You can scan the whole thing, or just a slice of pages (e.g. pages 1-100 now, 200-300 in a later run). Cached/already-CSV'd pages are always skipped automatically, so slices can overlap safely.
+[2026-09-08 22:06:31] Start page (1-5000, blank = 1): End page (1-5000, blank = 5000): 
+[2026-09-08 22:06:31] Collecting cohort comparison data from AO3 (scraping search result cards only, no per-work page visits)...
+[2026-09-08 22:06:31]   Scanning pages 550-650 (101 of 5000 total result page(s)).
+[2026-09-08 22:07:57]   ...page 10/101 done, 154 qualifying works so far
+[2026-09-08 22:08:28]   --- Full 429 (Too Many Requests) response ---
+[2026-09-08 22:08:28]   URL: https://archiveofourown.org/works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=563&work_search%5Bfandom_names%5D=%22Harry+Potter+-+J.+K.+Rowling%22&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc
+[2026-09-08 22:08:28]   Status: 429 Too Many Requests
+[2026-09-08 22:08:28]   Retry-After header: 292
+[2026-09-08 22:08:28]   All response headers: {'Date': 'Wed, 09 Sep 2026 02:08:28 GMT', 'Content-Type': 'text/plain', 'Content-Length': '12', 'Connection': 'keep-alive', 'Set-Cookie': '_otwarchive_session=eyJfcmFpbHMiOnsibWVzc2FnZSI6ImV5SnpaWE56YVc5dVgybGtJam9pWWpWbU1EYzBNbUprWVdSbE5tUmlNVGs1TlRNeU5tRXpOMkZpTUdVMk9HRWlMQ0ozWVhKa1pXNHVkWE5sY2k1MWMyVnlMbXRsZVNJNlcxc3pNVGs0Tnpnd01WMHNJaVF5WVNReE5DUmpWekl3WWpsbWRrOTJTblphZUZkeFowcEpUbWxQSWwwc0lsOWpjM0ptWDNSdmEyVnVJam9pU1ZkSlVHOXBiVWhUT1ZKR1VtTkxVemhGTkZOb1FXZEhYMVpUY2s1dU4ydHhlSGszV0hOaWVsWnZheUlzSW14aGJtZDFZV2RsWDJsa0lqb2laVzRpZlE9PSIsImV4cCI6IjIwMjYtMDktMjNUMDI6MDg6MjguMjIwWiIsInB1ciI6ImNvb2tpZS5fb3R3YXJjaGl2ZV9zZXNzaW9uIn19--1a09ccbf0d5b8cde7f80ca2de8a8b5b335298fb0; path=/; expires=Wed, 23 Sep 2026 02:08:28 GMT; HttpOnly; SameSite=Lax, _cfuvid=AS72dPSUtUwkqeT7oE_jTAEDOicZ7dRAUPTxQ2HgqLo-1788919708.1243808-1.0.1.1-wPNlFNmndsGPMgrdCVeDFMcOqPVP0TSdLTiBv73i2JQ; HttpOnly; SameSite=None; Secure; Path=/; Domain=archiveofourown.org', 'CF-Ray': 'a382a52fcf5d13e2-BOS', 'CF-Cache-Status': 'DYNAMIC', 'Cache-Control': 'no-cache', 'Retry-After': '292', 'Server': 'cloudflare', 'x-request-id': '9e97d811-5705-4f01-baa8-547748b15358', 'x-runtime': '0.003094', 'x-meaning-of-life': '42', 'alt-svc': 'h3=":443"; ma=86400'}
+[2026-09-08 22:08:28]   Response body:
+[2026-09-08 22:08:28]   Retry later
+[2026-09-08 22:08:28]   -----------------------------------------------
+[2026-09-08 22:08:28]   Server told us to wait 292s (Retry-After) before retrying...
