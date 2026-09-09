@@ -72,3 +72,88 @@
 [2026-09-08 20:08:42]   Retry later
 [2026-09-08 20:08:42]   -----------------------------------------------
 [2026-09-08 20:08:42]   Server told us to wait 278s (Retry-After) before retrying...
+[2026-09-08 20:14:42]   ...page 20/101 done, 336 qualifying works so far
+[2026-09-08 20:15:37]   --- Full 429 (Too Many Requests) response ---
+[2026-09-08 20:15:37]   URL: https://archiveofourown.org/works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=305&work_search%5Bfandom_names%5D=%22Harry+Potter+-+J.+K.+Rowling%22&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc
+[2026-09-08 20:15:37]   Status: 429 Too Many Requests
+[2026-09-08 20:15:37]   Retry-After header: 663
+[2026-09-08 20:15:37]   All response headers: {'Date': 'Wed, 09 Sep 2026 00:15:37 GMT', 'Content-Type': 'text/plain', 'Content-Length': '12', 'Connection': 'keep-alive', 'Set-Cookie': '_otwarchive_session=eyJfcmFpbHMiOnsibWVzc2FnZSI6ImV5SnpaWE56YVc5dVgybGtJam9pWWpWbU1EYzBNbUprWVdSbE5tUmlNVGs1TlRNeU5tRXpOMkZpTUdVMk9HRWlMQ0ozWVhKa1pXNHVkWE5sY2k1MWMyVnlMbXRsZVNJNlcxc3pNVGs0Tnpnd01WMHNJaVF5WVNReE5DUmpWekl3WWpsbWRrOTJTblphZUZkeFowcEpUbWxQSWwwc0lsOWpjM0ptWDNSdmEyVnVJam9pU1ZkSlVHOXBiVWhUT1ZKR1VtTkxVemhGTkZOb1FXZEhYMVpUY2s1dU4ydHhlSGszV0hOaWVsWnZheUlzSW14aGJtZDFZV2RsWDJsa0lqb2laVzRpZlE9PSIsImV4cCI6IjIwMjYtMDktMjNUMDA6MTU6MzcuODU2WiIsInB1ciI6ImNvb2tpZS5fb3R3YXJjaGl2ZV9zZXNzaW9uIn19--ded0c820b1f69e2832a648026177cbf77c749254; path=/; expires=Wed, 23 Sep 2026 00:15:37 GMT; HttpOnly; SameSite=Lax, _cfuvid=tgKW9l5rmxWgMV0ucADcWeIjVXKUmSQmS0fFOupoKic-1788912937.0300443-1.0.1.1-U.tgZkDMxqfmgaoshGgy1eLzPSwHnwCdyxIBNxaOIN8; HttpOnly; SameSite=None; Secure; Path=/; Domain=archiveofourown.org', 'CF-Ray': 'a381ffe0698ff4b5-IAD', 'CF-Cache-Status': 'DYNAMIC', 'Cache-Control': 'no-cache', 'Retry-After': '663', 'Server': 'cloudflare', 'x-request-id': 'fd2167f2-7e38-43b7-ab6c-608fad77c125', 'x-runtime': '0.002696', 'x-meaning-of-life': '42', 'alt-svc': 'h3=":443"; ma=86400'}
+[2026-09-08 20:15:37]   Response body:
+[2026-09-08 20:15:37]   Retry later
+[2026-09-08 20:15:37]   -----------------------------------------------
+[2026-09-08 20:15:37]   Server told us to wait 663s (Retry-After) before retrying...
+[2026-09-08 20:27:22]   ...page 30/101 done, 493 qualifying works so far
+[2026-09-08 20:28:45]   --- Full 429 (Too Many Requests) response ---
+[2026-09-08 20:28:45]   URL: https://archiveofourown.org/works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=318&work_search%5Bfandom_names%5D=%22Harry+Potter+-+J.+K.+Rowling%22&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc
+[2026-09-08 20:28:45]   Status: 429 Too Many Requests
+[2026-09-08 20:28:45]   Retry-After header: 675
+[2026-09-08 20:28:45]   All response headers: {'Date': 'Wed, 09 Sep 2026 00:28:45 GMT', 'Content-Type': 'text/plain', 'Content-Length': '12', 'Connection': 'keep-alive', 'Set-Cookie': '_otwarchive_session=eyJfcmFpbHMiOnsibWVzc2FnZSI6ImV5SnpaWE56YVc5dVgybGtJam9pWWpWbU1EYzBNbUprWVdSbE5tUmlNVGs1TlRNeU5tRXpOMkZpTUdVMk9HRWlMQ0ozWVhKa1pXNHVkWE5sY2k1MWMyVnlMbXRsZVNJNlcxc3pNVGs0Tnpnd01WMHNJaVF5WVNReE5DUmpWekl3WWpsbWRrOTJTblphZUZkeFowcEpUbWxQSWwwc0lsOWpjM0ptWDNSdmEyVnVJam9pU1ZkSlVHOXBiVWhUT1ZKR1VtTkxVemhGTkZOb1FXZEhYMVpUY2s1dU4ydHhlSGszV0hOaWVsWnZheUlzSW14aGJtZDFZV2RsWDJsa0lqb2laVzRpZlE9PSIsImV4cCI6IjIwMjYtMDktMjNUMDA6Mjg6NDUuMDk3WiIsInB1ciI6ImNvb2tpZS5fb3R3YXJjaGl2ZV9zZXNzaW9uIn19--f63d833d1065e45fdf10d659b51f4f1d87bf5805; path=/; expires=Wed, 23 Sep 2026 00:28:45 GMT; HttpOnly; SameSite=Lax, _cfuvid=8izyJqp4N5EqF4nTHPU3u8ei48Ux3MldVLXSJCVpsCE-1788913724.661365-1.0.1.1-WbMUh8U3Fy7aRMnhdRKLZZdg.VGhp1vRBrmHJdDelLc; HttpOnly; SameSite=None; Secure; Path=/; Domain=archiveofourown.org', 'CF-Ray': 'a382131b2df5e60f-IAD', 'CF-Cache-Status': 'DYNAMIC', 'Cache-Control': 'no-cache', 'Retry-After': '675', 'Server': 'cloudflare', 'x-request-id': '3ee2fb4c-95a2-455f-9c9e-acc7c4e6493f', 'x-runtime': '0.002407', 'x-meaning-of-life': '42', 'alt-svc': 'h3=":443"; ma=86400'}
+[2026-09-08 20:28:45]   Response body:
+[2026-09-08 20:28:45]   Retry later
+[2026-09-08 20:28:45]   -----------------------------------------------
+[2026-09-08 20:28:45]   Server told us to wait 675s (Retry-After) before retrying...
+[2026-09-08 20:40:09]   ...page 40/101 done, 650 qualifying works so far
+[2026-09-08 20:41:31]   ...page 50/101 done, 807 qualifying works so far
+[2026-09-08 20:41:54]   --- Full 429 (Too Many Requests) response ---
+[2026-09-08 20:41:54]   URL: https://archiveofourown.org/works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=331&work_search%5Bfandom_names%5D=%22Harry+Potter+-+J.+K.+Rowling%22&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc
+[2026-09-08 20:41:54]   Status: 429 Too Many Requests
+[2026-09-08 20:41:54]   Retry-After header: 686
+[2026-09-08 20:41:54]   All response headers: {'Date': 'Wed, 09 Sep 2026 00:41:54 GMT', 'Content-Type': 'text/plain', 'Content-Length': '12', 'Connection': 'keep-alive', 'Set-Cookie': '_otwarchive_session=eyJfcmFpbHMiOnsibWVzc2FnZSI6ImV5SnpaWE56YVc5dVgybGtJam9pWWpWbU1EYzBNbUprWVdSbE5tUmlNVGs1TlRNeU5tRXpOMkZpTUdVMk9HRWlMQ0ozWVhKa1pXNHVkWE5sY2k1MWMyVnlMbXRsZVNJNlcxc3pNVGs0Tnpnd01WMHNJaVF5WVNReE5DUmpWekl3WWpsbWRrOTJTblphZUZkeFowcEpUbWxQSWwwc0lsOWpjM0ptWDNSdmEyVnVJam9pU1ZkSlVHOXBiVWhUT1ZKR1VtTkxVemhGTkZOb1FXZEhYMVpUY2s1dU4ydHhlSGszV0hOaWVsWnZheUlzSW14aGJtZDFZV2RsWDJsa0lqb2laVzRpZlE9PSIsImV4cCI6IjIwMjYtMDktMjNUMDA6NDE6NTQuMDM2WiIsInB1ciI6ImNvb2tpZS5fb3R3YXJjaGl2ZV9zZXNzaW9uIn19--94ef0db4c96e41c6df1e752f0cb6a21b3cafb284; path=/; expires=Wed, 23 Sep 2026 00:41:54 GMT; HttpOnly; SameSite=Lax, __cf_bm=sxqcmArW7CkofBBvJ2DWbP0AQldADaKQU_u_7ccQfSY-1788914510.6141486-1.0.1.1-HZDVqz4vQBwd3sQW78C40tMPR6EyynF7ZVxBIMM3zzknA.9wFvvAM_NcvJGz.Oi1haGLLlaLXxDuGDi43bcRfrqh0wIsbNnWKa49wvNCxfsJkXOzXi1wioFAz0igs7iz; HttpOnly; SameSite=None; Secure; Path=/; Domain=archiveofourown.org; Expires=Wed, 09 Sep 2026 01:11:54 GMT, _cfuvid=4kNu.bN3AjGovasI_Ch0fSQA9M1N2iXyYEZ0BMECIbY-1788914510.6141486-1.0.1.1-5B28cgeFq3qpxnGqU9_on2U3GKajjmN6l12OoR82reo; HttpOnly; SameSite=None; Secure; Path=/; Domain=archiveofourown.org', 'CF-Ray': 'a382264b5e807d18-EWR', 'CF-Cache-Status': 'DYNAMIC', 'Cache-Control': 'no-cache', 'Retry-After': '686', 'Server': 'cloudflare', 'x-meaning-of-life': '42', 'x-request-id': '8daa0971-b4fe-4798-b4d8-7185ffd37163', 'x-runtime': '0.003039', 'alt-svc': 'h3=":443"; ma=86400'}
+[2026-09-08 20:41:54]   Response body:
+[2026-09-08 20:41:54]   Retry later
+[2026-09-08 20:41:54]   -----------------------------------------------
+[2026-09-08 20:41:54]   Server told us to wait 686s (Retry-After) before retrying...
+[2026-09-08 20:54:28]   ...page 60/101 done, 977 qualifying works so far
+[2026-09-08 20:55:05]   Network error (ReadTimeout: HTTPSConnectionPool(host='archiveofourown.org', port=443): Read timed out. (read timeout=30)). Waiting 10s before retrying (1/3)...
+[2026-09-08 20:55:48]   --- Full 429 (Too Many Requests) response ---
+[2026-09-08 20:55:48]   URL: https://archiveofourown.org/works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=344&work_search%5Bfandom_names%5D=%22Harry+Potter+-+J.+K.+Rowling%22&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc
+[2026-09-08 20:55:48]   Status: 429 Too Many Requests
+[2026-09-08 20:55:48]   Retry-After header: 652
+[2026-09-08 20:55:48]   All response headers: {'Date': 'Wed, 09 Sep 2026 00:55:48 GMT', 'Content-Type': 'text/plain', 'Content-Length': '12', 'Connection': 'keep-alive', 'Set-Cookie': '_otwarchive_session=eyJfcmFpbHMiOnsibWVzc2FnZSI6ImV5SnpaWE56YVc5dVgybGtJam9pWWpWbU1EYzBNbUprWVdSbE5tUmlNVGs1TlRNeU5tRXpOMkZpTUdVMk9HRWlMQ0ozWVhKa1pXNHVkWE5sY2k1MWMyVnlMbXRsZVNJNlcxc3pNVGs0Tnpnd01WMHNJaVF5WVNReE5DUmpWekl3WWpsbWRrOTJTblphZUZkeFowcEpUbWxQSWwwc0lsOWpjM0ptWDNSdmEyVnVJam9pU1ZkSlVHOXBiVWhUT1ZKR1VtTkxVemhGTkZOb1FXZEhYMVpUY2s1dU4ydHhlSGszV0hOaWVsWnZheUlzSW14aGJtZDFZV2RsWDJsa0lqb2laVzRpZlE9PSIsImV4cCI6IjIwMjYtMDktMjNUMDA6NTU6NDguMDkwWiIsInB1ciI6ImNvb2tpZS5fb3R3YXJjaGl2ZV9zZXNzaW9uIn19--b8a6be065d9ae986fc775862e73af21553dc8db4; path=/; expires=Wed, 23 Sep 2026 00:55:48 GMT; HttpOnly; SameSite=Lax, _cfuvid=dAVUyOA3n25LQa5irq46ApoZCEyQ7WCIRoPrJMSRg5Y-1788915347.7291346-1.0.1.1-6MGGR6uFn07o8BDA85o2SKXB_vLvP08UEP5Z3tdMgSI; HttpOnly; SameSite=None; Secure; Path=/; Domain=archiveofourown.org', 'CF-Ray': 'a3823abb484331cb-EWR', 'CF-Cache-Status': 'DYNAMIC', 'Cache-Control': 'no-cache', 'Retry-After': '652', 'Server': 'cloudflare', 'x-request-id': 'a812f375-65fa-4fc9-92d6-80afb118a07f', 'x-runtime': '0.002755', 'x-meaning-of-life': '42', 'alt-svc': 'h3=":443"; ma=86400'}
+[2026-09-08 20:55:48]   Response body:
+[2026-09-08 20:55:48]   Retry later
+[2026-09-08 20:55:48]   -----------------------------------------------
+[2026-09-08 20:55:48]   Server told us to wait 652s (Retry-After) before retrying...
+[2026-09-08 21:06:41]   Page 344: HTTP 525 — AO3 is blocking or failing this request (1/3).
+[2026-09-08 21:07:17]   ...page 70/101 done, 1125 qualifying works so far
+[2026-09-08 21:08:04]   Network error (ReadTimeout: HTTPSConnectionPool(host='archiveofourown.org', port=443): Read timed out. (read timeout=30)). Waiting 10s before retrying (1/3)...
+[2026-09-08 21:08:50]   Network error (ReadTimeout: HTTPSConnectionPool(host='archiveofourown.org', port=443): Read timed out. (read timeout=30)). Waiting 10s before retrying (1/3)...
+[2026-09-08 21:09:42]   --- Full 429 (Too Many Requests) response ---
+[2026-09-08 21:09:42]   URL: https://archiveofourown.org/works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=357&work_search%5Bfandom_names%5D=%22Harry+Potter+-+J.+K.+Rowling%22&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc
+[2026-09-08 21:09:42]   Status: 429 Too Many Requests
+[2026-09-08 21:09:42]   Retry-After header: 618
+[2026-09-08 21:09:42]   All response headers: {'Date': 'Wed, 09 Sep 2026 01:09:42 GMT', 'Content-Type': 'text/plain', 'Content-Length': '12', 'Connection': 'keep-alive', 'Set-Cookie': '_otwarchive_session=eyJfcmFpbHMiOnsibWVzc2FnZSI6ImV5SnpaWE56YVc5dVgybGtJam9pWWpWbU1EYzBNbUprWVdSbE5tUmlNVGs1TlRNeU5tRXpOMkZpTUdVMk9HRWlMQ0ozWVhKa1pXNHVkWE5sY2k1MWMyVnlMbXRsZVNJNlcxc3pNVGs0Tnpnd01WMHNJaVF5WVNReE5DUmpWekl3WWpsbWRrOTJTblphZUZkeFowcEpUbWxQSWwwc0lsOWpjM0ptWDNSdmEyVnVJam9pU1ZkSlVHOXBiVWhUT1ZKR1VtTkxVemhGTkZOb1FXZEhYMVpUY2s1dU4ydHhlSGszV0hOaWVsWnZheUlzSW14aGJtZDFZV2RsWDJsa0lqb2laVzRpZlE9PSIsImV4cCI6IjIwMjYtMDktMjNUMDE6MDk6NDIuNzMyWiIsInB1ciI6ImNvb2tpZS5fb3R3YXJjaGl2ZV9zZXNzaW9uIn19--bc9eeb4529b0307154d1881782df0234279d90da; path=/; expires=Wed, 23 Sep 2026 01:09:42 GMT; HttpOnly; SameSite=Lax, _cfuvid=8Ug4y584OGGVM8AOijoONxvEWaEM8xEc0il1EPPYv4o-1788916182.6745267-1.0.1.1-VAbSKINUkTDMQOo76PMio2vdXmklXRks9O8KSZLY.Yc; HttpOnly; SameSite=None; Secure; Path=/; Domain=archiveofourown.org', 'CF-Ray': 'a3824f1dbc0fc96f-IAD', 'CF-Cache-Status': 'DYNAMIC', 'Cache-Control': 'no-cache', 'Retry-After': '618', 'Server': 'cloudflare', 'x-request-id': 'ea9b35d5-8e54-4a9d-9d1b-c466114e6713', 'x-runtime': '0.002103', 'x-meaning-of-life': '42', 'alt-svc': 'h3=":443"; ma=86400'}
+[2026-09-08 21:09:42]   Response body:
+[2026-09-08 21:09:42]   Retry later
+[2026-09-08 21:09:42]   -----------------------------------------------
+[2026-09-08 21:09:42]   Server told us to wait 618s (Retry-After) before retrying...
+[2026-09-08 21:20:19]   ...page 80/101 done, 1300 qualifying works so far
+[2026-09-08 21:21:33]   ...page 90/101 done, 1446 qualifying works so far
+[2026-09-08 21:21:40]   --- Full 429 (Too Many Requests) response ---
+[2026-09-08 21:21:40]   URL: https://archiveofourown.org/works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=370&work_search%5Bfandom_names%5D=%22Harry+Potter+-+J.+K.+Rowling%22&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc
+[2026-09-08 21:21:40]   Status: 429 Too Many Requests
+[2026-09-08 21:21:40]   Retry-After header: 700
+[2026-09-08 21:21:40]   All response headers: {'Date': 'Wed, 09 Sep 2026 01:21:40 GMT', 'Content-Type': 'text/plain', 'Content-Length': '12', 'Connection': 'keep-alive', 'Set-Cookie': '_otwarchive_session=eyJfcmFpbHMiOnsibWVzc2FnZSI6ImV5SnpaWE56YVc5dVgybGtJam9pWWpWbU1EYzBNbUprWVdSbE5tUmlNVGs1TlRNeU5tRXpOMkZpTUdVMk9HRWlMQ0ozWVhKa1pXNHVkWE5sY2k1MWMyVnlMbXRsZVNJNlcxc3pNVGs0Tnpnd01WMHNJaVF5WVNReE5DUmpWekl3WWpsbWRrOTJTblphZUZkeFowcEpUbWxQSWwwc0lsOWpjM0ptWDNSdmEyVnVJam9pU1ZkSlVHOXBiVWhUT1ZKR1VtTkxVemhGTkZOb1FXZEhYMVpUY2s1dU4ydHhlSGszV0hOaWVsWnZheUlzSW14aGJtZDFZV2RsWDJsa0lqb2laVzRpZlE9PSIsImV4cCI6IjIwMjYtMDktMjNUMDE6MjE6NDAuODk5WiIsInB1ciI6ImNvb2tpZS5fb3R3YXJjaGl2ZV9zZXNzaW9uIn19--974b288c5ef95f02f13a2487ff125006f622c647; path=/; expires=Wed, 23 Sep 2026 01:21:40 GMT; HttpOnly; SameSite=Lax, _cfuvid=VRlS4kgxaAav0iK9yJbE0V.W_Dd5CZ131RWbmmNNiso-1788916900.478682-1.0.1.1-yBuxLFjCk5iUba43TND0vzBY9S_TJ0t5rGHuuCPJV.w; HttpOnly; SameSite=None; Secure; Path=/; Domain=archiveofourown.org', 'CF-Ray': 'a38260a3fe70868a-IAD', 'CF-Cache-Status': 'DYNAMIC', 'Cache-Control': 'no-cache', 'Retry-After': '700', 'Server': 'cloudflare', 'x-request-id': '62f73640-b337-427c-a1ef-7fd5ba1a1a68', 'x-runtime': '0.002707', 'x-meaning-of-life': '42', 'alt-svc': 'h3=":443"; ma=86400'}
+[2026-09-08 21:21:40]   Response body:
+[2026-09-08 21:21:40]   Retry later
+[2026-09-08 21:21:40]   -----------------------------------------------
+[2026-09-08 21:21:40]   Server told us to wait 700s (Retry-After) before retrying...
+[2026-09-08 21:34:37]   ...page 100/101 done, 1609 qualifying works so far
+[2026-09-08 21:34:43]   ...page 101/101 done, 1627 qualifying works so far
+[2026-09-08 21:34:43] 
+[2026-09-08 21:34:43] Appended 1616 new row(s) to ao3_results.csv (12 already-seen work(s) skipped).
+[2026-09-08 21:34:43] Saved distribution (1615 works) to ao3_distributions.json under key:
+[2026-09-08 21:34:43]   Harry Potter - J. K. Rowling|cat0|warn0|cross0|chap0|comp0|time0
+[2026-09-08 21:34:43] This file holds the full sorted list of ratios plus percentile breakpoints for this fandom+filter combo — you can look up where any other fic's ratios fall against it offline, without scraping again.
+[2026-09-08 21:34:43] 
+[2026-09-08 21:34:43] --- COHORT COMPARISON RESULTS (Sample size: 1627 works) ---
+[2026-09-08 21:34:43] 
+[2026-09-08 21:34:43] Kudos:Hits Ratio Comparison:
+[2026-09-08 21:34:43]   Target Fic Ratio:     0.00%
+[2026-09-08 21:34:43]   Cohort Average Ratio: 5.21%
+[2026-09-08 21:34:43]   Performance:          Outperforms 0.0% of cohort fics (Top 100.0%)
+[2026-09-08 21:34:43] 
+[2026-09-08 21:34:43] Comments:Hits Ratio Comparison:
+[2026-09-08 21:34:43]   Target Fic Ratio:     1.30%
+[2026-09-08 21:34:43]   Cohort Average Ratio: 1.90%
+[2026-09-08 21:34:43]   Performance:          Outperforms 54.3% of cohort fics (Top 45.7%)
