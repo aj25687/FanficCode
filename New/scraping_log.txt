@@ -1,0 +1,74 @@
+
+===== Run started 2026-09-08T20:01:21 =====
+[2026-09-08 20:01:21] (Logging this run's output to scraping_log.txt as well as the terminal.)
+[2026-09-08 20:01:21] Found ao3_cookie.txt — using the cookie from that file (skipping the prompt).
+[2026-09-08 20:01:21]   Parsed cookie name(s): _cfuvid, _otwarchive_session, cf_clearance, user_credentials
+[2026-09-08 20:01:21]   Login verified: AO3 recognizes this cookie as a logged-in session.
+[2026-09-08 20:01:21] 
+[2026-09-08 20:01:35] Enter target AO3 work URL: 
+[2026-09-08 20:01:35] Fetching target work details...
+
+===== Run started 2026-09-08T20:04:05 =====
+[2026-09-08 20:04:05] (Logging this run's output to scraping_log.txt as well as the terminal.)
+[2026-09-08 20:04:05] Found ao3_cookie.txt — using the cookie from that file (skipping the prompt).
+[2026-09-08 20:04:05]   Parsed cookie name(s): _cfuvid, _otwarchive_session, cf_clearance, user_credentials
+[2026-09-08 20:04:06]   Login verified: AO3 recognizes this cookie as a logged-in session.
+[2026-09-08 20:04:06] 
+[2026-09-08 20:04:18] Enter target AO3 work URL: 
+[2026-09-08 20:04:18] Fetching target work details...
+[2026-09-08 20:04:18] 
+[2026-09-08 20:04:18] --- Target Fic: 'A Better Fit' ---
+[2026-09-08 20:04:18] Fandom: Harry Potter - J. K. Rowling
+[2026-09-08 20:04:18] Hits: 4015 | Kudos: 138 | Comments: 100 | Chapters: 12
+[2026-09-08 20:04:18] Kudos/Hits Ratio: 3.44%
+[2026-09-08 20:04:18] Comments/Hits Ratio: 2.49%
+[2026-09-08 20:04:18] 
+[2026-09-08 20:04:18] --- Configure Filter Criteria ---
+[2026-09-08 20:04:18] Fandom: [0] Same Fandom, [1] Search Across All Fandoms
+
+===== Run started 2026-09-08T20:04:33 =====
+[2026-09-08 20:04:33] (Logging this run's output to scraping_log.txt as well as the terminal.)
+[2026-09-08 20:04:33] Found ao3_cookie.txt — using the cookie from that file (skipping the prompt).
+[2026-09-08 20:04:33]   Parsed cookie name(s): _cfuvid, _otwarchive_session, cf_clearance, user_credentials
+[2026-09-08 20:04:33]   Login verified: AO3 recognizes this cookie as a logged-in session.
+[2026-09-08 20:04:33] 
+[2026-09-08 20:04:47] Enter target AO3 work URL: 
+[2026-09-08 20:04:47] Fetching target work details...
+[2026-09-08 20:04:48] 
+[2026-09-08 20:04:48] --- Target Fic: 'Where The Duck Is Minerva McGonagall? (Traduzione Italiana)' ---
+[2026-09-08 20:04:48] Fandom: Harry Potter - J. K. Rowling
+[2026-09-08 20:04:48] Hits: 77 | Kudos: 0 | Comments: 1 | Chapters: 10
+[2026-09-08 20:04:48] Kudos/Hits Ratio: 0.00%
+[2026-09-08 20:04:48] Comments/Hits Ratio: 1.30%
+[2026-09-08 20:04:48] 
+[2026-09-08 20:04:48] --- Configure Filter Criteria ---
+[2026-09-08 20:04:48] Fandom: [0] Same Fandom, [1] Search Across All Fandoms
+[2026-09-08 20:04:53] Select Fandom Scope (0-1): 
+[2026-09-08 20:04:53] Category: [0] All Categories, [1] M/M, [2] F/F, [3] F/M, [4] Multi, [5] Gen
+[2026-09-08 20:04:54] Select Category (0-5): 
+[2026-09-08 20:04:54] Archive Warnings: [0] All Warnings, [1] No Warnings Apply, [2] Creator Chose Not To Use, [3] Violence, [4] Major Character Death
+[2026-09-08 20:04:55] Select Warning (0-4): 
+[2026-09-08 20:04:55] Crossovers: [0] All Works, [1] No Crossovers (Single Fandom), [2] Crossovers Only
+[2026-09-08 20:04:56] Select Crossover Option (0-2): 
+[2026-09-08 20:04:56] Chapters: [0] All Works, [1] One-Shots Only, [2] Same Chapters as Target Fic, [3] Multi-Chapters Only
+[2026-09-08 20:04:57] Select Chapter Filter (0-3): 
+[2026-09-08 20:04:57] Completion: [0] All Works, [1] Complete Works Only
+[2026-09-08 20:04:57] Select Completion Status (0-1): 
+[2026-09-08 20:04:57] Timeframe: [0] All Time, [1] Last Week, [2] Last Month, [3] Last Year
+[2026-09-08 20:04:58] Select Timeframe (0-3): 
+[2026-09-08 20:04:58] Checking how many result pages match these filters...
+[2026-09-08 20:05:04] Found 5000 result page(s) (~100000 works). Scanning all of them would take roughly 625m at AO3's rate limit.
+[2026-09-08 20:05:04] You can scan the whole thing, or just a slice of pages (e.g. pages 1-100 now, 200-300 in a later run). Cached/already-CSV'd pages are always skipped automatically, so slices can overlap safely.
+[2026-09-08 20:06:22] Start page (1-5000, blank = 1): End page (1-5000, blank = 5000): 
+[2026-09-08 20:06:22] Collecting cohort comparison data from AO3 (scraping search result cards only, no per-work page visits)...
+[2026-09-08 20:06:22]   Scanning pages 280-380 (101 of 5000 total result page(s)).
+[2026-09-08 20:08:11]   ...page 10/101 done, 168 qualifying works so far
+[2026-09-08 20:08:42]   --- Full 429 (Too Many Requests) response ---
+[2026-09-08 20:08:42]   URL: https://archiveofourown.org/works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=292&work_search%5Bfandom_names%5D=%22Harry+Potter+-+J.+K.+Rowling%22&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc
+[2026-09-08 20:08:42]   Status: 429 Too Many Requests
+[2026-09-08 20:08:42]   Retry-After header: 278
+[2026-09-08 20:08:42]   All response headers: {'Date': 'Wed, 09 Sep 2026 00:08:42 GMT', 'Content-Type': 'text/plain', 'Content-Length': '12', 'Connection': 'keep-alive', 'Set-Cookie': '_otwarchive_session=eyJfcmFpbHMiOnsibWVzc2FnZSI6ImV5SnpaWE56YVc5dVgybGtJam9pWWpWbU1EYzBNbUprWVdSbE5tUmlNVGs1TlRNeU5tRXpOMkZpTUdVMk9HRWlMQ0ozWVhKa1pXNHVkWE5sY2k1MWMyVnlMbXRsZVNJNlcxc3pNVGs0Tnpnd01WMHNJaVF5WVNReE5DUmpWekl3WWpsbWRrOTJTblphZUZkeFowcEpUbWxQSWwwc0lsOWpjM0ptWDNSdmEyVnVJam9pU1ZkSlVHOXBiVWhUT1ZKR1VtTkxVemhGTkZOb1FXZEhYMVpUY2s1dU4ydHhlSGszV0hOaWVsWnZheUlzSW14aGJtZDFZV2RsWDJsa0lqb2laVzRpZlE9PSIsImV4cCI6IjIwMjYtMDktMjNUMDA6MDg6NDIuMDE0WiIsInB1ciI6ImNvb2tpZS5fb3R3YXJjaGl2ZV9zZXNzaW9uIn19--d500697af5255ab2da40aa2599ed718a6dd9f2ba; path=/; expires=Wed, 23 Sep 2026 00:08:42 GMT; HttpOnly; SameSite=Lax, _cfuvid=Q7WXQlWimNmC08NQOfyARJ1CwN2bBbzOlZV24lVDTTI-1788912521.646981-1.0.1.1-bpzP2kjtpt1n9rRBSFueHXTpTBGD5n.sAsvbb.nD8BE; HttpOnly; SameSite=None; Secure; Path=/; Domain=archiveofourown.org', 'CF-Ray': 'a381f5bc4b01f4b5-IAD', 'CF-Cache-Status': 'DYNAMIC', 'Cache-Control': 'no-cache', 'Retry-After': '278', 'Server': 'cloudflare', 'x-request-id': '50c517df-66a4-4617-890c-8e3c59196f3a', 'x-runtime': '0.002055', 'x-meaning-of-life': '42', 'alt-svc': 'h3=":443"; ma=86400'}
+[2026-09-08 20:08:42]   Response body:
+[2026-09-08 20:08:42]   Retry later
+[2026-09-08 20:08:42]   -----------------------------------------------
+[2026-09-08 20:08:42]   Server told us to wait 278s (Retry-After) before retrying...
