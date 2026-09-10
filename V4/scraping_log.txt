@@ -127,291 +127,182 @@
 [2026-09-10 16:55:11] AO3 has returned repeated hard failures. Stopping.
 [2026-09-10 16:55:11] Do not immediately rerun repeatedly. Wait and try later.
 
-===== Run started 2026-09-10T22:04:50+00:00 =====
-[2026-09-10 22:04:50] (Logging this run to scraping_log.txt; errors to error_log.txt.)
-[2026-09-10 22:04:50] Found ao3_cookie.txt. Using the cookie from that file.
-[2026-09-10 22:04:50]   Parsed cookie name(s): __cf_bm, _cfuvid, _otwarchive_session, cf_clearance, user_credentials
-[2026-09-10 22:04:50]   Login verified: AO3 recognizes this cookie as a logged-in session.
-[2026-09-10 22:04:50] 
-[2026-09-10 22:05:20] Enter target AO3 work URL: 
-[2026-09-10 22:05:20] Fetching target work details...
-[2026-09-10 22:05:30] 
-[2026-09-10 22:05:30] --- Target Fic: 'just my luck' ---
-[2026-09-10 22:05:30] Work ID: 90398616
-[2026-09-10 22:05:30] Fandom(s): Harry Potter - J. K. Rowling
-[2026-09-10 22:05:30] Relationships: Sirius Black/Remus Lupin, Regulus Black/James Potter
-[2026-09-10 22:05:30] Words: 15,261 | Chapters: 1
-[2026-09-10 22:05:30] Hits: 995 | Kudos: 118 | Bookmarks: 21 | Comments: 27
-[2026-09-10 22:05:30] Kudos/Hits: 11.86%
-[2026-09-10 22:05:30] Bookmarks/Hits: 2.11%
-[2026-09-10 22:05:30] Kudos per 10k words: 77.32
-[2026-09-10 22:05:30] 
-[2026-09-10 22:05:30] --- Configure Comparison Cohort ---
-[2026-09-10 22:05:30] 
-[2026-09-10 22:05:30] Fandom scope:
-[2026-09-10 22:05:30] [0] Choose a target fandom
-[2026-09-10 22:05:30] [1] All fandoms
-[2026-09-10 22:05:49] Select fandom scope (0-1): 
-[2026-09-10 22:05:49] Category:
-[2026-09-10 22:05:49] [0] All
-[2026-09-10 22:05:49] [1] M/M
-[2026-09-10 22:05:49] [2] F/F
-[2026-09-10 22:05:49] [3] F/M
-[2026-09-10 22:05:49] [4] Multi
-[2026-09-10 22:05:49] [5] Gen
-[2026-09-10 22:05:51] Select category (0-5): 
-[2026-09-10 22:05:51] Archive warnings:
-[2026-09-10 22:05:51] [0] All
-[2026-09-10 22:05:51] [1] No Warnings Apply
-[2026-09-10 22:05:51] [2] Creator Chose Not To Use
-[2026-09-10 22:05:51] [3] Graphic Violence
-[2026-09-10 22:05:51] [4] Major Character Death
-[2026-09-10 22:05:51] [5] Rape/Non-Con
-[2026-09-10 22:05:51] [6] Underage
-[2026-09-10 22:05:51] Select warning (0-6): 
-[2026-09-10 22:05:51] Crossovers:
-[2026-09-10 22:05:51] [0] No crossovers (recommended)
-[2026-09-10 22:05:51] [1] All works
-[2026-09-10 22:05:51] [2] Crossovers only
-[2026-09-10 22:05:53] Select crossover option (0-2): 
-[2026-09-10 22:05:53] Chapters:
-[2026-09-10 22:05:53] [0] All
-[2026-09-10 22:05:53] [1] One-shots only
-[2026-09-10 22:05:53] [2] Same number as target
-[2026-09-10 22:05:53] [3] Multi-chapter only
-[2026-09-10 22:05:54] Select chapter filter (0-3): 
-[2026-09-10 22:05:54] Completion:
-[2026-09-10 22:05:54] [0] All
-[2026-09-10 22:05:54] [1] Complete only
-[2026-09-10 22:05:54] Select completion filter (0-1): 
-[2026-09-10 22:05:54] Timeframe:
-[2026-09-10 22:05:54] [0] All time
-[2026-09-10 22:05:54] [1] Last week
-[2026-09-10 22:05:54] [2] Last month
-[2026-09-10 22:05:54] [3] Last year
-[2026-09-10 22:05:55] Select timeframe (0-3): 
-[2026-09-10 22:05:55] Checking the result count...
-[2026-09-10 22:05:55]   Using cached page count: 5000 page(s).
-[2026-09-10 22:05:55] Found 5000 result page(s).
-[2026-09-10 22:06:18] Start page (1-5000, blank = 1): End page (1-5000, blank = 5000): 
-[2026-09-10 22:06:18] Sampling mode:
-[2026-09-10 22:06:18] [0] All pages
-[2026-09-10 22:06:18] [1] Systematic pages
-[2026-09-10 22:06:18] [2] Random pages
-[2026-09-10 22:06:22] Select sampling mode (0-2): Sampling seed (blank = 2026): 
-[2026-09-10 22:06:22] Collecting cohort metadata. Only search-result cards are parsed for cohort works.
-[2026-09-10 22:06:22]   Selected 11 page(s): [300, 301, 302, 303, 304, 305, 306, 307, 308, 309, 310]
-[2026-09-10 22:07:52]   ...page 10/11 done; 150 qualifying works.
-[2026-09-10 22:08:01]   ...page 11/11 done; 164 qualifying works.
-[2026-09-10 22:08:01] 
-[2026-09-10 22:08:01] Appended 165 new observation(s) to ao3_results.csv.
-[2026-09-10 22:08:01] Skipped 0 observation(s) already present under the same sampling condition.
-[2026-09-10 22:08:01] 
-[2026-09-10 22:08:01] Saved accumulated distribution with 258 cohort works.
-[2026-09-10 22:08:01] Distribution key: Harry Potter - J. K. Rowling|cat0|warn0|cross1|chap0|comp0|time0
-[2026-09-10 22:08:01] 
-[2026-09-10 22:08:01] --- ACCUMULATED COHORT ---
-[2026-09-10 22:08:01] Sample size: 258 works
-[2026-09-10 22:08:01] 
-[2026-09-10 22:08:01] Kudos/Hits:
-[2026-09-10 22:08:01]   Target: 11.86
-[2026-09-10 22:08:01]   Cohort mean: 5.73
-[2026-09-10 22:08:01]   Cohort median: 4.25
-[2026-09-10 22:08:01]   Target is above 89.9% of accumulated cohort works.
-[2026-09-10 22:08:01] 
-[2026-09-10 22:08:01] Bookmarks/Hits:
-[2026-09-10 22:08:01]   Target: 2.11
-[2026-09-10 22:08:01]   Cohort mean: 0.93
-[2026-09-10 22:08:01]   Cohort median: 0.78
-[2026-09-10 22:08:01]   Target is above 90.7% of accumulated cohort works.
-[2026-09-10 22:08:01] 
-[2026-09-10 22:08:01] Comments/Hits:
-[2026-09-10 22:08:01]   Target: 2.71
-[2026-09-10 22:08:01]   Cohort mean: 2.32
-[2026-09-10 22:08:01]   Cohort median: 1.32
-[2026-09-10 22:08:01]   Target is above 76.0% of accumulated cohort works.
-[2026-09-10 22:08:01] 
-[2026-09-10 22:08:01] Kudos per 10k words:
-[2026-09-10 22:08:01]   Target: 77.32
-[2026-09-10 22:08:01]   Cohort mean: 142.55
-[2026-09-10 22:08:01]   Cohort median: 28.61
-[2026-09-10 22:08:01]   Target is above 74.7% of accumulated cohort works.
-[2026-09-10 22:08:01] 
-[2026-09-10 22:08:01] NOTE:
-[2026-09-10 22:08:01] These percentiles describe relative engagement within your selected cohort.
-[2026-09-10 22:08:01] They do not establish why readers preferred a work or prove causation.
-[2026-09-10 22:08:01] 
-[2026-09-10 22:08:01] Recommended next research step:
-[2026-09-10 22:08:01] Use this metadata dataset to select a smaller, matched M/M and F/F corpus for manual coding of relationship features such as emotional vulnerability, physical affection, conflict, romantic initiation, agency, and reciprocity.
 
-===== Run started 2026-09-10T22:33:40+00:00 =====
-[2026-09-10 22:33:40] (Logging this run to scraping_log.txt; errors to error_log.txt.)
-[2026-09-10 22:33:40] Found ao3_cookie.txt. Using the cookie from that file.
-[2026-09-10 22:33:40]   Parsed cookie name(s): __cf_bm, _cfuvid, _otwarchive_session, cf_clearance, user_credentials
-[2026-09-10 22:33:41]   Login verified: AO3 recognizes this cookie as a logged-in session.
-[2026-09-10 22:33:41] 
-[2026-09-10 22:33:48] Enter target AO3 work URL: 
-[2026-09-10 22:33:48] Fetching target work details...
-[2026-09-10 22:33:57] 
-[2026-09-10 22:33:57] --- Target Fic: 'just my luck' ---
-[2026-09-10 22:33:57] Work ID: 90398616
-[2026-09-10 22:33:57] Fandom(s): Harry Potter - J. K. Rowling
-[2026-09-10 22:33:57] Relationships: Sirius Black/Remus Lupin, Regulus Black/James Potter
-[2026-09-10 22:33:57] Words: 15,261 | Chapters: 1
-[2026-09-10 22:33:57] Hits: 996 | Kudos: 118 | Bookmarks: 21 | Comments: 27
-[2026-09-10 22:33:57] Kudos/Hits: 11.85%
-[2026-09-10 22:33:57] Bookmarks/Hits: 2.11%
-[2026-09-10 22:33:57] Kudos per 10k words: 77.32
-[2026-09-10 22:33:57] 
-[2026-09-10 22:33:57] --- Configure Comparison Cohort ---
-[2026-09-10 22:33:57] 
-[2026-09-10 22:33:57] Fandom scope:
-[2026-09-10 22:33:57] [0] Choose a target fandom
-[2026-09-10 22:33:57] [1] All fandoms
-[2026-09-10 22:33:59] Select fandom scope (0-1): 
-[2026-09-10 22:33:59] Category:
-[2026-09-10 22:33:59] [0] All
-[2026-09-10 22:33:59] [1] M/M
-[2026-09-10 22:33:59] [2] F/F
-[2026-09-10 22:33:59] [3] F/M
-[2026-09-10 22:33:59] [4] Multi
-[2026-09-10 22:33:59] [5] Gen
-[2026-09-10 22:33:59] Select category (0-5): 
-[2026-09-10 22:33:59] Archive warnings:
-[2026-09-10 22:33:59] [0] All
-[2026-09-10 22:33:59] [1] No Warnings Apply
-[2026-09-10 22:33:59] [2] Creator Chose Not To Use
-[2026-09-10 22:33:59] [3] Graphic Violence
-[2026-09-10 22:33:59] [4] Major Character Death
-[2026-09-10 22:33:59] [5] Rape/Non-Con
-[2026-09-10 22:33:59] [6] Underage
-[2026-09-10 22:34:00] Select warning (0-6): 
-[2026-09-10 22:34:00] Crossovers:
-[2026-09-10 22:34:00] [0] No crossovers (recommended)
-[2026-09-10 22:34:00] [1] All works
-[2026-09-10 22:34:00] [2] Crossovers only
-[2026-09-10 22:34:00] Select crossover option (0-2): 
-[2026-09-10 22:34:00] Chapters:
-[2026-09-10 22:34:00] [0] All
-[2026-09-10 22:34:00] [1] One-shots only
-[2026-09-10 22:34:00] [2] Same number as target
-[2026-09-10 22:34:00] [3] Multi-chapter only
-[2026-09-10 22:34:01] Select chapter filter (0-3): 
-[2026-09-10 22:34:01] Completion:
-[2026-09-10 22:34:01] [0] All
-[2026-09-10 22:34:01] [1] Complete only
-[2026-09-10 22:34:01] Select completion filter (0-1): 
-[2026-09-10 22:34:01] Timeframe:
-[2026-09-10 22:34:01] [0] All time
-[2026-09-10 22:34:01] [1] Last week
-[2026-09-10 22:34:01] [2] Last month
-[2026-09-10 22:34:01] [3] Last year
-[2026-09-10 22:34:02] Select timeframe (0-3): 
-[2026-09-10 22:34:02] Checking the result count...
-[2026-09-10 22:34:02]   Using cached page count: 5000 page(s).
-[2026-09-10 22:34:02] Found 5000 result page(s).
-[2026-09-10 22:34:09] Start page (1-5000, blank = 1): End page (1-5000, blank = 5000): 
-[2026-09-10 22:34:09] Stopped by user.
+===== Run started 2026-09-10T10:36:54 =====
+[2026-09-10 14:36:54] (Logging this run to scraping_log.txt.)
+[2026-09-10 14:36:54] Optional: paste a logged-in AO3 session cookie if you need registered-user-only works.
+[2026-09-10 14:36:54] You can also create ao3_cookie.txt in this folder and paste the cookie there.
+[2026-09-10 14:36:54] Leave blank to continue anonymously.
+[2026-09-10 14:37:00] AO3 session cookie (optional): 
+[2026-09-10 14:37:00] Stopped by user.
 
-===== Run started 2026-09-10T22:34:11+00:00 =====
-[2026-09-10 22:34:11] (Logging this run to scraping_log.txt; errors to error_log.txt.)
-[2026-09-10 22:34:11] Found ao3_cookie.txt. Using the cookie from that file.
-[2026-09-10 22:34:11]   Parsed cookie name(s): __cf_bm, _cfuvid, _otwarchive_session, cf_clearance, user_credentials
-[2026-09-10 22:34:11]   Login verified: AO3 recognizes this cookie as a logged-in session.
-[2026-09-10 22:34:11] 
-[2026-09-10 22:34:13] Enter target AO3 work URL: 
-[2026-09-10 22:34:13] Fetching target work details...
-[2026-09-10 22:34:20] 
-[2026-09-10 22:34:20] --- Target Fic: 'just my luck' ---
-[2026-09-10 22:34:20] Work ID: 90398616
-[2026-09-10 22:34:20] Fandom(s): Harry Potter - J. K. Rowling
-[2026-09-10 22:34:20] Relationships: Sirius Black/Remus Lupin, Regulus Black/James Potter
-[2026-09-10 22:34:20] Words: 15,261 | Chapters: 1
-[2026-09-10 22:34:20] Hits: 996 | Kudos: 118 | Bookmarks: 21 | Comments: 27
-[2026-09-10 22:34:20] Kudos/Hits: 11.85%
-[2026-09-10 22:34:20] Bookmarks/Hits: 2.11%
-[2026-09-10 22:34:20] Kudos per 10k words: 77.32
-[2026-09-10 22:34:20] 
-[2026-09-10 22:34:20] --- Configure Comparison Cohort ---
-[2026-09-10 22:34:20] 
-[2026-09-10 22:34:20] Fandom scope:
-[2026-09-10 22:34:20] [0] Choose a target fandom
-[2026-09-10 22:34:20] [1] All fandoms
-[2026-09-10 22:34:21] Select fandom scope (0-1): 
-[2026-09-10 22:34:21] Category:
-[2026-09-10 22:34:21] [0] All
-[2026-09-10 22:34:21] [1] M/M
-[2026-09-10 22:34:21] [2] F/F
-[2026-09-10 22:34:21] [3] F/M
-[2026-09-10 22:34:21] [4] Multi
-[2026-09-10 22:34:21] [5] Gen
-[2026-09-10 22:34:22] Select category (0-5): 
-[2026-09-10 22:34:22] Archive warnings:
-[2026-09-10 22:34:22] [0] All
-[2026-09-10 22:34:22] [1] No Warnings Apply
-[2026-09-10 22:34:22] [2] Creator Chose Not To Use
-[2026-09-10 22:34:22] [3] Graphic Violence
-[2026-09-10 22:34:22] [4] Major Character Death
-[2026-09-10 22:34:22] [5] Rape/Non-Con
-[2026-09-10 22:34:22] [6] Underage
-[2026-09-10 22:34:23] Select warning (0-6): 
-[2026-09-10 22:34:23] Crossovers:
-[2026-09-10 22:34:23] [0] No crossovers (recommended)
-[2026-09-10 22:34:23] [1] All works
-[2026-09-10 22:34:23] [2] Crossovers only
-[2026-09-10 22:34:23] Select crossover option (0-2): 
-[2026-09-10 22:34:23] Chapters:
-[2026-09-10 22:34:23] [0] All
-[2026-09-10 22:34:23] [1] One-shots only
-[2026-09-10 22:34:23] [2] Same number as target
-[2026-09-10 22:34:23] [3] Multi-chapter only
-[2026-09-10 22:34:24] Select chapter filter (0-3): 
-[2026-09-10 22:34:24] Completion:
-[2026-09-10 22:34:24] [0] All
-[2026-09-10 22:34:24] [1] Complete only
-[2026-09-10 22:34:24] Select completion filter (0-1): 
-[2026-09-10 22:34:24] Timeframe:
-[2026-09-10 22:34:24] [0] All time
-[2026-09-10 22:34:24] [1] Last week
-[2026-09-10 22:34:24] [2] Last month
-[2026-09-10 22:34:24] [3] Last year
-[2026-09-10 22:34:25] Select timeframe (0-3): 
-[2026-09-10 22:34:25] Checking the result count...
-[2026-09-10 22:34:25]   Using cached page count: 5000 page(s).
-[2026-09-10 22:34:25] Found 5000 result page(s).
-[2026-09-10 22:34:31] Start page (1-5000, blank = 1): End page (1-5000, blank = 5000): 
-[2026-09-10 22:34:31] Sampling mode:
-[2026-09-10 22:34:31] [0] All pages
-[2026-09-10 22:34:31] [1] Systematic pages
-[2026-09-10 22:34:31] [2] Random pages
-[2026-09-10 22:34:34] Select sampling mode (0-2): Sampling seed (blank = 2026): 
-[2026-09-10 22:34:34] Collecting cohort metadata. Only search-result cards are parsed for cohort works.
-[2026-09-10 22:34:34]   Selected 51 page(s): [350, 351, 352, 353, 354, 355, 356, 357, 358, 359, 360, 361, 362, 363, 364, 365, 366, 367, 368, 369]...
-[2026-09-10 22:35:46]   ...page 10/51 done; 146 qualifying works.
-[2026-09-10 22:36:22]   --- 429 response ---
-[2026-09-10 22:36:22]   URL: https://archiveofourown.org/works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=363&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc&work_search%5Bfandom_names%5D=Harry+Potter+-+J.+K.+Rowling&work_search%5Bcrossover%5D=F
-[2026-09-10 22:36:22]   Status: 429 Too Many Requests
-[2026-09-10 22:36:22]   Retry-After header: 218
-[2026-09-10 22:36:22]   Response headers: {'Date': 'Thu, 10 Sep 2026 22:36:22 GMT', 'Content-Type': 'text/plain', 'Content-Length': '12', 'Connection': 'keep-alive', 'Set-Cookie': '_otwarchive_session=eyJfcmFpbHMiOnsibWVzc2FnZSI6ImV5SnpaWE56YVc5dVgybGtJam9pTlRsbVpXRTJPVE0yTkdGaE1qQmlNVGcxWkRFd09ETTFOV014WW1ZeU56Y2lMQ0ozWVhKa1pXNHVkWE5sY2k1MWMyVnlMbXRsZVNJNlcxc3pNVGs0Tnpnd01WMHNJaVF5WVNReE5DUmpWekl3WWpsbWRrOTJTblphZUZkeFowcEpUbWxQSWwwc0lsOWpjM0ptWDNSdmEyVnVJam9pVlVsWk1uUlZhRlpLWkZoaFpUUlFURzl2Y1ROaWFsUm9XRVpCZDBaSllubzRWMDVMTUV4dWJIZHlTU0o5IiwiZXhwIjoiMjAyNi0wOS0yNFQyMjozNjoyMi44ODVaIiwicHVyIjoiY29va2llLl9vdHdhcmNoaXZlX3Nlc3Npb24ifX0%3D--75ad41866c0ead320b6903f0960db12a80354edf; path=/; expires=Thu, 24 Sep 2026 22:36:22 GMT; HttpOnly; SameSite=Lax, __cf_bm=3BAVGNyYKgIn52RCbIO37qJhpKk4GfvNyJgVM3S_5Vc-1789079782.7094836-1.0.1.1-k1s1.hG4PcaeNhCfbg_J2h._CyKwsDYtr3EHFG3ubxULLRDb.q2GTERHzVLw1bPBrbBurJUoKIthTBQRkvPahRjhuY5LXS6cJbJIpQxiFfSOcJchO3u3EGLmjhxHJBUs; HttpOnly; SameSite=None; Secure; Path=/; Domain=archiveofourown.org; Expires=Thu, 10 Sep 2026 23:06:22 GMT, _cfuvid=HHqP629t37KrE.KU6Iw7rcz2jl6Kx421btmK8y5849A-1789079782.7094836-1.0.1.1-9f3wzQG49FfAYFttbida2Nz65QXbcrydBAe7hKQwZJY; HttpOnly; SameSite=None; Secure; Path=/; Domain=archiveofourown.org', 'CF-Ray': 'a391e941e8833869-EWR', 'CF-Cache-Status': 'DYNAMIC', 'Cache-Control': 'no-cache', 'Retry-After': '218', 'Server': 'cloudflare', 'x-meaning-of-life': '42', 'x-request-id': '42f89347-c502-4780-afef-667af14833f9', 'x-runtime': '0.002861', 'alt-svc': 'h3=":443"; ma=86400'}
-[2026-09-10 22:36:22]   Response body:
-[2026-09-10 22:36:22]   Retry later
-[2026-09-10 22:36:22] 
-[2026-09-10 22:36:22]   ---------------------
-[2026-09-10 22:36:22]   Waiting 218s before retrying...
-[2026-09-10 22:41:30]   ...page 20/51 done; 304 qualifying works.
-[2026-09-10 22:42:52]   Page 374: 525 (1/3).
-[2026-09-10 22:44:07]   Network error (ReadTimeout: HTTPSConnectionPool(host='archiveofourown.org', port=443): Read timed out. (read timeout=30)). Waiting 10s before retrying (1/3)...
-[2026-09-10 22:44:22]   --- 429 response ---
-[2026-09-10 22:44:22]   URL: https://archiveofourown.org/works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=377&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc&work_search%5Bfandom_names%5D=Harry+Potter+-+J.+K.+Rowling&work_search%5Bcrossover%5D=F
-[2026-09-10 22:44:22]   Status: 429 Too Many Requests
-[2026-09-10 22:44:22]   Retry-After header: 538
-[2026-09-10 22:44:22]   Response headers: {'Date': 'Thu, 10 Sep 2026 22:44:22 GMT', 'Content-Type': 'text/plain', 'Content-Length': '12', 'Connection': 'keep-alive', 'Set-Cookie': '_otwarchive_session=eyJfcmFpbHMiOnsibWVzc2FnZSI6ImV5SnpaWE56YVc5dVgybGtJam9pTlRsbVpXRTJPVE0yTkdGaE1qQmlNVGcxWkRFd09ETTFOV014WW1ZeU56Y2lMQ0ozWVhKa1pXNHVkWE5sY2k1MWMyVnlMbXRsZVNJNlcxc3pNVGs0Tnpnd01WMHNJaVF5WVNReE5DUmpWekl3WWpsbWRrOTJTblphZUZkeFowcEpUbWxQSWwwc0lsOWpjM0ptWDNSdmEyVnVJam9pVlVsWk1uUlZhRlpLWkZoaFpUUlFURzl2Y1ROaWFsUm9XRVpCZDBaSllubzRWMDVMTUV4dWJIZHlTU0o5IiwiZXhwIjoiMjAyNi0wOS0yNFQyMjo0NDoyMi40NDFaIiwicHVyIjoiY29va2llLl9vdHdhcmNoaXZlX3Nlc3Npb24ifX0%3D--709ede9b39149457fe569c9e54fc90c3341a86ff; path=/; expires=Thu, 24 Sep 2026 22:44:22 GMT; HttpOnly; SameSite=Lax, __cf_bm=Rd359fNr6MRxCg3XEijhRv9oA7jzj0tMmae_hTNdVK4-1789080257.6840594-1.0.1.1-zGwMguQFTbPYul1q6cpB25swfxxqhlil3XY_qjjdXLhHJK95ePWuuCcYdym6I56Qsf2DaHCWVBGOANi4rDF9d5FhYB2n0iCaOfZ_Y4_sD88Sll3W2TJuICMAlxC6IEPK; HttpOnly; SameSite=None; Secure; Path=/; Domain=archiveofourown.org; Expires=Thu, 10 Sep 2026 23:14:22 GMT, _cfuvid=M3dj6JMwpphZes7OZlI2sowOewzvbcJXzXgtZQD1njk-1789080257.6840594-1.0.1.1-J_n6B0j2tBX0vXzOtc73FQWVR8BvQRRbFJPcUTevQQ4; HttpOnly; SameSite=None; Secure; Path=/; Domain=archiveofourown.org', 'CF-Ray': 'a391f4da8ac66a56-EWR', 'CF-Cache-Status': 'DYNAMIC', 'Cache-Control': 'no-cache', 'Retry-After': '538', 'Server': 'cloudflare', 'x-meaning-of-life': '42', 'x-request-id': 'ee18520d-6691-4eb8-856d-dd75faa99ab2', 'x-runtime': '0.003204', 'alt-svc': 'h3=":443"; ma=86400'}
-[2026-09-10 22:44:22]   Response body:
-[2026-09-10 22:44:22]   Retry later
-[2026-09-10 22:44:22] 
-[2026-09-10 22:44:22]   ---------------------
-[2026-09-10 22:44:22]   Waiting 538s before retrying...
-[2026-09-10 23:12:05]   ...page 30/51 done; 432 qualifying works.
-[2026-09-10 23:15:27]   Network error (ReadTimeout: HTTPSConnectionPool(host='archiveofourown.org', port=443): Read timed out. (read timeout=30)). Waiting 10s before retrying (1/3)...
-[2026-09-10 23:16:29] 
-[2026-09-10 23:16:29] Stopped by user.
+===== Run started 2026-09-10T16:08:36 =====
+[2026-09-10 20:08:36] (Logging this run to scraping_log.txt; errors to error_log.txt.)
+[2026-09-10 20:08:36] Optional: paste a logged-in AO3 session cookie if you need registered-user-only works.
+[2026-09-10 20:08:36] You can also create ao3_cookie.txt in this folder and paste the cookie there.
+[2026-09-10 20:08:36] Leave blank to continue anonymously.
+[2026-09-10 20:08:47] AO3 session cookie (optional): 
+[2026-09-10 20:08:47] Stopped by user.
+
+===== Run started 2026-09-10T16:09:29 =====
+[2026-09-10 20:09:29] (Logging this run to scraping_log.txt; errors to error_log.txt.)
+[2026-09-10 20:09:29] Optional: paste a logged-in AO3 session cookie if you need registered-user-only works.
+[2026-09-10 20:09:29] You can also create ao3_cookie.txt in this folder and paste the cookie there.
+[2026-09-10 20:09:29] Leave blank to continue anonymously.
+[2026-09-10 20:09:52] AO3 session cookie (optional): 
+[2026-09-10 20:09:53] Enter target AO3 work URL: No target URL supplied.
+
+===== Run started 2026-09-10T20:24:01+00:00 =====
+[2026-09-10 20:24:01] (Logging this run to scraping_log.txt; errors to error_log.txt.)
+[2026-09-10 20:24:01] Optional: paste a logged-in AO3 session cookie if you need registered-user-only works.
+[2026-09-10 20:24:01] If pasting fails silently (very long cookies can exceed your terminal's paste limit), create a plain text file named 'ao3_cookie.txt' in this folder instead.
+[2026-09-10 20:24:01] Leave blank to continue anonymously.
+[2026-09-10 20:24:10] AO3 session cookie (optional): 
+[2026-09-10 20:24:10] Stopped by user.
+
+===== Run started 2026-09-10T20:24:36+00:00 =====
+[2026-09-10 20:24:36] (Logging this run to scraping_log.txt; errors to error_log.txt.)
+[2026-09-10 20:24:36] Optional: paste a logged-in AO3 session cookie if you need registered-user-only works.
+[2026-09-10 20:24:36] If pasting fails silently (very long cookies can exceed your terminal's paste limit), create a plain text file named 'ao3_cookie.txt' in this folder instead.
+[2026-09-10 20:24:36] Leave blank to continue anonymously.
+[2026-09-10 20:24:45] AO3 session cookie (optional): 
+[2026-09-10 20:24:45] Stopped by user.
+
+===== Run started 2026-09-10T20:25:23+00:00 =====
+[2026-09-10 20:25:23] (Logging this run to scraping_log.txt; errors to error_log.txt.)
+[2026-09-10 20:25:23] Optional: paste a logged-in AO3 session cookie if you need registered-user-only works.
+[2026-09-10 20:25:23] If pasting fails silently (very long cookies can exceed your terminal's paste limit), create a plain text file named 'ao3_cookie.txt' in this folder instead.
+[2026-09-10 20:25:23] Leave blank to continue anonymously.
+[2026-09-10 20:25:25] AO3 session cookie (optional): 
+[2026-09-10 20:25:25] Stopped by user.
+
+===== Run started 2026-09-10T20:29:16+00:00 =====
+[2026-09-10 20:29:16] (Logging this run to scraping_log.txt; errors to error_log.txt.)
+[2026-09-10 20:29:16] Optional: paste a logged-in AO3 session cookie if you need registered-user-only works.
+[2026-09-10 20:29:16] If pasting fails silently (very long cookies can exceed your terminal's paste limit), create a plain text file named 'ao3_cookie.txt' in this folder instead.
+[2026-09-10 20:29:16] Leave blank to continue anonymously.
+[2026-09-10 20:29:20] AO3 session cookie (optional): 
+[2026-09-10 20:29:20] Stopped by user.
+
+===== Run started 2026-09-10T20:34:00+00:00 =====
+[2026-09-10 20:34:00] (Logging this run to scraping_log.txt; errors to error_log.txt.)
+[2026-09-10 20:34:00] Optional: paste a logged-in AO3 session cookie if you need registered-user-only works.
+[2026-09-10 20:34:00] If pasting fails silently (very long cookies can exceed your terminal's paste limit), create a plain text file named 'ao3_cookie.txt' in this folder instead.
+[2026-09-10 20:34:00] Leave blank to continue anonymously.
+[2026-09-10 20:34:21] AO3 session cookie (optional): 
+[2026-09-10 20:34:21] Stopped by user.
+
+===== Run started 2026-09-10T20:35:03+00:00 =====
+[2026-09-10 20:35:03] (Logging this run to scraping_log.txt; errors to error_log.txt.)
+[2026-09-10 20:35:03] Optional: paste a logged-in AO3 session cookie if you need registered-user-only works.
+[2026-09-10 20:35:03] If pasting fails silently (very long cookies can exceed your terminal's paste limit), create a plain text file named 'ao3_cookie.txt' in this folder instead.
+[2026-09-10 20:35:03] Leave blank to continue anonymously.
+[2026-09-10 20:35:10] AO3 session cookie (optional): 
+[2026-09-10 20:35:17] Enter target AO3 work URL: 
+[2026-09-10 20:35:17] Fetching target work details...
+[2026-09-10 20:35:27] 
+[2026-09-10 20:35:27] --- Target Fic: 'The Girl Who Got Away' ---
+[2026-09-10 20:35:27] Work ID: 67786116
+[2026-09-10 20:35:27] Fandom(s): Harry Potter - J. K. Rowling
+[2026-09-10 20:35:27] Relationships: Bill Weasley/Original Female Character(s)
+[2026-09-10 20:35:27] Words: 12,542 | Chapters: 5
+[2026-09-10 20:35:27] Hits: 450 | Kudos: 13 | Bookmarks: 7 | Comments: 1
+[2026-09-10 20:35:27] Kudos/Hits: 2.89%
+[2026-09-10 20:35:27] Bookmarks/Hits: 1.56%
+[2026-09-10 20:35:27] Kudos per 10k words: 10.37
+[2026-09-10 20:35:27] 
+[2026-09-10 20:35:27] --- Configure Comparison Cohort ---
+[2026-09-10 20:35:27] 
+[2026-09-10 20:35:27] Fandom scope:
+[2026-09-10 20:35:27] [0] Choose a target fandom
+[2026-09-10 20:35:27] [1] All fandoms
+[2026-09-10 20:35:36] Select fandom scope (0-1): 
+[2026-09-10 20:35:36] Category:
+[2026-09-10 20:35:36] [0] All
+[2026-09-10 20:35:36] [1] M/M
+[2026-09-10 20:35:36] [2] F/F
+[2026-09-10 20:35:36] [3] F/M
+[2026-09-10 20:35:36] [4] Multi
+[2026-09-10 20:35:36] [5] Gen
+[2026-09-10 20:35:38] Select category (0-5): 
+[2026-09-10 20:35:38] Archive warnings:
+[2026-09-10 20:35:38] [0] All
+[2026-09-10 20:35:38] [1] No Warnings Apply
+[2026-09-10 20:35:38] [2] Creator Chose Not To Use
+[2026-09-10 20:35:38] [3] Graphic Violence
+[2026-09-10 20:35:38] [4] Major Character Death
+[2026-09-10 20:35:38] [5] Rape/Non-Con
+[2026-09-10 20:35:38] [6] Underage
+[2026-09-10 20:35:39] Select warning (0-6): 
+[2026-09-10 20:35:39] Crossovers:
+[2026-09-10 20:35:39] [0] No crossovers (recommended)
+[2026-09-10 20:35:39] [1] All works
+[2026-09-10 20:35:39] [2] Crossovers only
+[2026-09-10 20:35:41] Select crossover option (0-2): 
+[2026-09-10 20:35:41] Chapters:
+[2026-09-10 20:35:41] [0] All
+[2026-09-10 20:35:41] [1] One-shots only
+[2026-09-10 20:35:41] [2] Same number as target
+[2026-09-10 20:35:41] [3] Multi-chapter only
+[2026-09-10 20:35:46] Select chapter filter (0-3): 
+[2026-09-10 20:35:46] Completion:
+[2026-09-10 20:35:46] [0] All
+[2026-09-10 20:35:46] [1] Complete only
+[2026-09-10 20:35:48] Select completion filter (0-1): 
+[2026-09-10 20:35:48] Timeframe:
+[2026-09-10 20:35:48] [0] All time
+[2026-09-10 20:35:48] [1] Last week
+[2026-09-10 20:35:48] [2] Last month
+[2026-09-10 20:35:48] [3] Last year
+[2026-09-10 20:35:49] Select timeframe (0-3): 
+[2026-09-10 20:35:49] Checking the result count...
+[2026-09-10 20:35:55] Found 5000 result page(s).
+[2026-09-10 20:36:07] Start page (1-5000, blank = 1): End page (1-5000, blank = 5000): 
+[2026-09-10 20:36:07] Sampling mode:
+[2026-09-10 20:36:07] [0] All pages
+[2026-09-10 20:36:07] [1] Systematic pages
+[2026-09-10 20:36:07] [2] Random pages
+[2026-09-10 20:36:12] Select sampling mode (0-2): Sampling seed (blank = 2026): 
+[2026-09-10 20:36:12] Collecting cohort metadata. Only search-result cards are parsed for cohort works.
+[2026-09-10 20:36:12]   Selected 6 page(s): [250, 251, 252, 253, 254, 255]
+[2026-09-10 20:37:22]   ...page 6/6 done; 94 qualifying works.
+[2026-09-10 20:37:22] 
+[2026-09-10 20:37:22] Appended 95 new observation(s) to ao3_results.csv.
+[2026-09-10 20:37:22] Skipped 0 observation(s) already present under the same sampling condition.
+[2026-09-10 20:37:22] 
+[2026-09-10 20:37:22] Saved accumulated distribution with 94 cohort works.
+[2026-09-10 20:37:22] Distribution key: Harry Potter - J. K. Rowling|cat0|warn0|cross1|chap0|comp0|time0
+[2026-09-10 20:37:22] 
+[2026-09-10 20:37:22] --- ACCUMULATED COHORT ---
+[2026-09-10 20:37:22] Sample size: 94 works
+[2026-09-10 20:37:22] 
+[2026-09-10 20:37:22] Kudos/Hits:
+[2026-09-10 20:37:22]   Target: 2.89
+[2026-09-10 20:37:22]   Cohort mean: 7.32
+[2026-09-10 20:37:22]   Cohort median: 5.84
+[2026-09-10 20:37:22]   Target is above 18.1% of accumulated cohort works.
+[2026-09-10 20:37:22] 
+[2026-09-10 20:37:22] Bookmarks/Hits:
+[2026-09-10 20:37:22]   Target: 1.56
+[2026-09-10 20:37:22]   Cohort mean: 1.10
+[2026-09-10 20:37:22]   Cohort median: 0.94
+[2026-09-10 20:37:22]   Target is above 71.3% of accumulated cohort works.
+[2026-09-10 20:37:22] 
+[2026-09-10 20:37:22] Comments/Hits:
+[2026-09-10 20:37:22]   Target: 0.22
+[2026-09-10 20:37:22]   Cohort mean: 2.76
+[2026-09-10 20:37:22]   Cohort median: 1.61
+[2026-09-10 20:37:22]   Target is above 16.0% of accumulated cohort works.
+[2026-09-10 20:37:22] 
+[2026-09-10 20:37:22] Kudos per 10k words:
+[2026-09-10 20:37:22]   Target: 10.37
+[2026-09-10 20:37:22]   Cohort mean: 144.24
+[2026-09-10 20:37:22]   Cohort median: 34.67
+[2026-09-10 20:37:22]   Target is above 25.0% of accumulated cohort works.
+[2026-09-10 20:37:22] 
+[2026-09-10 20:37:22] NOTE:
+[2026-09-10 20:37:22] These percentiles describe relative engagement within your selected cohort.
+[2026-09-10 20:37:22] They do not establish why readers preferred a work or prove causation.
+[2026-09-10 20:37:22] 
+[2026-09-10 20:37:22] Recommended next research step:
+[2026-09-10 20:37:22] Use this metadata dataset to select a smaller, matched M/M and F/F corpus for manual coding of relationship features such as emotional vulnerability, physical affection, conflict, romantic initiation, agency, and reciprocity.
