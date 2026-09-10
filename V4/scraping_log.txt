@@ -1,0 +1,128 @@
+
+===== Run started 2026-09-10T10:38:15 =====
+[2026-09-10 14:38:15] (Logging this run to scraping_log.txt.)
+[2026-09-10 14:38:15] Found ao3_cookie.txt. Using the cookie from that file.
+[2026-09-10 14:38:15]   Parsed cookie name(s): _cfuvid, _otwarchive_session, cf_clearance, user_credentials
+[2026-09-10 14:38:15]   Could not verify login. Continuing anyway.
+[2026-09-10 14:38:15] 
+[2026-09-10 14:38:22] Enter target AO3 work URL: 
+[2026-09-10 14:38:22] Stopped by user.
+
+===== Run started 2026-09-10T10:44:25 =====
+[2026-09-10 14:44:25] (Logging this run to scraping_log.txt; errors to error_log.txt.)
+[2026-09-10 14:44:25] Found ao3_cookie.txt. Using the cookie from that file.
+[2026-09-10 14:44:25]   Parsed cookie name(s): _cfuvid, _otwarchive_session, cf_clearance, user_credentials
+[2026-09-10 14:44:26]   Could not verify login. Continuing anyway.
+[2026-09-10 14:44:26] 
+[2026-09-10 14:47:35] Enter target AO3 work URL: 
+[2026-09-10 14:47:35] Stopped by user.
+
+===== Run started 2026-09-10T10:47:37 =====
+[2026-09-10 14:47:37] (Logging this run to scraping_log.txt; errors to error_log.txt.)
+[2026-09-10 14:47:37] Found ao3_cookie.txt. Using the cookie from that file.
+[2026-09-10 14:47:37]   Parsed cookie name(s): _cfuvid, _otwarchive_session, cf_clearance, user_credentials
+[2026-09-10 14:47:48]   Login verified: AO3 recognizes this cookie as a logged-in session.
+[2026-09-10 14:47:48] 
+[2026-09-10 14:50:15] Enter target AO3 work URL: 
+[2026-09-10 14:50:15] Fetching target work details...
+[2026-09-10 14:50:22] 
+[2026-09-10 14:50:22] SCRAPE STOPPED:
+[2026-09-10 14:50:22] AO3 returned HTTP 525 for the target work.
+[2026-09-10 14:50:22] Do not immediately rerun repeatedly. Wait and try later.
+
+===== Run started 2026-09-10T10:54:31 =====
+[2026-09-10 14:54:31] (Logging this run to scraping_log.txt; errors to error_log.txt.)
+[2026-09-10 14:54:31] Found ao3_cookie.txt. Using the cookie from that file.
+[2026-09-10 14:54:31]   Parsed cookie name(s): _cfuvid, _otwarchive_session, cf_clearance, user_credentials
+[2026-09-10 14:54:35]   Login verified: AO3 recognizes this cookie as a logged-in session.
+[2026-09-10 14:54:35] 
+[2026-09-10 14:54:41] Enter target AO3 work URL: 
+[2026-09-10 14:54:41] Fetching target work details...
+[2026-09-10 14:54:46] 
+[2026-09-10 14:54:46] SCRAPE STOPPED:
+[2026-09-10 14:54:46] AO3 returned HTTP 525 for the target work.
+[2026-09-10 14:54:46] Do not immediately rerun repeatedly. Wait and try later.
+
+===== Run started 2026-09-10T11:34:45 =====
+[2026-09-10 15:34:45] (Logging this run to scraping_log.txt; errors to error_log.txt.)
+[2026-09-10 15:34:45] Found ao3_cookie.txt. Using the cookie from that file.
+[2026-09-10 15:34:45]   Parsed cookie name(s): _cfuvid, _otwarchive_session, cf_clearance, user_credentials
+[2026-09-10 15:34:47]   Login verified: AO3 recognizes this cookie as a logged-in session.
+[2026-09-10 15:34:47] 
+[2026-09-10 15:34:57] Enter target AO3 work URL: 
+[2026-09-10 15:34:57] Fetching target work details...
+[2026-09-10 15:35:07] 
+[2026-09-10 15:35:07] --- Target Fic: 'The Girl Who Got Away' ---
+[2026-09-10 15:35:07] Work ID: 67786116
+[2026-09-10 15:35:07] Fandom: Harry Potter - J. K. Rowling
+[2026-09-10 15:35:07] Relationships: Bill Weasley/Original Female Character(s)
+[2026-09-10 15:35:07] Words: 12,542 | Chapters: 5
+[2026-09-10 15:35:07] Hits: 450 | Kudos: 13 | Bookmarks: 7 | Comments: 1
+[2026-09-10 15:35:07] Kudos/Hits: 2.89%
+[2026-09-10 15:35:07] Bookmarks/Hits: 1.56%
+[2026-09-10 15:35:07] Kudos per 10k words: 10.37
+[2026-09-10 15:35:07] 
+[2026-09-10 15:35:07] --- Configure Comparison Cohort ---
+[2026-09-10 15:35:07] 
+[2026-09-10 15:35:07] Fandom scope:
+[2026-09-10 15:35:07] [0] Choose a target fandom
+[2026-09-10 15:35:07] [1] All fandoms
+[2026-09-10 15:35:17] Select fandom scope (0-1): 
+[2026-09-10 15:35:17] Category:
+[2026-09-10 15:35:17] [0] All
+[2026-09-10 15:35:17] [1] M/M
+[2026-09-10 15:35:17] [2] F/F
+[2026-09-10 15:35:17] [3] F/M
+[2026-09-10 15:35:17] [4] Multi
+[2026-09-10 15:35:17] [5] Gen
+[2026-09-10 15:35:35] Select category (0-5): 
+[2026-09-10 15:35:35] Archive warnings:
+[2026-09-10 15:35:35] [0] All
+[2026-09-10 15:35:35] [1] No Warnings Apply
+[2026-09-10 15:35:35] [2] Creator Chose Not To Use
+[2026-09-10 15:35:35] [3] Graphic Violence
+[2026-09-10 15:35:35] [4] Major Character Death
+[2026-09-10 15:35:35] [5] Rape/Non-Con
+[2026-09-10 15:35:35] [6] Underage
+[2026-09-10 15:35:35] Select warning (0-6): 
+[2026-09-10 15:35:35] Crossovers:
+[2026-09-10 15:35:35] [0] No crossovers (recommended)
+[2026-09-10 15:35:35] [1] All works
+[2026-09-10 15:35:35] [2] Crossovers only
+[2026-09-10 15:35:36] Select crossover option (0-2): 
+[2026-09-10 15:35:36] Chapters:
+[2026-09-10 15:35:36] [0] All
+[2026-09-10 15:35:36] [1] One-shots only
+[2026-09-10 15:35:36] [2] Same number as target
+[2026-09-10 15:35:36] [3] Multi-chapter only
+[2026-09-10 15:35:36] Select chapter filter (0-3): 
+[2026-09-10 15:35:36] Completion:
+[2026-09-10 15:35:36] [0] All
+[2026-09-10 15:35:36] [1] Complete only
+[2026-09-10 15:35:37] Select completion filter (0-1): 
+[2026-09-10 15:35:37] Timeframe:
+[2026-09-10 15:35:37] [0] All time
+[2026-09-10 15:35:37] [1] Last week
+[2026-09-10 15:35:37] [2] Last month
+[2026-09-10 15:35:37] [3] Last year
+[2026-09-10 15:35:37] Select timeframe (0-3): 
+[2026-09-10 15:35:37] Checking the result count...
+[2026-09-10 15:36:05] Found 5000 result page(s).
+[2026-09-10 15:36:10] Start page (1-5000, blank = 1): End page (1-5000, blank = 5000): 
+[2026-09-10 15:36:10] Sampling mode:
+[2026-09-10 15:36:10] [0] All pages
+[2026-09-10 15:36:10] [1] Systematic pages
+[2026-09-10 15:36:10] [2] Random pages
+[2026-09-10 15:36:22] Select sampling mode (0-2): Sampling seed (blank = 2026): 
+[2026-09-10 15:36:22] Collecting cohort metadata.
+[2026-09-10 15:36:22] Only search-result cards are being parsed for cohort works.
+[2026-09-10 15:36:22]   Selected 51 page(s): [200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219]...
+[2026-09-10 15:38:07]   Network error (ReadTimeout: HTTPSConnectionPool(host='archiveofourown.org', port=443): Read timed out. (read timeout=30)). Waiting 10s before retrying (1/3)...
+[2026-09-10 15:58:56]   Page 201: HTTP 525 (1/3).
+[2026-09-10 16:34:34]   Network error (ReadTimeout: HTTPSConnectionPool(host='archiveofourown.org', port=443): Read timed out. (read timeout=30)). Waiting 10s before retrying (1/3)...
+[2026-09-10 16:54:51]   Page 202: HTTP 525 (2/3).
+[2026-09-10 16:55:11]   Page 203: HTTP 525 (3/3).
+[2026-09-10 16:55:11] 
+[2026-09-10 16:55:11] SCRAPE STOPPED:
+[2026-09-10 16:55:11] AO3 has returned repeated hard failures. Stopping.
+[2026-09-10 16:55:11] Do not immediately rerun repeatedly. Wait and try later.
