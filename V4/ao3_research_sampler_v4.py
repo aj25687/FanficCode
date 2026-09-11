@@ -731,6 +731,12 @@ def build_search_url(fandom, category, warning, crossover, complete_only, timefr
         days_map = {"1": 7, "2": 30, "3": 365}
         cutoff = datetime.now(timezone.utc) - timedelta(days=days_map[timeframe])
         params.append(("work_search[date_from]", cutoff.strftime("%Y-%m-%d")))
+    elif timeframe.startswith("4:"):
+        _, start_date, end_date = timeframe.split(":", 2)
+        if start_date:
+            params.append(("work_search[date_from]", start_date))
+        if end_date:
+            params.append(("work_search[date_to]", end_date))
 
     return base_url + urllib.parse.urlencode(params)
 
@@ -1292,10 +1298,33 @@ def main():
         if completion_filter not in {"0", "1"}:
             completion_filter = "0"
 
-        print("\nTimeframe:\n[0] All time\n[1] Last week\n[2] Last month\n[3] Last year")
-        timeframe_filter = input("Select timeframe (0-3): ").strip()
-        if timeframe_filter not in {"0", "1", "2", "3"}:
+        print("\nTimeframe:\n[0] All time\n[1] Last week\n[2] Last month\n[3] Last year\n[4] Custom range")
+        timeframe_filter = input("Select timeframe (0-4): ").strip()
+        if timeframe_filter not in {"0", "1", "2", "3", "4"}:
             timeframe_filter = "0"
+
+        if timeframe_filter == "4":
+            date_re = re.compile(r"^\d{4}-\d{2}-\d{2}$")
+            start_date = input("Start date (YYYY-MM-DD, blank = no lower bound): ").strip()
+            end_date = input("End date (YYYY-MM-DD, blank = no upper bound): ").strip()
+
+        if start_date and not date_re.match(start_date):
+            print(f"'{start_date}' isn't in YYYY-MM-DD format. Ignoring start date.")
+            start_date = ""
+        if end_date and not date_re.match(end_date):
+            print(f"'{end_date}' isn't in YYYY-MM-DD format. Ignoring end date.")
+            end_date = ""
+
+        if not start_date and not end_date:
+            print("No valid custom dates given. Falling back to All time.")
+            timeframe_filter = "0"
+        else:
+            # Encode the custom range into timeframe_filter itself, since it
+            # already flows everywhere as a plain string (CSV, cache keys,
+            # distribution keys) -- this makes different custom ranges count
+            # as distinct filter conditions automatically, with no other
+            # changes needed elsewhere in the pipeline.
+            timeframe_filter = f"4:{start_date}:{end_date}"
 
         print("\nChecking the result count...")
         cache = load_cache()
