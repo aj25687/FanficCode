@@ -474,3 +474,16 @@ Traceback (most recent call last):
   File "/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/site-packages/requests/adapters.py", line 742, in send
     raise ReadTimeout(e, request=request)
 requests.exceptions.ReadTimeout: HTTPSConnectionPool(host='archiveofourown.org', port=443): Read timed out. (read timeout=30)
+
+===== Error log started 2026-09-11T00:19:49+00:00 =====
+
+[2026-09-11 00:22:29 UTC] ERROR: HTTP 429 response details for https://archiveofourown.org/works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=413&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc&work_search%5Bfandom_names%5D=Harry+Potter+-+J.+K.+Rowling&work_search%5Bcrossover%5D=F:
+  --- 429 response ---
+  URL: https://archiveofourown.org/works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=413&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc&work_search%5Bfandom_names%5D=Harry+Potter+-+J.+K.+Rowling&work_search%5Bcrossover%5D=F
+  Status: 429 Too Many Requests
+  Retry-After header: 251
+  Response headers: {'Date': 'Fri, 11 Sep 2026 00:22:29 GMT', 'Content-Type': 'text/plain', 'Content-Length': '12', 'Connection': 'keep-alive', 'Set-Cookie': '_otwarchive_session=eyJfcmFpbHMiOnsibWVzc2FnZSI6ImV5SnpaWE56YVc5dVgybGtJam9pTlRsbVpXRTJPVE0yTkdGaE1qQmlNVGcxWkRFd09ETTFOV014WW1ZeU56Y2lMQ0ozWVhKa1pXNHVkWE5sY2k1MWMyVnlMbXRsZVNJNlcxc3pNVGs0Tnpnd01WMHNJaVF5WVNReE5DUmpWekl3WWpsbWRrOTJTblphZUZkeFowcEpUbWxQSWwwc0lsOWpjM0ptWDNSdmEyVnVJam9pVlVsWk1uUlZhRlpLWkZoaFpUUlFURzl2Y1ROaWFsUm9XRVpCZDBaSllubzRWMDVMTUV4dWJIZHlTU0o5IiwiZXhwIjoiMjAyNi0wOS0yNVQwMDoyMjoyOS40NjJaIiwicHVyIjoiY29va2llLl9vdHdhcmNoaXZlX3Nlc3Npb24ifX0%3D--5a53e620770dcb8b5627a57a27ab2cc6095b1a91; path=/; expires=Fri, 25 Sep 2026 00:22:29 GMT; HttpOnly; SameSite=Lax, __cf_bm=t1l5m41vqcPNyzOmpkP1yBFbnh9qHm4b75uvBdsKcPI-1789086148.864715-1.0.1.1-mmVTHY_XEB2grGwGJukEgXBYjs1qua.zVPiwrRC501vdJ7gA3Gpg20dFw.7KBzeGcbAlxrY8iA86tseBQNSJlQUKjFYm_d.bd0cBtu8UHQt_GvVUQiUo0NOxf4mQiZ.a; HttpOnly; SameSite=None; Secure; Path=/; Domain=archiveofourown.org; Expires=Fri, 11 Sep 2026 00:52:29 GMT, _cfuvid=fCW9DNj8pNWjRCMLk..FIbyJJ0DEb6sIgRwDxkZGQgQ-1789086148.864715-1.0.1.1-yLwigDg7qpDWbOsW_J1OCGGbiCRYD3Kd7K5KxSJv1yE; HttpOnly; SameSite=None; Secure; Path=/; Domain=archiveofourown.org', 'CF-Ray': 'a39284ae6ca49d90-IAD', 'CF-Cache-Status': 'DYNAMIC', 'Cache-Control': 'no-cache', 'Retry-After': '251', 'Server': 'cloudflare', 'x-meaning-of-life': '42', 'x-request-id': 'cf5ade31-0734-4064-9380-a9fcc61f9e01', 'x-runtime': '0.002387', 'alt-svc': 'h3=":443"; ma=86400'}
+  Response body:
+  Retry later
+
+  ---------------------

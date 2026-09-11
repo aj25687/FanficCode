@@ -306,3 +306,91 @@
 [2026-09-10 20:37:22] 
 [2026-09-10 20:37:22] Recommended next research step:
 [2026-09-10 20:37:22] Use this metadata dataset to select a smaller, matched M/M and F/F corpus for manual coding of relationship features such as emotional vulnerability, physical affection, conflict, romantic initiation, agency, and reciprocity.
+
+===== Run started 2026-09-11T00:19:49+00:00 =====
+[2026-09-11 00:19:49] (Logging this run to scraping_log.txt; errors to error_log.txt.)
+[2026-09-11 00:19:49] Found ao3_cookie.txt. Using the cookie from that file.
+[2026-09-11 00:19:49]   Parsed cookie name(s): __cf_bm, _cfuvid, _otwarchive_session, cf_clearance, user_credentials
+[2026-09-11 00:19:50]   Login verified: AO3 recognizes this cookie as a logged-in session.
+[2026-09-11 00:19:50] 
+[2026-09-11 00:19:57] Enter target AO3 work URL: 
+[2026-09-11 00:19:57] Fetching target work details...
+[2026-09-11 00:20:05] 
+[2026-09-11 00:20:05] --- Target Fic: 'just my luck' ---
+[2026-09-11 00:20:05] Work ID: 90398616
+[2026-09-11 00:20:05] Fandom(s): Harry Potter - J. K. Rowling
+[2026-09-11 00:20:05] Relationships: Sirius Black/Remus Lupin, Regulus Black/James Potter
+[2026-09-11 00:20:05] Words: 15,261 | Chapters: 1
+[2026-09-11 00:20:05] Hits: 999 | Kudos: 118 | Bookmarks: 21 | Comments: 27
+[2026-09-11 00:20:05] Kudos/Hits: 11.81%
+[2026-09-11 00:20:05] Bookmarks/Hits: 2.10%
+[2026-09-11 00:20:05] Kudos per 10k words: 77.32
+[2026-09-11 00:20:05] 
+[2026-09-11 00:20:05] --- Configure Comparison Cohort ---
+[2026-09-11 00:20:05] 
+[2026-09-11 00:20:05] Fandom scope:
+[2026-09-11 00:20:05] [0] Choose a target fandom
+[2026-09-11 00:20:05] [1] All fandoms
+[2026-09-11 00:20:07] Select fandom scope (0-1): 
+[2026-09-11 00:20:07] Category:
+[2026-09-11 00:20:07] [0] All
+[2026-09-11 00:20:07] [1] M/M
+[2026-09-11 00:20:07] [2] F/F
+[2026-09-11 00:20:07] [3] F/M
+[2026-09-11 00:20:07] [4] Multi
+[2026-09-11 00:20:07] [5] Gen
+[2026-09-11 00:20:08] Select category (0-5): 
+[2026-09-11 00:20:08] Archive warnings:
+[2026-09-11 00:20:08] [0] All
+[2026-09-11 00:20:08] [1] No Warnings Apply
+[2026-09-11 00:20:08] [2] Creator Chose Not To Use
+[2026-09-11 00:20:08] [3] Graphic Violence
+[2026-09-11 00:20:08] [4] Major Character Death
+[2026-09-11 00:20:08] [5] Rape/Non-Con
+[2026-09-11 00:20:08] [6] Underage
+[2026-09-11 00:20:09] Select warning (0-6): 
+[2026-09-11 00:20:09] Crossovers:
+[2026-09-11 00:20:09] [0] No crossovers (recommended)
+[2026-09-11 00:20:09] [1] All works
+[2026-09-11 00:20:09] [2] Crossovers only
+[2026-09-11 00:20:09] Select crossover option (0-2): 
+[2026-09-11 00:20:09] Chapters:
+[2026-09-11 00:20:09] [0] All
+[2026-09-11 00:20:09] [1] One-shots only
+[2026-09-11 00:20:09] [2] Same number as target
+[2026-09-11 00:20:09] [3] Multi-chapter only
+[2026-09-11 00:20:10] Select chapter filter (0-3): 
+[2026-09-11 00:20:10] Completion:
+[2026-09-11 00:20:10] [0] All
+[2026-09-11 00:20:10] [1] Complete only
+[2026-09-11 00:20:10] Select completion filter (0-1): 
+[2026-09-11 00:20:10] Timeframe:
+[2026-09-11 00:20:10] [0] All time
+[2026-09-11 00:20:10] [1] Last week
+[2026-09-11 00:20:10] [2] Last month
+[2026-09-11 00:20:10] [3] Last year
+[2026-09-11 00:20:11] Select timeframe (0-3): 
+[2026-09-11 00:20:11] Checking the result count...
+[2026-09-11 00:20:11]   Using cached page count: 5000 page(s).
+[2026-09-11 00:20:11] Found 5000 result page(s).
+[2026-09-11 00:20:23] Start page (1-5000, blank = 1): End page (1-5000, blank = 5000): 
+[2026-09-11 00:20:23] Sampling mode:
+[2026-09-11 00:20:23] [0] All pages
+[2026-09-11 00:20:23] [1] Systematic pages
+[2026-09-11 00:20:23] [2] Random pages
+[2026-09-11 00:20:25] Select sampling mode (0-2): Sampling seed (blank = 2026): 
+[2026-09-11 00:20:25] Collecting cohort metadata. Only search-result cards are parsed for cohort works.
+[2026-09-11 00:20:25]   Selected 51 page(s): [400, 401, 402, 403, 404, 405, 406, 407, 408, 409, 410, 411, 412, 413, 414, 415, 416, 417, 418, 419]...
+[2026-09-11 00:21:56]   ...page 10/51 done; 156 qualifying works.
+[2026-09-11 00:22:29]   --- 429 response ---
+[2026-09-11 00:22:29]   URL: https://archiveofourown.org/works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=413&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc&work_search%5Bfandom_names%5D=Harry+Potter+-+J.+K.+Rowling&work_search%5Bcrossover%5D=F
+[2026-09-11 00:22:29]   Status: 429 Too Many Requests
+[2026-09-11 00:22:29]   Retry-After header: 251
+[2026-09-11 00:22:29]   Response headers: {'Date': 'Fri, 11 Sep 2026 00:22:29 GMT', 'Content-Type': 'text/plain', 'Content-Length': '12', 'Connection': 'keep-alive', 'Set-Cookie': '_otwarchive_session=eyJfcmFpbHMiOnsibWVzc2FnZSI6ImV5SnpaWE56YVc5dVgybGtJam9pTlRsbVpXRTJPVE0yTkdGaE1qQmlNVGcxWkRFd09ETTFOV014WW1ZeU56Y2lMQ0ozWVhKa1pXNHVkWE5sY2k1MWMyVnlMbXRsZVNJNlcxc3pNVGs0Tnpnd01WMHNJaVF5WVNReE5DUmpWekl3WWpsbWRrOTJTblphZUZkeFowcEpUbWxQSWwwc0lsOWpjM0ptWDNSdmEyVnVJam9pVlVsWk1uUlZhRlpLWkZoaFpUUlFURzl2Y1ROaWFsUm9XRVpCZDBaSllubzRWMDVMTUV4dWJIZHlTU0o5IiwiZXhwIjoiMjAyNi0wOS0yNVQwMDoyMjoyOS40NjJaIiwicHVyIjoiY29va2llLl9vdHdhcmNoaXZlX3Nlc3Npb24ifX0%3D--5a53e620770dcb8b5627a57a27ab2cc6095b1a91; path=/; expires=Fri, 25 Sep 2026 00:22:29 GMT; HttpOnly; SameSite=Lax, __cf_bm=t1l5m41vqcPNyzOmpkP1yBFbnh9qHm4b75uvBdsKcPI-1789086148.864715-1.0.1.1-mmVTHY_XEB2grGwGJukEgXBYjs1qua.zVPiwrRC501vdJ7gA3Gpg20dFw.7KBzeGcbAlxrY8iA86tseBQNSJlQUKjFYm_d.bd0cBtu8UHQt_GvVUQiUo0NOxf4mQiZ.a; HttpOnly; SameSite=None; Secure; Path=/; Domain=archiveofourown.org; Expires=Fri, 11 Sep 2026 00:52:29 GMT, _cfuvid=fCW9DNj8pNWjRCMLk..FIbyJJ0DEb6sIgRwDxkZGQgQ-1789086148.864715-1.0.1.1-yLwigDg7qpDWbOsW_J1OCGGbiCRYD3Kd7K5KxSJv1yE; HttpOnly; SameSite=None; Secure; Path=/; Domain=archiveofourown.org', 'CF-Ray': 'a39284ae6ca49d90-IAD', 'CF-Cache-Status': 'DYNAMIC', 'Cache-Control': 'no-cache', 'Retry-After': '251', 'Server': 'cloudflare', 'x-meaning-of-life': '42', 'x-request-id': 'cf5ade31-0734-4064-9380-a9fcc61f9e01', 'x-runtime': '0.002387', 'alt-svc': 'h3=":443"; ma=86400'}
+[2026-09-11 00:22:29]   Response body:
+[2026-09-11 00:22:29]   Retry later
+[2026-09-11 00:22:29] 
+[2026-09-11 00:22:29]   ---------------------
+[2026-09-11 00:22:29]   Waiting 251s before retrying...
+[2026-09-11 00:24:44] 
+[2026-09-11 00:24:44] Stopped by user.
