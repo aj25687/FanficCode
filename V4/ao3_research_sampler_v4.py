@@ -1,3 +1,6 @@
+TODO: rows should automatically be appending into the main csv file 
+TODO: code should check the csv file to reduce duplicates
+
 import csv
 import json
 import os
