@@ -1540,3 +1540,29 @@
 [2026-09-12 02:00:51]   Network error (SSLError: HTTPSConnectionPool(host='archiveofourown.org', port=443): Max retries exceeded with url: /works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=929&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc&work_search%5Bfandom_names%5D=Harry+Potter+-+J.+K.+Rowling&work_search%5Bcrossover%5D=F&work_search%5Bdate_from%5D=2010-06-01&work_search%5Bdate_to%5D=2015-01-01 (Caused by SSLError(SSLCertVerificationError(1, "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'archiveofourown.org'. (_ssl.c:1082)")))). Waiting 30s before retrying (3/3)...
 [2026-09-12 02:00:57] 
 [2026-09-12 02:00:57] Stopped by user.
+
+===== Run started 2026-09-12T16:46:28+00:00 =====
+[2026-09-12 16:46:28] (Logging this run to scraping_log.txt; errors to error_log.txt.)
+[2026-09-12 16:46:28] Found ao3_cookie.txt. Using the cookie from that file.
+[2026-09-12 16:46:28]   Parsed cookie name(s): __cf_bm, _cfuvid, _otwarchive_session, cf_clearance, user_credentials
+[2026-09-12 16:46:30]   Login verified: AO3 recognizes this cookie as a logged-in session.
+[2026-09-12 16:46:30] 
+[2026-09-12 16:46:39] Enter target AO3 work URL: 
+[2026-09-12 16:46:39] Fetching target work details...
+[2026-09-12 16:46:48] 
+[2026-09-12 16:46:48] SCRAPE STOPPED:
+[2026-09-12 16:46:48] AO3 returned HTTP 525 for the target work.
+[2026-09-12 16:46:48] Do not immediately rerun repeatedly. Wait and try later.
+
+===== Run started 2026-09-12T16:47:59+00:00 =====
+[2026-09-12 16:47:59] (Logging this run to scraping_log.txt; errors to error_log.txt.)
+[2026-09-12 16:47:59] Found ao3_cookie.txt. Using the cookie from that file.
+[2026-09-12 16:47:59]   Parsed cookie name(s): __cf_bm, _cfuvid, _otwarchive_session, cf_clearance, user_credentials
+[2026-09-12 16:48:01]   Login verified: AO3 recognizes this cookie as a logged-in session.
+[2026-09-12 16:48:01] 
+[2026-09-12 16:48:20] Enter target AO3 work URL: 
+[2026-09-12 16:48:20] Fetching target work details...
+[2026-09-12 16:48:28] 
+[2026-09-12 16:48:28] SCRAPE STOPPED:
+[2026-09-12 16:48:28] AO3 returned HTTP 525 for the target work.
+[2026-09-12 16:48:28] Do not immediately rerun repeatedly. Wait and try later.
