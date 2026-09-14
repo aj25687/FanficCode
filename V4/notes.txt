@@ -8,6 +8,8 @@ sept 11 1700 - pages 625-700
 sept 11 1830 - pages 800-850
 sept 11 1900 - pages 950-1000
 sept 11 1930 - pages 1-100 (range: 2010-01-01 to 2015-01-01)
-sept 11 2030 - pages 500-2000 (range: 2010-06-01 to 2015-01-01, 400 random page - 20.5%, stopped at page 140)
+sept 11 2030 - pages 500-2000 (range: 2010-06-01 to 2015-01-01, 400 random pages - 20.5%, stopped at page 140)
+sept 12 0900 - pages 1-4158 (range: 2013-01-01 to 2018-01-01, 400 random pages)
+sept 12 0930 - pages 1-2712 (range: 2018-01-01 to 2020-01-01, 200 random pages)
 ---
 IMPORTANT: The date-published for lines 4376 to lines 11813 ARE NOT TRUE! those lines are trying to recover cached data and does not contain the real publiation date. 
