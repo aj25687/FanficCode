@@ -7704,3 +7704,972 @@
 [2026-09-21 18:51:49] SCRAPE STOPPED:
 [2026-09-21 18:51:49] AO3 returned HTTP 525 for the target work.
 [2026-09-21 18:51:49] Do not immediately rerun repeatedly. Wait and try later.
+
+===== Run started 2026-09-21T19:25:39+00:00 =====
+[2026-09-21 19:25:39] (Logging this run to scraping_log.txt; errors to error_log.txt.)
+[2026-09-21 19:25:39] Found ao3_cookie.txt. Using the cookie from that file.
+[2026-09-21 19:25:39]   Parsed cookie name(s): __cf_bm, _cfuvid, _otwarchive_session, cf_clearance, remember_user_token, user_credentials
+[2026-09-21 19:25:39]   Could not verify login. Continuing anyway.
+[2026-09-21 19:25:39] 
+[2026-09-21 19:25:51] Enter target AO3 work URL: 
+[2026-09-21 19:25:51] Stopped by user.
+
+===== Run started 2026-09-21T19:26:56+00:00 =====
+[2026-09-21 19:26:56] (Logging this run to scraping_log.txt; errors to error_log.txt.)
+[2026-09-21 19:26:56] Found ao3_cookie.txt. Using the cookie from that file.
+[2026-09-21 19:26:56]   Parsed cookie name(s): __cf_bm, _cfuvid, _otwarchive_session, cf_clearance, remember_user_token, user_credentials
+[2026-09-21 19:26:59]   Login verified: AO3 recognizes this cookie as a logged-in session.
+[2026-09-21 19:26:59] 
+[2026-09-21 19:27:49] Enter target AO3 work URL: 
+[2026-09-21 19:27:49] Fetching target work details...
+[2026-09-21 19:27:58] 
+[2026-09-21 19:27:58] SCRAPE STOPPED:
+[2026-09-21 19:27:58] AO3 returned HTTP 525 for the target work.
+[2026-09-21 19:27:58] Do not immediately rerun repeatedly. Wait and try later.
+
+===== Run started 2026-09-21T19:28:37+00:00 =====
+[2026-09-21 19:28:37] (Logging this run to scraping_log.txt; errors to error_log.txt.)
+[2026-09-21 19:28:37] Found ao3_cookie.txt. Using the cookie from that file.
+[2026-09-21 19:28:37]   Parsed cookie name(s): __cf_bm, _cfuvid, _otwarchive_session, cf_clearance, user_credentials
+[2026-09-21 19:28:39]   Login verified: AO3 recognizes this cookie as a logged-in session.
+[2026-09-21 19:28:39] 
+[2026-09-21 19:28:45] Enter target AO3 work URL: 
+[2026-09-21 19:28:45] Fetching target work details...
+[2026-09-21 19:29:02] 
+[2026-09-21 19:29:02] --- Target Fic: 'one night' ---
+[2026-09-21 19:29:02] Work ID: 92902991
+[2026-09-21 19:29:02] Fandom(s): Harry Potter - J. K. Rowling
+[2026-09-21 19:29:02] Relationships: Sirius Black/Remus Lupin
+[2026-09-21 19:29:02] Words: 1,141 | Chapters: 1
+[2026-09-21 19:29:02] Hits: 15 | Kudos: 3 | Bookmarks: 0 | Comments: 0
+[2026-09-21 19:29:02] Kudos/Hits: 20.00%
+[2026-09-21 19:29:02] Bookmarks/Hits: 0.00%
+[2026-09-21 19:29:02] Kudos per 10k words: 26.29
+[2026-09-21 19:29:02] 
+[2026-09-21 19:29:02] --- Configure Comparison Cohort ---
+[2026-09-21 19:29:02] 
+[2026-09-21 19:29:02] Fandom scope:
+[2026-09-21 19:29:02] [0] Choose a target fandom
+[2026-09-21 19:29:02] [1] All fandoms
+[2026-09-21 19:29:34] Select fandom scope (0-1): 
+[2026-09-21 19:29:34] Category:
+[2026-09-21 19:29:34] [0] All
+[2026-09-21 19:29:34] [1] M/M
+[2026-09-21 19:29:34] [2] F/F
+[2026-09-21 19:29:34] [3] F/M
+[2026-09-21 19:29:34] [4] Multi
+[2026-09-21 19:29:34] [5] Gen
+[2026-09-21 19:29:34] Select category (0-5): 
+[2026-09-21 19:29:34] Archive warnings:
+[2026-09-21 19:29:34] [0] All
+[2026-09-21 19:29:34] [1] No Warnings Apply
+[2026-09-21 19:29:34] [2] Creator Chose Not To Use
+[2026-09-21 19:29:34] [3] Graphic Violence
+[2026-09-21 19:29:34] [4] Major Character Death
+[2026-09-21 19:29:34] [5] Rape/Non-Con
+[2026-09-21 19:29:34] [6] Underage
+[2026-09-21 19:29:34] Select warning (0-6): 
+[2026-09-21 19:29:34] Crossovers:
+[2026-09-21 19:29:34] [0] No crossovers (recommended)
+[2026-09-21 19:29:34] [1] All works
+[2026-09-21 19:29:34] [2] Crossovers only
+[2026-09-21 19:29:35] Select crossover option (0-2): 
+[2026-09-21 19:29:35] Chapters:
+[2026-09-21 19:29:35] [0] All
+[2026-09-21 19:29:35] [1] One-shots only
+[2026-09-21 19:29:35] [2] Same number as target
+[2026-09-21 19:29:35] [3] Multi-chapter only
+[2026-09-21 19:29:35] Select chapter filter (0-3): 
+[2026-09-21 19:29:35] Completion:
+[2026-09-21 19:29:35] [0] All
+[2026-09-21 19:29:35] [1] Complete only
+[2026-09-21 19:29:35] Select completion filter (0-1): 
+[2026-09-21 19:29:35] Timeframe:
+[2026-09-21 19:29:35] [0] All time
+[2026-09-21 19:29:35] [1] Last week
+[2026-09-21 19:29:35] [2] Last month
+[2026-09-21 19:29:35] [3] Last year
+[2026-09-21 19:29:35] [4] Custom range
+[2026-09-21 19:29:50] Select timeframe (0-4): Start date (YYYY-MM-DD, blank = no lower bound): End date (YYYY-MM-DD, blank = no upper bound): 
+[2026-09-21 19:29:50] Checking the result count...
+[2026-09-21 19:29:50]   Using cached page count: 4394 page(s).
+[2026-09-21 19:29:50] Found 4394 result page(s).
+[2026-09-21 19:29:53] Start page (1-4394, blank = 1): End page (1-4394, blank = 4394): 
+[2026-09-21 19:29:53] Sampling mode:
+[2026-09-21 19:29:53] [0] All pages
+[2026-09-21 19:29:53] [1] Systematic pages
+[2026-09-21 19:29:53] [2] Random pages
+[2026-09-21 19:29:59] Select sampling mode (0-2): How many pages should be sampled? Sampling seed (blank = 2026): 
+[2026-09-21 19:29:59] Collecting cohort metadata. Only search-result cards are parsed for cohort works.
+[2026-09-21 19:29:59]   Selected 300 page(s): [2, 3, 17, 27, 36, 53, 67, 79, 104, 105, 109, 113, 122, 124, 133, 152, 154, 169, 175, 181]...
+[2026-09-21 19:29:59]   Page 2: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 3: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 17: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 27: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 36: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 53: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 67: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 79: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 104: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 105: loaded from cache (20 works).
+[2026-09-21 19:29:59]   ...page 10/300 done; 170 qualifying works.
+[2026-09-21 19:29:59]   Page 109: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 113: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 122: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 124: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 133: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 152: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 154: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 169: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 175: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 181: loaded from cache (20 works).
+[2026-09-21 19:29:59]   ...page 20/300 done; 351 qualifying works.
+[2026-09-21 19:29:59]   Page 195: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 198: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 220: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 254: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 260: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 263: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 291: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 306: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 313: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 336: loaded from cache (20 works).
+[2026-09-21 19:29:59]   ...page 30/300 done; 511 qualifying works.
+[2026-09-21 19:29:59]   Page 341: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 352: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 392: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 455: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 466: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 478: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 483: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 487: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 496: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 505: loaded from cache (20 works).
+[2026-09-21 19:29:59]   ...page 40/300 done; 661 qualifying works.
+[2026-09-21 19:29:59]   Page 520: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 534: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 566: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 569: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 653: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 682: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 695: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 706: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 729: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 759: loaded from cache (20 works).
+[2026-09-21 19:29:59]   ...page 50/300 done; 817 qualifying works.
+[2026-09-21 19:29:59]   Page 778: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 813: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 846: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 850: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 851: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 856: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 907: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 918: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 925: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 953: loaded from cache (20 works).
+[2026-09-21 19:29:59]   ...page 60/300 done; 980 qualifying works.
+[2026-09-21 19:29:59]   Page 981: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 987: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 992: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 993: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 1010: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 1018: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 1019: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 1033: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 1035: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 1039: loaded from cache (20 works).
+[2026-09-21 19:29:59]   ...page 70/300 done; 1129 qualifying works.
+[2026-09-21 19:29:59]   Page 1045: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 1066: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 1083: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 1092: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 1118: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 1129: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 1137: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 1140: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 1142: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 1146: loaded from cache (20 works).
+[2026-09-21 19:29:59]   ...page 80/300 done; 1305 qualifying works.
+[2026-09-21 19:29:59]   Page 1167: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 1191: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 1218: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 1227: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 1242: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 1245: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 1272: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 1273: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 1317: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 1345: loaded from cache (20 works).
+[2026-09-21 19:29:59]   ...page 90/300 done; 1455 qualifying works.
+[2026-09-21 19:29:59]   Page 1365: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 1368: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 1378: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 1434: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 1442: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 1446: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 1452: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 1464: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 1475: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 1489: loaded from cache (20 works).
+[2026-09-21 19:29:59]   ...page 100/300 done; 1610 qualifying works.
+[2026-09-21 19:29:59]   Page 1505: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 1538: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 1541: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 1547: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 1548: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 1550: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 1590: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 1609: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 1611: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 1628: loaded from cache (20 works).
+[2026-09-21 19:29:59]   ...page 110/300 done; 1761 qualifying works.
+[2026-09-21 19:29:59]   Page 1634: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 1638: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 1672: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 1700: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 1701: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 1716: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 1722: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 1723: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 1762: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 1780: loaded from cache (20 works).
+[2026-09-21 19:29:59]   ...page 120/300 done; 1911 qualifying works.
+[2026-09-21 19:29:59]   Page 1799: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 1821: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 1853: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 1889: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 1908: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 1924: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 1933: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 1938: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 1944: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 1956: loaded from cache (20 works).
+[2026-09-21 19:29:59]   ...page 130/300 done; 2065 qualifying works.
+[2026-09-21 19:29:59]   Page 1992: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 2002: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 2022: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 2047: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 2071: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 2078: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 2133: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 2152: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 2158: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 2166: loaded from cache (20 works).
+[2026-09-21 19:29:59]   ...page 140/300 done; 2198 qualifying works.
+[2026-09-21 19:29:59]   Page 2172: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 2208: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 2238: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 2252: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 2259: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 2267: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 2271: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 2272: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 2277: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 2285: loaded from cache (20 works).
+[2026-09-21 19:29:59]   ...page 150/300 done; 2334 qualifying works.
+[2026-09-21 19:29:59]   Page 2305: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 2323: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 2324: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 2382: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 2384: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 2392: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 2398: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 2400: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 2401: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 2426: loaded from cache (20 works).
+[2026-09-21 19:29:59]   ...page 160/300 done; 2463 qualifying works.
+[2026-09-21 19:29:59]   Page 2434: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 2449: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 2459: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 2466: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 2488: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 2494: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 2507: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 2532: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 2535: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 2563: loaded from cache (20 works).
+[2026-09-21 19:29:59]   ...page 170/300 done; 2570 qualifying works.
+[2026-09-21 19:29:59]   Page 2571: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 2576: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 2583: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 2587: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 2598: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 2619: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 2648: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 2675: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 2699: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 2700: loaded from cache (20 works).
+[2026-09-21 19:29:59]   ...page 180/300 done; 2720 qualifying works.
+[2026-09-21 19:29:59]   Page 2703: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 2709: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 2718: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 2721: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 2728: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 2734: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 2780: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 2784: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 2785: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 2833: loaded from cache (20 works).
+[2026-09-21 19:29:59]   ...page 190/300 done; 2879 qualifying works.
+[2026-09-21 19:29:59]   Page 2850: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 2912: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 2914: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 2921: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 2922: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 2924: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 2943: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 2974: loaded from cache (20 works).
+[2026-09-21 19:29:59]   Page 2993: loaded from cache (20 works).
+[2026-09-21 19:30:24]   ...page 200/300 done; 3044 qualifying works.
+[2026-09-21 19:30:24]   Page 3022: loaded from cache (20 works).
+[2026-09-21 19:30:24]   Page 3052: loaded from cache (20 works).
+[2026-09-21 19:30:59]   Network error (ReadTimeout: HTTPSConnectionPool(host='archiveofourown.org', port=443): Read timed out. (read timeout=30)). Waiting 10s before retrying (1/3)...
+[2026-09-21 19:32:13]   Page 3088: loaded from cache (20 works).
+[2026-09-21 19:33:28]   Page 3107: loaded from cache (20 works).
+[2026-09-21 19:33:50]   Page 3113: loaded from cache (20 works).
+[2026-09-21 19:33:50]   ...page 210/300 done; 3216 qualifying works.
+[2026-09-21 19:33:58]   Page 3125: 525 (1/3).
+[2026-09-21 19:33:58]   Page 3127: loaded from cache (20 works).
+[2026-09-21 19:34:29]   Page 3178: loaded from cache (20 works).
+[2026-09-21 19:34:29]   Page 3180: loaded from cache (20 works).
+[2026-09-21 19:34:29]   Page 3237: loaded from cache (20 works).
+[2026-09-21 19:35:00]   Page 3271: loaded from cache (20 works).
+[2026-09-21 19:35:00]   Page 3303: loaded from cache (20 works).
+[2026-09-21 19:35:00]   Page 3320: loaded from cache (20 works).
+[2026-09-21 19:35:00]   ...page 220/300 done; 3374 qualifying works.
+[2026-09-21 19:35:00]   Page 3331: loaded from cache (20 works).
+[2026-09-21 19:35:00]   Page 3341: loaded from cache (20 works).
+[2026-09-21 19:35:00]   Page 3358: loaded from cache (20 works).
+[2026-09-21 19:35:00]   Page 3364: loaded from cache (20 works).
+[2026-09-21 19:35:00]   Page 3366: loaded from cache (20 works).
+[2026-09-21 19:35:00]   Page 3380: loaded from cache (20 works).
+[2026-09-21 19:35:00]   Page 3394: loaded from cache (20 works).
+[2026-09-21 20:00:03]   Network error (ConnectionError: ('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer'))). Waiting 10s before retrying (1/3)...
+[2026-09-21 20:06:51]   Page 3450: 525 (1/3).
+[2026-09-21 20:06:51]   Page 3451: loaded from cache (20 works).
+[2026-09-21 20:06:51]   ...page 230/300 done; 3532 qualifying works.
+[2026-09-21 20:47:58]   Network error (ReadTimeout: HTTPSConnectionPool(host='archiveofourown.org', port=443): Read timed out. (read timeout=30)). Waiting 10s before retrying (1/3)...
+[2026-09-21 20:48:26]   Page 3498: loaded from cache (20 works).
+[2026-09-21 20:48:26]   Page 3513: loaded from cache (20 works).
+[2026-09-21 20:48:26]   Page 3529: loaded from cache (20 works).
+[2026-09-21 20:48:26]   Page 3530: loaded from cache (20 works).
+[2026-09-21 20:48:26]   Page 3569: loaded from cache (20 works).
+[2026-09-21 20:48:33]   Page 3578: 525 (1/3).
+[2026-09-21 20:48:38]   Page 3584: 525 (2/3).
+[2026-09-21 20:48:38]   Page 3589: loaded from cache (20 works).
+[2026-09-21 20:48:38]   ...page 240/300 done; 3672 qualifying works.
+[2026-09-21 20:48:38]   Page 3612: loaded from cache (20 works).
+[2026-09-21 20:48:38]   Page 3634: loaded from cache (20 works).
+[2026-09-21 20:48:38]   Page 3639: loaded from cache (20 works).
+[2026-09-21 20:49:17]   Network error (ReadTimeout: HTTPSConnectionPool(host='archiveofourown.org', port=443): Read timed out. (read timeout=30)). Waiting 10s before retrying (1/3)...
+[2026-09-21 20:49:43]   Page 3663: loaded from cache (20 works).
+[2026-09-21 20:49:43]   Page 3670: loaded from cache (20 works).
+[2026-09-21 20:49:43]   Page 3675: loaded from cache (20 works).
+[2026-09-21 20:57:08]   Network error (ReadTimeout: HTTPSConnectionPool(host='archiveofourown.org', port=443): Read timed out. (read timeout=30)). Waiting 10s before retrying (1/3)...
+[2026-09-21 20:59:58]   ...page 250/300 done; 3855 qualifying works.
+[2026-09-21 21:01:25]   Network error (ReadTimeout: HTTPSConnectionPool(host='archiveofourown.org', port=443): Read timed out. (read timeout=30)). Waiting 10s before retrying (1/3)...
+[2026-09-21 21:02:56]   Network error (ReadTimeout: HTTPSConnectionPool(host='archiveofourown.org', port=443): Read timed out. (read timeout=30)). Waiting 10s before retrying (1/3)...
+[2026-09-21 21:03:06]   Page 3804: 525 (1/3).
+[2026-09-21 21:03:44]   Network error (ReadTimeout: HTTPSConnectionPool(host='archiveofourown.org', port=443): Read timed out. (read timeout=30)). Waiting 10s before retrying (1/3)...
+[2026-09-21 21:06:12]   Network error (ReadTimeout: HTTPSConnectionPool(host='archiveofourown.org', port=443): Read timed out. (read timeout=30)). Waiting 20s before retrying (2/3)...
+[2026-09-21 21:06:33]   Page 3817: 525 (2/3).
+[2026-09-21 21:07:02]   Page 3840: 525 (1/3).
+[2026-09-21 21:07:09]   Page 3843: 525 (2/3).
+[2026-09-21 21:07:34]   ...page 260/300 done; 3962 qualifying works.
+[2026-09-21 21:09:41]   Page 3912: 525 (1/3).
+[2026-09-21 21:11:20]   ...page 270/300 done; 4125 qualifying works.
+[2026-09-21 21:11:59]   Network error (ReadTimeout: HTTPSConnectionPool(host='archiveofourown.org', port=443): Read timed out. (read timeout=30)). Waiting 10s before retrying (1/3)...
+[2026-09-21 21:12:39]   Page 3963: 525 (1/3).
+[2026-09-21 21:13:26]   --- 429 response ---
+[2026-09-21 21:13:26]   URL: https://archiveofourown.org/works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=3990&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc&work_search%5Bfandom_names%5D=Harry+Potter+-+J.+K.+Rowling&work_search%5Bcrossover%5D=F&work_search%5Bdate_from%5D=2025-01-01&work_search%5Bdate_to%5D=2026-01-01
+[2026-09-21 21:13:26]   Status: 429 Too Many Requests
+[2026-09-21 21:13:26]   Retry-After header: 393
+[2026-09-21 21:13:26]   Response headers: {'Date': 'Mon, 21 Sep 2026 21:13:27 GMT', 'Content-Type': 'text/plain', 'Content-Length': '12', 'Connection': 'keep-alive', 'Set-Cookie': '_otwarchive_session=eyJfcmFpbHMiOnsibWVzc2FnZSI6ImV5SnpaWE56YVc5dVgybGtJam9pTlRsbVpXRTJPVE0yTkdGaE1qQmlNVGcxWkRFd09ETTFOV014WW1ZeU56Y2lMQ0ozWVhKa1pXNHVkWE5sY2k1MWMyVnlMbXRsZVNJNlcxc3pNVGs0Tnpnd01WMHNJaVF5WVNReE5DUmpWekl3WWpsbWRrOTJTblphZUZkeFowcEpUbWxQSWwwc0lsOWpjM0ptWDNSdmEyVnVJam9pVlVsWk1uUlZhRlpLWkZoaFpUUlFURzl2Y1ROaWFsUm9XRVpCZDBaSllubzRWMDVMTUV4dWJIZHlTU0o5IiwiZXhwIjoiMjAyNi0xMC0wNVQyMToxMzoyNy4wODZaIiwicHVyIjoiY29va2llLl9vdHdhcmNoaXZlX3Nlc3Npb24ifX0%3D--734c7bfaf11b1d5977201abdc7a1e3eecb0e84c0; path=/; expires=Mon, 05 Oct 2026 21:13:27 GMT; HttpOnly; SameSite=Lax, __cf_bm=n66fg.gONUIn1rcPxPgBZECDoO883goRudHlzs0sGBI-1790025193.684312-1.0.1.1-_.ORTIqGf4vCzwR9u4pOQ_6gvlyq2BC7T.0F2ybH0aLvW.tYvTzyZSCh0lmhfSg_05JXCosqqpmHRNw85WJYyK5U1sOkTBUEhB7VTuaoV.Ep4sMfKrtYSDM.GLh_G8Tb; HttpOnly; SameSite=None; Secure; Path=/; Domain=archiveofourown.org; Expires=Mon, 21 Sep 2026 21:43:27 GMT, _cfuvid=zd2.PtSR9.noym5qUUDpPmwGiS2MnZpN_q3YprvHKi8-1790025193.684312-1.0.1.1-fZ4qky7PHuHpSMqvh3Nmch16sH1EdAWC8q82y3k3SbU; HttpOnly; SameSite=None; Secure; Path=/; Domain=archiveofourown.org', 'CF-Ray': 'a3ec12948879488c-EWR', 'CF-Cache-Status': 'DYNAMIC', 'Cache-Control': 'no-cache', 'Retry-After': '393', 'Server': 'cloudflare', 'x-meaning-of-life': '42', 'x-request-id': '4a252016-e3fc-4686-b985-7c8840958843', 'x-runtime': '0.002248', 'alt-svc': 'h3=":443"; ma=86400'}
+[2026-09-21 21:13:26]   Response body:
+[2026-09-21 21:13:26]   Retry later
+[2026-09-21 21:13:26] 
+[2026-09-21 21:13:26]   ---------------------
+[2026-09-21 21:13:26]   Waiting 393s before retrying...
+[2026-09-21 21:20:53]   Page 4003: 525 (1/3).
+[2026-09-21 21:22:34]   ...page 280/300 done; 4269 qualifying works.
+[2026-09-21 21:25:42]   Page 4200: 525 (1/3).
+[2026-09-21 21:25:52]   Page 4230: 525 (2/3).
+[2026-09-21 21:26:18]   --- 429 response ---
+[2026-09-21 21:26:18]   URL: https://archiveofourown.org/works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=4264&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc&work_search%5Bfandom_names%5D=Harry+Potter+-+J.+K.+Rowling&work_search%5Bcrossover%5D=F&work_search%5Bdate_from%5D=2025-01-01&work_search%5Bdate_to%5D=2026-01-01
+[2026-09-21 21:26:18]   Status: 429 Too Many Requests
+[2026-09-21 21:26:18]   Retry-After header: 422
+[2026-09-21 21:26:18]   Response headers: {'Date': 'Mon, 21 Sep 2026 21:26:18 GMT', 'Content-Type': 'text/plain', 'Content-Length': '12', 'Connection': 'keep-alive', 'Set-Cookie': '_otwarchive_session=eyJfcmFpbHMiOnsibWVzc2FnZSI6ImV5SnpaWE56YVc5dVgybGtJam9pTlRsbVpXRTJPVE0yTkdGaE1qQmlNVGcxWkRFd09ETTFOV014WW1ZeU56Y2lMQ0ozWVhKa1pXNHVkWE5sY2k1MWMyVnlMbXRsZVNJNlcxc3pNVGs0Tnpnd01WMHNJaVF5WVNReE5DUmpWekl3WWpsbWRrOTJTblphZUZkeFowcEpUbWxQSWwwc0lsOWpjM0ptWDNSdmEyVnVJam9pVlVsWk1uUlZhRlpLWkZoaFpUUlFURzl2Y1ROaWFsUm9XRVpCZDBaSllubzRWMDVMTUV4dWJIZHlTU0o5IiwiZXhwIjoiMjAyNi0xMC0wNVQyMToyNjoxOC42OTdaIiwicHVyIjoiY29va2llLl9vdHdhcmNoaXZlX3Nlc3Npb24ifX0%3D--e07c4ff4d049c1050ec0d50388a5801a1d4951d5; path=/; expires=Mon, 05 Oct 2026 21:26:18 GMT; HttpOnly; SameSite=Lax, __cf_bm=VF23jCit_cMUsPjUrcYaF8hQlPR1_pGgFGvhnai7hdQ-1790025960.8673787-1.0.1.1-4eAEyduY8IHg37ze4KRi7aak6DSImeltrTgfBsknto2EtLp3a2g0O6Qzr_vQBH277gx.DQhCv.iXONawP.8yElZ_qCPB6XsMloPU9tTWKFzFOP9w_WIQ7oL5h5XOH2GW; HttpOnly; SameSite=None; Secure; Path=/; Domain=archiveofourown.org; Expires=Mon, 21 Sep 2026 21:56:18 GMT, _cfuvid=7L4VvjEQQ0pRLJfpus5BV1wbbqPgWJl9Fo3.BD6Nd1E-1790025960.8673787-1.0.1.1-j50u5g7hxxNEpuEUBNMk0GuE99rOITYiX4R1XZd57ek; HttpOnly; SameSite=None; Secure; Path=/; Domain=archiveofourown.org', 'CF-Ray': 'a3ec254f6973488c-EWR', 'CF-Cache-Status': 'DYNAMIC', 'Cache-Control': 'no-cache', 'Retry-After': '422', 'Server': 'cloudflare', 'x-meaning-of-life': '42', 'x-request-id': 'df24398d-415f-4324-8c18-cb703eb8699e', 'x-runtime': '0.002805', 'alt-svc': 'h3=":443"; ma=86400'}
+[2026-09-21 21:26:18]   Response body:
+[2026-09-21 21:26:18]   Retry later
+[2026-09-21 21:26:18] 
+[2026-09-21 21:26:18]   ---------------------
+[2026-09-21 21:26:18]   Waiting 422s before retrying...
+[2026-09-21 21:33:36]   ...page 290/300 done; 4418 qualifying works.
+[2026-09-21 21:38:17]   ...page 300/300 done; 4598 qualifying works.
+[2026-09-21 21:38:17] 
+[2026-09-21 21:38:17] Appended 4599 new observation(s) to ao3_results.csv.
+[2026-09-21 21:38:17] Skipped 0 observation(s) already present under the same sampling condition.
+[2026-09-21 21:38:18] 
+[2026-09-21 21:38:18] Saved accumulated distribution with 4598 cohort works.
+[2026-09-21 21:38:18] Distribution key: Harry Potter - J. K. Rowling|cat0|warn0|cross1|chap0|comp0|time4:2025-01-01:2026-01-01
+[2026-09-21 21:38:19] 
+[2026-09-21 21:38:19] --- ACCUMULATED COHORT ---
+[2026-09-21 21:38:19] Sample size: 4598 works
+[2026-09-21 21:38:19] 
+[2026-09-21 21:38:19] Kudos/Hits:
+[2026-09-21 21:38:19]   Target: 20.00
+[2026-09-21 21:38:19]   Cohort mean: 5.90
+[2026-09-21 21:38:19]   Cohort median: 4.93
+[2026-09-21 21:38:19]   Target is above 99.1% of accumulated cohort works.
+[2026-09-21 21:38:19] 
+[2026-09-21 21:38:19] Bookmarks/Hits:
+[2026-09-21 21:38:19]   Target: 0.00
+[2026-09-21 21:38:19]   Cohort mean: 0.77
+[2026-09-21 21:38:19]   Cohort median: 0.62
+[2026-09-21 21:38:19]   Target is above 0.0% of accumulated cohort works.
+[2026-09-21 21:38:19] 
+[2026-09-21 21:38:19] Comments/Hits:
+[2026-09-21 21:38:19]   Target: 0.00
+[2026-09-21 21:38:19]   Cohort mean: 1.23
+[2026-09-21 21:38:19]   Cohort median: 0.53
+[2026-09-21 21:38:19]   Target is above 0.0% of accumulated cohort works.
+[2026-09-21 21:38:19] 
+[2026-09-21 21:38:19] Kudos per 10k words:
+[2026-09-21 21:38:19]   Target: 26.29
+[2026-09-21 21:38:19]   Cohort mean: 727.77
+[2026-09-21 21:38:19]   Cohort median: 107.44
+[2026-09-21 21:38:19]   Target is above 24.4% of accumulated cohort works.
+[2026-09-21 21:38:19] 
+[2026-09-21 21:38:19] NOTE:
+[2026-09-21 21:38:19] These percentiles describe relative engagement within your selected cohort.
+[2026-09-21 21:38:19] They do not establish why readers preferred a work or prove causation.
+[2026-09-21 21:38:19] 
+[2026-09-21 21:38:19] Recommended next research step:
+[2026-09-21 21:38:19] Use this metadata dataset to select a smaller, matched M/M and F/F corpus for manual coding of relationship features such as emotional vulnerability, physical affection, conflict, romantic initiation, agency, and reciprocity.
+
+===== Run started 2026-09-21T22:09:38+00:00 =====
+[2026-09-21 22:09:38] (Logging this run to scraping_log.txt; errors to error_log.txt.)
+[2026-09-21 22:09:38] Found ao3_cookie.txt. Using the cookie from that file.
+[2026-09-21 22:09:38]   Parsed cookie name(s): __cf_bm, _cfuvid, _otwarchive_session, cf_clearance, user_credentials
+[2026-09-21 22:09:41]   Login verified: AO3 recognizes this cookie as a logged-in session.
+[2026-09-21 22:09:41] 
+[2026-09-21 22:09:47] Enter target AO3 work URL: 
+[2026-09-21 22:09:47] Fetching target work details...
+[2026-09-21 22:09:59] 
+[2026-09-21 22:09:59] --- Target Fic: 'one night' ---
+[2026-09-21 22:09:59] Work ID: 92902991
+[2026-09-21 22:09:59] Fandom(s): Harry Potter - J. K. Rowling
+[2026-09-21 22:09:59] Relationships: Sirius Black/Remus Lupin
+[2026-09-21 22:09:59] Words: 1,141 | Chapters: 1
+[2026-09-21 22:09:59] Hits: 16 | Kudos: 3 | Bookmarks: 0 | Comments: 0
+[2026-09-21 22:09:59] Kudos/Hits: 18.75%
+[2026-09-21 22:09:59] Bookmarks/Hits: 0.00%
+[2026-09-21 22:09:59] Kudos per 10k words: 26.29
+[2026-09-21 22:09:59] 
+[2026-09-21 22:09:59] --- Configure Comparison Cohort ---
+[2026-09-21 22:09:59] 
+[2026-09-21 22:09:59] Fandom scope:
+[2026-09-21 22:09:59] [0] Choose a target fandom
+[2026-09-21 22:09:59] [1] All fandoms
+[2026-09-21 22:10:37] Select fandom scope (0-1): 
+[2026-09-21 22:10:37] Category:
+[2026-09-21 22:10:37] [0] All
+[2026-09-21 22:10:37] [1] M/M
+[2026-09-21 22:10:37] [2] F/F
+[2026-09-21 22:10:37] [3] F/M
+[2026-09-21 22:10:37] [4] Multi
+[2026-09-21 22:10:37] [5] Gen
+[2026-09-21 22:10:37] Select category (0-5): 
+[2026-09-21 22:10:37] Archive warnings:
+[2026-09-21 22:10:37] [0] All
+[2026-09-21 22:10:37] [1] No Warnings Apply
+[2026-09-21 22:10:37] [2] Creator Chose Not To Use
+[2026-09-21 22:10:37] [3] Graphic Violence
+[2026-09-21 22:10:37] [4] Major Character Death
+[2026-09-21 22:10:37] [5] Rape/Non-Con
+[2026-09-21 22:10:37] [6] Underage
+[2026-09-21 22:10:38] Select warning (0-6): 
+[2026-09-21 22:10:38] Crossovers:
+[2026-09-21 22:10:38] [0] No crossovers (recommended)
+[2026-09-21 22:10:38] [1] All works
+[2026-09-21 22:10:38] [2] Crossovers only
+[2026-09-21 22:10:38] Select crossover option (0-2): 
+[2026-09-21 22:10:38] Chapters:
+[2026-09-21 22:10:38] [0] All
+[2026-09-21 22:10:38] [1] One-shots only
+[2026-09-21 22:10:38] [2] Same number as target
+[2026-09-21 22:10:38] [3] Multi-chapter only
+[2026-09-21 22:10:39] Select chapter filter (0-3): 
+[2026-09-21 22:10:39] Completion:
+[2026-09-21 22:10:39] [0] All
+[2026-09-21 22:10:39] [1] Complete only
+[2026-09-21 22:10:39] Select completion filter (0-1): 
+[2026-09-21 22:10:39] Timeframe:
+[2026-09-21 22:10:39] [0] All time
+[2026-09-21 22:10:39] [1] Last week
+[2026-09-21 22:10:39] [2] Last month
+[2026-09-21 22:10:39] [3] Last year
+[2026-09-21 22:10:39] [4] Custom range
+[2026-09-21 22:11:19] Select timeframe (0-4): Start date (YYYY-MM-DD, blank = no lower bound): End date (YYYY-MM-DD, blank = no upper bound): 
+[2026-09-21 22:11:19] Checking the result count...
+[2026-09-21 22:11:42] Found 2012 result page(s).
+[2026-09-21 22:11:51] Start page (1-2012, blank = 1): End page (1-2012, blank = 2012): 
+[2026-09-21 22:11:51] Sampling mode:
+[2026-09-21 22:11:51] [0] All pages
+[2026-09-21 22:11:51] [1] Systematic pages
+[2026-09-21 22:11:51] [2] Random pages
+[2026-09-21 22:12:07] Select sampling mode (0-2): How many pages should be sampled? Sampling seed (blank = 2026): 
+[2026-09-21 22:12:07] Collecting cohort metadata. Only search-result cards are parsed for cohort works.
+[2026-09-21 22:12:07]   Selected 150 page(s): [5, 24, 26, 36, 65, 68, 71, 107, 158, 164, 165, 167, 169, 175, 182, 242, 248, 251, 279, 288]...
+[2026-09-21 22:13:55]   Page 65: 525 (1/3).
+[2026-09-21 22:14:00]   Page 68: 525 (2/3).
+[2026-09-21 22:15:46]   ...page 10/150 done; 133 qualifying works.
+[2026-09-21 22:17:12]   Page 175: 525 (1/3).
+[2026-09-21 22:18:24]   Page 251: 525 (1/3).
+[2026-09-21 22:19:08]   --- 429 response ---
+[2026-09-21 22:19:08]   URL: https://archiveofourown.org/works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=288&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc&work_search%5Bfandom_names%5D=Harry+Potter+-+J.+K.+Rowling&work_search%5Bcrossover%5D=F&work_search%5Bdate_from%5D=2026-01-01&work_search%5Bdate_to%5D=2026-07-01
+[2026-09-21 22:19:08]   Status: 429 Too Many Requests
+[2026-09-21 22:19:08]   Retry-After header: 451
+[2026-09-21 22:19:08]   Response headers: {'Date': 'Mon, 21 Sep 2026 22:19:09 GMT', 'Content-Type': 'text/plain', 'Content-Length': '12', 'Connection': 'keep-alive', 'Set-Cookie': '_otwarchive_session=eyJfcmFpbHMiOnsibWVzc2FnZSI6ImV5SnpaWE56YVc5dVgybGtJam9pTlRsbVpXRTJPVE0yTkdGaE1qQmlNVGcxWkRFd09ETTFOV014WW1ZeU56Y2lMQ0ozWVhKa1pXNHVkWE5sY2k1MWMyVnlMbXRsZVNJNlcxc3pNVGs0Tnpnd01WMHNJaVF5WVNReE5DUmpWekl3WWpsbWRrOTJTblphZUZkeFowcEpUbWxQSWwwc0lsOWpjM0ptWDNSdmEyVnVJam9pVlVsWk1uUlZhRlpLWkZoaFpUUlFURzl2Y1ROaWFsUm9XRVpCZDBaSllubzRWMDVMTUV4dWJIZHlTU0o5IiwiZXhwIjoiMjAyNi0xMC0wNVQyMjoxOTowOS4wNDVaIiwicHVyIjoiY29va2llLl9vdHdhcmNoaXZlX3Nlc3Npb24ifX0%3D--6288b65c96f4edf93683061a6227e3c7f72a8ed0; path=/; expires=Mon, 05 Oct 2026 22:19:09 GMT; HttpOnly; SameSite=Lax, __cf_bm=cgi_bPMkf1igaFvRq4XV2qmCCLtOMH1IG8NPBrXiq1k-1790029133.5011086-1.0.1.1-7yo8GfqLM_5jjjWDHWeMEEqd9tx0hOc3HjHydbl_dSa83e4wcTyfIMxlfIpZTCOFWY_11SEI5EsigxybMpu6vNsKv5vfXAcJguFAAJKG42uG308z6IOrQyZ.W3ix4EGY; HttpOnly; SameSite=None; Secure; Path=/; Domain=archiveofourown.org; Expires=Mon, 21 Sep 2026 22:49:09 GMT, _cfuvid=.EgfQRTAkY_cb2MUuGkB_YDOCTpA9Uv41jXyS7N65go-1790029133.5011086-1.0.1.1-hm2uZMhMGuIDl2RUuuoY3XgDTVMy6StUqZETqAUzVxg; HttpOnly; SameSite=None; Secure; Path=/; Domain=archiveofourown.org', 'CF-Ray': 'a3ec72c46ae01705-EWR', 'CF-Cache-Status': 'DYNAMIC', 'Cache-Control': 'no-cache', 'Retry-After': '451', 'Server': 'cloudflare', 'x-meaning-of-life': '42', 'x-request-id': '0a6d2776-0608-47f6-9636-8c72bbce530e', 'x-runtime': '0.002580', 'alt-svc': 'h3=":443"; ma=86400'}
+[2026-09-21 22:19:08]   Response body:
+[2026-09-21 22:19:08]   Retry later
+[2026-09-21 22:19:08] 
+[2026-09-21 22:19:08]   ---------------------
+[2026-09-21 22:19:08]   Waiting 451s before retrying...
+[2026-09-21 22:46:23]   Network error (ReadTimeout: HTTPSConnectionPool(host='archiveofourown.org', port=443): Read timed out. (read timeout=30)). Waiting 20s before retrying (2/3)...
+[2026-09-21 23:14:15]   Network error (ReadTimeout: HTTPSConnectionPool(host='archiveofourown.org', port=443): Read timed out. (read timeout=30)). Waiting 30s before retrying (3/3)...
+[2026-09-21 23:14:45]   Page 288: no response (1/3).
+[2026-09-21 23:26:05]   Network error (ReadTimeout: HTTPSConnectionPool(host='archiveofourown.org', port=443): Read timed out. (read timeout=30)). Waiting 10s before retrying (1/3)...
+[2026-09-21 23:48:05]   Network error (ReadTimeout: HTTPSConnectionPool(host='archiveofourown.org', port=443): Read timed out. (read timeout=30)). Waiting 20s before retrying (2/3)...
+[2026-09-21 23:55:52]   Network error (ReadTimeout: HTTPSConnectionPool(host='archiveofourown.org', port=443): Read timed out. (read timeout=30)). Waiting 30s before retrying (3/3)...
+[2026-09-21 23:59:30]   Page 293: no response (2/3).
+[2026-09-21 23:59:58]   Page 313: 525 (1/3).
+[2026-09-22 00:05:22]   Network error (ReadTimeout: HTTPSConnectionPool(host='archiveofourown.org', port=443): Read timed out. (read timeout=30)). Waiting 10s before retrying (1/3)...
+[2026-09-22 00:05:33]   Page 318: 525 (2/3).
+[2026-09-22 00:43:01]   Network error (ReadTimeout: HTTPSConnectionPool(host='archiveofourown.org', port=443): Read timed out. (read timeout=30)). Waiting 10s before retrying (1/3)...
+[2026-09-22 00:43:11]   Page 359: 525 (1/3).
+[2026-09-22 01:05:50]   Network error (ReadTimeout: HTTPSConnectionPool(host='archiveofourown.org', port=443): Read timed out. (read timeout=30)). Waiting 10s before retrying (1/3)...
+[2026-09-22 01:10:49]   Page 376: 525 (1/3).
+[2026-09-22 01:12:54]   Page 379: 525 (2/3).
+[2026-09-22 01:16:43]   Page 439: 525 (1/3).
+[2026-09-22 01:18:38]   Page 478: 525 (1/3).
+[2026-09-22 01:21:59]   Network error (ReadTimeout: HTTPSConnectionPool(host='archiveofourown.org', port=443): Read timed out. (read timeout=30)). Waiting 10s before retrying (1/3)...
+[2026-09-22 01:22:09]   Page 491: 525 (1/3).
+[2026-09-22 01:22:19]   Page 494: 525 (2/3).
+[2026-09-22 01:29:20]   Network error (ReadTimeout: HTTPSConnectionPool(host='archiveofourown.org', port=443): Read timed out. (read timeout=30)). Waiting 10s before retrying (1/3)...
+[2026-09-22 01:29:30]   Page 528: 525 (1/3).
+[2026-09-22 01:29:38]   Page 540: 525 (2/3).
+[2026-09-22 01:32:28]   Page 567: 525 (1/3).
+[2026-09-22 01:33:04]   Network error (ReadTimeout: HTTPSConnectionPool(host='archiveofourown.org', port=443): Read timed out. (read timeout=30)). Waiting 10s before retrying (1/3)...
+[2026-09-22 01:33:53]   ...page 50/150 done; 512 qualifying works.
+[2026-09-22 01:35:51]   Network error (ReadTimeout: HTTPSConnectionPool(host='archiveofourown.org', port=443): Read timed out. (read timeout=30)). Waiting 10s before retrying (1/3)...
+[2026-09-22 01:38:11]   Page 693: 525 (1/3).
+[2026-09-22 01:38:49]   Network error (ReadTimeout: HTTPSConnectionPool(host='archiveofourown.org', port=443): Read timed out. (read timeout=30)). Waiting 10s before retrying (1/3)...
+[2026-09-22 01:39:15]   ...page 60/150 done; 666 qualifying works.
+[2026-09-22 01:39:25]   Page 708: 525 (1/3).
+[2026-09-22 01:40:03]   Page 739: 525 (1/3).
+[2026-09-22 01:40:09]   Page 740: 525 (2/3).
+[2026-09-22 01:40:35]   --- 429 response ---
+[2026-09-22 01:40:35]   URL: https://archiveofourown.org/works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=762&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc&work_search%5Bfandom_names%5D=Harry+Potter+-+J.+K.+Rowling&work_search%5Bcrossover%5D=F&work_search%5Bdate_from%5D=2026-01-01&work_search%5Bdate_to%5D=2026-07-01
+[2026-09-22 01:40:35]   Status: 429 Too Many Requests
+[2026-09-22 01:40:35]   Retry-After header: 365
+[2026-09-22 01:40:35]   Response headers: {'Date': 'Tue, 22 Sep 2026 01:40:35 GMT', 'Content-Type': 'text/plain', 'Content-Length': '12', 'Connection': 'keep-alive', 'Set-Cookie': '_otwarchive_session=eyJfcmFpbHMiOnsibWVzc2FnZSI6ImV5SnpaWE56YVc5dVgybGtJam9pTlRsbVpXRTJPVE0yTkdGaE1qQmlNVGcxWkRFd09ETTFOV014WW1ZeU56Y2lMQ0ozWVhKa1pXNHVkWE5sY2k1MWMyVnlMbXRsZVNJNlcxc3pNVGs0Tnpnd01WMHNJaVF5WVNReE5DUmpWekl3WWpsbWRrOTJTblphZUZkeFowcEpUbWxQSWwwc0lsOWpjM0ptWDNSdmEyVnVJam9pVlVsWk1uUlZhRlpLWkZoaFpUUlFURzl2Y1ROaWFsUm9XRVpCZDBaSllubzRWMDVMTUV4dWJIZHlTU0o5IiwiZXhwIjoiMjAyNi0xMC0wNlQwMTo0MDozNS43NTZaIiwicHVyIjoiY29va2llLl9vdHdhcmNoaXZlX3Nlc3Npb24ifX0%3D--b92b425a2312d995e990b1e01967ec0f7499763a; path=/; expires=Tue, 06 Oct 2026 01:40:35 GMT; HttpOnly; SameSite=Lax, __cf_bm=Ea5jodRwd1b1UcbghZJAxh8jX9BUKVTs9h7YG6nML7E-1790041217.515584-1.0.1.1-LElwOqcer0wdmlceUcBJpdXKdOTXoeVA4AOmhk_nT0DkbcMNqnMXOuA.OTReDaW5VdGZmaB9laE0xDyqjFKeCTJqIIEgWCr88XoiUyh_S7ShSS_q.BwjxwVfwOfXjHIn; HttpOnly; SameSite=None; Secure; Path=/; Domain=archiveofourown.org; Expires=Tue, 22 Sep 2026 02:10:35 GMT, _cfuvid=8na.uWhnPn2wvXbnO6wTBdPAmTZVMbtChKyR8wRnZJo-1790041217.515584-1.0.1.1-UqhkHe.h5Ymh16qs23bNKFV74pZMbBkXhDjw1RqIMS8; HttpOnly; SameSite=None; Secure; Path=/; Domain=archiveofourown.org', 'CF-Ray': 'a3ed99c97d8e8e82-IAD', 'CF-Cache-Status': 'DYNAMIC', 'Cache-Control': 'no-cache', 'Retry-After': '365', 'Server': 'cloudflare', 'x-meaning-of-life': '42', 'x-request-id': 'ab8b9b1b-9065-4c58-bfe9-a9493c2976ff', 'x-runtime': '0.002110', 'alt-svc': 'h3=":443"; ma=86400'}
+[2026-09-22 01:40:35]   Response body:
+[2026-09-22 01:40:35]   Retry later
+[2026-09-22 01:40:35] 
+[2026-09-22 01:40:35]   ---------------------
+[2026-09-22 01:40:35]   Waiting 365s before retrying...
+[2026-09-22 01:46:40]   Page 762: 525 (3/3).
+[2026-09-22 01:46:40] 
+[2026-09-22 01:46:40] SCRAPE STOPPED:
+[2026-09-22 01:46:40] AO3 has returned repeated hard failures or sustained rate-limiting. Stopping.
+[2026-09-22 01:46:40] Do not immediately rerun repeatedly. Wait and try later.
+
+===== Run started 2026-09-22T13:08:54+00:00 =====
+[2026-09-22 13:08:54] (Logging this run to scraping_log.txt; errors to error_log.txt.)
+[2026-09-22 13:08:54] Found ao3_cookie.txt. Using the cookie from that file.
+[2026-09-22 13:08:54]   Parsed cookie name(s): __cf_bm, _cfuvid, _otwarchive_session, cf_clearance, user_credentials
+[2026-09-22 13:09:24]   Network error (ReadTimeout: HTTPSConnectionPool(host='archiveofourown.org', port=443): Read timed out. (read timeout=30)). Waiting 10s before retrying (1/3)...
+[2026-09-22 13:09:35]   Could not verify login. Continuing anyway.
+[2026-09-22 13:09:35] 
+[2026-09-22 13:10:55] Enter target AO3 work URL: 
+[2026-09-22 13:10:55] Stopped by user.
+
+===== Run started 2026-09-22T13:14:27+00:00 =====
+[2026-09-22 13:14:27] (Logging this run to scraping_log.txt; errors to error_log.txt.)
+[2026-09-22 13:14:27] Found ao3_cookie.txt. Using the cookie from that file.
+[2026-09-22 13:14:27]   Parsed cookie name(s): __cf_bm, _cfuvid, _otwarchive_session, cf_clearance, user_credentials
+[2026-09-22 13:14:30]   Login verified: AO3 recognizes this cookie as a logged-in session.
+[2026-09-22 13:14:30] 
+[2026-09-22 13:14:39] Enter target AO3 work URL: 
+[2026-09-22 13:14:39] Fetching target work details...
+[2026-09-22 13:14:48] 
+[2026-09-22 13:14:48] SCRAPE STOPPED:
+[2026-09-22 13:14:48] AO3 returned HTTP 525 for the target work.
+[2026-09-22 13:14:48] Do not immediately rerun repeatedly. Wait and try later.
+
+===== Run started 2026-09-22T13:16:17+00:00 =====
+[2026-09-22 13:16:17] (Logging this run to scraping_log.txt; errors to error_log.txt.)
+[2026-09-22 13:16:17] Found ao3_cookie.txt. Using the cookie from that file.
+[2026-09-22 13:16:17]   Parsed cookie name(s): __cf_bm, _cfuvid, _otwarchive_session, cf_clearance, user_credentials
+[2026-09-22 13:16:25]   Login verified: AO3 recognizes this cookie as a logged-in session.
+[2026-09-22 13:16:25] 
+[2026-09-22 13:16:44] Enter target AO3 work URL: 
+[2026-09-22 13:16:44] Fetching target work details...
+[2026-09-22 13:16:53] 
+[2026-09-22 13:16:53] --- Target Fic: 'one night' ---
+[2026-09-22 13:16:53] Work ID: 92902991
+[2026-09-22 13:16:53] Fandom(s): Harry Potter - J. K. Rowling
+[2026-09-22 13:16:53] Relationships: Sirius Black/Remus Lupin
+[2026-09-22 13:16:53] Words: 1,141 | Chapters: 1
+[2026-09-22 13:16:53] Hits: 18 | Kudos: 3 | Bookmarks: 0 | Comments: 0
+[2026-09-22 13:16:53] Kudos/Hits: 16.67%
+[2026-09-22 13:16:53] Bookmarks/Hits: 0.00%
+[2026-09-22 13:16:53] Kudos per 10k words: 26.29
+[2026-09-22 13:16:53] 
+[2026-09-22 13:16:53] --- Configure Comparison Cohort ---
+[2026-09-22 13:16:53] 
+[2026-09-22 13:16:53] Fandom scope:
+[2026-09-22 13:16:53] [0] Choose a target fandom
+[2026-09-22 13:16:53] [1] All fandoms
+[2026-09-22 13:17:34] Select fandom scope (0-1): 
+[2026-09-22 13:17:34] Category:
+[2026-09-22 13:17:34] [0] All
+[2026-09-22 13:17:34] [1] M/M
+[2026-09-22 13:17:34] [2] F/F
+[2026-09-22 13:17:34] [3] F/M
+[2026-09-22 13:17:34] [4] Multi
+[2026-09-22 13:17:34] [5] Gen
+[2026-09-22 13:17:34] Select category (0-5): 
+[2026-09-22 13:17:34] Archive warnings:
+[2026-09-22 13:17:34] [0] All
+[2026-09-22 13:17:34] [1] No Warnings Apply
+[2026-09-22 13:17:34] [2] Creator Chose Not To Use
+[2026-09-22 13:17:34] [3] Graphic Violence
+[2026-09-22 13:17:34] [4] Major Character Death
+[2026-09-22 13:17:34] [5] Rape/Non-Con
+[2026-09-22 13:17:34] [6] Underage
+[2026-09-22 13:17:35] Select warning (0-6): 
+[2026-09-22 13:17:35] Crossovers:
+[2026-09-22 13:17:35] [0] No crossovers (recommended)
+[2026-09-22 13:17:35] [1] All works
+[2026-09-22 13:17:35] [2] Crossovers only
+[2026-09-22 13:17:35] Select crossover option (0-2): 
+[2026-09-22 13:17:35] Chapters:
+[2026-09-22 13:17:35] [0] All
+[2026-09-22 13:17:35] [1] One-shots only
+[2026-09-22 13:17:35] [2] Same number as target
+[2026-09-22 13:17:35] [3] Multi-chapter only
+[2026-09-22 13:17:36] Select chapter filter (0-3): 
+[2026-09-22 13:17:36] Completion:
+[2026-09-22 13:17:36] [0] All
+[2026-09-22 13:17:36] [1] Complete only
+[2026-09-22 13:17:37] Select completion filter (0-1): 
+[2026-09-22 13:17:37] Timeframe:
+[2026-09-22 13:17:37] [0] All time
+[2026-09-22 13:17:37] [1] Last week
+[2026-09-22 13:17:37] [2] Last month
+[2026-09-22 13:17:37] [3] Last year
+[2026-09-22 13:17:37] [4] Custom range
+[2026-09-22 13:18:02] Select timeframe (0-4): Start date (YYYY-MM-DD, blank = no lower bound): End date (YYYY-MM-DD, blank = no upper bound): 
+[2026-09-22 13:18:02] Checking the result count...
+[2026-09-22 13:18:02]   Using cached page count: 2012 page(s).
+[2026-09-22 13:18:02] Found 2012 result page(s).
+[2026-09-22 13:18:04] Start page (1-2012, blank = 1): End page (1-2012, blank = 2012): 
+[2026-09-22 13:18:04] Sampling mode:
+[2026-09-22 13:18:04] [0] All pages
+[2026-09-22 13:18:04] [1] Systematic pages
+[2026-09-22 13:18:04] [2] Random pages
+[2026-09-22 13:18:10] Select sampling mode (0-2): How many pages should be sampled? Sampling seed (blank = 2026): 
+[2026-09-22 13:18:10] Collecting cohort metadata. Only search-result cards are parsed for cohort works.
+[2026-09-22 13:18:10]   Selected 150 page(s): [5, 24, 26, 36, 65, 68, 71, 107, 158, 164, 165, 167, 169, 175, 182, 242, 248, 251, 279, 288]...
+[2026-09-22 13:18:10]   Page 5: loaded from cache (20 works).
+[2026-09-22 13:18:10]   Page 24: loaded from cache (20 works).
+[2026-09-22 13:18:10]   Page 26: loaded from cache (20 works).
+[2026-09-22 13:18:10]   Page 36: loaded from cache (20 works).
+[2026-09-22 13:18:51]   Page 68: 525 (1/3).
+[2026-09-22 13:18:51]   Page 71: loaded from cache (20 works).
+[2026-09-22 13:18:51]   Page 107: loaded from cache (20 works).
+[2026-09-22 13:18:51]   Page 158: loaded from cache (20 works).
+[2026-09-22 13:18:51]   Page 164: loaded from cache (20 works).
+[2026-09-22 13:18:51]   ...page 10/150 done; 151 qualifying works.
+[2026-09-22 13:18:51]   Page 165: loaded from cache (20 works).
+[2026-09-22 13:18:51]   Page 167: loaded from cache (20 works).
+[2026-09-22 13:18:51]   Page 169: loaded from cache (20 works).
+[2026-09-22 13:19:18]   Page 182: loaded from cache (20 works).
+[2026-09-22 13:19:18]   Page 242: loaded from cache (20 works).
+[2026-09-22 13:19:18]   Page 248: loaded from cache (20 works).
+[2026-09-22 13:19:49]   Page 279: loaded from cache (20 works).
+[2026-09-22 13:20:15]   ...page 20/150 done; 313 qualifying works.
+[2026-09-22 13:20:44]   Page 308: loaded from cache (20 works).
+[2026-09-22 13:20:49]   Page 313: 525 (1/3).
+[2026-09-22 13:21:28]   Network error (ReadTimeout: HTTPSConnectionPool(host='archiveofourown.org', port=443): Read timed out. (read timeout=30)). Waiting 10s before retrying (1/3)...
+[2026-09-22 13:22:01]   Page 331: loaded from cache (20 works).
+[2026-09-22 13:22:33]   Page 372: loaded from cache (20 works).
+[2026-09-22 13:22:33]   Page 374: loaded from cache (20 works).
+[2026-09-22 13:23:07]   Page 379: 525 (1/3).
+[2026-09-22 13:23:07]   Page 386: loaded from cache (20 works).
+[2026-09-22 13:23:07]   Page 395: loaded from cache (20 works).
+[2026-09-22 13:23:36]   Page 446: loaded from cache (20 works).
+[2026-09-22 13:23:36]   Page 458: loaded from cache (20 works).
+[2026-09-22 13:23:36]   Page 471: loaded from cache (20 works).
+[2026-09-22 13:24:04]   Page 483: loaded from cache (20 works).
+[2026-09-22 13:25:05]   ...page 40/150 done; 619 qualifying works.
+[2026-09-22 13:25:05]   Page 517: loaded from cache (20 works).
+[2026-09-22 13:26:02]   Page 542: loaded from cache (20 works).
+[2026-09-22 13:26:02]   Page 543: loaded from cache (20 works).
+[2026-09-22 13:26:02]   Page 557: loaded from cache (20 works).
+[2026-09-22 13:26:02]   Page 566: loaded from cache (20 works).
+[2026-09-22 13:26:36]   Page 575: loaded from cache (20 works).
+[2026-09-22 13:26:36]   Page 576: loaded from cache (20 works).
+[2026-09-22 13:26:36]   ...page 50/150 done; 757 qualifying works.
+[2026-09-22 13:26:36]   Page 580: loaded from cache (20 works).
+[2026-09-22 13:26:36]   Page 588: loaded from cache (20 works).
+[2026-09-22 13:26:36]   Page 602: loaded from cache (20 works).
+[2026-09-22 13:26:36]   Page 605: loaded from cache (20 works).
+[2026-09-22 13:26:36]   Page 622: loaded from cache (20 works).
+[2026-09-22 13:26:36]   Page 627: loaded from cache (20 works).
+[2026-09-22 13:26:36]   Page 632: loaded from cache (20 works).
+[2026-09-22 13:26:36]   Page 676: loaded from cache (20 works).
+[2026-09-22 13:26:59]   --- 429 response ---
+[2026-09-22 13:26:59]   URL: https://archiveofourown.org/works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=693&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc&work_search%5Bfandom_names%5D=Harry+Potter+-+J.+K.+Rowling&work_search%5Bcrossover%5D=F&work_search%5Bdate_from%5D=2026-01-01&work_search%5Bdate_to%5D=2026-07-01
+[2026-09-22 13:26:59]   Status: 429 Too Many Requests
+[2026-09-22 13:26:59]   Retry-After header: 381
+[2026-09-22 13:26:59]   Response headers: {'Date': 'Tue, 22 Sep 2026 13:26:59 GMT', 'Content-Type': 'text/plain', 'Content-Length': '12', 'Connection': 'keep-alive', 'Set-Cookie': '_otwarchive_session=eyJfcmFpbHMiOnsibWVzc2FnZSI6ImV5SnpaWE56YVc5dVgybGtJam9pTlRsbVpXRTJPVE0yTkdGaE1qQmlNVGcxWkRFd09ETTFOV014WW1ZeU56Y2lMQ0ozWVhKa1pXNHVkWE5sY2k1MWMyVnlMbXRsZVNJNlcxc3pNVGs0Tnpnd01WMHNJaVF5WVNReE5DUmpWekl3WWpsbWRrOTJTblphZUZkeFowcEpUbWxQSWwwc0lsOWpjM0ptWDNSdmEyVnVJam9pVlVsWk1uUlZhRlpLWkZoaFpUUlFURzl2Y1ROaWFsUm9XRVpCZDBaSllubzRWMDVMTUV4dWJIZHlTU0o5IiwiZXhwIjoiMjAyNi0xMC0wNlQxMzoyNjo1OS40MTJaIiwicHVyIjoiY29va2llLl9vdHdhcmNoaXZlX3Nlc3Npb24ifX0%3D--ac88f7376b438cb3b74440ffdfaa81045acbfe0b; path=/; expires=Tue, 06 Oct 2026 13:26:59 GMT; HttpOnly; SameSite=Lax, __cf_bm=Kxienh5YTtbj0kpPAx_dX_VcSR_MYT7962CI5wAIE74-1790083604.3238578-1.0.1.1-su.oMrXcuE.WvfkcaES8_kdWk9w9doeSmIrlNvHd9nhDaeELTGLkmQoXGAUatzJgk.pa7PB_KP8..a7hFHrl2dc4S3QKy6VuN_qLhUJ1ebMdzYr9wvAItFz9yfJQJvCC; HttpOnly; SameSite=None; Secure; Path=/; Domain=archiveofourown.org; Expires=Tue, 22 Sep 2026 13:56:59 GMT, _cfuvid=3VxJVAFd0PDMQq3NuFymkI591b1TIBA3P.UrXY9.1xo-1790083604.3238578-1.0.1.1-7DTvRYXa.kFxpzW6w7VQ3h39yMtDgcLebglrXRHKhWU; HttpOnly; SameSite=None; Secure; Path=/; Domain=archiveofourown.org', 'CF-Ray': 'a3f1a49f09a79015-BOS', 'CF-Cache-Status': 'DYNAMIC', 'Cache-Control': 'no-cache', 'Retry-After': '381', 'Server': 'cloudflare', 'x-meaning-of-life': '42', 'x-request-id': '762c4002-8740-4781-bf2f-7f6849b03c7c', 'x-runtime': '0.002096', 'alt-svc': 'h3=":443"; ma=86400'}
+[2026-09-22 13:26:59]   Response body:
+[2026-09-22 13:26:59]   Retry later
+[2026-09-22 13:26:59] 
+[2026-09-22 13:26:59]   ---------------------
+[2026-09-22 13:26:59]   Waiting 381s before retrying...
+[2026-09-22 13:33:20]   Page 693: 525 (1/3).
+[2026-09-22 13:33:20]   Page 702: loaded from cache (20 works).
+[2026-09-22 13:33:20]   ...page 60/150 done; 911 qualifying works.
+[2026-09-22 13:33:51]   Page 728: loaded from cache (20 works).
+[2026-09-22 13:37:56]   ...page 70/150 done; 1055 qualifying works.
+[2026-09-22 13:39:32]   Page 923: 525 (1/3).
+[2026-09-22 13:40:15]   Page 944: 525 (1/3).
+[2026-09-22 13:40:42]   --- 429 response ---
+[2026-09-22 13:40:42]   URL: https://archiveofourown.org/works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=969&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc&work_search%5Bfandom_names%5D=Harry+Potter+-+J.+K.+Rowling&work_search%5Bcrossover%5D=F&work_search%5Bdate_from%5D=2026-01-01&work_search%5Bdate_to%5D=2026-07-01
+[2026-09-22 13:40:42]   Status: 429 Too Many Requests
+[2026-09-22 13:40:42]   Retry-After header: 358
+[2026-09-22 13:40:42]   Response headers: {'Date': 'Tue, 22 Sep 2026 13:40:42 GMT', 'Content-Type': 'text/plain', 'Content-Length': '12', 'Connection': 'keep-alive', 'Set-Cookie': '_otwarchive_session=eyJfcmFpbHMiOnsibWVzc2FnZSI6ImV5SnpaWE56YVc5dVgybGtJam9pTlRsbVpXRTJPVE0yTkdGaE1qQmlNVGcxWkRFd09ETTFOV014WW1ZeU56Y2lMQ0ozWVhKa1pXNHVkWE5sY2k1MWMyVnlMbXRsZVNJNlcxc3pNVGs0Tnpnd01WMHNJaVF5WVNReE5DUmpWekl3WWpsbWRrOTJTblphZUZkeFowcEpUbWxQSWwwc0lsOWpjM0ptWDNSdmEyVnVJam9pVlVsWk1uUlZhRlpLWkZoaFpUUlFURzl2Y1ROaWFsUm9XRVpCZDBaSllubzRWMDVMTUV4dWJIZHlTU0o5IiwiZXhwIjoiMjAyNi0xMC0wNlQxMzo0MDo0Mi4wNzhaIiwicHVyIjoiY29va2llLl9vdHdhcmNoaXZlX3Nlc3Npb24ifX0%3D--5682bc395cf55fea852da1d6face820a470d20e0; path=/; expires=Tue, 06 Oct 2026 13:40:42 GMT; HttpOnly; SameSite=Lax, __cf_bm=nLZYnM9MbPF1ukgnHjA79PQu89MrVcwk0Jhbnjka4d8-1790084423.3353162-1.0.1.1-6QaxPe7ZKH9EV8gtEu6DmlDSA4P8MFCGFUVc21AgVXQC_Q652Elz._BrQ9MTi8nVVVm.X8chNH_N3MdIPOsv02FRwXK1nuUyfhYXS2sPY5KbGIKWXfHbHcQVeYPllXrr; HttpOnly; SameSite=None; Secure; Path=/; Domain=archiveofourown.org; Expires=Tue, 22 Sep 2026 14:10:42 GMT, _cfuvid=thtCDfrMBxKZvSz9M9PgYJ9KgEs2vh5RZm58y6X2aC0-1790084423.3353162-1.0.1.1-qvBuAL66pGTTpS5oicZTpOEFF8CT0tcqss6KlP9Xx2I; HttpOnly; SameSite=None; Secure; Path=/; Domain=archiveofourown.org', 'CF-Ray': 'a3f1b89ddfbc9015-BOS', 'CF-Cache-Status': 'DYNAMIC', 'Cache-Control': 'no-cache', 'Retry-After': '358', 'Server': 'cloudflare', 'x-meaning-of-life': '42', 'x-request-id': 'da669403-6161-4fcb-8191-6c55272e5b7f', 'x-runtime': '0.002416', 'alt-svc': 'h3=":443"; ma=86400'}
+[2026-09-22 13:40:42]   Response body:
+[2026-09-22 13:40:42]   Retry later
+[2026-09-22 13:40:42] 
+[2026-09-22 13:40:42]   ---------------------
+[2026-09-22 13:40:42]   Waiting 358s before retrying...
+[2026-09-22 13:46:40]   Page 969: 525 (2/3).
+[2026-09-22 13:48:02]   ...page 80/150 done; 1183 qualifying works.
+[2026-09-22 13:48:41]   Network error (ReadTimeout: HTTPSConnectionPool(host='archiveofourown.org', port=443): Read timed out. (read timeout=30)). Waiting 10s before retrying (1/3)...
+[2026-09-22 13:48:58]   Page 1000: 525 (1/3).
+[2026-09-22 13:49:05]   Page 1011: 525 (2/3).
+[2026-09-22 13:49:53]   Page 1071: 525 (1/3).
+[2026-09-22 13:50:02]   Page 1077: 525 (2/3).
+[2026-09-22 13:50:11]   Page 1088: 525 (3/3).
+[2026-09-22 13:50:11] 
+[2026-09-22 13:50:11] SCRAPE STOPPED:
+[2026-09-22 13:50:11] AO3 has returned repeated hard failures or sustained rate-limiting. Stopping.
+[2026-09-22 13:50:11] Do not immediately rerun repeatedly. Wait and try later.
+
+===== Run started 2026-09-22T16:23:35+00:00 =====
+[2026-09-22 16:23:35] (Logging this run to scraping_log.txt; errors to error_log.txt.)
+[2026-09-22 16:23:35] Found ao3_cookie.txt. Using the cookie from that file.
+[2026-09-22 16:23:35]   Parsed cookie name(s): __cf_bm, _cfuvid, _otwarchive_session, cf_clearance, user_credentials
+[2026-09-22 16:23:36]   Could not verify login. Continuing anyway.
+[2026-09-22 16:23:36] 
+[2026-09-22 16:23:38] Enter target AO3 work URL: 
+[2026-09-22 16:23:38] Stopped by user.
+
+===== Run started 2026-09-22T18:03:42+00:00 =====
+[2026-09-22 18:03:42] (Logging this run to scraping_log.txt; errors to error_log.txt.)
+[2026-09-22 18:03:42] Found ao3_cookie.txt. Using the cookie from that file.
+[2026-09-22 18:03:42]   Parsed cookie name(s): __cf_bm, _cfuvid, _otwarchive_session, cf_clearance, user_credentials
+[2026-09-22 18:03:42]   Could not verify login. Continuing anyway.
+[2026-09-22 18:03:42] 
+[2026-09-22 18:03:46] Enter target AO3 work URL: 
+[2026-09-22 18:03:46] Fetching target work details...
+[2026-09-22 18:03:48] 
+[2026-09-22 18:03:48] Stopped by user.
+
+===== Run started 2026-09-22T18:04:46+00:00 =====
+[2026-09-22 18:04:46] (Logging this run to scraping_log.txt; errors to error_log.txt.)
+[2026-09-22 18:04:46] Found ao3_cookie.txt. Using the cookie from that file.
+[2026-09-22 18:04:46]   Parsed cookie name(s): __cf_bm, _cfuvid, _otwarchive_session, cf_clearance, user_credentials
+[2026-09-22 18:04:46]   Could not verify login. Continuing anyway.
+[2026-09-22 18:04:46] 
+[2026-09-22 18:04:49] Enter target AO3 work URL: 
+[2026-09-22 18:04:49] Stopped by user.
+
+===== Run started 2026-09-22T18:05:52+00:00 =====
+[2026-09-22 18:05:52] (Logging this run to scraping_log.txt; errors to error_log.txt.)
+[2026-09-22 18:05:52] Found ao3_cookie.txt. Using the cookie from that file.
+[2026-09-22 18:05:52]   Parsed cookie name(s): __cf_bm, _cfuvid, _otwarchive_session, cf_clearance, user_credentials
+[2026-09-22 18:05:52]   Could not verify login. Continuing anyway.
+[2026-09-22 18:05:52] 
+[2026-09-22 18:06:02] Enter target AO3 work URL: 
+[2026-09-22 18:06:02] Fetching target work details...
+[2026-09-22 18:06:12] 
+[2026-09-22 18:06:12] SCRAPE STOPPED:
+[2026-09-22 18:06:12] AO3 returned HTTP 525 for the target work.
+[2026-09-22 18:06:12] Do not immediately rerun repeatedly. Wait and try later.
+
+===== Run started 2026-09-22T21:35:14+00:00 =====
+[2026-09-22 21:35:14] (Logging this run to scraping_log.txt; errors to error_log.txt.)
+[2026-09-22 21:35:14] Found ao3_cookie.txt. Using the cookie from that file.
+[2026-09-22 21:35:14]   Parsed cookie name(s): __cf_bm, _cfuvid, _otwarchive_session, cf_clearance, user_credentials
+[2026-09-22 21:35:17]   Login verified: AO3 recognizes this cookie as a logged-in session.
+[2026-09-22 21:35:17] 
+[2026-09-22 21:35:24] Enter target AO3 work URL: 
+[2026-09-22 21:35:24] Fetching target work details...
+[2026-09-22 21:35:40] 
+[2026-09-22 21:35:40] --- Target Fic: 'one night' ---
+[2026-09-22 21:35:40] Work ID: 92902991
+[2026-09-22 21:35:40] Fandom(s): Harry Potter - J. K. Rowling
+[2026-09-22 21:35:40] Relationships: Sirius Black/Remus Lupin
+[2026-09-22 21:35:40] Words: 1,141 | Chapters: 1
+[2026-09-22 21:35:40] Hits: 18 | Kudos: 3 | Bookmarks: 0 | Comments: 0
+[2026-09-22 21:35:40] Kudos/Hits: 16.67%
+[2026-09-22 21:35:40] Bookmarks/Hits: 0.00%
+[2026-09-22 21:35:40] Kudos per 10k words: 26.29
+[2026-09-22 21:35:40] 
+[2026-09-22 21:35:40] --- Configure Comparison Cohort ---
+[2026-09-22 21:35:40] 
+[2026-09-22 21:35:40] Fandom scope:
+[2026-09-22 21:35:40] [0] Choose a target fandom
+[2026-09-22 21:35:40] [1] All fandoms
+[2026-09-22 21:52:13] Select fandom scope (0-1): 
+[2026-09-22 21:52:13] Category:
+[2026-09-22 21:52:13] [0] All
+[2026-09-22 21:52:13] [1] M/M
+[2026-09-22 21:52:13] [2] F/F
+[2026-09-22 21:52:13] [3] F/M
+[2026-09-22 21:52:13] [4] Multi
+[2026-09-22 21:52:13] [5] Gen
+[2026-09-22 21:52:14] Select category (0-5): 
+[2026-09-22 21:52:14] Archive warnings:
+[2026-09-22 21:52:14] [0] All
+[2026-09-22 21:52:14] [1] No Warnings Apply
+[2026-09-22 21:52:14] [2] Creator Chose Not To Use
+[2026-09-22 21:52:14] [3] Graphic Violence
+[2026-09-22 21:52:14] [4] Major Character Death
+[2026-09-22 21:52:14] [5] Rape/Non-Con
+[2026-09-22 21:52:14] [6] Underage
+[2026-09-22 21:52:14] Select warning (0-6): 
+[2026-09-22 21:52:14] Crossovers:
+[2026-09-22 21:52:14] [0] No crossovers (recommended)
+[2026-09-22 21:52:14] [1] All works
+[2026-09-22 21:52:14] [2] Crossovers only
+[2026-09-22 21:52:14] Select crossover option (0-2): 
+[2026-09-22 21:52:14] Chapters:
+[2026-09-22 21:52:14] [0] All
+[2026-09-22 21:52:14] [1] One-shots only
+[2026-09-22 21:52:14] [2] Same number as target
+[2026-09-22 21:52:14] [3] Multi-chapter only
+[2026-09-22 21:52:15] Select chapter filter (0-3): 
+[2026-09-22 21:52:15] Completion:
+[2026-09-22 21:52:15] [0] All
+[2026-09-22 21:52:15] [1] Complete only
+[2026-09-22 21:52:16] Select completion filter (0-1): 
+[2026-09-22 21:52:16] Timeframe:
+[2026-09-22 21:52:16] [0] All time
+[2026-09-22 21:52:16] [1] Last week
+[2026-09-22 21:52:16] [2] Last month
+[2026-09-22 21:52:16] [3] Last year
+[2026-09-22 21:52:16] [4] Custom range
+[2026-09-22 21:52:28] Select timeframe (0-4): Start date (YYYY-MM-DD, blank = no lower bound): End date (YYYY-MM-DD, blank = no upper bound): 
+[2026-09-22 21:52:28] Checking the result count...
+[2026-09-22 21:52:28]   Using cached page count: 2012 page(s).
+[2026-09-22 21:52:28] Found 2012 result page(s).
+[2026-09-22 21:52:29] Start page (1-2012, blank = 1): End page (1-2012, blank = 2012): 
+[2026-09-22 21:52:29] Sampling mode:
+[2026-09-22 21:52:29] [0] All pages
+[2026-09-22 21:52:29] [1] Systematic pages
+[2026-09-22 21:52:29] [2] Random pages
+[2026-09-22 21:52:35] Select sampling mode (0-2): How many pages should be sampled? Sampling seed (blank = 2026): 
+[2026-09-22 21:52:35] Collecting cohort metadata. Only search-result cards are parsed for cohort works.
+[2026-09-22 21:52:35]   Selected 150 page(s): [5, 24, 26, 36, 65, 68, 71, 107, 158, 164, 165, 167, 169, 175, 182, 242, 248, 251, 279, 288]...
+[2026-09-22 21:52:35]   Page 5: loaded from cache (20 works).
+[2026-09-22 21:52:35]   Page 24: loaded from cache (20 works).
+[2026-09-22 21:52:35]   Page 26: loaded from cache (20 works).
+[2026-09-22 21:52:35]   Page 36: loaded from cache (20 works).
+[2026-09-22 21:52:35]   Page 65: loaded from cache (20 works).
+[2026-09-22 21:53:02]   Page 71: loaded from cache (20 works).
+[2026-09-22 21:53:02]   Page 107: loaded from cache (20 works).
+[2026-09-22 21:53:02]   Page 158: loaded from cache (20 works).
+[2026-09-22 21:53:02]   Page 164: loaded from cache (20 works).
+[2026-09-22 21:53:02]   ...page 10/150 done; 168 qualifying works.
+[2026-09-22 21:53:02]   Page 165: loaded from cache (20 works).
+[2026-09-22 21:53:02]   Page 167: loaded from cache (20 works).
+[2026-09-22 21:53:02]   Page 169: loaded from cache (20 works).
+[2026-09-22 21:53:02]   Page 175: loaded from cache (20 works).
+[2026-09-22 21:53:02]   Page 182: loaded from cache (20 works).
+[2026-09-22 21:53:02]   Page 242: loaded from cache (20 works).
+[2026-09-22 21:53:02]   Page 248: loaded from cache (20 works).
+[2026-09-22 21:53:02]   Page 251: loaded from cache (20 works).
+[2026-09-22 21:53:02]   Page 279: loaded from cache (20 works).
+[2026-09-22 21:53:02]   Page 288: loaded from cache (20 works).
+[2026-09-22 21:53:02]   ...page 20/150 done; 330 qualifying works.
+[2026-09-22 21:53:02]   Page 293: loaded from cache (20 works).
+[2026-09-22 21:53:02]   Page 308: loaded from cache (20 works).
+[2026-09-22 21:53:31]   Page 318: loaded from cache (20 works).
+[2026-09-22 21:53:31]   Page 331: loaded from cache (20 works).
+[2026-09-22 21:53:31]   Page 359: loaded from cache (20 works).
+[2026-09-22 21:53:31]   Page 372: loaded from cache (20 works).
+[2026-09-22 21:53:31]   Page 374: loaded from cache (20 works).
+[2026-09-22 21:53:31]   Page 376: loaded from cache (20 works).
+[2026-09-22 21:53:37]   Page 379: 525 (1/3).
+[2026-09-22 21:53:37]   Page 386: loaded from cache (20 works).
+[2026-09-22 21:53:37]   Page 395: loaded from cache (20 works).
+[2026-09-22 21:53:37]   Page 439: loaded from cache (20 works).
+[2026-09-22 21:53:37]   Page 446: loaded from cache (20 works).
+[2026-09-22 21:53:37]   Page 458: loaded from cache (20 works).
+[2026-09-22 21:53:37]   Page 471: loaded from cache (20 works).
+[2026-09-22 21:53:37]   Page 478: loaded from cache (20 works).
+[2026-09-22 21:53:37]   Page 483: loaded from cache (20 works).
+[2026-09-22 21:53:37]   Page 491: loaded from cache (20 works).
+[2026-09-22 21:53:37]   Page 494: loaded from cache (20 works).
+[2026-09-22 21:53:37]   ...page 40/150 done; 654 qualifying works.
+[2026-09-22 21:53:37]   Page 517: loaded from cache (20 works).
+[2026-09-22 21:53:37]   Page 528: loaded from cache (20 works).
+[2026-09-22 21:53:37]   Page 540: loaded from cache (20 works).
+[2026-09-22 21:53:37]   Page 542: loaded from cache (20 works).
+[2026-09-22 21:53:37]   Page 543: loaded from cache (20 works).
+[2026-09-22 21:53:37]   Page 557: loaded from cache (20 works).
+[2026-09-22 21:53:37]   Page 566: loaded from cache (20 works).
+[2026-09-22 21:53:37]   Page 567: loaded from cache (20 works).
+[2026-09-22 21:53:37]   Page 575: loaded from cache (20 works).
+[2026-09-22 21:53:37]   Page 576: loaded from cache (20 works).
+[2026-09-22 21:53:37]   ...page 50/150 done; 792 qualifying works.
+[2026-09-22 21:53:37]   Page 580: loaded from cache (20 works).
+[2026-09-22 21:53:37]   Page 588: loaded from cache (20 works).
+[2026-09-22 21:53:37]   Page 602: loaded from cache (20 works).
+[2026-09-22 21:53:37]   Page 605: loaded from cache (20 works).
+[2026-09-22 21:53:37]   Page 622: loaded from cache (20 works).
+[2026-09-22 21:53:37]   Page 627: loaded from cache (20 works).
+[2026-09-22 21:53:37]   Page 632: loaded from cache (20 works).
+[2026-09-22 21:53:37]   Page 676: loaded from cache (20 works).
+[2026-09-22 21:54:14]   Network error (ReadTimeout: HTTPSConnectionPool(host='archiveofourown.org', port=443): Read timed out. (read timeout=30)). Waiting 10s before retrying (1/3)...
+[2026-09-22 21:54:55]   Network error (ReadTimeout: HTTPSConnectionPool(host='archiveofourown.org', port=443): Read timed out. (read timeout=30)). Waiting 20s before retrying (2/3)...
+[2026-09-22 21:55:45]   Network error (ReadTimeout: HTTPSConnectionPool(host='archiveofourown.org', port=443): Read timed out. (read timeout=30)). Waiting 30s before retrying (3/3)...
+[2026-09-22 21:56:15]   Page 693: no response (2/3).
+[2026-09-22 21:56:15]   Page 702: loaded from cache (20 works).
+[2026-09-22 21:56:15]   ...page 60/150 done; 946 qualifying works.
+[2026-09-22 21:56:15]   Page 708: loaded from cache (20 works).
+[2026-09-22 21:56:15]   Page 728: loaded from cache (20 works).
+[2026-09-22 21:56:15]   Page 739: loaded from cache (20 works).
+[2026-09-22 21:56:15]   Page 740: loaded from cache (20 works).
+[2026-09-22 21:56:15]   Page 762: loaded from cache (20 works).
+[2026-09-22 21:56:15]   Page 765: loaded from cache (20 works).
+[2026-09-22 21:56:15]   Page 766: loaded from cache (20 works).
+[2026-09-22 21:56:15]   Page 797: loaded from cache (20 works).
+[2026-09-22 21:56:15]   Page 810: loaded from cache (20 works).
+[2026-09-22 21:56:15]   Page 826: loaded from cache (20 works).
+[2026-09-22 21:56:15]   ...page 70/150 done; 1090 qualifying works.
+[2026-09-22 21:56:15]   Page 870: loaded from cache (20 works).
+[2026-09-22 21:56:15]   Page 915: loaded from cache (20 works).
+[2026-09-22 21:56:15]   Page 922: loaded from cache (20 works).
+[2026-09-22 21:56:25]   Page 923: 525 (3/3).
+[2026-09-22 21:56:25] 
+[2026-09-22 21:56:25] SCRAPE STOPPED:
+[2026-09-22 21:56:25] AO3 has returned repeated hard failures or sustained rate-limiting. Stopping.
+[2026-09-22 21:56:25] Do not immediately rerun repeatedly. Wait and try later.
