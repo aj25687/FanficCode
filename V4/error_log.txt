@@ -25151,3 +25151,89 @@ Traceback (most recent call last):
         "AO3 has returned repeated hard failures or sustained rate-limiting. Stopping."
     )
 HardBlockError: AO3 has returned repeated hard failures or sustained rate-limiting. Stopping.
+
+===== Error log started 2026-09-22T22:24:34+00:00 =====
+
+[2026-09-22 22:24:55 UTC] ERROR: AO3 requested that the script stop.
+Traceback (most recent call last):
+  File "/Users/avantikajain/Code/FanficCode/V4/ao3_research_sampler_v4.py", line 1228, in main
+    target = parse_ao3_work(target_url)
+  File "/Users/avantikajain/Code/FanficCode/V4/ao3_research_sampler_v4.py", line 634, in parse_ao3_work
+    raise HardBlockError(f"AO3 returned HTTP {response.status_code} for the target work.")
+HardBlockError: AO3 returned HTTP 525 for the target work.
+
+===== Error log started 2026-09-22T22:42:49+00:00 =====
+
+[2026-09-22 22:43:10 UTC] ERROR: AO3 requested that the script stop.
+Traceback (most recent call last):
+  File "/Users/avantikajain/Code/FanficCode/V4/ao3_research_sampler_v4.py", line 1229, in main
+    target = parse_ao3_work(target_url)
+  File "/Users/avantikajain/Code/FanficCode/V4/ao3_research_sampler_v4.py", line 635, in parse_ao3_work
+    raise HardBlockError(f"AO3 returned HTTP {response.status_code} for the target work.")
+HardBlockError: AO3 returned HTTP 525 for the target work.
+
+===== Error log started 2026-09-22T22:45:10+00:00 =====
+
+[2026-09-22 22:45:10 UTC] ERROR: Login verification failed. status=403 reason=''
+
+[2026-09-22 22:45:30 UTC] ERROR: AO3 requested that the script stop.
+Traceback (most recent call last):
+  File "/Users/avantikajain/Code/FanficCode/V4/ao3_research_sampler_v4.py", line 1238, in main
+    target = parse_ao3_work(target_url)
+  File "/Users/avantikajain/Code/FanficCode/V4/ao3_research_sampler_v4.py", line 644, in parse_ao3_work
+    raise HardBlockError(f"AO3 returned HTTP {response.status_code} for the target work.")
+HardBlockError: AO3 returned HTTP 403 for the target work.
+
+===== Error log started 2026-09-22T22:46:48+00:00 =====
+
+[2026-09-22 22:46:48 UTC] ERROR: Login verification failed. status=403 reason=''
+
+===== Error log started 2026-09-22T22:47:16+00:00 =====
+
+[2026-09-22 22:47:16 UTC] ERROR: Login verification failed. status=403 reason=''
+
+[2026-09-22 22:47:29 UTC] ERROR: AO3 requested that the script stop.
+Traceback (most recent call last):
+  File "/Users/avantikajain/Code/FanficCode/V4/ao3_research_sampler_v4.py", line 1238, in main
+    target = parse_ao3_work(target_url)
+  File "/Users/avantikajain/Code/FanficCode/V4/ao3_research_sampler_v4.py", line 644, in parse_ao3_work
+    raise HardBlockError(f"AO3 returned HTTP {response.status_code} for the target work.")
+HardBlockError: AO3 returned HTTP 403 for the target work.
+
+===== Error log started 2026-09-22T22:49:52+00:00 =====
+
+[2026-09-22 22:49:52 UTC] ERROR: Login verification failed. status=403 reason=''
+
+[2026-09-22 22:50:03 UTC] ERROR: AO3 requested that the script stop.
+Traceback (most recent call last):
+  File "/Users/avantikajain/Code/FanficCode/V4/ao3_research_sampler_v4.py", line 1238, in main
+    target = parse_ao3_work(target_url)
+  File "/Users/avantikajain/Code/FanficCode/V4/ao3_research_sampler_v4.py", line 644, in parse_ao3_work
+    raise HardBlockError(f"AO3 returned HTTP {response.status_code} for the target work.")
+HardBlockError: AO3 returned HTTP 403 for the target work.
+
+===== Error log started 2026-09-22T23:01:05+00:00 =====
+
+[2026-09-22 23:01:05 UTC] ERROR: Login verification failed. status=403 reason=''
+
+[2026-09-22 23:01:21 UTC] ERROR: AO3 requested that the script stop.
+Traceback (most recent call last):
+  File "/Users/avantikajain/Code/FanficCode/V4/ao3_research_sampler_v4.py", line 1238, in main
+    target = parse_ao3_work(target_url)
+  File "/Users/avantikajain/Code/FanficCode/V4/ao3_research_sampler_v4.py", line 644, in parse_ao3_work
+    raise HardBlockError(f"AO3 returned HTTP {response.status_code} for the target work.")
+HardBlockError: AO3 returned HTTP 403 for the target work.
+
+===== Error log started 2026-09-22T23:36:28+00:00 =====
+
+[2026-09-22 23:36:28 UTC] ERROR: Login verification failed. status=403 reason=''
+
+===== Error log started 2026-09-22T23:38:29+00:00 =====
+
+[2026-09-22 23:38:48 UTC] ERROR: AO3 requested that the script stop.
+Traceback (most recent call last):
+  File "/Users/avantikajain/Code/FanficCode/V4/ao3_research_sampler_v4.py", line 1229, in main
+    target = parse_ao3_work(target_url)
+  File "/Users/avantikajain/Code/FanficCode/V4/ao3_research_sampler_v4.py", line 635, in parse_ao3_work
+    raise HardBlockError(f"AO3 returned HTTP {response.status_code} for the target work.")
+HardBlockError: AO3 returned HTTP 525 for the target work.

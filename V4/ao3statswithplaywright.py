@@ -1,6 +1,3 @@
-# TODO: rows should automatically be appending into the main csv file 
-# TODO: code should check the csv file to reduce duplicates
-
 import csv
 import json
 import os
@@ -14,8 +11,7 @@ from datetime import datetime, timedelta, timezone
 
 import numpy as np
 import pandas as pd
-import requests
-from curl_cffi import requests
+from playwright.sync_api import sync_playwright, Error as PlaywrightError, TimeoutError as PlaywrightTimeoutError
 from bs4 import BeautifulSoup
 
 
@@ -37,29 +33,37 @@ from bs4 import BeautifulSoup
 #   density) is a separate, much smaller, manually-curated step —
 #   see the printed recommendation at the end of each run.
 #
+# Networking:
+#   Uses a real, genuine browser engine (Playwright + Chromium)
+#   rather than a bare HTTP client. This exists because AO3's
+#   Cloudflare bot management was reliably rejecting plain HTTP
+#   requests (repeated 525s, then explicit 403s) regardless of
+#   IP/network -- a real browser has a real, honest fingerprint,
+#   so this isn't a workaround for detection, it's just automating
+#   an actual browser the way a human would use one. See
+#   requirements.txt / the setup note below for the one-time
+#   `playwright install chromium` step this requires.
+#
 # On the "T"/"F" vs "true"/"false" vs "0"/"1" question for AO3's
 # work_search[complete] and work_search[crossover] fields:
 #   Different independent AO3 tooling projects disagree on this, and
 #   it can't be settled with certainty without live-testing against
-#   AO3 (not possible from a sandboxed environment). This script uses
-#   "T"/"F" for both fields, matching the most rigorously documented,
-#   actively maintained reference we found (the ao3.py package, which
-#   treats both fields identically and consistently). If your
-#   completion/crossover filters don't seem to actually narrow results
-#   when you compare against browsing the same filter manually on
-#   AO3's site, this is the first thing to double-check and flip.
+#   AO3. This script uses "T"/"F" for both fields, matching the most
+#   rigorously documented, actively maintained reference we found
+#   (the ao3.py package, which treats both fields identically and
+#   consistently). If your completion/crossover filters don't seem
+#   to actually narrow results compared to browsing the same filter
+#   manually on AO3's site, this is the first thing to double-check.
 #
 # Rate limiting:
 #   Uses a local page cache, randomized delays, and stops the whole
 #   run (rather than trying to push past) when AO3 returns repeated
-#   hard failures or sustained rate-limiting.
+#   hard failures or sustained rate-limiting. A real browser engine
+#   does not grant permission to go faster -- keep the same
+#   conservative pacing as before.
 #
 # ============================================================
 
-
-HEADERS = {
-    "User-Agent": "AO3ResearchMetadataSampler/2.1 (Educational/Research; contact information omitted)"
-}
 
 LOG_FILE = "scraping_log.txt"
 ERROR_LOG_FILE = "error_log.txt"
@@ -68,9 +72,12 @@ CSV_FILE = "ao3_results.csv"
 DIST_FILE = "ao3_distributions.json"
 COOKIE_FILE = "ao3_cookie.txt"
 
-COOKIES = {
-    "view_adult": "true"
-}
+# Applied to every browser context as a real cookie (not a spoofed
+# header) so Mature/Explicit works don't show the adult-content
+# interstitial instead of their real stats.
+DEFAULT_COOKIES = [
+    {"name": "view_adult", "value": "true", "domain": ".archiveofourown.org", "path": "/"},
+]
 
 MAX_CONSECUTIVE_HARD_FAILURES = 3
 
@@ -1312,23 +1319,22 @@ def main():
             start_date = input("Start date (YYYY-MM-DD, blank = no lower bound): ").strip()
             end_date = input("End date (YYYY-MM-DD, blank = no upper bound): ").strip()
 
-        if start_date and not date_re.match(start_date):
-            print(f"'{start_date}' isn't in YYYY-MM-DD format. Ignoring start date.")
-            start_date = ""
-        if end_date and not date_re.match(end_date):
-            print(f"'{end_date}' isn't in YYYY-MM-DD format. Ignoring end date.")
-            end_date = ""
+            if start_date and not date_re.match(start_date):
+                print(f"'{start_date}' isn't in YYYY-MM-DD format. Ignoring start date.")
+                start_date = ""
+            if end_date and not date_re.match(end_date):
+                print(f"'{end_date}' isn't in YYYY-MM-DD format. Ignoring end date.")
+                end_date = ""
 
-        if not start_date and not end_date:
-            print("No valid custom dates given. Falling back to All time.")
-            timeframe_filter = "0"
-        else:
-            # Encode the custom range into timeframe_filter itself, since it
-            # already flows everywhere as a plain string (CSV, cache keys,
-            # distribution keys) -- this makes different custom ranges count
-            # as distinct filter conditions automatically, with no other
-            # changes needed elsewhere in the pipeline.
-            timeframe_filter = f"4:{start_date}:{end_date}"
+            if not start_date and not end_date:
+                print("No valid custom dates given. Falling back to All time.")
+                timeframe_filter = "0"
+            else:
+                # Encoded into timeframe_filter itself since it already
+                # flows everywhere as a plain string (CSV, cache keys,
+                # distribution keys) -- different custom ranges then
+                # automatically count as distinct filter conditions.
+                timeframe_filter = f"4:{start_date}:{end_date}"
 
         print("\nChecking the result count...")
         cache = load_cache()

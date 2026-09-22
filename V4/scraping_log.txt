@@ -8673,3 +8673,112 @@
 [2026-09-22 21:56:25] SCRAPE STOPPED:
 [2026-09-22 21:56:25] AO3 has returned repeated hard failures or sustained rate-limiting. Stopping.
 [2026-09-22 21:56:25] Do not immediately rerun repeatedly. Wait and try later.
+
+===== Run started 2026-09-22T22:24:34+00:00 =====
+[2026-09-22 22:24:34] (Logging this run to scraping_log.txt; errors to error_log.txt.)
+[2026-09-22 22:24:34] Found ao3_cookie.txt. Using the cookie from that file.
+[2026-09-22 22:24:34]   Parsed cookie name(s): __cf_bm, _cfuvid, _otwarchive_session, cf_clearance, user_credentials
+[2026-09-22 22:24:38]   Login verified: AO3 recognizes this cookie as a logged-in session.
+[2026-09-22 22:24:38] 
+[2026-09-22 22:24:49] Enter target AO3 work URL: 
+[2026-09-22 22:24:49] Fetching target work details...
+[2026-09-22 22:24:55] 
+[2026-09-22 22:24:55] SCRAPE STOPPED:
+[2026-09-22 22:24:55] AO3 returned HTTP 525 for the target work.
+[2026-09-22 22:24:55] Do not immediately rerun repeatedly. Wait and try later.
+
+===== Run started 2026-09-22T22:42:49+00:00 =====
+[2026-09-22 22:42:49] (Logging this run to scraping_log.txt; errors to error_log.txt.)
+[2026-09-22 22:42:49] Found ao3_cookie.txt. Using the cookie from that file.
+[2026-09-22 22:42:49]   Parsed cookie name(s): __cf_bm, _cfuvid, _otwarchive_session, cf_clearance, user_credentials
+[2026-09-22 22:42:52]   Login verified: AO3 recognizes this cookie as a logged-in session.
+[2026-09-22 22:42:52] 
+[2026-09-22 22:43:03] Enter target AO3 work URL: 
+[2026-09-22 22:43:03] Fetching target work details...
+[2026-09-22 22:43:10] 
+[2026-09-22 22:43:10] SCRAPE STOPPED:
+[2026-09-22 22:43:10] AO3 returned HTTP 525 for the target work.
+[2026-09-22 22:43:10] Do not immediately rerun repeatedly. Wait and try later.
+
+===== Run started 2026-09-22T22:45:10+00:00 =====
+[2026-09-22 22:45:10] (Logging this run to scraping_log.txt; errors to error_log.txt.)
+[2026-09-22 22:45:10] Found ao3_cookie.txt. Using the cookie from that file.
+[2026-09-22 22:45:10]   Parsed cookie name(s): __cf_bm, _cfuvid, _otwarchive_session, cf_clearance, user_credentials
+[2026-09-22 22:45:10]   Could not verify login. Continuing anyway.
+[2026-09-22 22:45:10] 
+[2026-09-22 22:45:25] Enter target AO3 work URL: 
+[2026-09-22 22:45:25] Fetching target work details...
+[2026-09-22 22:45:30] 
+[2026-09-22 22:45:30] SCRAPE STOPPED:
+[2026-09-22 22:45:30] AO3 returned HTTP 403 for the target work.
+[2026-09-22 22:45:30] Do not immediately rerun repeatedly. Wait and try later.
+
+===== Run started 2026-09-22T22:46:48+00:00 =====
+[2026-09-22 22:46:48] (Logging this run to scraping_log.txt; errors to error_log.txt.)
+[2026-09-22 22:46:48] Found ao3_cookie.txt. Using the cookie from that file.
+[2026-09-22 22:46:48]   Parsed cookie name(s): __cf_bm, _cfuvid, _otwarchive_session, cf_clearance, remember_user_token, user_credentials
+[2026-09-22 22:46:48]   Could not verify login. Continuing anyway.
+[2026-09-22 22:46:48] 
+[2026-09-22 22:46:57] Enter target AO3 work URL: 
+[2026-09-22 22:46:57] Stopped by user.
+
+===== Run started 2026-09-22T22:47:16+00:00 =====
+[2026-09-22 22:47:16] (Logging this run to scraping_log.txt; errors to error_log.txt.)
+[2026-09-22 22:47:16] Found ao3_cookie.txt. Using the cookie from that file.
+[2026-09-22 22:47:16]   Parsed cookie name(s): __cf_bm, _cfuvid, _otwarchive_session, cf_clearance, remember_user_token, user_credentials
+[2026-09-22 22:47:16]   Could not verify login. Continuing anyway.
+[2026-09-22 22:47:16] 
+[2026-09-22 22:47:21] Enter target AO3 work URL: 
+[2026-09-22 22:47:21] Fetching target work details...
+[2026-09-22 22:47:29] 
+[2026-09-22 22:47:29] SCRAPE STOPPED:
+[2026-09-22 22:47:29] AO3 returned HTTP 403 for the target work.
+[2026-09-22 22:47:29] Do not immediately rerun repeatedly. Wait and try later.
+
+===== Run started 2026-09-22T22:49:52+00:00 =====
+[2026-09-22 22:49:52] (Logging this run to scraping_log.txt; errors to error_log.txt.)
+[2026-09-22 22:49:52] Found ao3_cookie.txt. Using the cookie from that file.
+[2026-09-22 22:49:52]   Parsed cookie name(s): __cf_bm, _cfuvid, _otwarchive_session, cf_clearance, remember_user_token, user_credentials
+[2026-09-22 22:49:52]   Could not verify login. Continuing anyway.
+[2026-09-22 22:49:52] 
+[2026-09-22 22:49:56] Enter target AO3 work URL: 
+[2026-09-22 22:49:56] Fetching target work details...
+[2026-09-22 22:50:03] 
+[2026-09-22 22:50:03] SCRAPE STOPPED:
+[2026-09-22 22:50:03] AO3 returned HTTP 403 for the target work.
+[2026-09-22 22:50:03] Do not immediately rerun repeatedly. Wait and try later.
+
+===== Run started 2026-09-22T23:01:05+00:00 =====
+[2026-09-22 23:01:05] (Logging this run to scraping_log.txt; errors to error_log.txt.)
+[2026-09-22 23:01:05] Found ao3_cookie.txt. Using the cookie from that file.
+[2026-09-22 23:01:05]   Parsed cookie name(s): __cf_bm, _cfuvid, _otwarchive_session, cf_clearance, remember_user_token, user_credentials
+[2026-09-22 23:01:05]   Could not verify login. Continuing anyway.
+[2026-09-22 23:01:05] 
+[2026-09-22 23:01:15] Enter target AO3 work URL: 
+[2026-09-22 23:01:15] Fetching target work details...
+[2026-09-22 23:01:21] 
+[2026-09-22 23:01:21] SCRAPE STOPPED:
+[2026-09-22 23:01:21] AO3 returned HTTP 403 for the target work.
+[2026-09-22 23:01:21] Do not immediately rerun repeatedly. Wait and try later.
+
+===== Run started 2026-09-22T23:36:28+00:00 =====
+[2026-09-22 23:36:28] (Logging this run to scraping_log.txt; errors to error_log.txt.)
+[2026-09-22 23:36:28] Found ao3_cookie.txt. Using the cookie from that file.
+[2026-09-22 23:36:28]   Parsed cookie name(s): __cf_bm, _cfuvid, _otwarchive_session, cf_clearance, remember_user_token, user_credentials
+[2026-09-22 23:36:28]   Could not verify login. Continuing anyway.
+[2026-09-22 23:36:28] 
+[2026-09-22 23:36:48] Enter target AO3 work URL: 
+[2026-09-22 23:36:48] Stopped by user.
+
+===== Run started 2026-09-22T23:38:29+00:00 =====
+[2026-09-22 23:38:29] (Logging this run to scraping_log.txt; errors to error_log.txt.)
+[2026-09-22 23:38:29] Found ao3_cookie.txt. Using the cookie from that file.
+[2026-09-22 23:38:29]   Parsed cookie name(s): __cf_bm, _cfuvid, _otwarchive_session, cf_clearance, remember_user_token, user_credentials
+[2026-09-22 23:38:32]   Login verified: AO3 recognizes this cookie as a logged-in session.
+[2026-09-22 23:38:32] 
+[2026-09-22 23:38:39] Enter target AO3 work URL: 
+[2026-09-22 23:38:39] Fetching target work details...
+[2026-09-22 23:38:48] 
+[2026-09-22 23:38:48] SCRAPE STOPPED:
+[2026-09-22 23:38:48] AO3 returned HTTP 525 for the target work.
+[2026-09-22 23:38:48] Do not immediately rerun repeatedly. Wait and try later.
