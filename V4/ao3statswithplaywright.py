@@ -40,9 +40,15 @@ from bs4 import BeautifulSoup
 #   requests (repeated 525s, then explicit 403s) regardless of
 #   IP/network -- a real browser has a real, honest fingerprint,
 #   so this isn't a workaround for detection, it's just automating
-#   an actual browser the way a human would use one. See
-#   requirements.txt / the setup note below for the one-time
-#   `playwright install chromium` step this requires.
+#   an actual browser the way a human would use one.
+#
+#   One-time setup:
+#     pip3 install playwright && python3 -m playwright install chromium
+#
+#   The browser window is visible by default so a challenge can be
+#   completed by hand; set AO3_HEADLESS=1 for unattended runs. The
+#   Chromium profile is kept in ./ao3_browser_profile so clearance
+#   cookies survive between runs.
 #
 # On the "T"/"F" vs "true"/"false" vs "0"/"1" question for AO3's
 # work_search[complete] and work_search[crossover] fields:
@@ -78,6 +84,22 @@ COOKIE_FILE = "ao3_cookie.txt"
 DEFAULT_COOKIES = [
     {"name": "view_adult", "value": "true", "domain": ".archiveofourown.org", "path": "/"},
 ]
+
+COOKIE_DOMAIN = ".archiveofourown.org"
+
+# Chromium profile directory. Reusing one profile across runs keeps
+# whatever clearance cookie the browser earned, so a fresh challenge
+# isn't triggered on every single run.
+BROWSER_PROFILE_DIR = "ao3_browser_profile"
+
+# Headed by default: a visible window also means a challenge can be
+# completed by hand if AO3 ever shows one. Set AO3_HEADLESS=1 for
+# unattended runs.
+HEADLESS = os.environ.get("AO3_HEADLESS", "").strip().lower() in {"1", "true", "yes"}
+
+# How long to let an interstitial resolve itself before treating the
+# page as blocked.
+CHALLENGE_WAIT_SECONDS = 30
 
 MAX_CONSECUTIVE_HARD_FAILURES = 3
 
@@ -168,9 +190,145 @@ CSV_FIELDS = [
 ]
 
 
-SESSION = requests.Session()
-SESSION.headers.update(HEADERS)
-SESSION.cookies.update(COOKIES)
+class BrowserResponse:
+    """requests-shaped view of a Playwright navigation.
+
+    Everything downstream (parsing, filtering, caching, CSV writing)
+    keeps reading .status_code/.text/.headers/.reason exactly as it
+    did with the HTTP client, so only this layer knows about browsers.
+    """
+
+    def __init__(self, status_code, text, headers=None, reason="", url=""):
+        self.status_code = status_code
+        self.text = text
+        self.headers = headers or {}
+        self.reason = reason
+        self.url = url
+
+
+class BrowserSession:
+    """A single real Chromium profile used for every page load."""
+
+    def __init__(self):
+        self._playwright = None
+        self._context = None
+        self._page = None
+        self._pending_cookies = list(DEFAULT_COOKIES)
+
+    def start(self):
+        if self._page is not None:
+            return
+
+        self._playwright = sync_playwright().start()
+        self._context = self._playwright.chromium.launch_persistent_context(
+            BROWSER_PROFILE_DIR,
+            headless=HEADLESS,
+            viewport={"width": 1280, "height": 900},
+            locale="en-US",
+        )
+        self._context.set_default_navigation_timeout(60_000)
+
+        if self._pending_cookies:
+            self._context.add_cookies(self._pending_cookies)
+            self._pending_cookies = []
+
+        self._page = self._context.pages[0] if self._context.pages else self._context.new_page()
+
+    def add_cookies(self, cookie_dict):
+        cookies = [
+            {"name": name, "value": value, "domain": COOKIE_DOMAIN, "path": "/"}
+            for name, value in cookie_dict.items()
+        ]
+
+        if self._context is None:
+            self._pending_cookies.extend(cookies)
+        else:
+            self._context.add_cookies(cookies)
+
+    def get(self, url, timeout=60):
+        self.start()
+
+        response = self._page.goto(
+            url,
+            wait_until="domcontentloaded",
+            timeout=int(timeout * 1000),
+        )
+
+        status = response.status if response is not None else 0
+        reason = response.status_text if response is not None else ""
+
+        try:
+            headers = response.all_headers() if response is not None else {}
+        except PlaywrightError:
+            headers = {}
+
+        body = self._settle_interstitial()
+
+        if status == 200 and looks_like_challenge(body):
+            status, reason = 403, "Cloudflare challenge not completed"
+
+        return BrowserResponse(status, body, headers, reason, self._page.url)
+
+    def _settle_interstitial(self):
+        """Give a challenge page a chance to resolve into real content."""
+        body = self._page.content()
+
+        if not looks_like_challenge(body):
+            return body
+
+        print(
+            "  Interstitial shown. Waiting for it to clear"
+            f"{'' if HEADLESS else ' (solve it in the browser window if it asks you to)'}..."
+        )
+
+        deadline = time.monotonic() + CHALLENGE_WAIT_SECONDS
+
+        while time.monotonic() < deadline:
+            time.sleep(2)
+            try:
+                body = self._page.content()
+            except PlaywrightError:
+                continue
+            if not looks_like_challenge(body):
+                print("  Interstitial cleared.")
+                return body
+
+        return body
+
+    def close(self):
+        if self._context is not None:
+            try:
+                self._context.close()
+            except Exception:
+                pass
+
+        if self._playwright is not None:
+            try:
+                self._playwright.stop()
+            except Exception:
+                pass
+
+        self._playwright = None
+        self._context = None
+        self._page = None
+
+
+def looks_like_challenge(body):
+    if not body:
+        return False
+
+    lowered = body.lower()
+
+    return any(marker in lowered for marker in (
+        "just a moment",
+        "checking your browser",
+        "cf-browser-verification",
+        "cf_chl_opt",
+        "attention required! | cloudflare",
+    ))
+
+
+BROWSER = BrowserSession()
 
 
 # ============================================================
@@ -337,7 +495,7 @@ def apply_session_cookie(cookie_str):
         print("  Could not parse the cookie string. Continuing anonymously.")
         return
 
-    SESSION.cookies.update(parsed)
+    BROWSER.add_cookies(parsed)
 
     print("  Parsed cookie name(s): " + ", ".join(sorted(parsed.keys())))
 
@@ -433,8 +591,8 @@ def get_with_retry(url, max_retries=3):
 
     for attempt in range(max_retries):
         try:
-            response = SESSION.get(url, timeout=30)
-        except requests.exceptions.RequestException as error:
+            response = BROWSER.get(url, timeout=60)
+        except (PlaywrightError, PlaywrightTimeoutError) as error:
             log_error(
                 f"Network request failed for {url} ({error.__class__.__name__}: {error})",
                 error,
@@ -1533,6 +1691,7 @@ def main():
         raise
 
     finally:
+        BROWSER.close()
         sys.stdout = original_stdout
         try:
             logger.close()
