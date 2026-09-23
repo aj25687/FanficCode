@@ -1271,11 +1271,14 @@ def choose_pages(total_pages, start_page, end_page, sampling_mode, sample_page_c
 
 def scrape_fandom_cohort(
     fandom, category, warning, crossover, complete_only, timeframe,
-    chapter_choice, target_chapters, total_pages, cache,
+    chapter_choice, target_chapters, total_pages, cache, writer,
     start_page=1, end_page=None, sampling_mode="all", sample_page_count=10, seed=2026,
 ):
     """Collect cohort metadata from selected search-result pages. Full
-    work text is never downloaded for cohort works."""
+    work text is never downloaded for cohort works.
+
+    Qualifying works are handed to `writer` page by page, so the CSV
+    is already up to date if the run is interrupted."""
     complete_only = str(complete_only) if str(complete_only) in {"0", "1"} else "0"
 
     if end_page is None:
@@ -1353,6 +1356,7 @@ def scrape_fandom_cohort(
             if hits < 50:
                 continue
 
+            writer.write_cohort_work(work, page)
             fics.append({**work, "sampled_page": page})
 
         if index % 10 == 0 or index == len(selected_pages):
@@ -1405,6 +1409,102 @@ def append_results_to_csv(csv_path, rows):
             writer.writeheader()
         for row in rows:
             writer.writerow(row)
+
+
+class ObservationWriter:
+    """Appends observations to the CSV as each page is finished.
+
+    Two things this buys over collecting everything and writing once
+    at the end: stopping a run mid-way leaves every completed page
+    already on disk, and a work that has been recorded before under
+    the same sampling condition is recognised and skipped before it
+    is written rather than after the whole cohort is collected.
+    """
+
+    def __init__(self, csv_path, run_timestamp, sampling_date, fandom_query, filter_meta):
+        self.csv_path = csv_path
+        self.run_timestamp = run_timestamp
+        self.sampling_date = sampling_date
+        self.fandom_query = fandom_query
+        self.filter_meta = filter_meta
+        self.seen_keys = load_existing_observation_keys(csv_path)
+        self.written = 0
+        self.skipped_duplicates = 0
+
+    def observation_key_for(self, work_id):
+        meta = self.filter_meta
+        return make_observation_key(
+            work_id, meta["fandom_scope"], meta["category_filter"], meta["warning_filter"],
+            meta["crossover_filter"], meta["chapter_filter"], meta["completion_filter"],
+            meta["timeframe_filter"], meta["sampling_mode"], meta["sampling_seed"],
+        )
+
+    def already_recorded(self, work_id):
+        return bool(work_id) and self.observation_key_for(work_id) in self.seen_keys
+
+    def _write(self, row):
+        append_results_to_csv(self.csv_path, [row])
+        self.seen_keys.add(row["observation_key"])
+        self.written += 1
+
+    def write_target(self, target):
+        work_id = target.get("work_id")
+        if not work_id:
+            return
+
+        if self.already_recorded(work_id):
+            self.skipped_duplicates += 1
+            return
+
+        self._write({
+            "run_timestamp": self.run_timestamp, "sampling_date": self.sampling_date,
+            "role": "target", "observation_key": self.observation_key_for(work_id),
+            "work_id": work_id, "title": target["title"], "fandom": target["fandom"],
+            "fandoms": target["fandoms"], "relationships": target["relationships"],
+            **self.filter_meta, "sampled_page": "",
+            "hits": target["hits"], "kudos": target["kudos"], "bookmarks": target["bookmarks"],
+            "comments": target["comments"], "words": target["words"], "chapters": target["chapters"],
+            "rating": target["rating"], "warnings": target["warnings"], "category": target["category"],
+            "language": target["language"], "date_published": target["date_published"],
+            "date_updated": target["date_updated"], "kudos_to_hits": target["kudos_to_hits"],
+            "bookmarks_to_hits": target["bookmarks_to_hits"], "comments_to_hits": target["comments_to_hits"],
+            "comments_to_kudos": target["comments_to_kudos"],
+            "kudos_per_10k_words": target["kudos_per_10k_words"],
+            "bookmarks_per_10k_words": target["bookmarks_per_10k_words"],
+            "comments_per_10k_words": target["comments_per_10k_words"],
+            "is_text_work": target["words"] > 0,
+            "is_crossover": target["is_crossover"],
+        })
+
+    def write_cohort_work(self, work, page):
+        work_id = str(work.get("work_id") or "")
+        if not work_id or work_id == "nan":
+            return
+
+        if self.already_recorded(work_id):
+            self.skipped_duplicates += 1
+            return
+
+        self._write({
+            "run_timestamp": self.run_timestamp, "sampling_date": self.sampling_date,
+            "role": "cohort", "observation_key": self.observation_key_for(work_id),
+            "work_id": work_id, "title": work.get("title", ""),
+            "fandom": self.fandom_query, "fandoms": work.get("fandoms", self.fandom_query),
+            "relationships": work.get("relationships", ""), **self.filter_meta,
+            "sampled_page": page, "hits": work["hits"], "kudos": work["kudos"],
+            "bookmarks": work["bookmarks"], "comments": work["comments"], "words": work["words"],
+            "chapters": work["chapters"], "rating": work.get("rating", ""),
+            "warnings": work.get("warnings", ""), "category": work.get("category", ""),
+            "language": work.get("language", ""), "date_published": "",
+            "date_updated": work.get("date_updated", ""),
+            "kudos_to_hits": work["kudos_to_hits"], "bookmarks_to_hits": work["bookmarks_to_hits"],
+            "comments_to_hits": work["comments_to_hits"], "comments_to_kudos": work["comments_to_kudos"],
+            "kudos_per_10k_words": work["kudos_per_10k_words"],
+            "bookmarks_per_10k_words": work["bookmarks_per_10k_words"],
+            "comments_per_10k_words": work["comments_per_10k_words"],
+            "is_text_work": int(work.get("words", 0) or 0) > 0,
+            "is_crossover": bool(work.get("is_crossover", False)),
+        })
 
 
 # ============================================================
@@ -1749,16 +1849,6 @@ def main():
         seed_input = input("Sampling seed (blank = 2026): ").strip()
         sampling_seed = int(seed_input) if seed_input.isdigit() else 2026
 
-        print("\nCollecting cohort metadata. Only search-result cards are parsed for cohort works.")
-
-        df = scrape_fandom_cohort(
-            fandom=fandom_query, category=category_filter, warning=warning_filter,
-            crossover=crossover_filter, complete_only=completion_filter, timeframe=timeframe_filter,
-            chapter_choice=chapter_filter, target_chapters=target["chapters"],
-            total_pages=total_pages, cache=cache, start_page=start_page, end_page=end_page,
-            sampling_mode=sampling_mode, sample_page_count=sample_page_count, seed=sampling_seed,
-        )
-
         run_timestamp = datetime.now(timezone.utc).isoformat(timespec="seconds")
         sampling_date = datetime.now(timezone.utc).date().isoformat()
 
@@ -1770,74 +1860,30 @@ def main():
             "sampling_seed": sampling_seed,
         }
 
-        existing_keys = load_existing_observation_keys(CSV_FILE)
-        new_rows = []
-        skipped_duplicates = 0
+        # Built before scraping starts so already-recorded works are
+        # recognised as the pages come in, and so each finished page
+        # is on disk immediately rather than at the end of the run.
+        writer = ObservationWriter(CSV_FILE, run_timestamp, sampling_date, fandom_query, filter_meta)
 
-        if target.get("work_id"):
-            target_key = make_observation_key(
-                target["work_id"], fandom_scope, category_filter, warning_filter,
-                crossover_filter, chapter_filter, completion_filter, timeframe_filter,
-                sampling_mode, sampling_seed,
+        writer.write_target(target)
+
+        print("\nCollecting cohort metadata. Only search-result cards are parsed for cohort works.")
+
+        try:
+            scrape_fandom_cohort(
+                fandom=fandom_query, category=category_filter, warning=warning_filter,
+                crossover=crossover_filter, complete_only=completion_filter, timeframe=timeframe_filter,
+                chapter_choice=chapter_filter, target_chapters=target["chapters"],
+                total_pages=total_pages, cache=cache, writer=writer,
+                start_page=start_page, end_page=end_page, sampling_mode=sampling_mode,
+                sample_page_count=sample_page_count, seed=sampling_seed,
             )
-            if target_key not in existing_keys:
-                new_rows.append({
-                    "run_timestamp": run_timestamp, "sampling_date": sampling_date,
-                    "role": "target", "observation_key": target_key, "work_id": target["work_id"],
-                    "title": target["title"], "fandom": target["fandom"], "fandoms": target["fandoms"],
-                    "relationships": target["relationships"], **filter_meta, "sampled_page": "",
-                    "hits": target["hits"], "kudos": target["kudos"], "bookmarks": target["bookmarks"],
-                    "comments": target["comments"], "words": target["words"], "chapters": target["chapters"],
-                    "rating": target["rating"], "warnings": target["warnings"], "category": target["category"],
-                    "language": target["language"], "date_published": target["date_published"],
-                    "date_updated": target["date_updated"], "kudos_to_hits": target["kudos_to_hits"],
-                    "bookmarks_to_hits": target["bookmarks_to_hits"], "comments_to_hits": target["comments_to_hits"],
-                    "comments_to_kudos": target["comments_to_kudos"],
-                    "kudos_per_10k_words": target["kudos_per_10k_words"],
-                    "bookmarks_per_10k_words": target["bookmarks_per_10k_words"],
-                    "comments_per_10k_words": target["comments_per_10k_words"],
-                    "is_text_work": target["words"] > 0,
-                    "is_crossover": target["is_crossover"],
-                })
-
-        for _, row in df.iterrows():
-            work_id = str(row.get("work_id", ""))
-            if not work_id or work_id == "nan":
-                continue
-
-            observation_key = make_observation_key(
-                work_id, fandom_scope, category_filter, warning_filter, crossover_filter,
-                chapter_filter, completion_filter, timeframe_filter, sampling_mode, sampling_seed,
+        finally:
+            print(f"\nAppended {writer.written} new observation(s) to {CSV_FILE}.")
+            print(
+                f"Skipped {writer.skipped_duplicates} observation(s) already present "
+                "under the same sampling condition."
             )
-            if observation_key in existing_keys:
-                skipped_duplicates += 1
-                continue
-            existing_keys.add(observation_key)
-
-            new_rows.append({
-                "run_timestamp": run_timestamp, "sampling_date": sampling_date, "role": "cohort",
-                "observation_key": observation_key, "work_id": work_id, "title": row.get("title", ""),
-                "fandom": fandom_query, "fandoms": row.get("fandoms", fandom_query),
-                "relationships": row.get("relationships", ""), **filter_meta,
-                "sampled_page": row.get("sampled_page", ""), "hits": row["hits"], "kudos": row["kudos"],
-                "bookmarks": row["bookmarks"], "comments": row["comments"], "words": row["words"],
-                "chapters": row["chapters"], "rating": row.get("rating", ""), "warnings": row.get("warnings", ""),
-                "category": row.get("category", ""), "language": row.get("language", ""),
-                "date_published": "", "date_updated": row.get("date_updated", ""),
-                "kudos_to_hits": row["kudos_to_hits"], "bookmarks_to_hits": row["bookmarks_to_hits"],
-                "comments_to_hits": row["comments_to_hits"], "comments_to_kudos": row["comments_to_kudos"],
-                "kudos_per_10k_words": row["kudos_per_10k_words"],
-                "bookmarks_per_10k_words": row["bookmarks_per_10k_words"],
-                "comments_per_10k_words": row["comments_per_10k_words"],
-                "is_text_work": int(row.get("words", 0) or 0) > 0,
-                "is_crossover": bool(row.get("is_crossover", False)),
-            })
-
-        if new_rows:
-            append_results_to_csv(CSV_FILE, new_rows)
-
-        print(f"\nAppended {len(new_rows)} new observation(s) to {CSV_FILE}.")
-        print(f"Skipped {skipped_duplicates} observation(s) already present under the same sampling condition.")
 
         dist_result = compute_and_save_distribution(CSV_FILE, DIST_FILE, fandom_query, filter_meta)
         if dist_result:
