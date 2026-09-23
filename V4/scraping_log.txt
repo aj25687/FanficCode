@@ -8782,3 +8782,535 @@
 [2026-09-22 23:38:48] SCRAPE STOPPED:
 [2026-09-22 23:38:48] AO3 returned HTTP 525 for the target work.
 [2026-09-22 23:38:48] Do not immediately rerun repeatedly. Wait and try later.
+
+===== Run started 2026-09-23T00:01:44+00:00 =====
+[2026-09-23 00:01:44] (Logging this run to scraping_log.txt; errors to error_log.txt.)
+[2026-09-23 00:01:44] Found ao3_cookie.txt. Using the cookie from that file.
+[2026-09-23 00:01:44]   Parsed cookie name(s): __cf_bm, _cfuvid, _otwarchive_session, cf_clearance, remember_user_token, user_credentials
+[2026-09-23 00:01:49]   Login verified: AO3 recognizes this cookie as a logged-in session.
+[2026-09-23 00:01:49] 
+[2026-09-23 00:02:10] Enter target AO3 work URL: 
+[2026-09-23 00:02:10] Fetching target work details...
+[2026-09-23 00:02:16] 
+[2026-09-23 00:02:16] SCRAPE STOPPED:
+[2026-09-23 00:02:16] AO3 returned HTTP 525 for the target work.
+[2026-09-23 00:02:16] Do not immediately rerun repeatedly. Wait and try later.
+
+===== Run started 2026-09-23T00:11:28+00:00 =====
+[2026-09-23 00:11:28] (Logging this run to scraping_log.txt; errors to error_log.txt.)
+[2026-09-23 00:11:28] Found ao3_cookie.txt. Using the cookie from that file.
+[2026-09-23 00:11:28]   Parsed cookie name(s): __cf_bm, _cfuvid, _otwarchive_session, cf_clearance, remember_user_token, user_credentials
+[2026-09-23 00:11:36]   Login verified: AO3 recognizes this cookie as a logged-in session.
+[2026-09-23 00:11:36] 
+[2026-09-23 00:11:57] Enter target AO3 work URL: 
+[2026-09-23 00:11:57] Fetching target work details...
+[2026-09-23 00:12:03] 
+[2026-09-23 00:12:03] --- Target Fic: 'bark like you want it <3' ---
+[2026-09-23 00:12:03] Work ID: 71837436
+[2026-09-23 00:12:03] Fandom(s): Harry Potter - J. K. Rowling
+[2026-09-23 00:12:03] Relationships: Regulus Black/Remus Lupin
+[2026-09-23 00:12:03] Words: 1,342 | Chapters: 1
+[2026-09-23 00:12:03] Hits: 1,558 | Kudos: 85 | Bookmarks: 8 | Comments: 5
+[2026-09-23 00:12:03] Kudos/Hits: 5.46%
+[2026-09-23 00:12:03] Bookmarks/Hits: 0.51%
+[2026-09-23 00:12:03] Kudos per 10k words: 633.38
+[2026-09-23 00:12:03] 
+[2026-09-23 00:12:03] --- Configure Comparison Cohort ---
+[2026-09-23 00:12:03] 
+[2026-09-23 00:12:03] Fandom scope:
+[2026-09-23 00:12:03] [0] Choose a target fandom
+[2026-09-23 00:12:03] [1] All fandoms
+[2026-09-23 00:12:12] Select fandom scope (0-1): 
+[2026-09-23 00:12:12] Category:
+[2026-09-23 00:12:12] [0] All
+[2026-09-23 00:12:12] [1] M/M
+[2026-09-23 00:12:12] [2] F/F
+[2026-09-23 00:12:12] [3] F/M
+[2026-09-23 00:12:12] [4] Multi
+[2026-09-23 00:12:12] [5] Gen
+[2026-09-23 00:12:13] Select category (0-5): 
+[2026-09-23 00:12:13] Archive warnings:
+[2026-09-23 00:12:13] [0] All
+[2026-09-23 00:12:13] [1] No Warnings Apply
+[2026-09-23 00:12:13] [2] Creator Chose Not To Use
+[2026-09-23 00:12:13] [3] Graphic Violence
+[2026-09-23 00:12:13] [4] Major Character Death
+[2026-09-23 00:12:13] [5] Rape/Non-Con
+[2026-09-23 00:12:13] [6] Underage
+[2026-09-23 00:12:13] Select warning (0-6): 
+[2026-09-23 00:12:13] Crossovers:
+[2026-09-23 00:12:13] [0] No crossovers (recommended)
+[2026-09-23 00:12:13] [1] All works
+[2026-09-23 00:12:13] [2] Crossovers only
+[2026-09-23 00:12:14] Select crossover option (0-2): 
+[2026-09-23 00:12:14] Chapters:
+[2026-09-23 00:12:14] [0] All
+[2026-09-23 00:12:14] [1] One-shots only
+[2026-09-23 00:12:14] [2] Same number as target
+[2026-09-23 00:12:14] [3] Multi-chapter only
+[2026-09-23 00:12:15] Select chapter filter (0-3): 
+[2026-09-23 00:12:15] Completion:
+[2026-09-23 00:12:15] [0] All
+[2026-09-23 00:12:15] [1] Complete only
+[2026-09-23 00:12:15] Select completion filter (0-1): 
+[2026-09-23 00:12:15] Timeframe:
+[2026-09-23 00:12:15] [0] All time
+[2026-09-23 00:12:15] [1] Last week
+[2026-09-23 00:12:15] [2] Last month
+[2026-09-23 00:12:15] [3] Last year
+[2026-09-23 00:12:15] [4] Custom range
+[2026-09-23 00:12:34] Select timeframe (0-4): Start date (YYYY-MM-DD, blank = no lower bound): End date (YYYY-MM-DD, blank = no upper bound): 
+[2026-09-23 00:12:34] Checking the result count...
+[2026-09-23 00:12:35]   Using cached page count: 2012 page(s).
+[2026-09-23 00:12:35] Found 2012 result page(s).
+[2026-09-23 00:12:37] Start page (1-2012, blank = 1): End page (1-2012, blank = 2012): 
+[2026-09-23 00:12:37] Sampling mode:
+[2026-09-23 00:12:37] [0] All pages
+[2026-09-23 00:12:37] [1] Systematic pages
+[2026-09-23 00:12:37] [2] Random pages
+[2026-09-23 00:12:43] Select sampling mode (0-2): How many pages should be sampled? Sampling seed (blank = 2026): 
+[2026-09-23 00:12:43] Collecting cohort metadata. Only search-result cards are parsed for cohort works.
+[2026-09-23 00:12:43]   Selected 150 page(s): [5, 24, 26, 36, 65, 68, 71, 107, 158, 164, 165, 167, 169, 175, 182, 242, 248, 251, 279, 288]...
+[2026-09-23 00:12:43]   Page 5: loaded from cache (20 works).
+[2026-09-23 00:12:43]   Page 24: loaded from cache (20 works).
+[2026-09-23 00:12:43]   Page 26: loaded from cache (20 works).
+[2026-09-23 00:12:43]   Page 36: loaded from cache (20 works).
+[2026-09-23 00:12:43]   Page 65: loaded from cache (20 works).
+[2026-09-23 00:12:43]   Page 68: loaded from cache (20 works).
+[2026-09-23 00:12:43]   Page 71: loaded from cache (20 works).
+[2026-09-23 00:12:43]   Page 107: loaded from cache (20 works).
+[2026-09-23 00:12:43]   Page 158: loaded from cache (20 works).
+[2026-09-23 00:12:43]   Page 164: loaded from cache (20 works).
+[2026-09-23 00:12:43]   ...page 10/150 done; 168 qualifying works.
+[2026-09-23 00:12:43]   Page 165: loaded from cache (20 works).
+[2026-09-23 00:12:43]   Page 167: loaded from cache (20 works).
+[2026-09-23 00:12:43]   Page 169: loaded from cache (20 works).
+[2026-09-23 00:12:43]   Page 175: loaded from cache (20 works).
+[2026-09-23 00:12:43]   Page 182: loaded from cache (20 works).
+[2026-09-23 00:12:43]   Page 242: loaded from cache (20 works).
+[2026-09-23 00:12:43]   Page 248: loaded from cache (20 works).
+[2026-09-23 00:12:43]   Page 251: loaded from cache (20 works).
+[2026-09-23 00:12:43]   Page 279: loaded from cache (20 works).
+[2026-09-23 00:12:43]   Page 288: loaded from cache (20 works).
+[2026-09-23 00:12:43]   ...page 20/150 done; 330 qualifying works.
+[2026-09-23 00:12:43]   Page 293: loaded from cache (20 works).
+[2026-09-23 00:12:43]   Page 308: loaded from cache (20 works).
+[2026-09-23 00:12:43]   Page 313: loaded from cache (20 works).
+[2026-09-23 00:12:43]   Page 318: loaded from cache (20 works).
+[2026-09-23 00:12:43]   Page 331: loaded from cache (20 works).
+[2026-09-23 00:12:43]   Page 359: loaded from cache (20 works).
+[2026-09-23 00:12:43]   Page 372: loaded from cache (20 works).
+[2026-09-23 00:12:43]   Page 374: loaded from cache (20 works).
+[2026-09-23 00:12:43]   Page 376: loaded from cache (20 works).
+[2026-09-23 00:12:54]   ...page 30/150 done; 497 qualifying works.
+[2026-09-23 00:12:54]   Page 386: loaded from cache (20 works).
+[2026-09-23 00:12:54]   Page 395: loaded from cache (20 works).
+[2026-09-23 00:12:54]   Page 439: loaded from cache (20 works).
+[2026-09-23 00:12:54]   Page 446: loaded from cache (20 works).
+[2026-09-23 00:12:54]   Page 458: loaded from cache (20 works).
+[2026-09-23 00:12:54]   Page 471: loaded from cache (20 works).
+[2026-09-23 00:12:54]   Page 478: loaded from cache (20 works).
+[2026-09-23 00:12:54]   Page 483: loaded from cache (20 works).
+[2026-09-23 00:12:54]   Page 491: loaded from cache (20 works).
+[2026-09-23 00:12:54]   Page 494: loaded from cache (20 works).
+[2026-09-23 00:12:54]   ...page 40/150 done; 667 qualifying works.
+[2026-09-23 00:12:54]   Page 517: loaded from cache (20 works).
+[2026-09-23 00:12:54]   Page 528: loaded from cache (20 works).
+[2026-09-23 00:12:54]   Page 540: loaded from cache (20 works).
+[2026-09-23 00:12:54]   Page 542: loaded from cache (20 works).
+[2026-09-23 00:12:54]   Page 543: loaded from cache (20 works).
+[2026-09-23 00:12:54]   Page 557: loaded from cache (20 works).
+[2026-09-23 00:12:54]   Page 566: loaded from cache (20 works).
+[2026-09-23 00:12:54]   Page 567: loaded from cache (20 works).
+[2026-09-23 00:12:54]   Page 575: loaded from cache (20 works).
+[2026-09-23 00:12:54]   Page 576: loaded from cache (20 works).
+[2026-09-23 00:12:54]   ...page 50/150 done; 805 qualifying works.
+[2026-09-23 00:12:54]   Page 580: loaded from cache (20 works).
+[2026-09-23 00:12:54]   Page 588: loaded from cache (20 works).
+[2026-09-23 00:12:54]   Page 602: loaded from cache (20 works).
+[2026-09-23 00:12:54]   Page 605: loaded from cache (20 works).
+[2026-09-23 00:12:54]   Page 622: loaded from cache (20 works).
+[2026-09-23 00:12:54]   Page 627: loaded from cache (20 works).
+[2026-09-23 00:12:54]   Page 632: loaded from cache (20 works).
+[2026-09-23 00:12:54]   Page 676: loaded from cache (20 works).
+[2026-09-23 00:13:01]   Page 702: loaded from cache (20 works).
+[2026-09-23 00:13:01]   ...page 60/150 done; 978 qualifying works.
+[2026-09-23 00:13:01]   Page 708: loaded from cache (20 works).
+[2026-09-23 00:13:01]   Page 728: loaded from cache (20 works).
+[2026-09-23 00:13:01]   Page 739: loaded from cache (20 works).
+[2026-09-23 00:13:01]   Page 740: loaded from cache (20 works).
+[2026-09-23 00:13:01]   Page 762: loaded from cache (20 works).
+[2026-09-23 00:13:01]   Page 765: loaded from cache (20 works).
+[2026-09-23 00:13:01]   Page 766: loaded from cache (20 works).
+[2026-09-23 00:13:01]   Page 797: loaded from cache (20 works).
+[2026-09-23 00:13:01]   Page 810: loaded from cache (20 works).
+[2026-09-23 00:13:01]   Page 826: loaded from cache (20 works).
+[2026-09-23 00:13:01]   ...page 70/150 done; 1122 qualifying works.
+[2026-09-23 00:13:01]   Page 870: loaded from cache (20 works).
+[2026-09-23 00:13:01]   Page 915: loaded from cache (20 works).
+[2026-09-23 00:13:01]   Page 922: loaded from cache (20 works).
+[2026-09-23 00:13:12]   Page 927: loaded from cache (20 works).
+[2026-09-23 00:13:29]   Page 976: loaded from cache (20 works).
+[2026-09-23 00:13:29]   Page 977: loaded from cache (20 works).
+[2026-09-23 00:13:29]   Page 989: loaded from cache (20 works).
+[2026-09-23 00:13:29]   ...page 80/150 done; 1301 qualifying works.
+[2026-09-23 00:13:50]   Page 1058: loaded from cache (20 works).
+[2026-09-23 00:14:56]   ...page 90/150 done; 1468 qualifying works.
+[2026-09-23 00:16:26]   ...page 100/150 done; 1642 qualifying works.
+[2026-09-23 00:17:55]   ...page 110/150 done; 1805 qualifying works.
+[2026-09-23 00:18:52]   --- 429 response ---
+[2026-09-23 00:18:52]   URL: https://archiveofourown.org/works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=1567&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc&work_search%5Bfandom_names%5D=Harry+Potter+-+J.+K.+Rowling&work_search%5Bcrossover%5D=F&work_search%5Bdate_from%5D=2026-01-01&work_search%5Bdate_to%5D=2026-07-01
+[2026-09-23 00:18:52]   Status: 429 
+[2026-09-23 00:18:52]   Retry-After header: (not sent)
+[2026-09-23 00:18:52]   Response headers: {'alt-svc': 'h3=":443"; ma=86400', 'cache-control': 'no-cache', 'cf-cache-status': 'DYNAMIC', 'cf-ray': 'a3f55fe29acbadf1-IAD', 'content-length': '12', 'content-type': 'text/plain', 'date': 'Wed, 23 Sep 2026 00:18:51 GMT', 'priority': 'u=0,i', 'retry-after': '69', 'server': 'cloudflare', 'server-timing': 'cfExtPri', 'set-cookie': '_otwarchive_session=eyJfcmFpbHMiOnsibWVzc2FnZSI6ImV5SnpaWE56YVc5dVgybGtJam9pWVRnd01UYzVObVEzTmpjd016RTBNVFJoTnpkbE5tRm1NekU0TnpjM1ltSWlMQ0ozWVhKa1pXNHVkWE5sY2k1MWMyVnlMbXRsZVNJNlcxc3pNVGs0Tnpnd01WMHNJaVF5WVNReE5DUmpWekl3WWpsbWRrOTJTblphZUZkeFowcEpUbWxQSWwwc0lsOWpjM0ptWDNSdmEyVnVJam9pYlhwMGNqUlVZa2x2Y2xaVllVNU5aMVp0YlhsSFVHMTJVVVYyZWkxVGEzQkdRbVl5VXpWdWNWbFJjeUo5IiwiZXhwIjoiMjAyNi0xMC0wN1QwMDoxODo1MS45ODJaIiwicHVyIjoiY29va2llLl9vdHdhcmNoaXZlX3Nlc3Npb24ifX0%3D--2c5a16b364f8b381c40965ee70396432e1250950; path=/; expires=Wed, 07 Oct 2026 00:18:51 GMT; HttpOnly; SameSite=Lax', 'x-request-id': '2d39cc20-851b-405e-950a-eebc4eb9cfea', 'x-runtime': '0.002344'}
+[2026-09-23 00:18:52]   Response body:
+[2026-09-23 00:18:52]   <html><head><meta name="color-scheme" content="light dark"></head><body><pre style="word-wrap: break-word; white-space: pre-wrap;">Retry later
+[2026-09-23 00:18:52] </pre></body></html>
+[2026-09-23 00:18:52]   ---------------------
+[2026-09-23 00:18:52]   Waiting 15s before retrying...
+[2026-09-23 00:19:07]   --- 429 response ---
+[2026-09-23 00:19:07]   URL: https://archiveofourown.org/works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=1567&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc&work_search%5Bfandom_names%5D=Harry+Potter+-+J.+K.+Rowling&work_search%5Bcrossover%5D=F&work_search%5Bdate_from%5D=2026-01-01&work_search%5Bdate_to%5D=2026-07-01
+[2026-09-23 00:19:07]   Status: 429 
+[2026-09-23 00:19:07]   Retry-After header: (not sent)
+[2026-09-23 00:19:07]   Response headers: {'alt-svc': 'h3=":443"; ma=86400', 'cache-control': 'no-cache', 'cf-cache-status': 'DYNAMIC', 'cf-ray': 'a3f5604199bbadf1-IAD', 'content-length': '12', 'content-type': 'text/plain', 'date': 'Wed, 23 Sep 2026 00:19:08 GMT', 'priority': 'u=0,i', 'retry-after': '52', 'server': 'cloudflare', 'server-timing': 'cfExtPri', 'set-cookie': '_otwarchive_session=eyJfcmFpbHMiOnsibWVzc2FnZSI6ImV5SnpaWE56YVc5dVgybGtJam9pWVRnd01UYzVObVEzTmpjd016RTBNVFJoTnpkbE5tRm1NekU0TnpjM1ltSWlMQ0ozWVhKa1pXNHVkWE5sY2k1MWMyVnlMbXRsZVNJNlcxc3pNVGs0Tnpnd01WMHNJaVF5WVNReE5DUmpWekl3WWpsbWRrOTJTblphZUZkeFowcEpUbWxQSWwwc0lsOWpjM0ptWDNSdmEyVnVJam9pYlhwMGNqUlVZa2x2Y2xaVllVNU5aMVp0YlhsSFVHMTJVVVYyZWkxVGEzQkdRbVl5VXpWdWNWbFJjeUo5IiwiZXhwIjoiMjAyNi0xMC0wN1QwMDoxOTowOC4wMTlaIiwicHVyIjoiY29va2llLl9vdHdhcmNoaXZlX3Nlc3Npb24ifX0%3D--c068bd1443675bcb18a8aca4a7439079afb95937; path=/; expires=Wed, 07 Oct 2026 00:19:08 GMT; HttpOnly; SameSite=Lax', 'x-request-id': '7e901f72-ac3f-459f-99f5-9498b3c01334', 'x-runtime': '0.001418'}
+[2026-09-23 00:19:07]   Response body:
+[2026-09-23 00:19:07]   <html><head><meta name="color-scheme" content="light dark"></head><body><pre style="word-wrap: break-word; white-space: pre-wrap;">Retry later
+[2026-09-23 00:19:07] </pre></body></html>
+[2026-09-23 00:19:07]   ---------------------
+[2026-09-23 00:19:07]   Waiting 30s before retrying...
+[2026-09-23 00:19:38]   --- 429 response ---
+[2026-09-23 00:19:38]   URL: https://archiveofourown.org/works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=1567&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc&work_search%5Bfandom_names%5D=Harry+Potter+-+J.+K.+Rowling&work_search%5Bcrossover%5D=F&work_search%5Bdate_from%5D=2026-01-01&work_search%5Bdate_to%5D=2026-07-01
+[2026-09-23 00:19:38]   Status: 429 
+[2026-09-23 00:19:38]   Retry-After header: (not sent)
+[2026-09-23 00:19:38]   Response headers: {'alt-svc': 'h3=":443"; ma=86400', 'cache-control': 'no-cache', 'cf-cache-status': 'DYNAMIC', 'cf-ray': 'a3f56103e8575ceb-IAD', 'content-length': '12', 'content-type': 'text/plain', 'date': 'Wed, 23 Sep 2026 00:19:38 GMT', 'priority': 'u=0,i', 'retry-after': '22', 'server': 'cloudflare', 'server-timing': 'cfExtPri', 'set-cookie': '_otwarchive_session=eyJfcmFpbHMiOnsibWVzc2FnZSI6ImV5SnpaWE56YVc5dVgybGtJam9pWVRnd01UYzVObVEzTmpjd016RTBNVFJoTnpkbE5tRm1NekU0TnpjM1ltSWlMQ0ozWVhKa1pXNHVkWE5sY2k1MWMyVnlMbXRsZVNJNlcxc3pNVGs0Tnpnd01WMHNJaVF5WVNReE5DUmpWekl3WWpsbWRrOTJTblphZUZkeFowcEpUbWxQSWwwc0lsOWpjM0ptWDNSdmEyVnVJam9pYlhwMGNqUlVZa2x2Y2xaVllVNU5aMVp0YlhsSFVHMTJVVVYyZWkxVGEzQkdRbVl5VXpWdWNWbFJjeUo5IiwiZXhwIjoiMjAyNi0xMC0wN1QwMDoxOTozOC4yNjNaIiwicHVyIjoiY29va2llLl9vdHdhcmNoaXZlX3Nlc3Npb24ifX0%3D--fd1f500a9b7d0a2e2a0db1ff24af8e7699b1bf7a; path=/; expires=Wed, 07 Oct 2026 00:19:38 GMT; HttpOnly; SameSite=Lax', 'x-request-id': '3737ad37-e443-4e2a-ad74-52020f736ed3', 'x-runtime': '0.002033'}
+[2026-09-23 00:19:38]   Response body:
+[2026-09-23 00:19:38]   <html><head><meta name="color-scheme" content="light dark"></head><body><pre style="word-wrap: break-word; white-space: pre-wrap;">Retry later
+[2026-09-23 00:19:38] </pre></body></html>
+[2026-09-23 00:19:38]   ---------------------
+[2026-09-23 00:19:38]   Waiting 45s before retrying...
+[2026-09-23 00:20:23]   Page 1567: 429 (1/3).
+[2026-09-23 00:20:47]   ...page 120/150 done; 1964 qualifying works.
+[2026-09-23 00:20:54]   --- 429 response ---
+[2026-09-23 00:20:54]   URL: https://archiveofourown.org/works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=1633&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc&work_search%5Bfandom_names%5D=Harry+Potter+-+J.+K.+Rowling&work_search%5Bcrossover%5D=F&work_search%5Bdate_from%5D=2026-01-01&work_search%5Bdate_to%5D=2026-07-01
+[2026-09-23 00:20:54]   Status: 429 
+[2026-09-23 00:20:54]   Retry-After header: (not sent)
+[2026-09-23 00:20:54]   Response headers: {'alt-svc': 'h3=":443"; ma=86400', 'cache-control': 'no-cache', 'cf-cache-status': 'DYNAMIC', 'cf-ray': 'a3f562e25e96898c-IAD', 'content-length': '12', 'content-type': 'text/plain', 'date': 'Wed, 23 Sep 2026 00:20:54 GMT', 'priority': 'u=0,i', 'retry-after': '346', 'server': 'cloudflare', 'server-timing': 'cfExtPri', 'set-cookie': '_otwarchive_session=eyJfcmFpbHMiOnsibWVzc2FnZSI6ImV5SnpaWE56YVc5dVgybGtJam9pWVRnd01UYzVObVEzTmpjd016RTBNVFJoTnpkbE5tRm1NekU0TnpjM1ltSWlMQ0ozWVhKa1pXNHVkWE5sY2k1MWMyVnlMbXRsZVNJNlcxc3pNVGs0Tnpnd01WMHNJaVF5WVNReE5DUmpWekl3WWpsbWRrOTJTblphZUZkeFowcEpUbWxQSWwwc0lsOWpjM0ptWDNSdmEyVnVJam9pYlhwMGNqUlVZa2x2Y2xaVllVNU5aMVp0YlhsSFVHMTJVVVYyZWkxVGEzQkdRbVl5VXpWdWNWbFJjeUo5IiwiZXhwIjoiMjAyNi0xMC0wN1QwMDoyMDo1NC44MjNaIiwicHVyIjoiY29va2llLl9vdHdhcmNoaXZlX3Nlc3Npb24ifX0%3D--6d18cdac7e2fb8dbc6f24eeec1974719982c6894; path=/; expires=Wed, 07 Oct 2026 00:20:54 GMT; HttpOnly; SameSite=Lax', 'strict-transport-security': 'max-age=172800', 'x-request-id': '35e09efc-f5c6-4ae2-9410-681b9d944cf0', 'x-runtime': '0.002766'}
+[2026-09-23 00:20:54]   Response body:
+[2026-09-23 00:20:54]   <html><head><meta name="color-scheme" content="light dark"></head><body><pre style="word-wrap: break-word; white-space: pre-wrap;">Retry later
+[2026-09-23 00:20:54] </pre></body></html>
+[2026-09-23 00:20:54]   ---------------------
+[2026-09-23 00:20:54]   Waiting 15s before retrying...
+[2026-09-23 00:21:10]   --- 429 response ---
+[2026-09-23 00:21:10]   URL: https://archiveofourown.org/works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=1633&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc&work_search%5Bfandom_names%5D=Harry+Potter+-+J.+K.+Rowling&work_search%5Bcrossover%5D=F&work_search%5Bdate_from%5D=2026-01-01&work_search%5Bdate_to%5D=2026-07-01
+[2026-09-23 00:21:10]   Status: 429 
+[2026-09-23 00:21:10]   Retry-After header: (not sent)
+[2026-09-23 00:21:10]   Response headers: {'alt-svc': 'h3=":443"; ma=86400', 'cache-control': 'no-cache', 'cf-cache-status': 'DYNAMIC', 'cf-ray': 'a3f563412b6a898c-IAD', 'content-length': '12', 'content-type': 'text/plain', 'date': 'Wed, 23 Sep 2026 00:21:10 GMT', 'priority': 'u=0,i', 'retry-after': '330', 'server': 'cloudflare', 'server-timing': 'cfExtPri', 'set-cookie': '_otwarchive_session=eyJfcmFpbHMiOnsibWVzc2FnZSI6ImV5SnpaWE56YVc5dVgybGtJam9pWVRnd01UYzVObVEzTmpjd016RTBNVFJoTnpkbE5tRm1NekU0TnpjM1ltSWlMQ0ozWVhKa1pXNHVkWE5sY2k1MWMyVnlMbXRsZVNJNlcxc3pNVGs0Tnpnd01WMHNJaVF5WVNReE5DUmpWekl3WWpsbWRrOTJTblphZUZkeFowcEpUbWxQSWwwc0lsOWpjM0ptWDNSdmEyVnVJam9pYlhwMGNqUlVZa2x2Y2xaVllVNU5aMVp0YlhsSFVHMTJVVVYyZWkxVGEzQkdRbVl5VXpWdWNWbFJjeUo5IiwiZXhwIjoiMjAyNi0xMC0wN1QwMDoyMToxMC44MTdaIiwicHVyIjoiY29va2llLl9vdHdhcmNoaXZlX3Nlc3Npb24ifX0%3D--4e04bafa6de5fec1e4a0c4c2073d3a3fd0bcdcfd; path=/; expires=Wed, 07 Oct 2026 00:21:10 GMT; HttpOnly; SameSite=Lax', 'strict-transport-security': 'max-age=172800', 'x-request-id': '670ae0d6-bfa5-42cd-9e60-0bbe53068056', 'x-runtime': '0.005262'}
+[2026-09-23 00:21:10]   Response body:
+[2026-09-23 00:21:10]   <html><head><meta name="color-scheme" content="light dark"></head><body><pre style="word-wrap: break-word; white-space: pre-wrap;">Retry later
+[2026-09-23 00:21:10] </pre></body></html>
+[2026-09-23 00:21:10]   ---------------------
+[2026-09-23 00:21:10]   Waiting 30s before retrying...
+[2026-09-23 00:21:40]   --- 429 response ---
+[2026-09-23 00:21:40]   URL: https://archiveofourown.org/works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=1633&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc&work_search%5Bfandom_names%5D=Harry+Potter+-+J.+K.+Rowling&work_search%5Bcrossover%5D=F&work_search%5Bdate_from%5D=2026-01-01&work_search%5Bdate_to%5D=2026-07-01
+[2026-09-23 00:21:40]   Status: 429 
+[2026-09-23 00:21:40]   Retry-After header: (not sent)
+[2026-09-23 00:21:40]   Response headers: {'alt-svc': 'h3=":443"; ma=86400', 'cache-control': 'no-cache', 'cf-cache-status': 'DYNAMIC', 'cf-ray': 'a3f56402ca175567-IAD', 'content-length': '12', 'content-type': 'text/plain', 'date': 'Wed, 23 Sep 2026 00:21:40 GMT', 'priority': 'u=0,i', 'retry-after': '300', 'server': 'cloudflare', 'server-timing': 'cfExtPri', 'set-cookie': '_otwarchive_session=eyJfcmFpbHMiOnsibWVzc2FnZSI6ImV5SnpaWE56YVc5dVgybGtJam9pWVRnd01UYzVObVEzTmpjd016RTBNVFJoTnpkbE5tRm1NekU0TnpjM1ltSWlMQ0ozWVhKa1pXNHVkWE5sY2k1MWMyVnlMbXRsZVNJNlcxc3pNVGs0Tnpnd01WMHNJaVF5WVNReE5DUmpWekl3WWpsbWRrOTJTblphZUZkeFowcEpUbWxQSWwwc0lsOWpjM0ptWDNSdmEyVnVJam9pYlhwMGNqUlVZa2x2Y2xaVllVNU5aMVp0YlhsSFVHMTJVVVYyZWkxVGEzQkdRbVl5VXpWdWNWbFJjeUo5IiwiZXhwIjoiMjAyNi0xMC0wN1QwMDoyMTo0MC45NjlaIiwicHVyIjoiY29va2llLl9vdHdhcmNoaXZlX3Nlc3Npb24ifX0%3D--e4d33ff3c5fc50e9f4554e4d5a7c59bf10658111; path=/; expires=Wed, 07 Oct 2026 00:21:40 GMT; HttpOnly; SameSite=Lax', 'x-request-id': '3154960f-caa9-43bd-aecc-12595116f8ae', 'x-runtime': '0.003364'}
+[2026-09-23 00:21:40]   Response body:
+[2026-09-23 00:21:40]   <html><head><meta name="color-scheme" content="light dark"></head><body><pre style="word-wrap: break-word; white-space: pre-wrap;">Retry later
+[2026-09-23 00:21:40] </pre></body></html>
+[2026-09-23 00:21:40]   ---------------------
+[2026-09-23 00:21:40]   Waiting 45s before retrying...
+[2026-09-23 00:22:25]   Page 1633: 429 (1/3).
+[2026-09-23 00:22:31]   --- 429 response ---
+[2026-09-23 00:22:31]   URL: https://archiveofourown.org/works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=1646&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc&work_search%5Bfandom_names%5D=Harry+Potter+-+J.+K.+Rowling&work_search%5Bcrossover%5D=F&work_search%5Bdate_from%5D=2026-01-01&work_search%5Bdate_to%5D=2026-07-01
+[2026-09-23 00:22:31]   Status: 429 
+[2026-09-23 00:22:31]   Retry-After header: (not sent)
+[2026-09-23 00:22:31]   Response headers: {'alt-svc': 'h3=":443"; ma=86400', 'cache-control': 'no-cache', 'cf-cache-status': 'DYNAMIC', 'cf-ray': 'a3f5653c5b41c940-IAD', 'content-length': '12', 'content-type': 'text/plain', 'date': 'Wed, 23 Sep 2026 00:22:31 GMT', 'priority': 'u=0,i', 'retry-after': '249', 'server': 'cloudflare', 'server-timing': 'cfExtPri', 'set-cookie': '_otwarchive_session=eyJfcmFpbHMiOnsibWVzc2FnZSI6ImV5SnpaWE56YVc5dVgybGtJam9pWVRnd01UYzVObVEzTmpjd016RTBNVFJoTnpkbE5tRm1NekU0TnpjM1ltSWlMQ0ozWVhKa1pXNHVkWE5sY2k1MWMyVnlMbXRsZVNJNlcxc3pNVGs0Tnpnd01WMHNJaVF5WVNReE5DUmpWekl3WWpsbWRrOTJTblphZUZkeFowcEpUbWxQSWwwc0lsOWpjM0ptWDNSdmEyVnVJam9pYlhwMGNqUlVZa2x2Y2xaVllVNU5aMVp0YlhsSFVHMTJVVVYyZWkxVGEzQkdRbVl5VXpWdWNWbFJjeUo5IiwiZXhwIjoiMjAyNi0xMC0wN1QwMDoyMjozMS4xMzZaIiwicHVyIjoiY29va2llLl9vdHdhcmNoaXZlX3Nlc3Npb24ifX0%3D--87d6a1b6f186221b153e0560be82eb1ec4c4a202; path=/; expires=Wed, 07 Oct 2026 00:22:31 GMT; HttpOnly; SameSite=Lax', 'strict-transport-security': 'max-age=172800', 'x-request-id': 'bf79069d-60c2-4d53-8b11-0100a8edcf96', 'x-runtime': '0.002573'}
+[2026-09-23 00:22:31]   Response body:
+[2026-09-23 00:22:31]   <html><head><meta name="color-scheme" content="light dark"></head><body><pre style="word-wrap: break-word; white-space: pre-wrap;">Retry later
+[2026-09-23 00:22:31] </pre></body></html>
+[2026-09-23 00:22:31]   ---------------------
+[2026-09-23 00:22:31]   Waiting 15s before retrying...
+[2026-09-23 00:22:46]   --- 429 response ---
+[2026-09-23 00:22:46]   URL: https://archiveofourown.org/works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=1646&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc&work_search%5Bfandom_names%5D=Harry+Potter+-+J.+K.+Rowling&work_search%5Bcrossover%5D=F&work_search%5Bdate_from%5D=2026-01-01&work_search%5Bdate_to%5D=2026-07-01
+[2026-09-23 00:22:46]   Status: 429 
+[2026-09-23 00:22:46]   Retry-After header: (not sent)
+[2026-09-23 00:22:46]   Response headers: {'alt-svc': 'h3=":443"; ma=86400', 'cache-control': 'no-cache', 'cf-cache-status': 'DYNAMIC', 'cf-ray': 'a3f5659b2ec4c940-IAD', 'content-length': '12', 'content-type': 'text/plain', 'date': 'Wed, 23 Sep 2026 00:22:46 GMT', 'priority': 'u=0,i', 'retry-after': '234', 'server': 'cloudflare', 'server-timing': 'cfExtPri', 'set-cookie': '_otwarchive_session=eyJfcmFpbHMiOnsibWVzc2FnZSI6ImV5SnpaWE56YVc5dVgybGtJam9pWVRnd01UYzVObVEzTmpjd016RTBNVFJoTnpkbE5tRm1NekU0TnpjM1ltSWlMQ0ozWVhKa1pXNHVkWE5sY2k1MWMyVnlMbXRsZVNJNlcxc3pNVGs0Tnpnd01WMHNJaVF5WVNReE5DUmpWekl3WWpsbWRrOTJTblphZUZkeFowcEpUbWxQSWwwc0lsOWpjM0ptWDNSdmEyVnVJam9pYlhwMGNqUlVZa2x2Y2xaVllVNU5aMVp0YlhsSFVHMTJVVVYyZWkxVGEzQkdRbVl5VXpWdWNWbFJjeUo5IiwiZXhwIjoiMjAyNi0xMC0wN1QwMDoyMjo0Ni4zMDJaIiwicHVyIjoiY29va2llLl9vdHdhcmNoaXZlX3Nlc3Npb24ifX0%3D--52f95fd572dcfd8a92847a8008453f603763ee7e; path=/; expires=Wed, 07 Oct 2026 00:22:46 GMT; HttpOnly; SameSite=Lax', 'strict-transport-security': 'max-age=172800', 'x-request-id': 'de86c7b5-c6f1-4340-9d6e-9669a6ab72bb', 'x-runtime': '0.003380'}
+[2026-09-23 00:22:46]   Response body:
+[2026-09-23 00:22:46]   <html><head><meta name="color-scheme" content="light dark"></head><body><pre style="word-wrap: break-word; white-space: pre-wrap;">Retry later
+[2026-09-23 00:22:46] </pre></body></html>
+[2026-09-23 00:22:46]   ---------------------
+[2026-09-23 00:22:46]   Waiting 30s before retrying...
+[2026-09-23 00:23:16]   --- 429 response ---
+[2026-09-23 00:23:16]   URL: https://archiveofourown.org/works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=1646&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc&work_search%5Bfandom_names%5D=Harry+Potter+-+J.+K.+Rowling&work_search%5Bcrossover%5D=F&work_search%5Bdate_from%5D=2026-01-01&work_search%5Bdate_to%5D=2026-07-01
+[2026-09-23 00:23:16]   Status: 429 
+[2026-09-23 00:23:16]   Retry-After header: (not sent)
+[2026-09-23 00:23:16]   Response headers: {'alt-svc': 'h3=":443"; ma=86400', 'cache-control': 'no-cache', 'cf-cache-status': 'DYNAMIC', 'cf-ray': 'a3f566580f73e647-IAD', 'content-length': '12', 'content-type': 'text/plain', 'date': 'Wed, 23 Sep 2026 00:23:16 GMT', 'priority': 'u=0,i', 'retry-after': '204', 'server': 'cloudflare', 'server-timing': 'cfExtPri', 'set-cookie': '_otwarchive_session=eyJfcmFpbHMiOnsibWVzc2FnZSI6ImV5SnpaWE56YVc5dVgybGtJam9pWVRnd01UYzVObVEzTmpjd016RTBNVFJoTnpkbE5tRm1NekU0TnpjM1ltSWlMQ0ozWVhKa1pXNHVkWE5sY2k1MWMyVnlMbXRsZVNJNlcxc3pNVGs0Tnpnd01WMHNJaVF5WVNReE5DUmpWekl3WWpsbWRrOTJTblphZUZkeFowcEpUbWxQSWwwc0lsOWpjM0ptWDNSdmEyVnVJam9pYlhwMGNqUlVZa2x2Y2xaVllVNU5aMVp0YlhsSFVHMTJVVVYyZWkxVGEzQkdRbVl5VXpWdWNWbFJjeUo5IiwiZXhwIjoiMjAyNi0xMC0wN1QwMDoyMzoxNi41MjlaIiwicHVyIjoiY29va2llLl9vdHdhcmNoaXZlX3Nlc3Npb24ifX0%3D--45017ebb2834b81437998ec9868bb698dce47a07; path=/; expires=Wed, 07 Oct 2026 00:23:16 GMT; HttpOnly; SameSite=Lax', 'x-request-id': '12e89818-6489-475a-b645-b83503f05828', 'x-runtime': '0.002998'}
+[2026-09-23 00:23:16]   Response body:
+[2026-09-23 00:23:16]   <html><head><meta name="color-scheme" content="light dark"></head><body><pre style="word-wrap: break-word; white-space: pre-wrap;">Retry later
+[2026-09-23 00:23:16] </pre></body></html>
+[2026-09-23 00:23:16]   ---------------------
+[2026-09-23 00:23:16]   Waiting 45s before retrying...
+[2026-09-23 00:24:01]   Page 1646: 429 (2/3).
+[2026-09-23 00:24:08]   --- 429 response ---
+[2026-09-23 00:24:08]   URL: https://archiveofourown.org/works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=1660&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc&work_search%5Bfandom_names%5D=Harry+Potter+-+J.+K.+Rowling&work_search%5Bcrossover%5D=F&work_search%5Bdate_from%5D=2026-01-01&work_search%5Bdate_to%5D=2026-07-01
+[2026-09-23 00:24:08]   Status: 429 
+[2026-09-23 00:24:08]   Retry-After header: (not sent)
+[2026-09-23 00:24:08]   Response headers: {'alt-svc': 'h3=":443"; ma=86400', 'cache-control': 'no-cache', 'cf-cache-status': 'DYNAMIC', 'cf-ray': 'a3f5679f89c9c439-EWR', 'content-length': '12', 'content-type': 'text/plain', 'date': 'Wed, 23 Sep 2026 00:24:08 GMT', 'priority': 'u=0,i', 'retry-after': '152', 'server': 'cloudflare', 'server-timing': 'cfExtPri', 'set-cookie': '_otwarchive_session=eyJfcmFpbHMiOnsibWVzc2FnZSI6ImV5SnpaWE56YVc5dVgybGtJam9pWVRnd01UYzVObVEzTmpjd016RTBNVFJoTnpkbE5tRm1NekU0TnpjM1ltSWlMQ0ozWVhKa1pXNHVkWE5sY2k1MWMyVnlMbXRsZVNJNlcxc3pNVGs0Tnpnd01WMHNJaVF5WVNReE5DUmpWekl3WWpsbWRrOTJTblphZUZkeFowcEpUbWxQSWwwc0lsOWpjM0ptWDNSdmEyVnVJam9pYlhwMGNqUlVZa2x2Y2xaVllVNU5aMVp0YlhsSFVHMTJVVVYyZWkxVGEzQkdRbVl5VXpWdWNWbFJjeUo5IiwiZXhwIjoiMjAyNi0xMC0wN1QwMDoyNDowOC45MzRaIiwicHVyIjoiY29va2llLl9vdHdhcmNoaXZlX3Nlc3Npb24ifX0%3D--b4c6c6670efaaaa52b7640cb8d1ae460e43fe752; path=/; expires=Wed, 07 Oct 2026 00:24:08 GMT; HttpOnly; SameSite=Lax', 'x-request-id': '6442a7a5-8b23-4148-b974-5e0f1f78356f', 'x-runtime': '0.003899'}
+[2026-09-23 00:24:08]   Response body:
+[2026-09-23 00:24:08]   <html><head><meta name="color-scheme" content="light dark"></head><body><pre style="word-wrap: break-word; white-space: pre-wrap;">Retry later
+[2026-09-23 00:24:08] </pre></body></html>
+[2026-09-23 00:24:08]   ---------------------
+[2026-09-23 00:24:08]   Waiting 15s before retrying...
+[2026-09-23 00:24:15] 
+[2026-09-23 00:24:15] Stopped by user.
+
+===== Run started 2026-09-23T01:01:00+00:00 =====
+[2026-09-23 01:01:00] (Logging this run to scraping_log.txt; errors to error_log.txt.)
+[2026-09-23 01:01:00] Found ao3_cookie.txt. Using the cookie from that file.
+[2026-09-23 01:01:00]   Parsed cookie name(s): __cf_bm, _cfuvid, _otwarchive_session, cf_clearance, remember_user_token, user_credentials
+[2026-09-23 01:01:15]   Login verified: AO3 recognizes this cookie as a logged-in session.
+[2026-09-23 01:01:15] 
+[2026-09-23 01:01:19] Enter target AO3 work URL: 
+[2026-09-23 01:01:19] Fetching target work details...
+[2026-09-23 01:01:31] 
+[2026-09-23 01:01:31] --- Target Fic: 'bark like you want it <3' ---
+[2026-09-23 01:01:31] Work ID: 71837436
+[2026-09-23 01:01:31] Fandom(s): Harry Potter - J. K. Rowling
+[2026-09-23 01:01:31] Relationships: Regulus Black/Remus Lupin
+[2026-09-23 01:01:31] Words: 1,342 | Chapters: 1
+[2026-09-23 01:01:31] Hits: 1,559 | Kudos: 85 | Bookmarks: 8 | Comments: 5
+[2026-09-23 01:01:31] Kudos/Hits: 5.45%
+[2026-09-23 01:01:31] Bookmarks/Hits: 0.51%
+[2026-09-23 01:01:31] Kudos per 10k words: 633.38
+[2026-09-23 01:01:31] 
+[2026-09-23 01:01:31] --- Configure Comparison Cohort ---
+[2026-09-23 01:01:31] 
+[2026-09-23 01:01:31] Fandom scope:
+[2026-09-23 01:01:31] [0] Choose a target fandom
+[2026-09-23 01:01:31] [1] All fandoms
+[2026-09-23 01:02:06] Select fandom scope (0-1): 
+[2026-09-23 01:02:06] Category:
+[2026-09-23 01:02:06] [0] All
+[2026-09-23 01:02:06] [1] M/M
+[2026-09-23 01:02:06] [2] F/F
+[2026-09-23 01:02:06] [3] F/M
+[2026-09-23 01:02:06] [4] Multi
+[2026-09-23 01:02:06] [5] Gen
+[2026-09-23 01:02:06] Select category (0-5): 
+[2026-09-23 01:02:06] Archive warnings:
+[2026-09-23 01:02:06] [0] All
+[2026-09-23 01:02:06] [1] No Warnings Apply
+[2026-09-23 01:02:06] [2] Creator Chose Not To Use
+[2026-09-23 01:02:06] [3] Graphic Violence
+[2026-09-23 01:02:06] [4] Major Character Death
+[2026-09-23 01:02:06] [5] Rape/Non-Con
+[2026-09-23 01:02:06] [6] Underage
+[2026-09-23 01:02:07] Select warning (0-6): 
+[2026-09-23 01:02:07] Crossovers:
+[2026-09-23 01:02:07] [0] No crossovers (recommended)
+[2026-09-23 01:02:07] [1] All works
+[2026-09-23 01:02:07] [2] Crossovers only
+[2026-09-23 01:02:07] Select crossover option (0-2): 
+[2026-09-23 01:02:07] Chapters:
+[2026-09-23 01:02:07] [0] All
+[2026-09-23 01:02:07] [1] One-shots only
+[2026-09-23 01:02:07] [2] Same number as target
+[2026-09-23 01:02:07] [3] Multi-chapter only
+[2026-09-23 01:02:08] Select chapter filter (0-3): 
+[2026-09-23 01:02:08] Completion:
+[2026-09-23 01:02:08] [0] All
+[2026-09-23 01:02:08] [1] Complete only
+[2026-09-23 01:02:09] Select completion filter (0-1): 
+[2026-09-23 01:02:09] Timeframe:
+[2026-09-23 01:02:09] [0] All time
+[2026-09-23 01:02:09] [1] Last week
+[2026-09-23 01:02:09] [2] Last month
+[2026-09-23 01:02:09] [3] Last year
+[2026-09-23 01:02:09] [4] Custom range
+[2026-09-23 01:02:22] Select timeframe (0-4): Start date (YYYY-MM-DD, blank = no lower bound): End date (YYYY-MM-DD, blank = no upper bound): 
+[2026-09-23 01:02:22] Checking the result count...
+[2026-09-23 01:02:22]   Using cached page count: 2012 page(s).
+[2026-09-23 01:02:22] Found 2012 result page(s).
+[2026-09-23 01:02:26] Start page (1-2012, blank = 1): End page (1-2012, blank = 2012): 
+[2026-09-23 01:02:26] Sampling mode:
+[2026-09-23 01:02:26] [0] All pages
+[2026-09-23 01:02:26] [1] Systematic pages
+[2026-09-23 01:02:26] [2] Random pages
+[2026-09-23 01:02:34] Select sampling mode (0-2): How many pages should be sampled? Sampling seed (blank = 2026): 
+[2026-09-23 01:02:34] Collecting cohort metadata. Only search-result cards are parsed for cohort works.
+[2026-09-23 01:02:34]   Selected 150 page(s): [5, 24, 26, 36, 65, 68, 71, 107, 158, 164, 165, 167, 169, 175, 182, 242, 248, 251, 279, 288]...
+[2026-09-23 01:02:34]   Page 5: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 24: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 26: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 36: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 65: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 68: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 71: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 107: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 158: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 164: loaded from cache (20 works).
+[2026-09-23 01:02:34]   ...page 10/150 done; 168 qualifying works.
+[2026-09-23 01:02:34]   Page 165: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 167: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 169: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 175: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 182: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 242: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 248: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 251: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 279: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 288: loaded from cache (20 works).
+[2026-09-23 01:02:34]   ...page 20/150 done; 330 qualifying works.
+[2026-09-23 01:02:34]   Page 293: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 308: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 313: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 318: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 331: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 359: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 372: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 374: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 376: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 379: loaded from cache (20 works).
+[2026-09-23 01:02:34]   ...page 30/150 done; 497 qualifying works.
+[2026-09-23 01:02:34]   Page 386: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 395: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 439: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 446: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 458: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 471: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 478: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 483: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 491: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 494: loaded from cache (20 works).
+[2026-09-23 01:02:34]   ...page 40/150 done; 667 qualifying works.
+[2026-09-23 01:02:34]   Page 517: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 528: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 540: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 542: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 543: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 557: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 566: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 567: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 575: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 576: loaded from cache (20 works).
+[2026-09-23 01:02:34]   ...page 50/150 done; 805 qualifying works.
+[2026-09-23 01:02:34]   Page 580: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 588: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 602: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 605: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 622: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 627: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 632: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 676: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 693: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 702: loaded from cache (20 works).
+[2026-09-23 01:02:34]   ...page 60/150 done; 978 qualifying works.
+[2026-09-23 01:02:34]   Page 708: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 728: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 739: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 740: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 762: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 765: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 766: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 797: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 810: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 826: loaded from cache (20 works).
+[2026-09-23 01:02:34]   ...page 70/150 done; 1122 qualifying works.
+[2026-09-23 01:02:34]   Page 870: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 915: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 922: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 923: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 927: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 944: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 969: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 976: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 977: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 989: loaded from cache (20 works).
+[2026-09-23 01:02:34]   ...page 80/150 done; 1301 qualifying works.
+[2026-09-23 01:02:34]   Page 1000: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 1011: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 1058: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 1071: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 1077: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 1088: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 1129: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 1165: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 1194: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 1209: loaded from cache (20 works).
+[2026-09-23 01:02:34]   ...page 90/150 done; 1468 qualifying works.
+[2026-09-23 01:02:34]   Page 1210: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 1216: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 1236: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 1240: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 1249: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 1253: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 1281: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 1286: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 1304: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 1318: loaded from cache (20 works).
+[2026-09-23 01:02:34]   ...page 100/150 done; 1642 qualifying works.
+[2026-09-23 01:02:34]   Page 1346: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 1356: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 1360: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 1372: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 1376: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 1407: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 1416: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 1423: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 1446: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 1471: loaded from cache (20 works).
+[2026-09-23 01:02:34]   ...page 110/150 done; 1805 qualifying works.
+[2026-09-23 01:02:34]   Page 1472: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 1473: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 1495: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 1508: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 1509: loaded from cache (20 works).
+[2026-09-23 01:02:34]   Page 1560: loaded from cache (20 works).
+[2026-09-23 01:02:42]   Page 1574: loaded from cache (20 works).
+[2026-09-23 01:02:42]   Page 1625: loaded from cache (20 works).
+[2026-09-23 01:02:42]   Page 1627: loaded from cache (20 works).
+[2026-09-23 01:02:42]   ...page 120/150 done; 1981 qualifying works.
+[2026-09-23 01:04:54]   ...page 130/150 done; 2157 qualifying works.
+[2026-09-23 01:07:01]   ...page 140/150 done; 2337 qualifying works.
+[2026-09-23 01:09:02]   ...page 150/150 done; 2512 qualifying works.
+[2026-09-23 01:09:02] 
+[2026-09-23 01:09:02] Appended 2513 new observation(s) to ao3_results.csv.
+[2026-09-23 01:09:02] Skipped 0 observation(s) already present under the same sampling condition.
+[2026-09-23 01:09:02] 
+[2026-09-23 01:09:02] Saved accumulated distribution with 2512 cohort works.
+[2026-09-23 01:09:02] Distribution key: Harry Potter - J. K. Rowling|cat0|warn0|cross1|chap0|comp0|time4:2026-01-01:2026-07-01
+[2026-09-23 01:09:03] 
+[2026-09-23 01:09:03] --- ACCUMULATED COHORT ---
+[2026-09-23 01:09:03] Sample size: 2512 works
+[2026-09-23 01:09:03] 
+[2026-09-23 01:09:03] Kudos/Hits:
+[2026-09-23 01:09:03]   Target: 5.45
+[2026-09-23 01:09:03]   Cohort mean: 5.65
+[2026-09-23 01:09:03]   Cohort median: 4.60
+[2026-09-23 01:09:03]   Target is above 58.8% of accumulated cohort works.
+[2026-09-23 01:09:03] 
+[2026-09-23 01:09:03] Bookmarks/Hits:
+[2026-09-23 01:09:03]   Target: 0.51
+[2026-09-23 01:09:03]   Cohort mean: 0.81
+[2026-09-23 01:09:03]   Cohort median: 0.66
+[2026-09-23 01:09:03]   Target is above 41.4% of accumulated cohort works.
+[2026-09-23 01:09:03] 
+[2026-09-23 01:09:03] Comments/Hits:
+[2026-09-23 01:09:03]   Target: 0.32
+[2026-09-23 01:09:03]   Cohort mean: 1.42
+[2026-09-23 01:09:03]   Cohort median: 0.71
+[2026-09-23 01:09:03]   Target is above 32.5% of accumulated cohort works.
+[2026-09-23 01:09:03] 
+[2026-09-23 01:09:03] Kudos per 10k words:
+[2026-09-23 01:09:03]   Target: 633.38
+[2026-09-23 01:09:03]   Cohort mean: 704.96
+[2026-09-23 01:09:03]   Cohort median: 63.42
+[2026-09-23 01:09:03]   Target is above 90.4% of accumulated cohort works.
+[2026-09-23 01:09:03] 
+[2026-09-23 01:09:03] NOTE:
+[2026-09-23 01:09:03] These percentiles describe relative engagement within your selected cohort.
+[2026-09-23 01:09:03] They do not establish why readers preferred a work or prove causation.
+[2026-09-23 01:09:03] 
+[2026-09-23 01:09:03] Recommended next research step:
+[2026-09-23 01:09:03] Use this metadata dataset to select a smaller, matched M/M and F/F corpus for manual coding of relationship features such as emotional vulnerability, physical affection, conflict, romantic initiation, agency, and reciprocity.
