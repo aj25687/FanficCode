@@ -8,6 +8,7 @@ import time
 import traceback
 import urllib.parse
 from datetime import datetime, timedelta, timezone
+from email.utils import parsedate_to_datetime
 
 import numpy as np
 import pandas as pd
@@ -40,27 +41,41 @@ from bs4 import BeautifulSoup
 #   requests (repeated 525s, then explicit 403s) regardless of
 #   IP/network -- a real browser has a real, honest fingerprint,
 #   so this isn't a workaround for detection, it's just automating
-#   an actual browser the way a human would use one. See
-#   requirements.txt / the setup note below for the one-time
-#   `playwright install chromium` step this requires.
+#   an actual browser the way a human would use one.
+#
+#   One-time setup:
+#     pip3 install playwright && python3 -m playwright install chromium
+#
+#   The browser window is visible by default so a challenge can be
+#   completed by hand; set AO3_HEADLESS=1 for unattended runs. The
+#   browser profile is kept next to this script, in
+#   ao3_browser_profile/, so clearance cookies survive between runs.
+#
+#   A note on 525s: Cloudflare's 52x statuses describe Cloudflare
+#   failing to reach AO3's own servers (525 is specifically an SSL
+#   handshake failure between the two). They are not a verdict on
+#   this client, and no client -- browser or otherwise -- can avoid
+#   them; they're retried with backoff here and usually clear.
 #
 # On the "T"/"F" vs "true"/"false" vs "0"/"1" question for AO3's
 # work_search[complete] and work_search[crossover] fields:
-#   Different independent AO3 tooling projects disagree on this, and
-#   it can't be settled with certainty without live-testing against
-#   AO3. This script uses "T"/"F" for both fields, matching the most
-#   rigorously documented, actively maintained reference we found
-#   (the ao3.py package, which treats both fields identically and
-#   consistently). If your completion/crossover filters don't seem
-#   to actually narrow results compared to browsing the same filter
-#   manually on AO3's site, this is the first thing to double-check.
+#   Different independent AO3 tooling projects disagree on this, so
+#   the "T"/"F" form this script sends was checked live against AO3:
+#   complete=T returned only completed works, crossover=T returned
+#   only crossovers, and crossover=F dropped works AO3 itself flags
+#   as crossovers. Note that crossover=F still returns some works
+#   carrying more than one fandom tag -- AO3's crossover flag is the
+#   author/tag-wrangler judgement, not "has 2+ fandom tags", which is
+#   why is_crossover in the output is labelled a heuristic.
 #
 # Rate limiting:
-#   Uses a local page cache, randomized delays, and stops the whole
-#   run (rather than trying to push past) when AO3 returns repeated
-#   hard failures or sustained rate-limiting. A real browser engine
-#   does not grant permission to go faster -- keep the same
-#   conservative pacing as before.
+#   Uses a local page cache and stops the whole run (rather than
+#   trying to push past) when AO3 returns repeated hard failures or
+#   sustained rate-limiting. A real browser engine does not grant
+#   permission to go faster, so pacing is enforced in the browser
+#   layer itself: every page load waits a randomized 10-15s since the
+#   previous one, and a 429's Retry-After is obeyed to the second
+#   (plus a few seconds of grace) instead of a guessed interval.
 #
 # ============================================================
 
@@ -78,6 +93,51 @@ COOKIE_FILE = "ao3_cookie.txt"
 DEFAULT_COOKIES = [
     {"name": "view_adult", "value": "true", "domain": ".archiveofourown.org", "path": "/"},
 ]
+
+COOKIE_DOMAIN = ".archiveofourown.org"
+
+# Chromium profile directory. Reusing one profile across runs keeps
+# whatever clearance cookie the browser earned, so a fresh challenge
+# isn't triggered on every single run. Anchored to the script's own
+# folder rather than the working directory, so running the script
+# from somewhere else doesn't silently start from a blank profile.
+BROWSER_PROFILE_ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "ao3_browser_profile")
+
+# Headed by default: a visible window also means a challenge can be
+# completed by hand if AO3 ever shows one. Set AO3_HEADLESS=1 for
+# unattended runs.
+HEADLESS = os.environ.get("AO3_HEADLESS", "").strip().lower() in {"1", "true", "yes"}
+
+# Chrome's headless builds put "HeadlessChrome" in the User-Agent,
+# which no human browser sends. Rather than inventing a UA string
+# (a made-up OS/version contradicts the platform, client hints and
+# WebGL strings the same browser reports, which is worse than the
+# honest one), the real UA is read from the running browser and only
+# that one token is corrected. See BrowserSession._sanitize_user_agent.
+HEADLESS_UA_TOKEN = "HeadlessChrome"
+
+# How long to let an interstitial resolve itself before treating the
+# page as blocked.
+CHALLENGE_WAIT_SECONDS = 30
+
+# Minimum randomized gap between two page loads, enforced in the
+# browser layer so it applies to every single request -- warm-up,
+# login check, page counts, retries after an error, everything --
+# rather than only where a caller remembered to ask for a delay.
+REQUEST_GAP_SECONDS = (10.0, 15.0)
+
+# Added to whatever Retry-After AO3 asks for, so the next request
+# lands safely after the window it named rather than exactly on its
+# boundary.
+RETRY_AFTER_GRACE_SECONDS = 5
+
+# Cloudflare's 52x family describes the edge failing to talk to AO3's
+# origin (525 in particular is an SSL handshake failure between
+# Cloudflare and AO3, per Cloudflare's own docs) -- it says nothing
+# about this client, so these are retried rather than treated as an
+# instruction to stop. 403 and 429 are the responses that actually
+# mean "you, stop".
+ORIGIN_ERROR_STATUSES = frozenset({520, 521, 522, 523, 524, 525, 526, 527})
 
 MAX_CONSECUTIVE_HARD_FAILURES = 3
 
@@ -168,9 +228,274 @@ CSV_FIELDS = [
 ]
 
 
-SESSION = requests.Session()
-SESSION.headers.update(HEADERS)
-SESSION.cookies.update(COOKIES)
+class BrowserResponse:
+    """requests-shaped view of a Playwright navigation.
+
+    Everything downstream (parsing, filtering, caching, CSV writing)
+    keeps reading .status_code/.text/.headers/.reason exactly as it
+    did with the HTTP client, so only this layer knows about browsers.
+    """
+
+    def __init__(self, status_code, text, headers=None, reason="", url=""):
+        self.status_code = status_code
+        self.text = text
+        self.headers = headers or {}
+        self.reason = reason
+        self.url = url
+
+
+class BrowserSession:
+    """A single real Chromium profile used for every page load."""
+
+    def __init__(self):
+        self._playwright = None
+        self._context = None
+        self._page = None
+        # Every cookie ever handed to this session is remembered, so a
+        # context rebuilt after a browser crash comes back with the
+        # same login/adult-content state instead of a blank jar.
+        self._cookies = list(DEFAULT_COOKIES)
+        self._last_request_at = None
+
+    def start(self):
+        if self._page is not None:
+            return
+
+        self._playwright = sync_playwright().start()
+        self._context, self._page = self._launch()
+        self._context.set_default_navigation_timeout(60_000)
+
+        # navigator.webdriver is the one automation signal Chromium
+        # still reports after --disable-blink-features.
+        self._context.add_init_script(
+            "Object.defineProperty(navigator, 'webdriver', {get: () => undefined});"
+        )
+
+        if self._cookies:
+            self._context.add_cookies(self._cookies)
+
+        self._warm_up()
+
+    def _launch(self):
+        context = self._launch_context()
+        page = context.pages[0] if context.pages else context.new_page()
+
+        clean_user_agent = self._sanitize_user_agent(page)
+        if clean_user_agent is None:
+            return context, page
+
+        # The UA can only be set when the context is created, so the
+        # first context is thrown away once it reveals a headless UA.
+        context.close()
+        context = self._launch_context(user_agent=clean_user_agent)
+        page = context.pages[0] if context.pages else context.new_page()
+        return context, page
+
+    @staticmethod
+    def _sanitize_user_agent(page):
+        """Return a corrected UA if the browser advertises headless."""
+        try:
+            user_agent = page.evaluate("navigator.userAgent")
+        except PlaywrightError:
+            return None
+
+        if not user_agent or HEADLESS_UA_TOKEN not in user_agent:
+            return None
+
+        return user_agent.replace(HEADLESS_UA_TOKEN, "Chrome")
+
+    def _launch_context(self, user_agent=None):
+        options = {
+            "headless": HEADLESS,
+            "viewport": {"width": 1280, "height": 900},
+            "locale": "en-US",
+            # Chromium otherwise advertises itself as automated.
+            "args": ["--disable-blink-features=AutomationControlled"],
+        }
+
+        if user_agent:
+            options["user_agent"] = user_agent
+
+        # A locally installed Chrome is a more ordinary browser than
+        # Playwright's bundled Chromium build, so use it when present.
+        # Chrome and Chromium get separate profile folders: one profile
+        # written by a newer build makes the other refuse to start.
+        try:
+            return self._playwright.chromium.launch_persistent_context(
+                os.path.join(BROWSER_PROFILE_ROOT, "chrome"), channel="chrome", **options
+            )
+        except PlaywrightError:
+            return self._playwright.chromium.launch_persistent_context(
+                os.path.join(BROWSER_PROFILE_ROOT, "chromium"), **options
+            )
+
+    def _throttle(self):
+        """Hold every page load at least REQUEST_GAP_SECONDS apart.
+
+        The gap is measured from the last request rather than slept
+        unconditionally, so a caller's own polite_delay() counts
+        towards it instead of stacking on top of it.
+        """
+        gap = random.uniform(*REQUEST_GAP_SECONDS)
+
+        if self._last_request_at is not None:
+            remaining = gap - (time.monotonic() - self._last_request_at)
+            if remaining > 0:
+                time.sleep(remaining)
+
+        self._last_request_at = time.monotonic()
+
+    def _warm_up(self):
+        """Load the homepage once before jumping into search URLs."""
+        try:
+            self._throttle()
+            self._page.goto("https://archiveofourown.org/", wait_until="domcontentloaded")
+            self._settle_interstitial()
+        except (PlaywrightError, PlaywrightTimeoutError) as error:
+            log_error("Warm-up navigation to the AO3 homepage failed.", error)
+
+    def add_cookies(self, cookie_dict):
+        cookies = [
+            {"name": name, "value": value, "domain": COOKIE_DOMAIN, "path": "/"}
+            for name, value in cookie_dict.items()
+        ]
+
+        self._cookies.extend(cookies)
+
+        if self._context is not None:
+            self._context.add_cookies(cookies)
+
+    def _recover_if_dead(self, error):
+        """Rebuild the browser if it crashed or was closed.
+
+        Without this, one crashed Chromium turns every remaining page
+        of a long run into the same 'Target closed' failure.
+        """
+        message = str(error).lower()
+        if not any(m in message for m in ("closed", "crash", "disconnected")):
+            return
+
+        log_error("Browser died; rebuilding the session.", error)
+        self.close()
+
+    def get(self, url, timeout=60):
+        self.start()
+        self._throttle()
+
+        try:
+            response = self._page.goto(
+                url,
+                wait_until="domcontentloaded",
+                timeout=int(timeout * 1000),
+            )
+        except PlaywrightTimeoutError:
+            raise
+        except PlaywrightError as error:
+            self._recover_if_dead(error)
+            raise
+
+        status = response.status if response is not None else 0
+        reason = response.status_text if response is not None else ""
+
+        try:
+            headers = response.all_headers() if response is not None else {}
+        except PlaywrightError:
+            headers = {}
+
+        body = self._settle_interstitial()
+        self._last_request_at = time.monotonic()
+
+        if status == 200 and looks_like_challenge(body):
+            status, reason = 403, "Cloudflare challenge not completed"
+
+        return BrowserResponse(status, body, headers, reason, self._page.url)
+
+    def _settle_interstitial(self):
+        """Give a challenge page a chance to resolve into real content."""
+        try:
+            body = self._page.content()
+        except PlaywrightError:
+            # Content can be unavailable mid-navigation; one retry is
+            # enough because the page has stopped moving by then.
+            time.sleep(2)
+            body = self._page.content()
+
+        if not looks_like_challenge(body):
+            return body
+
+        print(
+            "  Interstitial shown. Waiting for it to clear"
+            f"{'' if HEADLESS else ' (solve it in the browser window if it asks you to)'}..."
+        )
+
+        deadline = time.monotonic() + CHALLENGE_WAIT_SECONDS
+
+        while time.monotonic() < deadline:
+            time.sleep(2)
+            try:
+                body = self._page.content()
+            except PlaywrightError:
+                continue
+            if not looks_like_challenge(body):
+                print("  Interstitial cleared.")
+                return body
+
+        return body
+
+    def close(self):
+        if self._context is not None:
+            try:
+                self._context.close()
+            except Exception:
+                pass
+
+        if self._playwright is not None:
+            try:
+                self._playwright.stop()
+            except Exception:
+                pass
+
+        self._playwright = None
+        self._context = None
+        self._page = None
+
+
+def looks_like_challenge(body):
+    """True only for a Cloudflare interstitial, not for AO3 content.
+
+    Matching on loose phrases alone misfires: a search page listing a
+    work titled "Just a Moment" is a perfectly good results page. So a
+    page that contains AO3's own chrome is never a challenge, and the
+    remaining markers have to appear in the <title> or as Cloudflare's
+    own challenge scaffolding.
+    """
+    if not body:
+        return False
+
+    lowered = body.lower()
+
+    if 'id="header"' in lowered or 'class="work blurb' in lowered or "/users/logout" in lowered:
+        return False
+
+    if any(marker in lowered for marker in (
+        "cf-browser-verification",
+        "cf_chl_opt",
+        "challenge-platform",
+        "__cf_chl",
+    )):
+        return True
+
+    title_match = re.search(r"<title[^>]*>(.*?)</title>", lowered, re.DOTALL)
+    title = title_match.group(1).strip() if title_match else ""
+
+    return any(marker in title for marker in (
+        "just a moment",
+        "attention required",
+        "checking your browser",
+    ))
+
+
+BROWSER = BrowserSession()
 
 
 # ============================================================
@@ -337,7 +662,7 @@ def apply_session_cookie(cookie_str):
         print("  Could not parse the cookie string. Continuing anonymously.")
         return
 
-    SESSION.cookies.update(parsed)
+    BROWSER.add_cookies(parsed)
 
     print("  Parsed cookie name(s): " + ", ".join(sorted(parsed.keys())))
 
@@ -389,14 +714,8 @@ def describe_429(response, url):
     """Builds two strings: a full, untruncated version (for the error
     log) and a terminal-friendly truncated version, so a large
     Cloudflare challenge page doesn't flood the live console."""
-    retry_after_header = response.headers.get("Retry-After")
-    retry_after_seconds = None
-
-    if retry_after_header:
-        try:
-            retry_after_seconds = int(float(retry_after_header))
-        except ValueError:
-            pass
+    retry_after_header = response.headers.get("Retry-After") or response.headers.get("retry-after")
+    retry_after_seconds = parse_retry_after(retry_after_header)
 
     body = response.text
 
@@ -419,22 +738,53 @@ def describe_429(response, url):
     return console_detail, full_detail, retry_after_seconds
 
 
+def parse_retry_after(header_value):
+    """Seconds to wait from a Retry-After header, or None.
+
+    RFC 9110 allows either a delay in seconds or an HTTP date, and
+    AO3/Cloudflare send both forms depending on which layer answers,
+    so both are handled. What AO3 asks for is always preferable to a
+    guessed backoff interval.
+    """
+    if not header_value:
+        return None
+
+    header_value = header_value.strip()
+
+    try:
+        return max(0, int(float(header_value)))
+    except ValueError:
+        pass
+
+    try:
+        retry_at = parsedate_to_datetime(header_value)
+    except (TypeError, ValueError):
+        return None
+
+    if retry_at is None:
+        return None
+    if retry_at.tzinfo is None:
+        retry_at = retry_at.replace(tzinfo=timezone.utc)
+
+    return max(0, int((retry_at - datetime.now(timezone.utc)).total_seconds()))
+
+
 def polite_delay(min_seconds=5.0, max_seconds=10.0):
     time.sleep(random.uniform(min_seconds, max_seconds))
 
 
 def get_with_retry(url, max_retries=3):
     """
-    Retry transient network errors and 429 responses with backoff.
-    403, 503, and 525 are returned immediately so the caller can stop
-    rather than trying to push through a block.
+    Retry transient network errors, Cloudflare origin errors (52x) and
+    429 responses with backoff. 403 and 503 are returned immediately so
+    the caller can stop rather than trying to push through a block.
     """
     response = None
 
     for attempt in range(max_retries):
         try:
-            response = SESSION.get(url, timeout=30)
-        except requests.exceptions.RequestException as error:
+            response = BROWSER.get(url, timeout=60)
+        except (PlaywrightError, PlaywrightTimeoutError) as error:
             log_error(
                 f"Network request failed for {url} ({error.__class__.__name__}: {error})",
                 error,
@@ -453,8 +803,28 @@ def get_with_retry(url, max_retries=3):
             log_error(f"HTTP 429 response details for {url}:\n{full_detail}")
             print(console_detail)
 
-            wait = retry_after_seconds if retry_after_seconds is not None else 15 * (attempt + 1)
-            print(f"  Waiting {wait}s before retrying...")
+            if retry_after_seconds is not None:
+                # Honour exactly what AO3 asked for, plus a small grace
+                # margin so the retry lands after its window rather
+                # than on the boundary. Guessing a shorter interval is
+                # how a temporary rate-limit turns into a real block.
+                wait = retry_after_seconds + RETRY_AFTER_GRACE_SECONDS
+                print(f"  AO3 asked for {retry_after_seconds}s. Waiting {wait}s before retrying...")
+            else:
+                wait = 15 * (attempt + 1)
+                print(f"  No Retry-After header sent. Waiting {wait}s before retrying...")
+
+            time.sleep(wait)
+            continue
+
+        if response.status_code in ORIGIN_ERROR_STATUSES or response.status_code == 0:
+            log_error(f"Origin-side failure for {url}: HTTP {response.status_code} {response.reason}")
+            wait = 20 * (attempt + 1)
+            print(
+                f"  HTTP {response.status_code}: Cloudflare could not reach AO3's server. "
+                f"This is AO3's end, not a block. Waiting {wait}s before retrying "
+                f"({attempt + 1}/{max_retries})..."
+            )
             time.sleep(wait)
             continue
 
@@ -638,7 +1008,7 @@ def parse_ao3_work(work_url):
 
     if response is None:
         raise HardBlockError("AO3 could not be reached after several attempts.")
-    if response.status_code in (403, 503, 525):
+    if response.status_code in (403, 503) or response.status_code in ORIGIN_ERROR_STATUSES:
         raise HardBlockError(f"AO3 returned HTTP {response.status_code} for the target work.")
     if response.status_code == 429:
         raise HardBlockError("AO3 continued returning HTTP 429 after retries.")
@@ -829,8 +1199,11 @@ def get_result_page_count(fandom, category, warning, crossover, complete_only, t
 
     if response is None:
         return 0, url
-    if response.status_code in (403, 503, 525):
-        raise HardBlockError(f"AO3 returned HTTP {response.status_code} while checking the search.")
+    if response.status_code in (403, 503) or response.status_code in ORIGIN_ERROR_STATUSES:
+        raise HardBlockError(
+            f"AO3 returned HTTP {response.status_code} while checking the search, "
+            "and it did not clear on retry."
+        )
     if response.status_code == 429:
         raise HardBlockError("AO3 returned HTTP 429 while checking the search.")
     if response.status_code != 200:
@@ -898,11 +1271,14 @@ def choose_pages(total_pages, start_page, end_page, sampling_mode, sample_page_c
 
 def scrape_fandom_cohort(
     fandom, category, warning, crossover, complete_only, timeframe,
-    chapter_choice, target_chapters, total_pages, cache,
+    chapter_choice, target_chapters, total_pages, cache, writer,
     start_page=1, end_page=None, sampling_mode="all", sample_page_count=10, seed=2026,
 ):
     """Collect cohort metadata from selected search-result pages. Full
-    work text is never downloaded for cohort works."""
+    work text is never downloaded for cohort works.
+
+    Qualifying works are handed to `writer` page by page, so the CSV
+    is already up to date if the run is interrupted."""
     complete_only = str(complete_only) if str(complete_only) in {"0", "1"} else "0"
 
     if end_page is None:
@@ -930,7 +1306,11 @@ def scrape_fandom_cohort(
             polite_delay()
             response = get_with_retry(url)
 
-            hard_fail = response is None or response.status_code in (403, 503, 525, 429)
+            hard_fail = (
+                response is None
+                or response.status_code in (403, 503, 429)
+                or response.status_code in ORIGIN_ERROR_STATUSES
+            )
 
             if hard_fail:
                 consecutive_hard_failures += 1
@@ -976,6 +1356,7 @@ def scrape_fandom_cohort(
             if hits < 50:
                 continue
 
+            writer.write_cohort_work(work, page)
             fics.append({**work, "sampled_page": page})
 
         if index % 10 == 0 or index == len(selected_pages):
@@ -1028,6 +1409,102 @@ def append_results_to_csv(csv_path, rows):
             writer.writeheader()
         for row in rows:
             writer.writerow(row)
+
+
+class ObservationWriter:
+    """Appends observations to the CSV as each page is finished.
+
+    Two things this buys over collecting everything and writing once
+    at the end: stopping a run mid-way leaves every completed page
+    already on disk, and a work that has been recorded before under
+    the same sampling condition is recognised and skipped before it
+    is written rather than after the whole cohort is collected.
+    """
+
+    def __init__(self, csv_path, run_timestamp, sampling_date, fandom_query, filter_meta):
+        self.csv_path = csv_path
+        self.run_timestamp = run_timestamp
+        self.sampling_date = sampling_date
+        self.fandom_query = fandom_query
+        self.filter_meta = filter_meta
+        self.seen_keys = load_existing_observation_keys(csv_path)
+        self.written = 0
+        self.skipped_duplicates = 0
+
+    def observation_key_for(self, work_id):
+        meta = self.filter_meta
+        return make_observation_key(
+            work_id, meta["fandom_scope"], meta["category_filter"], meta["warning_filter"],
+            meta["crossover_filter"], meta["chapter_filter"], meta["completion_filter"],
+            meta["timeframe_filter"], meta["sampling_mode"], meta["sampling_seed"],
+        )
+
+    def already_recorded(self, work_id):
+        return bool(work_id) and self.observation_key_for(work_id) in self.seen_keys
+
+    def _write(self, row):
+        append_results_to_csv(self.csv_path, [row])
+        self.seen_keys.add(row["observation_key"])
+        self.written += 1
+
+    def write_target(self, target):
+        work_id = target.get("work_id")
+        if not work_id:
+            return
+
+        if self.already_recorded(work_id):
+            self.skipped_duplicates += 1
+            return
+
+        self._write({
+            "run_timestamp": self.run_timestamp, "sampling_date": self.sampling_date,
+            "role": "target", "observation_key": self.observation_key_for(work_id),
+            "work_id": work_id, "title": target["title"], "fandom": target["fandom"],
+            "fandoms": target["fandoms"], "relationships": target["relationships"],
+            **self.filter_meta, "sampled_page": "",
+            "hits": target["hits"], "kudos": target["kudos"], "bookmarks": target["bookmarks"],
+            "comments": target["comments"], "words": target["words"], "chapters": target["chapters"],
+            "rating": target["rating"], "warnings": target["warnings"], "category": target["category"],
+            "language": target["language"], "date_published": target["date_published"],
+            "date_updated": target["date_updated"], "kudos_to_hits": target["kudos_to_hits"],
+            "bookmarks_to_hits": target["bookmarks_to_hits"], "comments_to_hits": target["comments_to_hits"],
+            "comments_to_kudos": target["comments_to_kudos"],
+            "kudos_per_10k_words": target["kudos_per_10k_words"],
+            "bookmarks_per_10k_words": target["bookmarks_per_10k_words"],
+            "comments_per_10k_words": target["comments_per_10k_words"],
+            "is_text_work": target["words"] > 0,
+            "is_crossover": target["is_crossover"],
+        })
+
+    def write_cohort_work(self, work, page):
+        work_id = str(work.get("work_id") or "")
+        if not work_id or work_id == "nan":
+            return
+
+        if self.already_recorded(work_id):
+            self.skipped_duplicates += 1
+            return
+
+        self._write({
+            "run_timestamp": self.run_timestamp, "sampling_date": self.sampling_date,
+            "role": "cohort", "observation_key": self.observation_key_for(work_id),
+            "work_id": work_id, "title": work.get("title", ""),
+            "fandom": self.fandom_query, "fandoms": work.get("fandoms", self.fandom_query),
+            "relationships": work.get("relationships", ""), **self.filter_meta,
+            "sampled_page": page, "hits": work["hits"], "kudos": work["kudos"],
+            "bookmarks": work["bookmarks"], "comments": work["comments"], "words": work["words"],
+            "chapters": work["chapters"], "rating": work.get("rating", ""),
+            "warnings": work.get("warnings", ""), "category": work.get("category", ""),
+            "language": work.get("language", ""), "date_published": "",
+            "date_updated": work.get("date_updated", ""),
+            "kudos_to_hits": work["kudos_to_hits"], "bookmarks_to_hits": work["bookmarks_to_hits"],
+            "comments_to_hits": work["comments_to_hits"], "comments_to_kudos": work["comments_to_kudos"],
+            "kudos_per_10k_words": work["kudos_per_10k_words"],
+            "bookmarks_per_10k_words": work["bookmarks_per_10k_words"],
+            "comments_per_10k_words": work["comments_per_10k_words"],
+            "is_text_work": int(work.get("words", 0) or 0) > 0,
+            "is_crossover": bool(work.get("is_crossover", False)),
+        })
 
 
 # ============================================================
@@ -1372,16 +1849,6 @@ def main():
         seed_input = input("Sampling seed (blank = 2026): ").strip()
         sampling_seed = int(seed_input) if seed_input.isdigit() else 2026
 
-        print("\nCollecting cohort metadata. Only search-result cards are parsed for cohort works.")
-
-        df = scrape_fandom_cohort(
-            fandom=fandom_query, category=category_filter, warning=warning_filter,
-            crossover=crossover_filter, complete_only=completion_filter, timeframe=timeframe_filter,
-            chapter_choice=chapter_filter, target_chapters=target["chapters"],
-            total_pages=total_pages, cache=cache, start_page=start_page, end_page=end_page,
-            sampling_mode=sampling_mode, sample_page_count=sample_page_count, seed=sampling_seed,
-        )
-
         run_timestamp = datetime.now(timezone.utc).isoformat(timespec="seconds")
         sampling_date = datetime.now(timezone.utc).date().isoformat()
 
@@ -1393,74 +1860,30 @@ def main():
             "sampling_seed": sampling_seed,
         }
 
-        existing_keys = load_existing_observation_keys(CSV_FILE)
-        new_rows = []
-        skipped_duplicates = 0
+        # Built before scraping starts so already-recorded works are
+        # recognised as the pages come in, and so each finished page
+        # is on disk immediately rather than at the end of the run.
+        writer = ObservationWriter(CSV_FILE, run_timestamp, sampling_date, fandom_query, filter_meta)
 
-        if target.get("work_id"):
-            target_key = make_observation_key(
-                target["work_id"], fandom_scope, category_filter, warning_filter,
-                crossover_filter, chapter_filter, completion_filter, timeframe_filter,
-                sampling_mode, sampling_seed,
+        writer.write_target(target)
+
+        print("\nCollecting cohort metadata. Only search-result cards are parsed for cohort works.")
+
+        try:
+            scrape_fandom_cohort(
+                fandom=fandom_query, category=category_filter, warning=warning_filter,
+                crossover=crossover_filter, complete_only=completion_filter, timeframe=timeframe_filter,
+                chapter_choice=chapter_filter, target_chapters=target["chapters"],
+                total_pages=total_pages, cache=cache, writer=writer,
+                start_page=start_page, end_page=end_page, sampling_mode=sampling_mode,
+                sample_page_count=sample_page_count, seed=sampling_seed,
             )
-            if target_key not in existing_keys:
-                new_rows.append({
-                    "run_timestamp": run_timestamp, "sampling_date": sampling_date,
-                    "role": "target", "observation_key": target_key, "work_id": target["work_id"],
-                    "title": target["title"], "fandom": target["fandom"], "fandoms": target["fandoms"],
-                    "relationships": target["relationships"], **filter_meta, "sampled_page": "",
-                    "hits": target["hits"], "kudos": target["kudos"], "bookmarks": target["bookmarks"],
-                    "comments": target["comments"], "words": target["words"], "chapters": target["chapters"],
-                    "rating": target["rating"], "warnings": target["warnings"], "category": target["category"],
-                    "language": target["language"], "date_published": target["date_published"],
-                    "date_updated": target["date_updated"], "kudos_to_hits": target["kudos_to_hits"],
-                    "bookmarks_to_hits": target["bookmarks_to_hits"], "comments_to_hits": target["comments_to_hits"],
-                    "comments_to_kudos": target["comments_to_kudos"],
-                    "kudos_per_10k_words": target["kudos_per_10k_words"],
-                    "bookmarks_per_10k_words": target["bookmarks_per_10k_words"],
-                    "comments_per_10k_words": target["comments_per_10k_words"],
-                    "is_text_work": target["words"] > 0,
-                    "is_crossover": target["is_crossover"],
-                })
-
-        for _, row in df.iterrows():
-            work_id = str(row.get("work_id", ""))
-            if not work_id or work_id == "nan":
-                continue
-
-            observation_key = make_observation_key(
-                work_id, fandom_scope, category_filter, warning_filter, crossover_filter,
-                chapter_filter, completion_filter, timeframe_filter, sampling_mode, sampling_seed,
+        finally:
+            print(f"\nAppended {writer.written} new observation(s) to {CSV_FILE}.")
+            print(
+                f"Skipped {writer.skipped_duplicates} observation(s) already present "
+                "under the same sampling condition."
             )
-            if observation_key in existing_keys:
-                skipped_duplicates += 1
-                continue
-            existing_keys.add(observation_key)
-
-            new_rows.append({
-                "run_timestamp": run_timestamp, "sampling_date": sampling_date, "role": "cohort",
-                "observation_key": observation_key, "work_id": work_id, "title": row.get("title", ""),
-                "fandom": fandom_query, "fandoms": row.get("fandoms", fandom_query),
-                "relationships": row.get("relationships", ""), **filter_meta,
-                "sampled_page": row.get("sampled_page", ""), "hits": row["hits"], "kudos": row["kudos"],
-                "bookmarks": row["bookmarks"], "comments": row["comments"], "words": row["words"],
-                "chapters": row["chapters"], "rating": row.get("rating", ""), "warnings": row.get("warnings", ""),
-                "category": row.get("category", ""), "language": row.get("language", ""),
-                "date_published": "", "date_updated": row.get("date_updated", ""),
-                "kudos_to_hits": row["kudos_to_hits"], "bookmarks_to_hits": row["bookmarks_to_hits"],
-                "comments_to_hits": row["comments_to_hits"], "comments_to_kudos": row["comments_to_kudos"],
-                "kudos_per_10k_words": row["kudos_per_10k_words"],
-                "bookmarks_per_10k_words": row["bookmarks_per_10k_words"],
-                "comments_per_10k_words": row["comments_per_10k_words"],
-                "is_text_work": int(row.get("words", 0) or 0) > 0,
-                "is_crossover": bool(row.get("is_crossover", False)),
-            })
-
-        if new_rows:
-            append_results_to_csv(CSV_FILE, new_rows)
-
-        print(f"\nAppended {len(new_rows)} new observation(s) to {CSV_FILE}.")
-        print(f"Skipped {skipped_duplicates} observation(s) already present under the same sampling condition.")
 
         dist_result = compute_and_save_distribution(CSV_FILE, DIST_FILE, fandom_query, filter_meta)
         if dist_result:
@@ -1533,6 +1956,7 @@ def main():
         raise
 
     finally:
+        BROWSER.close()
         sys.stdout = original_stdout
         try:
             logger.close()

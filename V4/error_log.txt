@@ -25237,3 +25237,127 @@ Traceback (most recent call last):
   File "/Users/avantikajain/Code/FanficCode/V4/ao3_research_sampler_v4.py", line 635, in parse_ao3_work
     raise HardBlockError(f"AO3 returned HTTP {response.status_code} for the target work.")
 HardBlockError: AO3 returned HTTP 525 for the target work.
+
+===== Error log started 2026-09-23T00:01:44+00:00 =====
+
+[2026-09-23 00:02:16 UTC] ERROR: AO3 requested that the script stop.
+Traceback (most recent call last):
+  File "/Users/avantikajain/Code/FanficCode/V4/ao3statswithplaywright.py", line 1394, in main
+    target = parse_ao3_work(target_url)
+  File "/Users/avantikajain/Code/FanficCode/V4/ao3statswithplaywright.py", line 800, in parse_ao3_work
+    raise HardBlockError(f"AO3 returned HTTP {response.status_code} for the target work.")
+HardBlockError: AO3 returned HTTP 525 for the target work.
+
+===== Error log started 2026-09-23T00:11:28+00:00 =====
+
+[2026-09-23 00:18:52 UTC] ERROR: HTTP 429 response details for https://archiveofourown.org/works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=1567&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc&work_search%5Bfandom_names%5D=Harry+Potter+-+J.+K.+Rowling&work_search%5Bcrossover%5D=F&work_search%5Bdate_from%5D=2026-01-01&work_search%5Bdate_to%5D=2026-07-01:
+  --- 429 response ---
+  URL: https://archiveofourown.org/works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=1567&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc&work_search%5Bfandom_names%5D=Harry+Potter+-+J.+K.+Rowling&work_search%5Bcrossover%5D=F&work_search%5Bdate_from%5D=2026-01-01&work_search%5Bdate_to%5D=2026-07-01
+  Status: 429 
+  Retry-After header: (not sent)
+  Response headers: {'alt-svc': 'h3=":443"; ma=86400', 'cache-control': 'no-cache', 'cf-cache-status': 'DYNAMIC', 'cf-ray': 'a3f55fe29acbadf1-IAD', 'content-length': '12', 'content-type': 'text/plain', 'date': 'Wed, 23 Sep 2026 00:18:51 GMT', 'priority': 'u=0,i', 'retry-after': '69', 'server': 'cloudflare', 'server-timing': 'cfExtPri', 'set-cookie': '_otwarchive_session=eyJfcmFpbHMiOnsibWVzc2FnZSI6ImV5SnpaWE56YVc5dVgybGtJam9pWVRnd01UYzVObVEzTmpjd016RTBNVFJoTnpkbE5tRm1NekU0TnpjM1ltSWlMQ0ozWVhKa1pXNHVkWE5sY2k1MWMyVnlMbXRsZVNJNlcxc3pNVGs0Tnpnd01WMHNJaVF5WVNReE5DUmpWekl3WWpsbWRrOTJTblphZUZkeFowcEpUbWxQSWwwc0lsOWpjM0ptWDNSdmEyVnVJam9pYlhwMGNqUlVZa2x2Y2xaVllVNU5aMVp0YlhsSFVHMTJVVVYyZWkxVGEzQkdRbVl5VXpWdWNWbFJjeUo5IiwiZXhwIjoiMjAyNi0xMC0wN1QwMDoxODo1MS45ODJaIiwicHVyIjoiY29va2llLl9vdHdhcmNoaXZlX3Nlc3Npb24ifX0%3D--2c5a16b364f8b381c40965ee70396432e1250950; path=/; expires=Wed, 07 Oct 2026 00:18:51 GMT; HttpOnly; SameSite=Lax', 'x-request-id': '2d39cc20-851b-405e-950a-eebc4eb9cfea', 'x-runtime': '0.002344'}
+  Response body:
+  <html><head><meta name="color-scheme" content="light dark"></head><body><pre style="word-wrap: break-word; white-space: pre-wrap;">Retry later
+</pre></body></html>
+  ---------------------
+
+[2026-09-23 00:19:07 UTC] ERROR: HTTP 429 response details for https://archiveofourown.org/works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=1567&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc&work_search%5Bfandom_names%5D=Harry+Potter+-+J.+K.+Rowling&work_search%5Bcrossover%5D=F&work_search%5Bdate_from%5D=2026-01-01&work_search%5Bdate_to%5D=2026-07-01:
+  --- 429 response ---
+  URL: https://archiveofourown.org/works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=1567&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc&work_search%5Bfandom_names%5D=Harry+Potter+-+J.+K.+Rowling&work_search%5Bcrossover%5D=F&work_search%5Bdate_from%5D=2026-01-01&work_search%5Bdate_to%5D=2026-07-01
+  Status: 429 
+  Retry-After header: (not sent)
+  Response headers: {'alt-svc': 'h3=":443"; ma=86400', 'cache-control': 'no-cache', 'cf-cache-status': 'DYNAMIC', 'cf-ray': 'a3f5604199bbadf1-IAD', 'content-length': '12', 'content-type': 'text/plain', 'date': 'Wed, 23 Sep 2026 00:19:08 GMT', 'priority': 'u=0,i', 'retry-after': '52', 'server': 'cloudflare', 'server-timing': 'cfExtPri', 'set-cookie': '_otwarchive_session=eyJfcmFpbHMiOnsibWVzc2FnZSI6ImV5SnpaWE56YVc5dVgybGtJam9pWVRnd01UYzVObVEzTmpjd016RTBNVFJoTnpkbE5tRm1NekU0TnpjM1ltSWlMQ0ozWVhKa1pXNHVkWE5sY2k1MWMyVnlMbXRsZVNJNlcxc3pNVGs0Tnpnd01WMHNJaVF5WVNReE5DUmpWekl3WWpsbWRrOTJTblphZUZkeFowcEpUbWxQSWwwc0lsOWpjM0ptWDNSdmEyVnVJam9pYlhwMGNqUlVZa2x2Y2xaVllVNU5aMVp0YlhsSFVHMTJVVVYyZWkxVGEzQkdRbVl5VXpWdWNWbFJjeUo5IiwiZXhwIjoiMjAyNi0xMC0wN1QwMDoxOTowOC4wMTlaIiwicHVyIjoiY29va2llLl9vdHdhcmNoaXZlX3Nlc3Npb24ifX0%3D--c068bd1443675bcb18a8aca4a7439079afb95937; path=/; expires=Wed, 07 Oct 2026 00:19:08 GMT; HttpOnly; SameSite=Lax', 'x-request-id': '7e901f72-ac3f-459f-99f5-9498b3c01334', 'x-runtime': '0.001418'}
+  Response body:
+  <html><head><meta name="color-scheme" content="light dark"></head><body><pre style="word-wrap: break-word; white-space: pre-wrap;">Retry later
+</pre></body></html>
+  ---------------------
+
+[2026-09-23 00:19:38 UTC] ERROR: HTTP 429 response details for https://archiveofourown.org/works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=1567&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc&work_search%5Bfandom_names%5D=Harry+Potter+-+J.+K.+Rowling&work_search%5Bcrossover%5D=F&work_search%5Bdate_from%5D=2026-01-01&work_search%5Bdate_to%5D=2026-07-01:
+  --- 429 response ---
+  URL: https://archiveofourown.org/works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=1567&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc&work_search%5Bfandom_names%5D=Harry+Potter+-+J.+K.+Rowling&work_search%5Bcrossover%5D=F&work_search%5Bdate_from%5D=2026-01-01&work_search%5Bdate_to%5D=2026-07-01
+  Status: 429 
+  Retry-After header: (not sent)
+  Response headers: {'alt-svc': 'h3=":443"; ma=86400', 'cache-control': 'no-cache', 'cf-cache-status': 'DYNAMIC', 'cf-ray': 'a3f56103e8575ceb-IAD', 'content-length': '12', 'content-type': 'text/plain', 'date': 'Wed, 23 Sep 2026 00:19:38 GMT', 'priority': 'u=0,i', 'retry-after': '22', 'server': 'cloudflare', 'server-timing': 'cfExtPri', 'set-cookie': '_otwarchive_session=eyJfcmFpbHMiOnsibWVzc2FnZSI6ImV5SnpaWE56YVc5dVgybGtJam9pWVRnd01UYzVObVEzTmpjd016RTBNVFJoTnpkbE5tRm1NekU0TnpjM1ltSWlMQ0ozWVhKa1pXNHVkWE5sY2k1MWMyVnlMbXRsZVNJNlcxc3pNVGs0Tnpnd01WMHNJaVF5WVNReE5DUmpWekl3WWpsbWRrOTJTblphZUZkeFowcEpUbWxQSWwwc0lsOWpjM0ptWDNSdmEyVnVJam9pYlhwMGNqUlVZa2x2Y2xaVllVNU5aMVp0YlhsSFVHMTJVVVYyZWkxVGEzQkdRbVl5VXpWdWNWbFJjeUo5IiwiZXhwIjoiMjAyNi0xMC0wN1QwMDoxOTozOC4yNjNaIiwicHVyIjoiY29va2llLl9vdHdhcmNoaXZlX3Nlc3Npb24ifX0%3D--fd1f500a9b7d0a2e2a0db1ff24af8e7699b1bf7a; path=/; expires=Wed, 07 Oct 2026 00:19:38 GMT; HttpOnly; SameSite=Lax', 'x-request-id': '3737ad37-e443-4e2a-ad74-52020f736ed3', 'x-runtime': '0.002033'}
+  Response body:
+  <html><head><meta name="color-scheme" content="light dark"></head><body><pre style="word-wrap: break-word; white-space: pre-wrap;">Retry later
+</pre></body></html>
+  ---------------------
+
+[2026-09-23 00:20:54 UTC] ERROR: HTTP 429 response details for https://archiveofourown.org/works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=1633&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc&work_search%5Bfandom_names%5D=Harry+Potter+-+J.+K.+Rowling&work_search%5Bcrossover%5D=F&work_search%5Bdate_from%5D=2026-01-01&work_search%5Bdate_to%5D=2026-07-01:
+  --- 429 response ---
+  URL: https://archiveofourown.org/works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=1633&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc&work_search%5Bfandom_names%5D=Harry+Potter+-+J.+K.+Rowling&work_search%5Bcrossover%5D=F&work_search%5Bdate_from%5D=2026-01-01&work_search%5Bdate_to%5D=2026-07-01
+  Status: 429 
+  Retry-After header: (not sent)
+  Response headers: {'alt-svc': 'h3=":443"; ma=86400', 'cache-control': 'no-cache', 'cf-cache-status': 'DYNAMIC', 'cf-ray': 'a3f562e25e96898c-IAD', 'content-length': '12', 'content-type': 'text/plain', 'date': 'Wed, 23 Sep 2026 00:20:54 GMT', 'priority': 'u=0,i', 'retry-after': '346', 'server': 'cloudflare', 'server-timing': 'cfExtPri', 'set-cookie': '_otwarchive_session=eyJfcmFpbHMiOnsibWVzc2FnZSI6ImV5SnpaWE56YVc5dVgybGtJam9pWVRnd01UYzVObVEzTmpjd016RTBNVFJoTnpkbE5tRm1NekU0TnpjM1ltSWlMQ0ozWVhKa1pXNHVkWE5sY2k1MWMyVnlMbXRsZVNJNlcxc3pNVGs0Tnpnd01WMHNJaVF5WVNReE5DUmpWekl3WWpsbWRrOTJTblphZUZkeFowcEpUbWxQSWwwc0lsOWpjM0ptWDNSdmEyVnVJam9pYlhwMGNqUlVZa2x2Y2xaVllVNU5aMVp0YlhsSFVHMTJVVVYyZWkxVGEzQkdRbVl5VXpWdWNWbFJjeUo5IiwiZXhwIjoiMjAyNi0xMC0wN1QwMDoyMDo1NC44MjNaIiwicHVyIjoiY29va2llLl9vdHdhcmNoaXZlX3Nlc3Npb24ifX0%3D--6d18cdac7e2fb8dbc6f24eeec1974719982c6894; path=/; expires=Wed, 07 Oct 2026 00:20:54 GMT; HttpOnly; SameSite=Lax', 'strict-transport-security': 'max-age=172800', 'x-request-id': '35e09efc-f5c6-4ae2-9410-681b9d944cf0', 'x-runtime': '0.002766'}
+  Response body:
+  <html><head><meta name="color-scheme" content="light dark"></head><body><pre style="word-wrap: break-word; white-space: pre-wrap;">Retry later
+</pre></body></html>
+  ---------------------
+
+[2026-09-23 00:21:10 UTC] ERROR: HTTP 429 response details for https://archiveofourown.org/works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=1633&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc&work_search%5Bfandom_names%5D=Harry+Potter+-+J.+K.+Rowling&work_search%5Bcrossover%5D=F&work_search%5Bdate_from%5D=2026-01-01&work_search%5Bdate_to%5D=2026-07-01:
+  --- 429 response ---
+  URL: https://archiveofourown.org/works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=1633&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc&work_search%5Bfandom_names%5D=Harry+Potter+-+J.+K.+Rowling&work_search%5Bcrossover%5D=F&work_search%5Bdate_from%5D=2026-01-01&work_search%5Bdate_to%5D=2026-07-01
+  Status: 429 
+  Retry-After header: (not sent)
+  Response headers: {'alt-svc': 'h3=":443"; ma=86400', 'cache-control': 'no-cache', 'cf-cache-status': 'DYNAMIC', 'cf-ray': 'a3f563412b6a898c-IAD', 'content-length': '12', 'content-type': 'text/plain', 'date': 'Wed, 23 Sep 2026 00:21:10 GMT', 'priority': 'u=0,i', 'retry-after': '330', 'server': 'cloudflare', 'server-timing': 'cfExtPri', 'set-cookie': '_otwarchive_session=eyJfcmFpbHMiOnsibWVzc2FnZSI6ImV5SnpaWE56YVc5dVgybGtJam9pWVRnd01UYzVObVEzTmpjd016RTBNVFJoTnpkbE5tRm1NekU0TnpjM1ltSWlMQ0ozWVhKa1pXNHVkWE5sY2k1MWMyVnlMbXRsZVNJNlcxc3pNVGs0Tnpnd01WMHNJaVF5WVNReE5DUmpWekl3WWpsbWRrOTJTblphZUZkeFowcEpUbWxQSWwwc0lsOWpjM0ptWDNSdmEyVnVJam9pYlhwMGNqUlVZa2x2Y2xaVllVNU5aMVp0YlhsSFVHMTJVVVYyZWkxVGEzQkdRbVl5VXpWdWNWbFJjeUo5IiwiZXhwIjoiMjAyNi0xMC0wN1QwMDoyMToxMC44MTdaIiwicHVyIjoiY29va2llLl9vdHdhcmNoaXZlX3Nlc3Npb24ifX0%3D--4e04bafa6de5fec1e4a0c4c2073d3a3fd0bcdcfd; path=/; expires=Wed, 07 Oct 2026 00:21:10 GMT; HttpOnly; SameSite=Lax', 'strict-transport-security': 'max-age=172800', 'x-request-id': '670ae0d6-bfa5-42cd-9e60-0bbe53068056', 'x-runtime': '0.005262'}
+  Response body:
+  <html><head><meta name="color-scheme" content="light dark"></head><body><pre style="word-wrap: break-word; white-space: pre-wrap;">Retry later
+</pre></body></html>
+  ---------------------
+
+[2026-09-23 00:21:40 UTC] ERROR: HTTP 429 response details for https://archiveofourown.org/works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=1633&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc&work_search%5Bfandom_names%5D=Harry+Potter+-+J.+K.+Rowling&work_search%5Bcrossover%5D=F&work_search%5Bdate_from%5D=2026-01-01&work_search%5Bdate_to%5D=2026-07-01:
+  --- 429 response ---
+  URL: https://archiveofourown.org/works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=1633&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc&work_search%5Bfandom_names%5D=Harry+Potter+-+J.+K.+Rowling&work_search%5Bcrossover%5D=F&work_search%5Bdate_from%5D=2026-01-01&work_search%5Bdate_to%5D=2026-07-01
+  Status: 429 
+  Retry-After header: (not sent)
+  Response headers: {'alt-svc': 'h3=":443"; ma=86400', 'cache-control': 'no-cache', 'cf-cache-status': 'DYNAMIC', 'cf-ray': 'a3f56402ca175567-IAD', 'content-length': '12', 'content-type': 'text/plain', 'date': 'Wed, 23 Sep 2026 00:21:40 GMT', 'priority': 'u=0,i', 'retry-after': '300', 'server': 'cloudflare', 'server-timing': 'cfExtPri', 'set-cookie': '_otwarchive_session=eyJfcmFpbHMiOnsibWVzc2FnZSI6ImV5SnpaWE56YVc5dVgybGtJam9pWVRnd01UYzVObVEzTmpjd016RTBNVFJoTnpkbE5tRm1NekU0TnpjM1ltSWlMQ0ozWVhKa1pXNHVkWE5sY2k1MWMyVnlMbXRsZVNJNlcxc3pNVGs0Tnpnd01WMHNJaVF5WVNReE5DUmpWekl3WWpsbWRrOTJTblphZUZkeFowcEpUbWxQSWwwc0lsOWpjM0ptWDNSdmEyVnVJam9pYlhwMGNqUlVZa2x2Y2xaVllVNU5aMVp0YlhsSFVHMTJVVVYyZWkxVGEzQkdRbVl5VXpWdWNWbFJjeUo5IiwiZXhwIjoiMjAyNi0xMC0wN1QwMDoyMTo0MC45NjlaIiwicHVyIjoiY29va2llLl9vdHdhcmNoaXZlX3Nlc3Npb24ifX0%3D--e4d33ff3c5fc50e9f4554e4d5a7c59bf10658111; path=/; expires=Wed, 07 Oct 2026 00:21:40 GMT; HttpOnly; SameSite=Lax', 'x-request-id': '3154960f-caa9-43bd-aecc-12595116f8ae', 'x-runtime': '0.003364'}
+  Response body:
+  <html><head><meta name="color-scheme" content="light dark"></head><body><pre style="word-wrap: break-word; white-space: pre-wrap;">Retry later
+</pre></body></html>
+  ---------------------
+
+[2026-09-23 00:22:31 UTC] ERROR: HTTP 429 response details for https://archiveofourown.org/works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=1646&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc&work_search%5Bfandom_names%5D=Harry+Potter+-+J.+K.+Rowling&work_search%5Bcrossover%5D=F&work_search%5Bdate_from%5D=2026-01-01&work_search%5Bdate_to%5D=2026-07-01:
+  --- 429 response ---
+  URL: https://archiveofourown.org/works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=1646&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc&work_search%5Bfandom_names%5D=Harry+Potter+-+J.+K.+Rowling&work_search%5Bcrossover%5D=F&work_search%5Bdate_from%5D=2026-01-01&work_search%5Bdate_to%5D=2026-07-01
+  Status: 429 
+  Retry-After header: (not sent)
+  Response headers: {'alt-svc': 'h3=":443"; ma=86400', 'cache-control': 'no-cache', 'cf-cache-status': 'DYNAMIC', 'cf-ray': 'a3f5653c5b41c940-IAD', 'content-length': '12', 'content-type': 'text/plain', 'date': 'Wed, 23 Sep 2026 00:22:31 GMT', 'priority': 'u=0,i', 'retry-after': '249', 'server': 'cloudflare', 'server-timing': 'cfExtPri', 'set-cookie': '_otwarchive_session=eyJfcmFpbHMiOnsibWVzc2FnZSI6ImV5SnpaWE56YVc5dVgybGtJam9pWVRnd01UYzVObVEzTmpjd016RTBNVFJoTnpkbE5tRm1NekU0TnpjM1ltSWlMQ0ozWVhKa1pXNHVkWE5sY2k1MWMyVnlMbXRsZVNJNlcxc3pNVGs0Tnpnd01WMHNJaVF5WVNReE5DUmpWekl3WWpsbWRrOTJTblphZUZkeFowcEpUbWxQSWwwc0lsOWpjM0ptWDNSdmEyVnVJam9pYlhwMGNqUlVZa2x2Y2xaVllVNU5aMVp0YlhsSFVHMTJVVVYyZWkxVGEzQkdRbVl5VXpWdWNWbFJjeUo5IiwiZXhwIjoiMjAyNi0xMC0wN1QwMDoyMjozMS4xMzZaIiwicHVyIjoiY29va2llLl9vdHdhcmNoaXZlX3Nlc3Npb24ifX0%3D--87d6a1b6f186221b153e0560be82eb1ec4c4a202; path=/; expires=Wed, 07 Oct 2026 00:22:31 GMT; HttpOnly; SameSite=Lax', 'strict-transport-security': 'max-age=172800', 'x-request-id': 'bf79069d-60c2-4d53-8b11-0100a8edcf96', 'x-runtime': '0.002573'}
+  Response body:
+  <html><head><meta name="color-scheme" content="light dark"></head><body><pre style="word-wrap: break-word; white-space: pre-wrap;">Retry later
+</pre></body></html>
+  ---------------------
+
+[2026-09-23 00:22:46 UTC] ERROR: HTTP 429 response details for https://archiveofourown.org/works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=1646&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc&work_search%5Bfandom_names%5D=Harry+Potter+-+J.+K.+Rowling&work_search%5Bcrossover%5D=F&work_search%5Bdate_from%5D=2026-01-01&work_search%5Bdate_to%5D=2026-07-01:
+  --- 429 response ---
+  URL: https://archiveofourown.org/works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=1646&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc&work_search%5Bfandom_names%5D=Harry+Potter+-+J.+K.+Rowling&work_search%5Bcrossover%5D=F&work_search%5Bdate_from%5D=2026-01-01&work_search%5Bdate_to%5D=2026-07-01
+  Status: 429 
+  Retry-After header: (not sent)
+  Response headers: {'alt-svc': 'h3=":443"; ma=86400', 'cache-control': 'no-cache', 'cf-cache-status': 'DYNAMIC', 'cf-ray': 'a3f5659b2ec4c940-IAD', 'content-length': '12', 'content-type': 'text/plain', 'date': 'Wed, 23 Sep 2026 00:22:46 GMT', 'priority': 'u=0,i', 'retry-after': '234', 'server': 'cloudflare', 'server-timing': 'cfExtPri', 'set-cookie': '_otwarchive_session=eyJfcmFpbHMiOnsibWVzc2FnZSI6ImV5SnpaWE56YVc5dVgybGtJam9pWVRnd01UYzVObVEzTmpjd016RTBNVFJoTnpkbE5tRm1NekU0TnpjM1ltSWlMQ0ozWVhKa1pXNHVkWE5sY2k1MWMyVnlMbXRsZVNJNlcxc3pNVGs0Tnpnd01WMHNJaVF5WVNReE5DUmpWekl3WWpsbWRrOTJTblphZUZkeFowcEpUbWxQSWwwc0lsOWpjM0ptWDNSdmEyVnVJam9pYlhwMGNqUlVZa2x2Y2xaVllVNU5aMVp0YlhsSFVHMTJVVVYyZWkxVGEzQkdRbVl5VXpWdWNWbFJjeUo5IiwiZXhwIjoiMjAyNi0xMC0wN1QwMDoyMjo0Ni4zMDJaIiwicHVyIjoiY29va2llLl9vdHdhcmNoaXZlX3Nlc3Npb24ifX0%3D--52f95fd572dcfd8a92847a8008453f603763ee7e; path=/; expires=Wed, 07 Oct 2026 00:22:46 GMT; HttpOnly; SameSite=Lax', 'strict-transport-security': 'max-age=172800', 'x-request-id': 'de86c7b5-c6f1-4340-9d6e-9669a6ab72bb', 'x-runtime': '0.003380'}
+  Response body:
+  <html><head><meta name="color-scheme" content="light dark"></head><body><pre style="word-wrap: break-word; white-space: pre-wrap;">Retry later
+</pre></body></html>
+  ---------------------
+
+[2026-09-23 00:23:16 UTC] ERROR: HTTP 429 response details for https://archiveofourown.org/works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=1646&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc&work_search%5Bfandom_names%5D=Harry+Potter+-+J.+K.+Rowling&work_search%5Bcrossover%5D=F&work_search%5Bdate_from%5D=2026-01-01&work_search%5Bdate_to%5D=2026-07-01:
+  --- 429 response ---
+  URL: https://archiveofourown.org/works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=1646&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc&work_search%5Bfandom_names%5D=Harry+Potter+-+J.+K.+Rowling&work_search%5Bcrossover%5D=F&work_search%5Bdate_from%5D=2026-01-01&work_search%5Bdate_to%5D=2026-07-01
+  Status: 429 
+  Retry-After header: (not sent)
+  Response headers: {'alt-svc': 'h3=":443"; ma=86400', 'cache-control': 'no-cache', 'cf-cache-status': 'DYNAMIC', 'cf-ray': 'a3f566580f73e647-IAD', 'content-length': '12', 'content-type': 'text/plain', 'date': 'Wed, 23 Sep 2026 00:23:16 GMT', 'priority': 'u=0,i', 'retry-after': '204', 'server': 'cloudflare', 'server-timing': 'cfExtPri', 'set-cookie': '_otwarchive_session=eyJfcmFpbHMiOnsibWVzc2FnZSI6ImV5SnpaWE56YVc5dVgybGtJam9pWVRnd01UYzVObVEzTmpjd016RTBNVFJoTnpkbE5tRm1NekU0TnpjM1ltSWlMQ0ozWVhKa1pXNHVkWE5sY2k1MWMyVnlMbXRsZVNJNlcxc3pNVGs0Tnpnd01WMHNJaVF5WVNReE5DUmpWekl3WWpsbWRrOTJTblphZUZkeFowcEpUbWxQSWwwc0lsOWpjM0ptWDNSdmEyVnVJam9pYlhwMGNqUlVZa2x2Y2xaVllVNU5aMVp0YlhsSFVHMTJVVVYyZWkxVGEzQkdRbVl5VXpWdWNWbFJjeUo5IiwiZXhwIjoiMjAyNi0xMC0wN1QwMDoyMzoxNi41MjlaIiwicHVyIjoiY29va2llLl9vdHdhcmNoaXZlX3Nlc3Npb24ifX0%3D--45017ebb2834b81437998ec9868bb698dce47a07; path=/; expires=Wed, 07 Oct 2026 00:23:16 GMT; HttpOnly; SameSite=Lax', 'x-request-id': '12e89818-6489-475a-b645-b83503f05828', 'x-runtime': '0.002998'}
+  Response body:
+  <html><head><meta name="color-scheme" content="light dark"></head><body><pre style="word-wrap: break-word; white-space: pre-wrap;">Retry later
+</pre></body></html>
+  ---------------------
+
+[2026-09-23 00:24:08 UTC] ERROR: HTTP 429 response details for https://archiveofourown.org/works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=1660&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc&work_search%5Bfandom_names%5D=Harry+Potter+-+J.+K.+Rowling&work_search%5Bcrossover%5D=F&work_search%5Bdate_from%5D=2026-01-01&work_search%5Bdate_to%5D=2026-07-01:
+  --- 429 response ---
+  URL: https://archiveofourown.org/works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=1660&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc&work_search%5Bfandom_names%5D=Harry+Potter+-+J.+K.+Rowling&work_search%5Bcrossover%5D=F&work_search%5Bdate_from%5D=2026-01-01&work_search%5Bdate_to%5D=2026-07-01
+  Status: 429 
+  Retry-After header: (not sent)
+  Response headers: {'alt-svc': 'h3=":443"; ma=86400', 'cache-control': 'no-cache', 'cf-cache-status': 'DYNAMIC', 'cf-ray': 'a3f5679f89c9c439-EWR', 'content-length': '12', 'content-type': 'text/plain', 'date': 'Wed, 23 Sep 2026 00:24:08 GMT', 'priority': 'u=0,i', 'retry-after': '152', 'server': 'cloudflare', 'server-timing': 'cfExtPri', 'set-cookie': '_otwarchive_session=eyJfcmFpbHMiOnsibWVzc2FnZSI6ImV5SnpaWE56YVc5dVgybGtJam9pWVRnd01UYzVObVEzTmpjd016RTBNVFJoTnpkbE5tRm1NekU0TnpjM1ltSWlMQ0ozWVhKa1pXNHVkWE5sY2k1MWMyVnlMbXRsZVNJNlcxc3pNVGs0Tnpnd01WMHNJaVF5WVNReE5DUmpWekl3WWpsbWRrOTJTblphZUZkeFowcEpUbWxQSWwwc0lsOWpjM0ptWDNSdmEyVnVJam9pYlhwMGNqUlVZa2x2Y2xaVllVNU5aMVp0YlhsSFVHMTJVVVYyZWkxVGEzQkdRbVl5VXpWdWNWbFJjeUo5IiwiZXhwIjoiMjAyNi0xMC0wN1QwMDoyNDowOC45MzRaIiwicHVyIjoiY29va2llLl9vdHdhcmNoaXZlX3Nlc3Npb24ifX0%3D--b4c6c6670efaaaa52b7640cb8d1ae460e43fe752; path=/; expires=Wed, 07 Oct 2026 00:24:08 GMT; HttpOnly; SameSite=Lax', 'x-request-id': '6442a7a5-8b23-4148-b974-5e0f1f78356f', 'x-runtime': '0.003899'}
+  Response body:
+  <html><head><meta name="color-scheme" content="light dark"></head><body><pre style="word-wrap: break-word; white-space: pre-wrap;">Retry later
+</pre></body></html>
+  ---------------------
+
+===== Error log started 2026-09-23T01:01:00+00:00 =====
