@@ -47,19 +47,25 @@ from bs4 import BeautifulSoup
 #
 #   The browser window is visible by default so a challenge can be
 #   completed by hand; set AO3_HEADLESS=1 for unattended runs. The
-#   Chromium profile is kept in ./ao3_browser_profile so clearance
-#   cookies survive between runs.
+#   browser profile is kept next to this script, in
+#   ao3_browser_profile/, so clearance cookies survive between runs.
+#
+#   A note on 525s: Cloudflare's 52x statuses describe Cloudflare
+#   failing to reach AO3's own servers (525 is specifically an SSL
+#   handshake failure between the two). They are not a verdict on
+#   this client, and no client -- browser or otherwise -- can avoid
+#   them; they're retried with backoff here and usually clear.
 #
 # On the "T"/"F" vs "true"/"false" vs "0"/"1" question for AO3's
 # work_search[complete] and work_search[crossover] fields:
-#   Different independent AO3 tooling projects disagree on this, and
-#   it can't be settled with certainty without live-testing against
-#   AO3. This script uses "T"/"F" for both fields, matching the most
-#   rigorously documented, actively maintained reference we found
-#   (the ao3.py package, which treats both fields identically and
-#   consistently). If your completion/crossover filters don't seem
-#   to actually narrow results compared to browsing the same filter
-#   manually on AO3's site, this is the first thing to double-check.
+#   Different independent AO3 tooling projects disagree on this, so
+#   the "T"/"F" form this script sends was checked live against AO3:
+#   complete=T returned only completed works, crossover=T returned
+#   only crossovers, and crossover=F dropped works AO3 itself flags
+#   as crossovers. Note that crossover=F still returns some works
+#   carrying more than one fandom tag -- AO3's crossover flag is the
+#   author/tag-wrangler judgement, not "has 2+ fandom tags", which is
+#   why is_crossover in the output is labelled a heuristic.
 #
 # Rate limiting:
 #   Uses a local page cache, randomized delays, and stops the whole
@@ -89,17 +95,35 @@ COOKIE_DOMAIN = ".archiveofourown.org"
 
 # Chromium profile directory. Reusing one profile across runs keeps
 # whatever clearance cookie the browser earned, so a fresh challenge
-# isn't triggered on every single run.
-BROWSER_PROFILE_DIR = "ao3_browser_profile"
+# isn't triggered on every single run. Anchored to the script's own
+# folder rather than the working directory, so running the script
+# from somewhere else doesn't silently start from a blank profile.
+BROWSER_PROFILE_ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "ao3_browser_profile")
 
 # Headed by default: a visible window also means a challenge can be
 # completed by hand if AO3 ever shows one. Set AO3_HEADLESS=1 for
 # unattended runs.
 HEADLESS = os.environ.get("AO3_HEADLESS", "").strip().lower() in {"1", "true", "yes"}
 
+# Chrome's headless builds put "HeadlessChrome" in the User-Agent,
+# which no human browser sends. Rather than inventing a UA string
+# (a made-up OS/version contradicts the platform, client hints and
+# WebGL strings the same browser reports, which is worse than the
+# honest one), the real UA is read from the running browser and only
+# that one token is corrected. See BrowserSession._sanitize_user_agent.
+HEADLESS_UA_TOKEN = "HeadlessChrome"
+
 # How long to let an interstitial resolve itself before treating the
 # page as blocked.
 CHALLENGE_WAIT_SECONDS = 30
+
+# Cloudflare's 52x family describes the edge failing to talk to AO3's
+# origin (525 in particular is an SSL handshake failure between
+# Cloudflare and AO3, per Cloudflare's own docs) -- it says nothing
+# about this client, so these are retried rather than treated as an
+# instruction to stop. 403 and 429 are the responses that actually
+# mean "you, stop".
+ORIGIN_ERROR_STATUSES = frozenset({520, 521, 522, 523, 524, 525, 526, 527})
 
 MAX_CONSECUTIVE_HARD_FAILURES = 3
 
@@ -213,26 +237,90 @@ class BrowserSession:
         self._playwright = None
         self._context = None
         self._page = None
-        self._pending_cookies = list(DEFAULT_COOKIES)
+        # Every cookie ever handed to this session is remembered, so a
+        # context rebuilt after a browser crash comes back with the
+        # same login/adult-content state instead of a blank jar.
+        self._cookies = list(DEFAULT_COOKIES)
 
     def start(self):
         if self._page is not None:
             return
 
         self._playwright = sync_playwright().start()
-        self._context = self._playwright.chromium.launch_persistent_context(
-            BROWSER_PROFILE_DIR,
-            headless=HEADLESS,
-            viewport={"width": 1280, "height": 900},
-            locale="en-US",
-        )
+        self._context, self._page = self._launch()
         self._context.set_default_navigation_timeout(60_000)
 
-        if self._pending_cookies:
-            self._context.add_cookies(self._pending_cookies)
-            self._pending_cookies = []
+        # navigator.webdriver is the one automation signal Chromium
+        # still reports after --disable-blink-features.
+        self._context.add_init_script(
+            "Object.defineProperty(navigator, 'webdriver', {get: () => undefined});"
+        )
 
-        self._page = self._context.pages[0] if self._context.pages else self._context.new_page()
+        if self._cookies:
+            self._context.add_cookies(self._cookies)
+
+        self._warm_up()
+
+    def _launch(self):
+        context = self._launch_context()
+        page = context.pages[0] if context.pages else context.new_page()
+
+        clean_user_agent = self._sanitize_user_agent(page)
+        if clean_user_agent is None:
+            return context, page
+
+        # The UA can only be set when the context is created, so the
+        # first context is thrown away once it reveals a headless UA.
+        context.close()
+        context = self._launch_context(user_agent=clean_user_agent)
+        page = context.pages[0] if context.pages else context.new_page()
+        return context, page
+
+    @staticmethod
+    def _sanitize_user_agent(page):
+        """Return a corrected UA if the browser advertises headless."""
+        try:
+            user_agent = page.evaluate("navigator.userAgent")
+        except PlaywrightError:
+            return None
+
+        if not user_agent or HEADLESS_UA_TOKEN not in user_agent:
+            return None
+
+        return user_agent.replace(HEADLESS_UA_TOKEN, "Chrome")
+
+    def _launch_context(self, user_agent=None):
+        options = {
+            "headless": HEADLESS,
+            "viewport": {"width": 1280, "height": 900},
+            "locale": "en-US",
+            # Chromium otherwise advertises itself as automated.
+            "args": ["--disable-blink-features=AutomationControlled"],
+        }
+
+        if user_agent:
+            options["user_agent"] = user_agent
+
+        # A locally installed Chrome is a more ordinary browser than
+        # Playwright's bundled Chromium build, so use it when present.
+        # Chrome and Chromium get separate profile folders: one profile
+        # written by a newer build makes the other refuse to start.
+        try:
+            return self._playwright.chromium.launch_persistent_context(
+                os.path.join(BROWSER_PROFILE_ROOT, "chrome"), channel="chrome", **options
+            )
+        except PlaywrightError:
+            return self._playwright.chromium.launch_persistent_context(
+                os.path.join(BROWSER_PROFILE_ROOT, "chromium"), **options
+            )
+
+    def _warm_up(self):
+        """Load the homepage once before jumping into search URLs."""
+        try:
+            self._page.goto("https://archiveofourown.org/", wait_until="domcontentloaded")
+            self._settle_interstitial()
+        except (PlaywrightError, PlaywrightTimeoutError) as error:
+            log_error("Warm-up navigation to the AO3 homepage failed.", error)
 
     def add_cookies(self, cookie_dict):
         cookies = [
@@ -240,19 +328,38 @@ class BrowserSession:
             for name, value in cookie_dict.items()
         ]
 
-        if self._context is None:
-            self._pending_cookies.extend(cookies)
-        else:
+        self._cookies.extend(cookies)
+
+        if self._context is not None:
             self._context.add_cookies(cookies)
+
+    def _recover_if_dead(self, error):
+        """Rebuild the browser if it crashed or was closed.
+
+        Without this, one crashed Chromium turns every remaining page
+        of a long run into the same 'Target closed' failure.
+        """
+        message = str(error).lower()
+        if not any(m in message for m in ("closed", "crash", "disconnected")):
+            return
+
+        log_error("Browser died; rebuilding the session.", error)
+        self.close()
 
     def get(self, url, timeout=60):
         self.start()
 
-        response = self._page.goto(
-            url,
-            wait_until="domcontentloaded",
-            timeout=int(timeout * 1000),
-        )
+        try:
+            response = self._page.goto(
+                url,
+                wait_until="domcontentloaded",
+                timeout=int(timeout * 1000),
+            )
+        except PlaywrightTimeoutError:
+            raise
+        except PlaywrightError as error:
+            self._recover_if_dead(error)
+            raise
 
         status = response.status if response is not None else 0
         reason = response.status_text if response is not None else ""
@@ -271,7 +378,13 @@ class BrowserSession:
 
     def _settle_interstitial(self):
         """Give a challenge page a chance to resolve into real content."""
-        body = self._page.content()
+        try:
+            body = self._page.content()
+        except PlaywrightError:
+            # Content can be unavailable mid-navigation; one retry is
+            # enough because the page has stopped moving by then.
+            time.sleep(2)
+            body = self._page.content()
 
         if not looks_like_challenge(body):
             return body
@@ -314,17 +427,37 @@ class BrowserSession:
 
 
 def looks_like_challenge(body):
+    """True only for a Cloudflare interstitial, not for AO3 content.
+
+    Matching on loose phrases alone misfires: a search page listing a
+    work titled "Just a Moment" is a perfectly good results page. So a
+    page that contains AO3's own chrome is never a challenge, and the
+    remaining markers have to appear in the <title> or as Cloudflare's
+    own challenge scaffolding.
+    """
     if not body:
         return False
 
     lowered = body.lower()
 
-    return any(marker in lowered for marker in (
-        "just a moment",
-        "checking your browser",
+    if 'id="header"' in lowered or 'class="work blurb' in lowered or "/users/logout" in lowered:
+        return False
+
+    if any(marker in lowered for marker in (
         "cf-browser-verification",
         "cf_chl_opt",
-        "attention required! | cloudflare",
+        "challenge-platform",
+        "__cf_chl",
+    )):
+        return True
+
+    title_match = re.search(r"<title[^>]*>(.*?)</title>", lowered, re.DOTALL)
+    title = title_match.group(1).strip() if title_match else ""
+
+    return any(marker in title for marker in (
+        "just a moment",
+        "attention required",
+        "checking your browser",
     ))
 
 
@@ -583,9 +716,9 @@ def polite_delay(min_seconds=5.0, max_seconds=10.0):
 
 def get_with_retry(url, max_retries=3):
     """
-    Retry transient network errors and 429 responses with backoff.
-    403, 503, and 525 are returned immediately so the caller can stop
-    rather than trying to push through a block.
+    Retry transient network errors, Cloudflare origin errors (52x) and
+    429 responses with backoff. 403 and 503 are returned immediately so
+    the caller can stop rather than trying to push through a block.
     """
     response = None
 
@@ -611,8 +744,21 @@ def get_with_retry(url, max_retries=3):
             log_error(f"HTTP 429 response details for {url}:\n{full_detail}")
             print(console_detail)
 
-            wait = retry_after_seconds if retry_after_seconds is not None else 15 * (attempt + 1)
+            # Cloudflare occasionally sends an enormous Retry-After;
+            # capped so a run can't silently sleep for hours.
+            wait = min(retry_after_seconds, 300) if retry_after_seconds is not None else 15 * (attempt + 1)
             print(f"  Waiting {wait}s before retrying...")
+            time.sleep(wait)
+            continue
+
+        if response.status_code in ORIGIN_ERROR_STATUSES or response.status_code == 0:
+            log_error(f"Origin-side failure for {url}: HTTP {response.status_code} {response.reason}")
+            wait = 20 * (attempt + 1)
+            print(
+                f"  HTTP {response.status_code}: Cloudflare could not reach AO3's server. "
+                f"This is AO3's end, not a block. Waiting {wait}s before retrying "
+                f"({attempt + 1}/{max_retries})..."
+            )
             time.sleep(wait)
             continue
 
@@ -796,7 +942,7 @@ def parse_ao3_work(work_url):
 
     if response is None:
         raise HardBlockError("AO3 could not be reached after several attempts.")
-    if response.status_code in (403, 503, 525):
+    if response.status_code in (403, 503) or response.status_code in ORIGIN_ERROR_STATUSES:
         raise HardBlockError(f"AO3 returned HTTP {response.status_code} for the target work.")
     if response.status_code == 429:
         raise HardBlockError("AO3 continued returning HTTP 429 after retries.")
@@ -987,8 +1133,11 @@ def get_result_page_count(fandom, category, warning, crossover, complete_only, t
 
     if response is None:
         return 0, url
-    if response.status_code in (403, 503, 525):
-        raise HardBlockError(f"AO3 returned HTTP {response.status_code} while checking the search.")
+    if response.status_code in (403, 503) or response.status_code in ORIGIN_ERROR_STATUSES:
+        raise HardBlockError(
+            f"AO3 returned HTTP {response.status_code} while checking the search, "
+            "and it did not clear on retry."
+        )
     if response.status_code == 429:
         raise HardBlockError("AO3 returned HTTP 429 while checking the search.")
     if response.status_code != 200:
@@ -1088,7 +1237,11 @@ def scrape_fandom_cohort(
             polite_delay()
             response = get_with_retry(url)
 
-            hard_fail = response is None or response.status_code in (403, 503, 525, 429)
+            hard_fail = (
+                response is None
+                or response.status_code in (403, 503, 429)
+                or response.status_code in ORIGIN_ERROR_STATUSES
+            )
 
             if hard_fail:
                 consecutive_hard_failures += 1
