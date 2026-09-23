@@ -25361,3 +25361,64 @@ HardBlockError: AO3 returned HTTP 525 for the target work.
   ---------------------
 
 ===== Error log started 2026-09-23T01:01:00+00:00 =====
+
+===== Error log started 2026-09-23T01:20:15+00:00 =====
+
+===== Error log started 2026-09-23T01:21:40+00:00 =====
+
+[2026-09-23 02:08:34 UTC] ERROR: HTTP 429 response details for https://archiveofourown.org/works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=617&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc&work_search%5Bfandom_names%5D=Arcane%3A+League+of+Legends+%28Cartoon+2021%29&work_search%5Bcrossover%5D=F:
+  --- 429 response ---
+  URL: https://archiveofourown.org/works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=617&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc&work_search%5Bfandom_names%5D=Arcane%3A+League+of+Legends+%28Cartoon+2021%29&work_search%5Bcrossover%5D=F
+  Status: 429 
+  Retry-After header: 86
+  Response headers: {'alt-svc': 'h3=":443"; ma=86400', 'cache-control': 'no-cache', 'cf-cache-status': 'DYNAMIC', 'cf-ray': 'a3f600969a7c201b-IAD', 'content-length': '12', 'content-type': 'text/plain', 'date': 'Wed, 23 Sep 2026 02:08:34 GMT', 'priority': 'u=0,i', 'retry-after': '86', 'server': 'cloudflare', 'server-timing': 'cfExtPri', 'set-cookie': '_otwarchive_session=eyJfcmFpbHMiOnsibWVzc2FnZSI6ImV5SnpaWE56YVc5dVgybGtJam9pWVRnd01UYzVObVEzTmpjd016RTBNVFJoTnpkbE5tRm1NekU0TnpjM1ltSWlMQ0ozWVhKa1pXNHVkWE5sY2k1MWMyVnlMbXRsZVNJNlcxc3pNVGs0Tnpnd01WMHNJaVF5WVNReE5DUmpWekl3WWpsbWRrOTJTblphZUZkeFowcEpUbWxQSWwwc0lsOWpjM0ptWDNSdmEyVnVJam9pYlhwMGNqUlVZa2x2Y2xaVllVNU5aMVp0YlhsSFVHMTJVVVYyZWkxVGEzQkdRbVl5VXpWdWNWbFJjeUo5IiwiZXhwIjoiMjAyNi0xMC0wN1QwMjowODozNC4zNzZaIiwicHVyIjoiY29va2llLl9vdHdhcmNoaXZlX3Nlc3Npb24ifX0%3D--99c84f8cd1f258ca29519ab584d4316c69d81c15; path=/; expires=Wed, 07 Oct 2026 02:08:34 GMT; HttpOnly; SameSite=Lax', 'strict-transport-security': 'max-age=172800', 'x-request-id': '286e5e5b-02e7-4e63-bb08-33d5a8c2bc5e', 'x-runtime': '0.002523'}
+  Response body:
+  <html><head><meta name="color-scheme" content="light dark"></head><body><pre style="word-wrap: break-word; white-space: pre-wrap;">Retry later
+</pre></body></html>
+  ---------------------
+
+[2026-09-23 02:10:06 UTC] ERROR: Network request failed for https://archiveofourown.org/works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=617&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc&work_search%5Bfandom_names%5D=Arcane%3A+League+of+Legends+%28Cartoon+2021%29&work_search%5Bcrossover%5D=F (Error: Page.goto: net::ERR_CERT_COMMON_NAME_INVALID at https://archiveofourown.org/works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=617&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc&work_search%5Bfandom_names%5D=Arcane%3A+League+of+Legends+%28Cartoon+2021%29&work_search%5Bcrossover%5D=F
+Call log:
+  - navigating to "https://archiveofourown.org/works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=617&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc&work_search%5Bfandom_names%5D=Arcane%3A+League+of+Legends+%28Cartoon+2021%29&work_search%5Bcrossover%5D=F", waiting until "domcontentloaded"
+)
+Traceback (most recent call last):
+  File "/Users/avantikajain/Code/FanficCode/V4/ao3statswithplaywright.py", line 786, in get_with_retry
+    response = BROWSER.get(url, timeout=60)
+  File "/Users/avantikajain/Code/FanficCode/V4/ao3statswithplaywright.py", line 386, in get
+    response = self._page.goto(
+        url,
+        wait_until="domcontentloaded",
+        timeout=int(timeout * 1000),
+    )
+  File "/Users/avantikajain/Code/FanficCode/V4/venv/lib/python3.14/site-packages/playwright/sync_api/_generated.py", line 9903, in goto
+    self._sync(
+    ~~~~~~~~~~^
+        self._impl_obj.goto(
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        )
+        ^
+    )
+    ^
+  File "/Users/avantikajain/Code/FanficCode/V4/venv/lib/python3.14/site-packages/playwright/_impl/_sync_base.py", line 115, in _sync
+    return task.result()
+           ~~~~~~~~~~~^^
+  File "/Users/avantikajain/Code/FanficCode/V4/venv/lib/python3.14/site-packages/playwright/_impl/_page.py", line 562, in goto
+    return await self._main_frame.goto(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/avantikajain/Code/FanficCode/V4/venv/lib/python3.14/site-packages/playwright/_impl/_frame.py", line 157, in goto
+    await self._channel.send(
+        "goto", self._navigation_timeout, locals_to_params(locals())
+    )
+  File "/Users/avantikajain/Code/FanficCode/V4/venv/lib/python3.14/site-packages/playwright/_impl/_connection.py", line 76, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "/Users/avantikajain/Code/FanficCode/V4/venv/lib/python3.14/site-packages/playwright/_impl/_connection.py", line 632, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.Error: Page.goto: net::ERR_CERT_COMMON_NAME_INVALID at https://archiveofourown.org/works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=617&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc&work_search%5Bfandom_names%5D=Arcane%3A+League+of+Legends+%28Cartoon+2021%29&work_search%5Bcrossover%5D=F
+Call log:
+  - navigating to "https://archiveofourown.org/works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=617&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc&work_search%5Bfandom_names%5D=Arcane%3A+League+of+Legends+%28Cartoon+2021%29&work_search%5Bcrossover%5D=F", waiting until "domcontentloaded"
+

@@ -9314,3 +9314,110 @@
 [2026-09-23 01:09:03] 
 [2026-09-23 01:09:03] Recommended next research step:
 [2026-09-23 01:09:03] Use this metadata dataset to select a smaller, matched M/M and F/F corpus for manual coding of relationship features such as emotional vulnerability, physical affection, conflict, romantic initiation, agency, and reciprocity.
+
+===== Run started 2026-09-23T01:20:15+00:00 =====
+[2026-09-23 01:20:15] (Logging this run to scraping_log.txt; errors to error_log.txt.)
+[2026-09-23 01:20:15] Optional: paste a logged-in AO3 session cookie if you need registered-user-only works.
+[2026-09-23 01:20:15] If pasting fails silently (very long cookies can exceed your terminal's paste limit), create a plain text file named 'ao3_cookie.txt' in this folder instead.
+[2026-09-23 01:20:15] Leave blank to continue anonymously.
+[2026-09-23 01:20:34] AO3 session cookie (optional): 
+[2026-09-23 01:20:34] Stopped by user.
+
+===== Run started 2026-09-23T01:21:40+00:00 =====
+[2026-09-23 01:21:40] (Logging this run to scraping_log.txt; errors to error_log.txt.)
+[2026-09-23 01:21:40] Found ao3_cookie.txt. Using the cookie from that file.
+[2026-09-23 01:21:40]   Parsed cookie name(s): __cf_bm, _cfuvid, _otwarchive_session, cf_clearance, remember_user_token, user_credentials
+[2026-09-23 01:21:55]   Login verified: AO3 recognizes this cookie as a logged-in session.
+[2026-09-23 01:21:55] 
+[2026-09-23 01:55:49] Enter target AO3 work URL: 
+[2026-09-23 01:55:49] Fetching target work details...
+[2026-09-23 01:55:56] 
+[2026-09-23 01:55:56] --- Target Fic: 'One Hell of a Ride' ---
+[2026-09-23 01:55:56] Work ID: 89875081
+[2026-09-23 01:55:56] Fandom(s): Arcane: League of Legends (Cartoon 2021)
+[2026-09-23 01:55:56] Relationships: Caitlyn/Vi (League of Legends), Cassandra Kiramman & Vi (League of Legends), Caitlyn (League of Legends) & Cassandra Kiramman & Tobias Kiramman, Vander & Vi (League of Legends), Jinx & Vi (League of Legends)
+[2026-09-23 01:55:56] Words: 43,275 | Chapters: 5
+[2026-09-23 01:55:56] Hits: 4,435 | Kudos: 203 | Bookmarks: 36 | Comments: 120
+[2026-09-23 01:55:56] Kudos/Hits: 4.58%
+[2026-09-23 01:55:56] Bookmarks/Hits: 0.81%
+[2026-09-23 01:55:56] Kudos per 10k words: 46.91
+[2026-09-23 01:55:56] 
+[2026-09-23 01:55:56] --- Configure Comparison Cohort ---
+[2026-09-23 01:55:56] 
+[2026-09-23 01:55:56] Fandom scope:
+[2026-09-23 01:55:56] [0] Choose a target fandom
+[2026-09-23 01:55:56] [1] All fandoms
+[2026-09-23 01:55:59] Select fandom scope (0-1): 
+[2026-09-23 01:55:59] Category:
+[2026-09-23 01:55:59] [0] All
+[2026-09-23 01:55:59] [1] M/M
+[2026-09-23 01:55:59] [2] F/F
+[2026-09-23 01:55:59] [3] F/M
+[2026-09-23 01:55:59] [4] Multi
+[2026-09-23 01:55:59] [5] Gen
+[2026-09-23 01:56:00] Select category (0-5): 
+[2026-09-23 01:56:00] Archive warnings:
+[2026-09-23 01:56:00] [0] All
+[2026-09-23 01:56:00] [1] No Warnings Apply
+[2026-09-23 01:56:00] [2] Creator Chose Not To Use
+[2026-09-23 01:56:00] [3] Graphic Violence
+[2026-09-23 01:56:00] [4] Major Character Death
+[2026-09-23 01:56:00] [5] Rape/Non-Con
+[2026-09-23 01:56:00] [6] Underage
+[2026-09-23 01:56:01] Select warning (0-6): 
+[2026-09-23 01:56:01] Crossovers:
+[2026-09-23 01:56:01] [0] No crossovers (recommended)
+[2026-09-23 01:56:01] [1] All works
+[2026-09-23 01:56:01] [2] Crossovers only
+[2026-09-23 01:56:02] Select crossover option (0-2): 
+[2026-09-23 01:56:02] Chapters:
+[2026-09-23 01:56:02] [0] All
+[2026-09-23 01:56:02] [1] One-shots only
+[2026-09-23 01:56:02] [2] Same number as target
+[2026-09-23 01:56:02] [3] Multi-chapter only
+[2026-09-23 01:56:03] Select chapter filter (0-3): 
+[2026-09-23 01:56:03] Completion:
+[2026-09-23 01:56:03] [0] All
+[2026-09-23 01:56:03] [1] Complete only
+[2026-09-23 01:56:03] Select completion filter (0-1): 
+[2026-09-23 01:56:03] Timeframe:
+[2026-09-23 01:56:03] [0] All time
+[2026-09-23 01:56:03] [1] Last week
+[2026-09-23 01:56:03] [2] Last month
+[2026-09-23 01:56:03] [3] Last year
+[2026-09-23 01:56:03] [4] Custom range
+[2026-09-23 01:56:11] Select timeframe (0-4): 
+[2026-09-23 01:56:11] Checking the result count...
+[2026-09-23 01:56:13] Found 3147 result page(s).
+[2026-09-23 01:56:47] Start page (1-3147, blank = 1): End page (1-3147, blank = 3147): 
+[2026-09-23 01:56:47] Sampling mode:
+[2026-09-23 01:56:47] [0] All pages
+[2026-09-23 01:56:47] [1] Systematic pages
+[2026-09-23 01:56:47] [2] Random pages
+[2026-09-23 01:57:39] Select sampling mode (0-2): How many pages should be sampled? Sampling seed (blank = 2026): 
+[2026-09-23 01:57:39] Collecting cohort metadata. Only search-result cards are parsed for cohort works.
+[2026-09-23 01:57:39]   Selected 300 page(s): [50, 85, 87, 88, 101, 118, 134, 142, 147, 158, 171, 179, 193, 195, 226, 227, 238, 243, 248, 259]...
+[2026-09-23 01:59:47]   ...page 10/300 done; 160 qualifying works.
+[2026-09-23 02:01:51]   ...page 20/300 done; 315 qualifying works.
+[2026-09-23 02:04:06]   ...page 30/300 done; 484 qualifying works.
+[2026-09-23 02:06:11]   ...page 40/300 done; 647 qualifying works.
+[2026-09-23 02:08:24]   ...page 50/300 done; 826 qualifying works.
+[2026-09-23 02:08:34]   --- 429 response ---
+[2026-09-23 02:08:34]   URL: https://archiveofourown.org/works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=617&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc&work_search%5Bfandom_names%5D=Arcane%3A+League+of+Legends+%28Cartoon+2021%29&work_search%5Bcrossover%5D=F
+[2026-09-23 02:08:34]   Status: 429 
+[2026-09-23 02:08:34]   Retry-After header: 86
+[2026-09-23 02:08:34]   Response headers: {'alt-svc': 'h3=":443"; ma=86400', 'cache-control': 'no-cache', 'cf-cache-status': 'DYNAMIC', 'cf-ray': 'a3f600969a7c201b-IAD', 'content-length': '12', 'content-type': 'text/plain', 'date': 'Wed, 23 Sep 2026 02:08:34 GMT', 'priority': 'u=0,i', 'retry-after': '86', 'server': 'cloudflare', 'server-timing': 'cfExtPri', 'set-cookie': '_otwarchive_session=eyJfcmFpbHMiOnsibWVzc2FnZSI6ImV5SnpaWE56YVc5dVgybGtJam9pWVRnd01UYzVObVEzTmpjd016RTBNVFJoTnpkbE5tRm1NekU0TnpjM1ltSWlMQ0ozWVhKa1pXNHVkWE5sY2k1MWMyVnlMbXRsZVNJNlcxc3pNVGs0Tnpnd01WMHNJaVF5WVNReE5DUmpWekl3WWpsbWRrOTJTblphZUZkeFowcEpUbWxQSWwwc0lsOWpjM0ptWDNSdmEyVnVJam9pYlhwMGNqUlVZa2x2Y2xaVllVNU5aMVp0YlhsSFVHMTJVVVYyZWkxVGEzQkdRbVl5VXpWdWNWbFJjeUo5IiwiZXhwIjoiMjAyNi0xMC0wN1QwMjowODozNC4zNzZaIiwicHVyIjoiY29va2llLl9vdHdhcmNoaXZlX3Nlc3Npb24ifX0%3D--99c84f8cd1f258ca29519ab584d4316c69d81c15; path=/; expires=Wed, 07 Oct 2026 02:08:34 GMT; HttpOnly; SameSite=Lax', 'strict-transport-security': 'max-age=172800', 'x-request-id': '286e5e5b-02e7-4e63-bb08-33d5a8c2bc5e', 'x-runtime': '0.002523'}
+[2026-09-23 02:08:34]   Response body:
+[2026-09-23 02:08:34]   <html><head><meta name="color-scheme" content="light dark"></head><body><pre style="word-wrap: break-word; white-space: pre-wrap;">Retry later
+[2026-09-23 02:08:34] </pre></body></html>
+[2026-09-23 02:08:34]   ---------------------
+[2026-09-23 02:08:34]   AO3 asked for 86s. Waiting 91s before retrying...
+[2026-09-23 02:10:06]   Network error (Error: Page.goto: net::ERR_CERT_COMMON_NAME_INVALID at https://archiveofourown.org/works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=617&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc&work_search%5Bfandom_names%5D=Arcane%3A+League+of+Legends+%28Cartoon+2021%29&work_search%5Bcrossover%5D=F
+[2026-09-23 02:10:06] Call log:
+[2026-09-23 02:10:06]   - navigating to "https://archiveofourown.org/works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=617&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc&work_search%5Bfandom_names%5D=Arcane%3A+League+of+Legends+%28Cartoon+2021%29&work_search%5Bcrossover%5D=F", waiting until "domcontentloaded"
+[2026-09-23 02:10:06] ). Waiting 20s before retrying (2/3)...
+[2026-09-23 02:10:20] 
+[2026-09-23 02:10:20] Appended 827 new observation(s) to ao3_results.csv.
+[2026-09-23 02:10:20] Skipped 0 observation(s) already present under the same sampling condition.
+[2026-09-23 02:10:20] 
+[2026-09-23 02:10:20] Stopped by user.
