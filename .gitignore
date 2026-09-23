@@ -1,2 +1,4 @@
 V4/ao3_browser_profile/
 __pycache__/
+.DS_Store
+ao3_cookie.txt
