@@ -8,6 +8,7 @@ import time
 import traceback
 import urllib.parse
 from datetime import datetime, timedelta, timezone
+from email.utils import parsedate_to_datetime
 
 import numpy as np
 import pandas as pd
@@ -68,11 +69,13 @@ from bs4 import BeautifulSoup
 #   why is_crossover in the output is labelled a heuristic.
 #
 # Rate limiting:
-#   Uses a local page cache, randomized delays, and stops the whole
-#   run (rather than trying to push past) when AO3 returns repeated
-#   hard failures or sustained rate-limiting. A real browser engine
-#   does not grant permission to go faster -- keep the same
-#   conservative pacing as before.
+#   Uses a local page cache and stops the whole run (rather than
+#   trying to push past) when AO3 returns repeated hard failures or
+#   sustained rate-limiting. A real browser engine does not grant
+#   permission to go faster, so pacing is enforced in the browser
+#   layer itself: every page load waits a randomized 10-15s since the
+#   previous one, and a 429's Retry-After is obeyed to the second
+#   (plus a few seconds of grace) instead of a guessed interval.
 #
 # ============================================================
 
@@ -116,6 +119,17 @@ HEADLESS_UA_TOKEN = "HeadlessChrome"
 # How long to let an interstitial resolve itself before treating the
 # page as blocked.
 CHALLENGE_WAIT_SECONDS = 30
+
+# Minimum randomized gap between two page loads, enforced in the
+# browser layer so it applies to every single request -- warm-up,
+# login check, page counts, retries after an error, everything --
+# rather than only where a caller remembered to ask for a delay.
+REQUEST_GAP_SECONDS = (10.0, 15.0)
+
+# Added to whatever Retry-After AO3 asks for, so the next request
+# lands safely after the window it named rather than exactly on its
+# boundary.
+RETRY_AFTER_GRACE_SECONDS = 5
 
 # Cloudflare's 52x family describes the edge failing to talk to AO3's
 # origin (525 in particular is an SSL handshake failure between
@@ -241,6 +255,7 @@ class BrowserSession:
         # context rebuilt after a browser crash comes back with the
         # same login/adult-content state instead of a blank jar.
         self._cookies = list(DEFAULT_COOKIES)
+        self._last_request_at = None
 
     def start(self):
         if self._page is not None:
@@ -314,9 +329,26 @@ class BrowserSession:
                 os.path.join(BROWSER_PROFILE_ROOT, "chromium"), **options
             )
 
+    def _throttle(self):
+        """Hold every page load at least REQUEST_GAP_SECONDS apart.
+
+        The gap is measured from the last request rather than slept
+        unconditionally, so a caller's own polite_delay() counts
+        towards it instead of stacking on top of it.
+        """
+        gap = random.uniform(*REQUEST_GAP_SECONDS)
+
+        if self._last_request_at is not None:
+            remaining = gap - (time.monotonic() - self._last_request_at)
+            if remaining > 0:
+                time.sleep(remaining)
+
+        self._last_request_at = time.monotonic()
+
     def _warm_up(self):
         """Load the homepage once before jumping into search URLs."""
         try:
+            self._throttle()
             self._page.goto("https://archiveofourown.org/", wait_until="domcontentloaded")
             self._settle_interstitial()
         except (PlaywrightError, PlaywrightTimeoutError) as error:
@@ -348,6 +380,7 @@ class BrowserSession:
 
     def get(self, url, timeout=60):
         self.start()
+        self._throttle()
 
         try:
             response = self._page.goto(
@@ -370,6 +403,7 @@ class BrowserSession:
             headers = {}
 
         body = self._settle_interstitial()
+        self._last_request_at = time.monotonic()
 
         if status == 200 and looks_like_challenge(body):
             status, reason = 403, "Cloudflare challenge not completed"
@@ -680,14 +714,8 @@ def describe_429(response, url):
     """Builds two strings: a full, untruncated version (for the error
     log) and a terminal-friendly truncated version, so a large
     Cloudflare challenge page doesn't flood the live console."""
-    retry_after_header = response.headers.get("Retry-After")
-    retry_after_seconds = None
-
-    if retry_after_header:
-        try:
-            retry_after_seconds = int(float(retry_after_header))
-        except ValueError:
-            pass
+    retry_after_header = response.headers.get("Retry-After") or response.headers.get("retry-after")
+    retry_after_seconds = parse_retry_after(retry_after_header)
 
     body = response.text
 
@@ -708,6 +736,37 @@ def describe_429(response, url):
     console_detail = build(truncated_body)
 
     return console_detail, full_detail, retry_after_seconds
+
+
+def parse_retry_after(header_value):
+    """Seconds to wait from a Retry-After header, or None.
+
+    RFC 9110 allows either a delay in seconds or an HTTP date, and
+    AO3/Cloudflare send both forms depending on which layer answers,
+    so both are handled. What AO3 asks for is always preferable to a
+    guessed backoff interval.
+    """
+    if not header_value:
+        return None
+
+    header_value = header_value.strip()
+
+    try:
+        return max(0, int(float(header_value)))
+    except ValueError:
+        pass
+
+    try:
+        retry_at = parsedate_to_datetime(header_value)
+    except (TypeError, ValueError):
+        return None
+
+    if retry_at is None:
+        return None
+    if retry_at.tzinfo is None:
+        retry_at = retry_at.replace(tzinfo=timezone.utc)
+
+    return max(0, int((retry_at - datetime.now(timezone.utc)).total_seconds()))
 
 
 def polite_delay(min_seconds=5.0, max_seconds=10.0):
@@ -744,10 +803,17 @@ def get_with_retry(url, max_retries=3):
             log_error(f"HTTP 429 response details for {url}:\n{full_detail}")
             print(console_detail)
 
-            # Cloudflare occasionally sends an enormous Retry-After;
-            # capped so a run can't silently sleep for hours.
-            wait = min(retry_after_seconds, 300) if retry_after_seconds is not None else 15 * (attempt + 1)
-            print(f"  Waiting {wait}s before retrying...")
+            if retry_after_seconds is not None:
+                # Honour exactly what AO3 asked for, plus a small grace
+                # margin so the retry lands after its window rather
+                # than on the boundary. Guessing a shorter interval is
+                # how a temporary rate-limit turns into a real block.
+                wait = retry_after_seconds + RETRY_AFTER_GRACE_SECONDS
+                print(f"  AO3 asked for {retry_after_seconds}s. Waiting {wait}s before retrying...")
+            else:
+                wait = 15 * (attempt + 1)
+                print(f"  No Retry-After header sent. Waiting {wait}s before retrying...")
+
             time.sleep(wait)
             continue
 
