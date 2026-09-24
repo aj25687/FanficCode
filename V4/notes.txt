@@ -22,5 +22,8 @@ TODO: FINISHED HP! Need to randomize and clean out the biased data towards 2026-
 FANDOM: ARCANE 
 sept 22 2200 - pages 50-3147 (all time, 300 random pages, seed 935) - started from page 50 bc that was where sept 1 started
 
+FANDOM: ALTA
 ---
 IMPORTANT: The date-published for lines 4376 to lines 11813 ARE NOT TRUE! those lines are trying to recover cached data and does not contain the real publiation date. 
+
+87107651

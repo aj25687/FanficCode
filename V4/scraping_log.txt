@@ -9421,3 +9421,1016 @@
 [2026-09-23 02:10:20] Skipped 0 observation(s) already present under the same sampling condition.
 [2026-09-23 02:10:20] 
 [2026-09-23 02:10:20] Stopped by user.
+
+===== Run started 2026-09-23T13:37:19+00:00 =====
+[2026-09-23 13:37:19] (Logging this run to scraping_log.txt; errors to error_log.txt.)
+[2026-09-23 13:37:19] Optional: paste a logged-in AO3 session cookie if you need registered-user-only works.
+[2026-09-23 13:37:19] If pasting fails silently (very long cookies can exceed your terminal's paste limit), create a plain text file named 'ao3_cookie.txt' in this folder instead.
+[2026-09-23 13:37:19] Leave blank to continue anonymously.
+[2026-09-23 13:37:24] AO3 session cookie (optional): 
+[2026-09-23 13:37:24] Stopped by user.
+
+===== Run started 2026-09-23T13:37:49+00:00 =====
+[2026-09-23 13:37:49] (Logging this run to scraping_log.txt; errors to error_log.txt.)
+[2026-09-23 13:37:49] Optional: paste a logged-in AO3 session cookie if you need registered-user-only works.
+[2026-09-23 13:37:49] If pasting fails silently (very long cookies can exceed your terminal's paste limit), create a plain text file named 'ao3_cookie.txt' in this folder instead.
+[2026-09-23 13:37:49] Leave blank to continue anonymously.
+[2026-09-23 13:37:54] AO3 session cookie (optional): 
+[2026-09-23 13:37:54] Stopped by user.
+
+===== Run started 2026-09-23T13:38:04+00:00 =====
+[2026-09-23 13:38:04] (Logging this run to scraping_log.txt; errors to error_log.txt.)
+[2026-09-23 13:38:04] Found ao3_cookie.txt. Using the cookie from that file.
+[2026-09-23 13:38:04]   Parsed cookie name(s): __cf_bm, _cfuvid, _otwarchive_session, cf_clearance, user_credentials
+[2026-09-23 13:38:38]   Login verified: AO3 recognizes this cookie as a logged-in session.
+[2026-09-23 13:38:38] 
+[2026-09-23 13:51:27] Enter target AO3 work URL: 
+[2026-09-23 13:51:27] Fetching target work details...
+[2026-09-23 13:51:37] 
+[2026-09-23 13:51:37] --- Target Fic: 'One Bright Morning' ---
+[2026-09-23 13:51:37] Work ID: 83186766
+[2026-09-23 13:51:37] Fandom(s): Arcane: League of Legends (Cartoon 2021)
+[2026-09-23 13:51:37] Relationships: Jayce/Viktor (League of Legends)
+[2026-09-23 13:51:37] Words: 2 | Chapters: 24
+[2026-09-23 13:51:37] Hits: 4,429 | Kudos: 282 | Bookmarks: 51 | Comments: 129
+[2026-09-23 13:51:37] Kudos/Hits: 6.37%
+[2026-09-23 13:51:37] Bookmarks/Hits: 1.15%
+[2026-09-23 13:51:37] Kudos per 10k words: 1410000.00
+[2026-09-23 13:51:37] 
+[2026-09-23 13:51:37] --- Configure Comparison Cohort ---
+[2026-09-23 13:51:37] 
+[2026-09-23 13:51:37] Fandom scope:
+[2026-09-23 13:51:37] [0] Choose a target fandom
+[2026-09-23 13:51:37] [1] All fandoms
+[2026-09-23 13:51:38] Select fandom scope (0-1): 
+[2026-09-23 13:51:38] Category:
+[2026-09-23 13:51:38] [0] All
+[2026-09-23 13:51:38] [1] M/M
+[2026-09-23 13:51:38] [2] F/F
+[2026-09-23 13:51:38] [3] F/M
+[2026-09-23 13:51:38] [4] Multi
+[2026-09-23 13:51:38] [5] Gen
+[2026-09-23 13:51:38] Select category (0-5): 
+[2026-09-23 13:51:38] Archive warnings:
+[2026-09-23 13:51:38] [0] All
+[2026-09-23 13:51:38] [1] No Warnings Apply
+[2026-09-23 13:51:38] [2] Creator Chose Not To Use
+[2026-09-23 13:51:38] [3] Graphic Violence
+[2026-09-23 13:51:38] [4] Major Character Death
+[2026-09-23 13:51:38] [5] Rape/Non-Con
+[2026-09-23 13:51:38] [6] Underage
+[2026-09-23 13:51:39] Select warning (0-6): 
+[2026-09-23 13:51:39] Crossovers:
+[2026-09-23 13:51:39] [0] No crossovers (recommended)
+[2026-09-23 13:51:39] [1] All works
+[2026-09-23 13:51:39] [2] Crossovers only
+[2026-09-23 13:51:39] Select crossover option (0-2): 
+[2026-09-23 13:51:39] Chapters:
+[2026-09-23 13:51:39] [0] All
+[2026-09-23 13:51:39] [1] One-shots only
+[2026-09-23 13:51:39] [2] Same number as target
+[2026-09-23 13:51:39] [3] Multi-chapter only
+[2026-09-23 13:51:40] Select chapter filter (0-3): 
+[2026-09-23 13:51:40] Completion:
+[2026-09-23 13:51:40] [0] All
+[2026-09-23 13:51:40] [1] Complete only
+[2026-09-23 13:51:40] Select completion filter (0-1): 
+[2026-09-23 13:51:40] Timeframe:
+[2026-09-23 13:51:40] [0] All time
+[2026-09-23 13:51:40] [1] Last week
+[2026-09-23 13:51:40] [2] Last month
+[2026-09-23 13:51:40] [3] Last year
+[2026-09-23 13:51:40] [4] Custom range
+[2026-09-23 13:51:43] Select timeframe (0-4): 
+[2026-09-23 13:51:43] Checking the result count...
+[2026-09-23 13:51:43]   Using cached page count: 3147 page(s).
+[2026-09-23 13:51:43] Found 3147 result page(s).
+[2026-09-23 13:51:45] Start page (1-3147, blank = 1): End page (1-3147, blank = 3147): 
+[2026-09-23 13:51:45] Sampling mode:
+[2026-09-23 13:51:45] [0] All pages
+[2026-09-23 13:51:45] [1] Systematic pages
+[2026-09-23 13:51:45] [2] Random pages
+[2026-09-23 13:51:51] Select sampling mode (0-2): 
+[2026-09-23 13:51:51] Stopped by user.
+
+===== Run started 2026-09-23T13:51:53+00:00 =====
+[2026-09-23 13:51:53] (Logging this run to scraping_log.txt; errors to error_log.txt.)
+[2026-09-23 13:51:53] Found ao3_cookie.txt. Using the cookie from that file.
+[2026-09-23 13:51:53]   Parsed cookie name(s): __cf_bm, _cfuvid, _otwarchive_session, cf_clearance, user_credentials
+[2026-09-23 13:52:08]   Login verified: AO3 recognizes this cookie as a logged-in session.
+[2026-09-23 13:52:08] 
+[2026-09-23 13:52:11] Enter target AO3 work URL: 
+[2026-09-23 13:52:11] Fetching target work details...
+[2026-09-23 13:52:19] 
+[2026-09-23 13:52:19] --- Target Fic: 'One Bright Morning' ---
+[2026-09-23 13:52:19] Work ID: 83186766
+[2026-09-23 13:52:19] Fandom(s): Arcane: League of Legends (Cartoon 2021)
+[2026-09-23 13:52:19] Relationships: Jayce/Viktor (League of Legends)
+[2026-09-23 13:52:19] Words: 2 | Chapters: 24
+[2026-09-23 13:52:19] Hits: 4,429 | Kudos: 282 | Bookmarks: 51 | Comments: 129
+[2026-09-23 13:52:19] Kudos/Hits: 6.37%
+[2026-09-23 13:52:19] Bookmarks/Hits: 1.15%
+[2026-09-23 13:52:19] Kudos per 10k words: 1410000.00
+[2026-09-23 13:52:19] 
+[2026-09-23 13:52:19] --- Configure Comparison Cohort ---
+[2026-09-23 13:52:19] 
+[2026-09-23 13:52:19] Fandom scope:
+[2026-09-23 13:52:19] [0] Choose a target fandom
+[2026-09-23 13:52:19] [1] All fandoms
+[2026-09-23 13:52:20] Select fandom scope (0-1): 
+[2026-09-23 13:52:20] Category:
+[2026-09-23 13:52:20] [0] All
+[2026-09-23 13:52:20] [1] M/M
+[2026-09-23 13:52:20] [2] F/F
+[2026-09-23 13:52:20] [3] F/M
+[2026-09-23 13:52:20] [4] Multi
+[2026-09-23 13:52:20] [5] Gen
+[2026-09-23 13:52:21] Select category (0-5): 
+[2026-09-23 13:52:21] Archive warnings:
+[2026-09-23 13:52:21] [0] All
+[2026-09-23 13:52:21] [1] No Warnings Apply
+[2026-09-23 13:52:21] [2] Creator Chose Not To Use
+[2026-09-23 13:52:21] [3] Graphic Violence
+[2026-09-23 13:52:21] [4] Major Character Death
+[2026-09-23 13:52:21] [5] Rape/Non-Con
+[2026-09-23 13:52:21] [6] Underage
+[2026-09-23 13:52:21] Select warning (0-6): 
+[2026-09-23 13:52:21] Crossovers:
+[2026-09-23 13:52:21] [0] No crossovers (recommended)
+[2026-09-23 13:52:21] [1] All works
+[2026-09-23 13:52:21] [2] Crossovers only
+[2026-09-23 13:52:21] Select crossover option (0-2): 
+[2026-09-23 13:52:21] Chapters:
+[2026-09-23 13:52:21] [0] All
+[2026-09-23 13:52:21] [1] One-shots only
+[2026-09-23 13:52:21] [2] Same number as target
+[2026-09-23 13:52:21] [3] Multi-chapter only
+[2026-09-23 13:52:22] Select chapter filter (0-3): 
+[2026-09-23 13:52:22] Completion:
+[2026-09-23 13:52:22] [0] All
+[2026-09-23 13:52:22] [1] Complete only
+[2026-09-23 13:52:23] Select completion filter (0-1): 
+[2026-09-23 13:52:23] Timeframe:
+[2026-09-23 13:52:23] [0] All time
+[2026-09-23 13:52:23] [1] Last week
+[2026-09-23 13:52:23] [2] Last month
+[2026-09-23 13:52:23] [3] Last year
+[2026-09-23 13:52:23] [4] Custom range
+[2026-09-23 13:52:24] Select timeframe (0-4): 
+[2026-09-23 13:52:24] Checking the result count...
+[2026-09-23 13:52:24]   Using cached page count: 3147 page(s).
+[2026-09-23 13:52:24] Found 3147 result page(s).
+[2026-09-23 13:52:26] Start page (1-3147, blank = 1): End page (1-3147, blank = 3147): 
+[2026-09-23 13:52:26] Sampling mode:
+[2026-09-23 13:52:26] [0] All pages
+[2026-09-23 13:52:26] [1] Systematic pages
+[2026-09-23 13:52:26] [2] Random pages
+[2026-09-23 13:52:35] Select sampling mode (0-2): How many pages should be sampled? Sampling seed (blank = 2026): 
+[2026-09-23 13:52:35] Collecting cohort metadata. Only search-result cards are parsed for cohort works.
+[2026-09-23 13:52:35]   Selected 300 page(s): [50, 85, 87, 88, 101, 118, 134, 142, 147, 158, 171, 179, 193, 195, 226, 227, 238, 243, 248, 259]...
+[2026-09-23 13:52:35]   Page 50: loaded from cache (20 works).
+[2026-09-23 13:52:35]   Page 85: loaded from cache (20 works).
+[2026-09-23 13:52:35]   Page 87: loaded from cache (20 works).
+[2026-09-23 13:52:35]   Page 88: loaded from cache (20 works).
+[2026-09-23 13:52:35]   Page 101: loaded from cache (20 works).
+[2026-09-23 13:52:35]   Page 118: loaded from cache (20 works).
+[2026-09-23 13:52:35]   Page 134: loaded from cache (20 works).
+[2026-09-23 13:52:35]   Page 142: loaded from cache (20 works).
+[2026-09-23 13:52:35]   Page 147: loaded from cache (20 works).
+[2026-09-23 13:52:35]   Page 158: loaded from cache (20 works).
+[2026-09-23 13:52:35]   ...page 10/300 done; 160 qualifying works.
+[2026-09-23 13:52:35]   Page 171: loaded from cache (20 works).
+[2026-09-23 13:52:35]   Page 179: loaded from cache (20 works).
+[2026-09-23 13:52:35]   Page 193: loaded from cache (20 works).
+[2026-09-23 13:52:35]   Page 195: loaded from cache (20 works).
+[2026-09-23 13:52:35]   Page 226: loaded from cache (20 works).
+[2026-09-23 13:52:35]   Page 227: loaded from cache (20 works).
+[2026-09-23 13:52:35]   Page 238: loaded from cache (20 works).
+[2026-09-23 13:52:35]   Page 243: loaded from cache (20 works).
+[2026-09-23 13:52:35]   Page 248: loaded from cache (20 works).
+[2026-09-23 13:52:35]   Page 259: loaded from cache (20 works).
+[2026-09-23 13:52:35]   ...page 20/300 done; 315 qualifying works.
+[2026-09-23 13:52:35]   Page 277: loaded from cache (20 works).
+[2026-09-23 13:52:35]   Page 299: loaded from cache (20 works).
+[2026-09-23 13:52:35]   Page 300: loaded from cache (20 works).
+[2026-09-23 13:52:35]   Page 302: loaded from cache (20 works).
+[2026-09-23 13:52:35]   Page 320: loaded from cache (20 works).
+[2026-09-23 13:52:35]   Page 338: loaded from cache (20 works).
+[2026-09-23 13:52:35]   Page 387: loaded from cache (20 works).
+[2026-09-23 13:52:35]   Page 393: loaded from cache (20 works).
+[2026-09-23 13:52:35]   Page 394: loaded from cache (20 works).
+[2026-09-23 13:52:35]   Page 403: loaded from cache (20 works).
+[2026-09-23 13:52:35]   ...page 30/300 done; 484 qualifying works.
+[2026-09-23 13:52:35]   Page 412: loaded from cache (20 works).
+[2026-09-23 13:52:35]   Page 418: loaded from cache (20 works).
+[2026-09-23 13:52:35]   Page 429: loaded from cache (20 works).
+[2026-09-23 13:52:35]   Page 446: loaded from cache (20 works).
+[2026-09-23 13:52:35]   Page 449: loaded from cache (20 works).
+[2026-09-23 13:52:35]   Page 453: loaded from cache (20 works).
+[2026-09-23 13:52:35]   Page 458: loaded from cache (20 works).
+[2026-09-23 13:52:35]   Page 470: loaded from cache (20 works).
+[2026-09-23 13:52:35]   Page 479: loaded from cache (20 works).
+[2026-09-23 13:52:35]   Page 480: loaded from cache (20 works).
+[2026-09-23 13:52:35]   ...page 40/300 done; 647 qualifying works.
+[2026-09-23 13:52:35]   Page 505: loaded from cache (20 works).
+[2026-09-23 13:52:35]   Page 525: loaded from cache (20 works).
+[2026-09-23 13:52:35]   Page 530: loaded from cache (20 works).
+[2026-09-23 13:52:35]   Page 552: loaded from cache (20 works).
+[2026-09-23 13:52:35]   Page 571: loaded from cache (20 works).
+[2026-09-23 13:52:35]   Page 582: loaded from cache (20 works).
+[2026-09-23 13:52:35]   Page 584: loaded from cache (20 works).
+[2026-09-23 13:52:35]   Page 599: loaded from cache (20 works).
+[2026-09-23 13:52:35]   Page 600: loaded from cache (20 works).
+[2026-09-23 13:52:35]   Page 615: loaded from cache (20 works).
+[2026-09-23 13:52:35]   ...page 50/300 done; 826 qualifying works.
+[2026-09-23 13:54:35]   ...page 60/300 done; 1006 qualifying works.
+[2026-09-23 13:56:46]   ...page 70/300 done; 1181 qualifying works.
+[2026-09-23 13:58:49]   ...page 80/300 done; 1352 qualifying works.
+[2026-09-23 14:01:10]   ...page 90/300 done; 1506 qualifying works.
+[2026-09-23 14:03:31]   ...page 100/300 done; 1675 qualifying works.
+[2026-09-23 14:05:44]   ...page 110/300 done; 1843 qualifying works.
+[2026-09-23 14:08:00]   ...page 120/300 done; 2014 qualifying works.
+[2026-09-23 14:09:18]   --- 429 response ---
+[2026-09-23 14:09:18]   URL: https://archiveofourown.org/works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=1300&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc&work_search%5Bfandom_names%5D=Arcane%3A+League+of+Legends+%28Cartoon+2021%29&work_search%5Bcrossover%5D=F
+[2026-09-23 14:09:18]   Status: 429 
+[2026-09-23 14:09:18]   Retry-After header: 40
+[2026-09-23 14:09:18]   Response headers: {'alt-svc': 'h3=":443"; ma=86400', 'cache-control': 'no-cache', 'cf-cache-status': 'DYNAMIC', 'cf-ray': 'a3fa2065e9946523-BOS', 'content-length': '12', 'content-type': 'text/plain', 'date': 'Wed, 23 Sep 2026 14:09:20 GMT', 'retry-after': '40', 'server': 'cloudflare', 'set-cookie': '_otwarchive_session=eyJfcmFpbHMiOnsibWVzc2FnZSI6ImV5SnpaWE56YVc5dVgybGtJam9pTlRsbVpXRTJPVE0yTkdGaE1qQmlNVGcxWkRFd09ETTFOV014WW1ZeU56Y2lMQ0ozWVhKa1pXNHVkWE5sY2k1MWMyVnlMbXRsZVNJNlcxc3pNVGs0Tnpnd01WMHNJaVF5WVNReE5DUmpWekl3WWpsbWRrOTJTblphZUZkeFowcEpUbWxQSWwwc0lsOWpjM0ptWDNSdmEyVnVJam9pVlVsWk1uUlZhRlpLWkZoaFpUUlFURzl2Y1ROaWFsUm9XRVpCZDBaSllubzRWMDVMTUV4dWJIZHlTU0o5IiwiZXhwIjoiMjAyNi0xMC0wN1QxNDowOToyMC4zMzlaIiwicHVyIjoiY29va2llLl9vdHdhcmNoaXZlX3Nlc3Npb24ifX0%3D--a801f4a50b8bb70c9ebcbfe9d59eb34930e7d05a; path=/; expires=Wed, 07 Oct 2026 14:09:20 GMT; HttpOnly; SameSite=Lax', 'strict-transport-security': 'max-age=172800', 'x-request-id': '32ee2bc4-4156-4221-94ef-c45c92fa1bdc', 'x-runtime': '0.002453'}
+[2026-09-23 14:09:18]   Response body:
+[2026-09-23 14:09:18]   <html><head><meta name="color-scheme" content="light dark"></head><body><pre style="word-wrap: break-word; white-space: pre-wrap;">Retry later
+[2026-09-23 14:09:18] </pre></body></html>
+[2026-09-23 14:09:18]   ---------------------
+[2026-09-23 14:09:18]   AO3 asked for 40s. Waiting 45s before retrying...
+[2026-09-23 14:10:03]   --- 429 response ---
+[2026-09-23 14:10:03]   URL: https://archiveofourown.org/works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=1300&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc&work_search%5Bfandom_names%5D=Arcane%3A+League+of+Legends+%28Cartoon+2021%29&work_search%5Bcrossover%5D=F
+[2026-09-23 14:10:03]   Status: 429 
+[2026-09-23 14:10:03]   Retry-After header: 195
+[2026-09-23 14:10:03]   Response headers: {'alt-svc': 'h3=":443"; ma=86400', 'cache-control': 'no-cache', 'cf-cache-status': 'DYNAMIC', 'cf-ray': 'a3fa2181edf56523-BOS', 'content-length': '12', 'content-type': 'text/plain', 'date': 'Wed, 23 Sep 2026 14:10:05 GMT', 'retry-after': '195', 'server': 'cloudflare', 'set-cookie': '_otwarchive_session=eyJfcmFpbHMiOnsibWVzc2FnZSI6ImV5SnpaWE56YVc5dVgybGtJam9pTlRsbVpXRTJPVE0yTkdGaE1qQmlNVGcxWkRFd09ETTFOV014WW1ZeU56Y2lMQ0ozWVhKa1pXNHVkWE5sY2k1MWMyVnlMbXRsZVNJNlcxc3pNVGs0Tnpnd01WMHNJaVF5WVNReE5DUmpWekl3WWpsbWRrOTJTblphZUZkeFowcEpUbWxQSWwwc0lsOWpjM0ptWDNSdmEyVnVJam9pVlVsWk1uUlZhRlpLWkZoaFpUUlFURzl2Y1ROaWFsUm9XRVpCZDBaSllubzRWMDVMTUV4dWJIZHlTU0o5IiwiZXhwIjoiMjAyNi0xMC0wN1QxNDoxMDowNS43ODBaIiwicHVyIjoiY29va2llLl9vdHdhcmNoaXZlX3Nlc3Npb24ifX0%3D--fc05c548ef39235669982f954a4c2b2637b8c6a0; path=/; expires=Wed, 07 Oct 2026 14:10:05 GMT; HttpOnly; SameSite=Lax', 'x-request-id': 'b3d71ef2-141a-4164-a201-d6c0b61aaa2b', 'x-runtime': '0.002135'}
+[2026-09-23 14:10:03]   Response body:
+[2026-09-23 14:10:03]   <html><head><meta name="color-scheme" content="light dark"></head><body><pre style="word-wrap: break-word; white-space: pre-wrap;">Retry later
+[2026-09-23 14:10:03] </pre></body></html>
+[2026-09-23 14:10:03]   ---------------------
+[2026-09-23 14:10:03]   AO3 asked for 195s. Waiting 200s before retrying...
+[2026-09-23 14:14:18]   ...page 130/300 done; 2189 qualifying works.
+[2026-09-23 14:16:24]   ...page 140/300 done; 2362 qualifying works.
+[2026-09-23 14:18:33]   ...page 150/300 done; 2528 qualifying works.
+[2026-09-23 14:20:44]   ...page 160/300 done; 2695 qualifying works.
+[2026-09-23 14:21:58]   --- 429 response ---
+[2026-09-23 14:21:58]   URL: https://archiveofourown.org/works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=1822&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc&work_search%5Bfandom_names%5D=Arcane%3A+League+of+Legends+%28Cartoon+2021%29&work_search%5Bcrossover%5D=F
+[2026-09-23 14:21:58]   Status: 429 
+[2026-09-23 14:21:58]   Retry-After header: 280
+[2026-09-23 14:21:58]   Response headers: {'alt-svc': 'h3=":443"; ma=86400', 'cache-control': 'no-cache', 'cf-cache-status': 'DYNAMIC', 'cf-ray': 'a3fa32f6ddfd6523-BOS', 'content-length': '12', 'content-security-policy-report-only': "script-src 'unsafe-inline' 'unsafe-eval'; connect-src 'none'; report-uri https://csp-reporting.cloudflare.com/cdn-cgi/script_monitor/report?m=AK24R4AOLrJxeHWO8yxeerP6HaACnwJe760loSG9bNw-1790173320.7771854-1.0.1.1-mzdghlKfyKZBz831MfHl4HtS3Yeg9WT1_JPyQpWPr_czSuB5eJqBqwol.AivHFrLZ2Eskqj4qvPjUAbXFzuUS8_1M72yKpKR8v03Hc8ZQGnR_kJJJwOrQJOakByBwvYl9Nc1XqUo_c.GBw0Yrt8fBwwiUNTHDzNZBmQWw2ji1I54spxmqb7IYaTYZ5cKN.Ty; report-to cf-csp-endpoint", 'content-type': 'text/plain', 'date': 'Wed, 23 Sep 2026 14:22:00 GMT', 'report-to': '{"group":"cf-csp-endpoint","max_age":86400,"endpoints":[{"url":"https://csp-reporting.cloudflare.com/cdn-cgi/script_monitor/report?m=AK24R4AOLrJxeHWO8yxeerP6HaACnwJe760loSG9bNw-1790173320.7771854-1.0.1.1-mzdghlKfyKZBz831MfHl4HtS3Yeg9WT1_JPyQpWPr_czSuB5eJqBqwol.AivHFrLZ2Eskqj4qvPjUAbXFzuUS8_1M72yKpKR8v03Hc8ZQGnR_kJJJwOrQJOakByBwvYl9Nc1XqUo_c.GBw0Yrt8fBwwiUNTHDzNZBmQWw2ji1I54spxmqb7IYaTYZ5cKN.Ty"}]}', 'reporting-endpoints': 'cf-csp-endpoint="https://csp-reporting.cloudflare.com/cdn-cgi/script_monitor/report?m=AK24R4AOLrJxeHWO8yxeerP6HaACnwJe760loSG9bNw-1790173320.7771854-1.0.1.1-mzdghlKfyKZBz831MfHl4HtS3Yeg9WT1_JPyQpWPr_czSuB5eJqBqwol.AivHFrLZ2Eskqj4qvPjUAbXFzuUS8_1M72yKpKR8v03Hc8ZQGnR_kJJJwOrQJOakByBwvYl9Nc1XqUo_c.GBw0Yrt8fBwwiUNTHDzNZBmQWw2ji1I54spxmqb7IYaTYZ5cKN.Ty"', 'retry-after': '280', 'server': 'cloudflare', 'set-cookie': '_otwarchive_session=eyJfcmFpbHMiOnsibWVzc2FnZSI6ImV5SnpaWE56YVc5dVgybGtJam9pTlRsbVpXRTJPVE0yTkdGaE1qQmlNVGcxWkRFd09ETTFOV014WW1ZeU56Y2lMQ0ozWVhKa1pXNHVkWE5sY2k1MWMyVnlMbXRsZVNJNlcxc3pNVGs0Tnpnd01WMHNJaVF5WVNReE5DUmpWekl3WWpsbWRrOTJTblphZUZkeFowcEpUbWxQSWwwc0lsOWpjM0ptWDNSdmEyVnVJam9pVlVsWk1uUlZhRlpLWkZoaFpUUlFURzl2Y1ROaWFsUm9XRVpCZDBaSllubzRWMDVMTUV4dWJIZHlTU0o5IiwiZXhwIjoiMjAyNi0xMC0wN1QxNDoyMjowMC44MDdaIiwicHVyIjoiY29va2llLl9vdHdhcmNoaXZlX3Nlc3Npb24ifX0%3D--c98dc33f07229121eb716d17a72c677490975dae; path=/; expires=Wed, 07 Oct 2026 14:22:00 GMT; HttpOnly; SameSite=Lax', 'x-request-id': '353d51cf-a249-4928-a0d3-edb7b3ab5be4', 'x-runtime': '0.002390'}
+[2026-09-23 14:21:58]   Response body:
+[2026-09-23 14:21:58]   <html><head><meta name="color-scheme" content="light dark"></head><body><pre style="word-wrap: break-word; white-space: pre-wrap;">Retry later
+[2026-09-23 14:21:58] </pre></body></html>
+[2026-09-23 14:21:58]   ---------------------
+[2026-09-23 14:21:58]   AO3 asked for 280s. Waiting 285s before retrying...
+[2026-09-23 14:27:34]   ...page 170/300 done; 2856 qualifying works.
+[2026-09-23 14:29:40]   ...page 180/300 done; 3030 qualifying works.
+[2026-09-23 14:31:47]   ...page 190/300 done; 3203 qualifying works.
+[2026-09-23 14:34:02]   ...page 200/300 done; 3365 qualifying works.
+[2026-09-23 14:35:11]   --- 429 response ---
+[2026-09-23 14:35:11]   URL: https://archiveofourown.org/works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=2200&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc&work_search%5Bfandom_names%5D=Arcane%3A+League+of+Legends+%28Cartoon+2021%29&work_search%5Bcrossover%5D=F
+[2026-09-23 14:35:11]   Status: 429 
+[2026-09-23 14:35:11]   Retry-After header: 287
+[2026-09-23 14:35:11]   Response headers: {'alt-svc': 'h3=":443"; ma=86400', 'cache-control': 'no-cache', 'cf-cache-status': 'DYNAMIC', 'cf-ray': 'a3fa46500f796523-BOS', 'content-length': '12', 'content-security-policy-report-only': "script-src 'unsafe-inline' 'unsafe-eval'; connect-src 'none'; report-uri https://csp-reporting.cloudflare.com/cdn-cgi/script_monitor/report?m=k4.ItmWgc_9N8U6JM2HqQN6m59kIn6uOL1ng.6WCOHg-1790174113.2814636-1.0.1.1-AaSA_4XgEhyqVhUMtAf8FYOjRRV9H57vo80euhCWEIsmLA1qzufMWFikf9QDzT5_GoWtpMSuQvOlbo_4hMbMYUDLz20AfEivrCiSDQlXEiTy0SWapqT.wETlJDKtEZ3AJTHiHRKdyPvzEgTp3p5jLDJvNnCobHtX3ISCCPqjmDfZk7607BG5LD.Bub1f22A9; report-to cf-csp-endpoint", 'content-type': 'text/plain', 'date': 'Wed, 23 Sep 2026 14:35:13 GMT', 'report-to': '{"group":"cf-csp-endpoint","max_age":86400,"endpoints":[{"url":"https://csp-reporting.cloudflare.com/cdn-cgi/script_monitor/report?m=k4.ItmWgc_9N8U6JM2HqQN6m59kIn6uOL1ng.6WCOHg-1790174113.2814636-1.0.1.1-AaSA_4XgEhyqVhUMtAf8FYOjRRV9H57vo80euhCWEIsmLA1qzufMWFikf9QDzT5_GoWtpMSuQvOlbo_4hMbMYUDLz20AfEivrCiSDQlXEiTy0SWapqT.wETlJDKtEZ3AJTHiHRKdyPvzEgTp3p5jLDJvNnCobHtX3ISCCPqjmDfZk7607BG5LD.Bub1f22A9"}]}', 'reporting-endpoints': 'cf-csp-endpoint="https://csp-reporting.cloudflare.com/cdn-cgi/script_monitor/report?m=k4.ItmWgc_9N8U6JM2HqQN6m59kIn6uOL1ng.6WCOHg-1790174113.2814636-1.0.1.1-AaSA_4XgEhyqVhUMtAf8FYOjRRV9H57vo80euhCWEIsmLA1qzufMWFikf9QDzT5_GoWtpMSuQvOlbo_4hMbMYUDLz20AfEivrCiSDQlXEiTy0SWapqT.wETlJDKtEZ3AJTHiHRKdyPvzEgTp3p5jLDJvNnCobHtX3ISCCPqjmDfZk7607BG5LD.Bub1f22A9"', 'retry-after': '287', 'server': 'cloudflare', 'set-cookie': '_otwarchive_session=eyJfcmFpbHMiOnsibWVzc2FnZSI6ImV5SnpaWE56YVc5dVgybGtJam9pTlRsbVpXRTJPVE0yTkdGaE1qQmlNVGcxWkRFd09ETTFOV014WW1ZeU56Y2lMQ0ozWVhKa1pXNHVkWE5sY2k1MWMyVnlMbXRsZVNJNlcxc3pNVGs0Tnpnd01WMHNJaVF5WVNReE5DUmpWekl3WWpsbWRrOTJTblphZUZkeFowcEpUbWxQSWwwc0lsOWpjM0ptWDNSdmEyVnVJam9pVlVsWk1uUlZhRlpLWkZoaFpUUlFURzl2Y1ROaWFsUm9XRVpCZDBaSllubzRWMDVMTUV4dWJIZHlTU0o5IiwiZXhwIjoiMjAyNi0xMC0wN1QxNDozNToxMy4zMTZaIiwicHVyIjoiY29va2llLl9vdHdhcmNoaXZlX3Nlc3Npb24ifX0%3D--7a3a6b60050d0cf175654f11c400377b0e12f3cb; path=/; expires=Wed, 07 Oct 2026 14:35:13 GMT; HttpOnly; SameSite=Lax', 'strict-transport-security': 'max-age=172800', 'x-request-id': '42a9c367-4ab1-49c0-9602-01c05265d23b', 'x-runtime': '0.002346'}
+[2026-09-23 14:35:11]   Response body:
+[2026-09-23 14:35:11]   <html><head><meta name="color-scheme" content="light dark"></head><body><pre style="word-wrap: break-word; white-space: pre-wrap;">Retry later
+[2026-09-23 14:35:11] </pre></body></html>
+[2026-09-23 14:35:11]   ---------------------
+[2026-09-23 14:35:11]   AO3 asked for 287s. Waiting 292s before retrying...
+[2026-09-23 14:40:58]   ...page 210/300 done; 3542 qualifying works.
+[2026-09-23 14:43:09]   ...page 220/300 done; 3701 qualifying works.
+[2026-09-23 14:45:09]   ...page 230/300 done; 3855 qualifying works.
+[2026-09-23 14:47:29]   ...page 240/300 done; 3998 qualifying works.
+[2026-09-23 14:48:43]   --- 429 response ---
+[2026-09-23 14:48:43]   URL: https://archiveofourown.org/works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=2622&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc&work_search%5Bfandom_names%5D=Arcane%3A+League+of+Legends+%28Cartoon+2021%29&work_search%5Bcrossover%5D=F
+[2026-09-23 14:48:43]   Status: 429 
+[2026-09-23 14:48:43]   Retry-After header: 75
+[2026-09-23 14:48:43]   Response headers: {'alt-svc': 'h3=":443"; ma=86400', 'cache-control': 'no-cache', 'cf-cache-status': 'DYNAMIC', 'cf-ray': 'a3fa5a215d3c6523-BOS', 'content-length': '12', 'content-type': 'text/plain', 'date': 'Wed, 23 Sep 2026 14:48:45 GMT', 'retry-after': '75', 'server': 'cloudflare', 'set-cookie': '_otwarchive_session=eyJfcmFpbHMiOnsibWVzc2FnZSI6ImV5SnpaWE56YVc5dVgybGtJam9pTlRsbVpXRTJPVE0yTkdGaE1qQmlNVGcxWkRFd09ETTFOV014WW1ZeU56Y2lMQ0ozWVhKa1pXNHVkWE5sY2k1MWMyVnlMbXRsZVNJNlcxc3pNVGs0Tnpnd01WMHNJaVF5WVNReE5DUmpWekl3WWpsbWRrOTJTblphZUZkeFowcEpUbWxQSWwwc0lsOWpjM0ptWDNSdmEyVnVJam9pVlVsWk1uUlZhRlpLWkZoaFpUUlFURzl2Y1ROaWFsUm9XRVpCZDBaSllubzRWMDVMTUV4dWJIZHlTU0o5IiwiZXhwIjoiMjAyNi0xMC0wN1QxNDo0ODo0NS4wNDRaIiwicHVyIjoiY29va2llLl9vdHdhcmNoaXZlX3Nlc3Npb24ifX0%3D--4a437933a1cac1c3718081fe8fe892e05f0be97b; path=/; expires=Wed, 07 Oct 2026 14:48:45 GMT; HttpOnly; SameSite=Lax', 'x-request-id': 'c425e80e-ba23-4ba3-8bf4-582bebf771ba', 'x-runtime': '0.002525'}
+[2026-09-23 14:48:43]   Response body:
+[2026-09-23 14:48:43]   <html><head><meta name="color-scheme" content="light dark"></head><body><pre style="word-wrap: break-word; white-space: pre-wrap;">Retry later
+[2026-09-23 14:48:43] </pre></body></html>
+[2026-09-23 14:48:43]   ---------------------
+[2026-09-23 14:48:43]   AO3 asked for 75s. Waiting 80s before retrying...
+[2026-09-23 14:50:03]   --- 429 response ---
+[2026-09-23 14:50:03]   URL: https://archiveofourown.org/works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=2622&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc&work_search%5Bfandom_names%5D=Arcane%3A+League+of+Legends+%28Cartoon+2021%29&work_search%5Bcrossover%5D=F
+[2026-09-23 14:50:03]   Status: 429 
+[2026-09-23 14:50:03]   Retry-After header: 195
+[2026-09-23 14:50:03]   Response headers: {'alt-svc': 'h3=":443"; ma=86400', 'cache-control': 'no-cache', 'cf-cache-status': 'DYNAMIC', 'cf-ray': 'a3fa5c166e526523-BOS', 'content-length': '12', 'content-type': 'text/plain', 'date': 'Wed, 23 Sep 2026 14:50:05 GMT', 'retry-after': '195', 'server': 'cloudflare', 'set-cookie': '_otwarchive_session=eyJfcmFpbHMiOnsibWVzc2FnZSI6ImV5SnpaWE56YVc5dVgybGtJam9pTlRsbVpXRTJPVE0yTkdGaE1qQmlNVGcxWkRFd09ETTFOV014WW1ZeU56Y2lMQ0ozWVhKa1pXNHVkWE5sY2k1MWMyVnlMbXRsZVNJNlcxc3pNVGs0Tnpnd01WMHNJaVF5WVNReE5DUmpWekl3WWpsbWRrOTJTblphZUZkeFowcEpUbWxQSWwwc0lsOWpjM0ptWDNSdmEyVnVJam9pVlVsWk1uUlZhRlpLWkZoaFpUUlFURzl2Y1ROaWFsUm9XRVpCZDBaSllubzRWMDVMTUV4dWJIZHlTU0o5IiwiZXhwIjoiMjAyNi0xMC0wN1QxNDo1MDowNS4yMTZaIiwicHVyIjoiY29va2llLl9vdHdhcmNoaXZlX3Nlc3Npb24ifX0%3D--117740234110b6c1985262cba1dc1a2afc1fa0a8; path=/; expires=Wed, 07 Oct 2026 14:50:05 GMT; HttpOnly; SameSite=Lax', 'x-request-id': 'bf7abfed-cb59-4a24-b02d-2972cb6173d8', 'x-runtime': '0.003853'}
+[2026-09-23 14:50:03]   Response body:
+[2026-09-23 14:50:03]   <html><head><meta name="color-scheme" content="light dark"></head><body><pre style="word-wrap: break-word; white-space: pre-wrap;">Retry later
+[2026-09-23 14:50:03] </pre></body></html>
+[2026-09-23 14:50:03]   ---------------------
+[2026-09-23 14:50:03]   AO3 asked for 195s. Waiting 200s before retrying...
+[2026-09-23 14:54:16]   ...page 250/300 done; 4145 qualifying works.
+[2026-09-23 14:56:26]   ...page 260/300 done; 4287 qualifying works.
+[2026-09-23 14:58:42]   ...page 270/300 done; 4435 qualifying works.
+[2026-09-23 15:00:56]   ...page 280/300 done; 4593 qualifying works.
+[2026-09-23 15:02:11]   --- 429 response ---
+[2026-09-23 15:02:11]   URL: https://archiveofourown.org/works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=2978&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc&work_search%5Bfandom_names%5D=Arcane%3A+League+of+Legends+%28Cartoon+2021%29&work_search%5Bcrossover%5D=F
+[2026-09-23 15:02:11]   Status: 429 
+[2026-09-23 15:02:11]   Retry-After header: 267
+[2026-09-23 15:02:11]   Response headers: {'alt-svc': 'h3=":443"; ma=86400', 'cache-control': 'no-cache', 'cf-cache-status': 'DYNAMIC', 'cf-ray': 'a3fa6ddd5a9b6523-BOS', 'content-length': '12', 'content-type': 'text/plain', 'date': 'Wed, 23 Sep 2026 15:02:13 GMT', 'retry-after': '267', 'server': 'cloudflare', 'set-cookie': '_otwarchive_session=eyJfcmFpbHMiOnsibWVzc2FnZSI6ImV5SnpaWE56YVc5dVgybGtJam9pTlRsbVpXRTJPVE0yTkdGaE1qQmlNVGcxWkRFd09ETTFOV014WW1ZeU56Y2lMQ0ozWVhKa1pXNHVkWE5sY2k1MWMyVnlMbXRsZVNJNlcxc3pNVGs0Tnpnd01WMHNJaVF5WVNReE5DUmpWekl3WWpsbWRrOTJTblphZUZkeFowcEpUbWxQSWwwc0lsOWpjM0ptWDNSdmEyVnVJam9pVlVsWk1uUlZhRlpLWkZoaFpUUlFURzl2Y1ROaWFsUm9XRVpCZDBaSllubzRWMDVMTUV4dWJIZHlTU0o5IiwiZXhwIjoiMjAyNi0xMC0wN1QxNTowMjoxMy4zNzFaIiwicHVyIjoiY29va2llLl9vdHdhcmNoaXZlX3Nlc3Npb24ifX0%3D--0df65adbb813adc56f77f7d29642c561916be872; path=/; expires=Wed, 07 Oct 2026 15:02:13 GMT; HttpOnly; SameSite=Lax', 'strict-transport-security': 'max-age=172800', 'x-request-id': '36afae2b-426d-4b23-aa16-2cb7fccd180d', 'x-runtime': '0.002338'}
+[2026-09-23 15:02:11]   Response body:
+[2026-09-23 15:02:11]   <html><head><meta name="color-scheme" content="light dark"></head><body><pre style="word-wrap: break-word; white-space: pre-wrap;">Retry later
+[2026-09-23 15:02:11] </pre></body></html>
+[2026-09-23 15:02:11]   ---------------------
+[2026-09-23 15:02:11]   AO3 asked for 267s. Waiting 272s before retrying...
+[2026-09-23 15:07:39]   ...page 290/300 done; 4742 qualifying works.
+[2026-09-23 15:09:49]   ...page 300/300 done; 4861 qualifying works.
+[2026-09-23 15:09:49] 
+[2026-09-23 15:09:49] Appended 4036 new observation(s) to ao3_results.csv.
+[2026-09-23 15:09:49] Skipped 826 observation(s) already present under the same sampling condition.
+[2026-09-23 15:09:50] 
+[2026-09-23 15:09:50] Saved accumulated distribution with 4861 cohort works.
+[2026-09-23 15:09:50] Distribution key: Arcane: League of Legends (Cartoon 2021)|cat0|warn0|cross1|chap0|comp0|time0
+[2026-09-23 15:09:50] 
+[2026-09-23 15:09:50] --- ACCUMULATED COHORT ---
+[2026-09-23 15:09:50] Sample size: 4861 works
+[2026-09-23 15:09:50] 
+[2026-09-23 15:09:50] Kudos/Hits:
+[2026-09-23 15:09:50]   Target: 6.37
+[2026-09-23 15:09:50]   Cohort mean: 7.70
+[2026-09-23 15:09:50]   Cohort median: 6.82
+[2026-09-23 15:09:50]   Target is above 45.2% of accumulated cohort works.
+[2026-09-23 15:09:50] 
+[2026-09-23 15:09:50] Bookmarks/Hits:
+[2026-09-23 15:09:50]   Target: 1.15
+[2026-09-23 15:09:50]   Cohort mean: 0.86
+[2026-09-23 15:09:50]   Cohort median: 0.71
+[2026-09-23 15:09:50]   Target is above 74.8% of accumulated cohort works.
+[2026-09-23 15:09:50] 
+[2026-09-23 15:09:50] Comments/Hits:
+[2026-09-23 15:09:50]   Target: 2.91
+[2026-09-23 15:09:50]   Cohort mean: 0.84
+[2026-09-23 15:09:50]   Cohort median: 0.48
+[2026-09-23 15:09:50]   Target is above 94.9% of accumulated cohort works.
+[2026-09-23 15:09:50] 
+[2026-09-23 15:09:50] Kudos per 10k words:
+[2026-09-23 15:09:50]   Target: 1410000.00
+[2026-09-23 15:09:50]   Cohort mean: 1272.18
+[2026-09-23 15:09:50]   Cohort median: 275.57
+[2026-09-23 15:09:50]   Target is above 100.0% of accumulated cohort works.
+[2026-09-23 15:09:50] 
+[2026-09-23 15:09:50] NOTE:
+[2026-09-23 15:09:50] These percentiles describe relative engagement within your selected cohort.
+[2026-09-23 15:09:50] They do not establish why readers preferred a work or prove causation.
+[2026-09-23 15:09:50] 
+[2026-09-23 15:09:50] Recommended next research step:
+[2026-09-23 15:09:50] Use this metadata dataset to select a smaller, matched M/M and F/F corpus for manual coding of relationship features such as emotional vulnerability, physical affection, conflict, romantic initiation, agency, and reciprocity.
+
+===== Run started 2026-09-23T15:12:57+00:00 =====
+[2026-09-23 15:12:57] (Logging this run to scraping_log.txt; errors to error_log.txt.)
+[2026-09-23 15:12:57] Found ao3_cookie.txt. Using the cookie from that file.
+[2026-09-23 15:12:57]   Parsed cookie name(s): __cf_bm, _cfuvid, _otwarchive_session, cf_clearance, user_credentials
+[2026-09-23 15:13:11]   Login verified: AO3 recognizes this cookie as a logged-in session.
+[2026-09-23 15:13:11] 
+[2026-09-23 15:13:30] Enter target AO3 work URL: 
+[2026-09-23 15:13:30] Fetching target work details...
+[2026-09-23 15:13:39] 
+[2026-09-23 15:13:39] --- Target Fic: 'Stargazing, Sunrises, and Other Signs of Life' ---
+[2026-09-23 15:13:39] Work ID: 89824931
+[2026-09-23 15:13:39] Fandom(s): Avatar: The Last Airbender (Cartoon 2005), Avatar: The Last Airbender & Related Fandoms
+[2026-09-23 15:13:39] Relationships: Katara/Zuko (Avatar)
+[2026-09-23 15:13:39] Words: 85,832 | Chapters: 9
+[2026-09-23 15:13:39] Hits: 5,463 | Kudos: 285 | Bookmarks: 80 | Comments: 100
+[2026-09-23 15:13:39] Kudos/Hits: 5.22%
+[2026-09-23 15:13:39] Bookmarks/Hits: 1.46%
+[2026-09-23 15:13:39] Kudos per 10k words: 33.20
+[2026-09-23 15:13:39] 
+[2026-09-23 15:13:39] --- Configure Comparison Cohort ---
+[2026-09-23 15:13:39] 
+[2026-09-23 15:13:39] Fandom scope:
+[2026-09-23 15:13:39] [0] Choose a target fandom
+[2026-09-23 15:13:39] [1] All fandoms
+[2026-09-23 15:13:55] Select fandom scope (0-1): 
+[2026-09-23 15:13:55] Target work fandoms:
+[2026-09-23 15:13:55] [1] Avatar: The Last Airbender (Cartoon 2005)
+[2026-09-23 15:13:55] [2] Avatar: The Last Airbender & Related Fandoms
+[2026-09-23 15:14:01] Choose fandom (1-2): 
+[2026-09-23 15:14:01] Category:
+[2026-09-23 15:14:01] [0] All
+[2026-09-23 15:14:01] [1] M/M
+[2026-09-23 15:14:01] [2] F/F
+[2026-09-23 15:14:01] [3] F/M
+[2026-09-23 15:14:01] [4] Multi
+[2026-09-23 15:14:01] [5] Gen
+[2026-09-23 15:14:02] Select category (0-5): 
+[2026-09-23 15:14:02] Archive warnings:
+[2026-09-23 15:14:02] [0] All
+[2026-09-23 15:14:02] [1] No Warnings Apply
+[2026-09-23 15:14:02] [2] Creator Chose Not To Use
+[2026-09-23 15:14:02] [3] Graphic Violence
+[2026-09-23 15:14:02] [4] Major Character Death
+[2026-09-23 15:14:02] [5] Rape/Non-Con
+[2026-09-23 15:14:02] [6] Underage
+[2026-09-23 15:14:03] Select warning (0-6): 
+[2026-09-23 15:14:03] Crossovers:
+[2026-09-23 15:14:03] [0] No crossovers (recommended)
+[2026-09-23 15:14:03] [1] All works
+[2026-09-23 15:14:03] [2] Crossovers only
+[2026-09-23 15:14:03] Select crossover option (0-2): 
+[2026-09-23 15:14:03] Chapters:
+[2026-09-23 15:14:03] [0] All
+[2026-09-23 15:14:03] [1] One-shots only
+[2026-09-23 15:14:03] [2] Same number as target
+[2026-09-23 15:14:03] [3] Multi-chapter only
+[2026-09-23 15:14:04] Select chapter filter (0-3): 
+[2026-09-23 15:14:04] Completion:
+[2026-09-23 15:14:04] [0] All
+[2026-09-23 15:14:04] [1] Complete only
+[2026-09-23 15:14:05] Select completion filter (0-1): 
+[2026-09-23 15:14:05] Timeframe:
+[2026-09-23 15:14:05] [0] All time
+[2026-09-23 15:14:05] [1] Last week
+[2026-09-23 15:14:05] [2] Last month
+[2026-09-23 15:14:05] [3] Last year
+[2026-09-23 15:14:05] [4] Custom range
+[2026-09-23 15:14:06] Select timeframe (0-4): 
+[2026-09-23 15:14:06] Checking the result count...
+[2026-09-23 15:14:09] Found 2574 result page(s).
+[2026-09-23 15:14:15] Start page (1-2574, blank = 1): End page (1-2574, blank = 2574): 
+[2026-09-23 15:14:15] Sampling mode:
+[2026-09-23 15:14:15] [0] All pages
+[2026-09-23 15:14:15] [1] Systematic pages
+[2026-09-23 15:14:15] [2] Random pages
+[2026-09-23 15:14:39] Select sampling mode (0-2): How many pages should be sampled? Sampling seed (blank = 2026): 
+[2026-09-23 15:14:39] Collecting cohort metadata. Only search-result cards are parsed for cohort works.
+[2026-09-23 15:14:39]   Selected 300 page(s): [10, 18, 25, 36, 57, 67, 77, 85, 91, 94, 99, 115, 120, 121, 125, 127, 128, 129, 130, 134]...
+[2026-09-23 15:16:40]   ...page 10/300 done; 121 qualifying works.
+[2026-09-23 15:18:50]   ...page 20/300 done; 251 qualifying works.
+[2026-09-23 15:19:27]   --- 429 response ---
+[2026-09-23 15:19:27]   URL: https://archiveofourown.org/works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=152&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc&work_search%5Bfandom_names%5D=Avatar%3A+The+Last+Airbender+%28Cartoon+2005%29&work_search%5Bcrossover%5D=F
+[2026-09-23 15:19:27]   Status: 429 
+[2026-09-23 15:19:27]   Retry-After header: 31
+[2026-09-23 15:19:27]   Response headers: {'alt-svc': 'h3=":443"; ma=86400', 'cache-control': 'no-cache', 'cf-cache-status': 'DYNAMIC', 'cf-ray': 'a3fa872b1aab4d0e-BOS', 'content-length': '12', 'content-type': 'text/plain', 'date': 'Wed, 23 Sep 2026 15:19:29 GMT', 'retry-after': '31', 'server': 'cloudflare', 'set-cookie': '_otwarchive_session=eyJfcmFpbHMiOnsibWVzc2FnZSI6ImV5SnpaWE56YVc5dVgybGtJam9pTlRsbVpXRTJPVE0yTkdGaE1qQmlNVGcxWkRFd09ETTFOV014WW1ZeU56Y2lMQ0ozWVhKa1pXNHVkWE5sY2k1MWMyVnlMbXRsZVNJNlcxc3pNVGs0Tnpnd01WMHNJaVF5WVNReE5DUmpWekl3WWpsbWRrOTJTblphZUZkeFowcEpUbWxQSWwwc0lsOWpjM0ptWDNSdmEyVnVJam9pVlVsWk1uUlZhRlpLWkZoaFpUUlFURzl2Y1ROaWFsUm9XRVpCZDBaSllubzRWMDVMTUV4dWJIZHlTU0o5IiwiZXhwIjoiMjAyNi0xMC0wN1QxNToxOToyOS44MTdaIiwicHVyIjoiY29va2llLl9vdHdhcmNoaXZlX3Nlc3Npb24ifX0%3D--3d9f9622067ee4a359bc5423c476fe9146438024; path=/; expires=Wed, 07 Oct 2026 15:19:29 GMT; HttpOnly; SameSite=Lax', 'x-request-id': '1e7c35ee-7076-45b7-a7bb-98117c7b7fac', 'x-runtime': '0.004117'}
+[2026-09-23 15:19:27]   Response body:
+[2026-09-23 15:19:27]   <html><head><meta name="color-scheme" content="light dark"></head><body><pre style="word-wrap: break-word; white-space: pre-wrap;">Retry later
+[2026-09-23 15:19:27] </pre></body></html>
+[2026-09-23 15:19:27]   ---------------------
+[2026-09-23 15:19:27]   AO3 asked for 31s. Waiting 36s before retrying...
+[2026-09-23 15:21:36]   ...page 30/300 done; 387 qualifying works.
+[2026-09-23 15:23:40]   ...page 40/300 done; 551 qualifying works.
+[2026-09-23 15:25:52]   ...page 50/300 done; 732 qualifying works.
+[2026-09-23 15:27:53]   ...page 60/300 done; 902 qualifying works.
+[2026-09-23 15:28:28]   --- 429 response ---
+[2026-09-23 15:28:28]   URL: https://archiveofourown.org/works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=628&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc&work_search%5Bfandom_names%5D=Avatar%3A+The+Last+Airbender+%28Cartoon+2005%29&work_search%5Bcrossover%5D=F
+[2026-09-23 15:28:28]   Status: 429 
+[2026-09-23 15:28:28]   Retry-After header: 90
+[2026-09-23 15:28:28]   Response headers: {'alt-svc': 'h3=":443"; ma=86400', 'cache-control': 'no-cache', 'cf-cache-status': 'DYNAMIC', 'cf-ray': 'a3fa9460a8534d0e-BOS', 'content-length': '12', 'content-type': 'text/plain', 'date': 'Wed, 23 Sep 2026 15:28:30 GMT', 'retry-after': '90', 'server': 'cloudflare', 'set-cookie': '_otwarchive_session=eyJfcmFpbHMiOnsibWVzc2FnZSI6ImV5SnpaWE56YVc5dVgybGtJam9pTlRsbVpXRTJPVE0yTkdGaE1qQmlNVGcxWkRFd09ETTFOV014WW1ZeU56Y2lMQ0ozWVhKa1pXNHVkWE5sY2k1MWMyVnlMbXRsZVNJNlcxc3pNVGs0Tnpnd01WMHNJaVF5WVNReE5DUmpWekl3WWpsbWRrOTJTblphZUZkeFowcEpUbWxQSWwwc0lsOWpjM0ptWDNSdmEyVnVJam9pVlVsWk1uUlZhRlpLWkZoaFpUUlFURzl2Y1ROaWFsUm9XRVpCZDBaSllubzRWMDVMTUV4dWJIZHlTU0o5IiwiZXhwIjoiMjAyNi0xMC0wN1QxNToyODozMC44NTdaIiwicHVyIjoiY29va2llLl9vdHdhcmNoaXZlX3Nlc3Npb24ifX0%3D--cf8ccaa7bed7e57fa6f5c385a51f26e2bbb9a948; path=/; expires=Wed, 07 Oct 2026 15:28:30 GMT; HttpOnly; SameSite=Lax', 'x-request-id': '32379516-27d3-4bfe-8a1a-215cadb0ba3b', 'x-runtime': '0.002331'}
+[2026-09-23 15:28:28]   Response body:
+[2026-09-23 15:28:28]   <html><head><meta name="color-scheme" content="light dark"></head><body><pre style="word-wrap: break-word; white-space: pre-wrap;">Retry later
+[2026-09-23 15:28:28] </pre></body></html>
+[2026-09-23 15:28:28]   ---------------------
+[2026-09-23 15:28:28]   AO3 asked for 90s. Waiting 95s before retrying...
+[2026-09-23 15:30:04]   --- 429 response ---
+[2026-09-23 15:30:04]   URL: https://archiveofourown.org/works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=628&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc&work_search%5Bfandom_names%5D=Avatar%3A+The+Last+Airbender+%28Cartoon+2005%29&work_search%5Bcrossover%5D=F
+[2026-09-23 15:30:04]   Status: 429 
+[2026-09-23 15:30:04]   Retry-After header: 194
+[2026-09-23 15:30:04]   Response headers: {'alt-svc': 'h3=":443"; ma=86400', 'cache-control': 'no-cache', 'cf-cache-status': 'DYNAMIC', 'cf-ray': 'a3fa96b419814d0e-BOS', 'content-length': '12', 'content-type': 'text/plain', 'date': 'Wed, 23 Sep 2026 15:30:06 GMT', 'retry-after': '194', 'server': 'cloudflare', 'set-cookie': '_otwarchive_session=eyJfcmFpbHMiOnsibWVzc2FnZSI6ImV5SnpaWE56YVc5dVgybGtJam9pTlRsbVpXRTJPVE0yTkdGaE1qQmlNVGcxWkRFd09ETTFOV014WW1ZeU56Y2lMQ0ozWVhKa1pXNHVkWE5sY2k1MWMyVnlMbXRsZVNJNlcxc3pNVGs0Tnpnd01WMHNJaVF5WVNReE5DUmpWekl3WWpsbWRrOTJTblphZUZkeFowcEpUbWxQSWwwc0lsOWpjM0ptWDNSdmEyVnVJam9pVlVsWk1uUlZhRlpLWkZoaFpUUlFURzl2Y1ROaWFsUm9XRVpCZDBaSllubzRWMDVMTUV4dWJIZHlTU0o5IiwiZXhwIjoiMjAyNi0xMC0wN1QxNTozMDowNi4xMzRaIiwicHVyIjoiY29va2llLl9vdHdhcmNoaXZlX3Nlc3Npb24ifX0%3D--d43c09c60de219a8664b95d896112645cf3fb217; path=/; expires=Wed, 07 Oct 2026 15:30:06 GMT; HttpOnly; SameSite=Lax', 'x-request-id': '139779b7-0734-42e8-83fc-e57f924df44e', 'x-runtime': '0.002583'}
+[2026-09-23 15:30:04]   Response body:
+[2026-09-23 15:30:04]   <html><head><meta name="color-scheme" content="light dark"></head><body><pre style="word-wrap: break-word; white-space: pre-wrap;">Retry later
+[2026-09-23 15:30:04] </pre></body></html>
+[2026-09-23 15:30:04]   ---------------------
+[2026-09-23 15:30:04]   AO3 asked for 194s. Waiting 199s before retrying...
+[2026-09-23 15:34:54]   ...page 70/300 done; 1075 qualifying works.
+[2026-09-23 15:37:09]   ...page 80/300 done; 1235 qualifying works.
+[2026-09-23 15:39:24]   ...page 90/300 done; 1412 qualifying works.
+[2026-09-23 15:41:39]   ...page 100/300 done; 1584 qualifying works.
+[2026-09-23 15:42:16]   --- 429 response ---
+[2026-09-23 15:42:16]   URL: https://archiveofourown.org/works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=896&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc&work_search%5Bfandom_names%5D=Avatar%3A+The+Last+Airbender+%28Cartoon+2005%29&work_search%5Bcrossover%5D=F
+[2026-09-23 15:42:16]   Status: 429 
+[2026-09-23 15:42:16]   Retry-After header: 262
+[2026-09-23 15:42:16]   Response headers: {'alt-svc': 'h3=":443"; ma=86400', 'cache-control': 'no-cache', 'cf-cache-status': 'DYNAMIC', 'cf-ray': 'a3faa89848ff4d0e-BOS', 'content-length': '12', 'content-type': 'text/plain', 'date': 'Wed, 23 Sep 2026 15:42:18 GMT', 'retry-after': '262', 'server': 'cloudflare', 'set-cookie': '_otwarchive_session=eyJfcmFpbHMiOnsibWVzc2FnZSI6ImV5SnpaWE56YVc5dVgybGtJam9pTlRsbVpXRTJPVE0yTkdGaE1qQmlNVGcxWkRFd09ETTFOV014WW1ZeU56Y2lMQ0ozWVhKa1pXNHVkWE5sY2k1MWMyVnlMbXRsZVNJNlcxc3pNVGs0Tnpnd01WMHNJaVF5WVNReE5DUmpWekl3WWpsbWRrOTJTblphZUZkeFowcEpUbWxQSWwwc0lsOWpjM0ptWDNSdmEyVnVJam9pVlVsWk1uUlZhRlpLWkZoaFpUUlFURzl2Y1ROaWFsUm9XRVpCZDBaSllubzRWMDVMTUV4dWJIZHlTU0o5IiwiZXhwIjoiMjAyNi0xMC0wN1QxNTo0MjoxOC45NTlaIiwicHVyIjoiY29va2llLl9vdHdhcmNoaXZlX3Nlc3Npb24ifX0%3D--524628351a2253c582c937ed879d5cc021b47bc1; path=/; expires=Wed, 07 Oct 2026 15:42:18 GMT; HttpOnly; SameSite=Lax', 'strict-transport-security': 'max-age=172800', 'x-request-id': '40cf9fb3-7686-45e1-8ed8-5e156776c376', 'x-runtime': '0.002163'}
+[2026-09-23 15:42:16]   Response body:
+[2026-09-23 15:42:16]   <html><head><meta name="color-scheme" content="light dark"></head><body><pre style="word-wrap: break-word; white-space: pre-wrap;">Retry later
+[2026-09-23 15:42:16] </pre></body></html>
+[2026-09-23 15:42:16]   ---------------------
+[2026-09-23 15:42:16]   AO3 asked for 262s. Waiting 267s before retrying...
+[2026-09-23 15:48:16]   ...page 110/300 done; 1768 qualifying works.
+[2026-09-23 15:50:37]   ...page 120/300 done; 1956 qualifying works.
+[2026-09-23 15:52:45]   ...page 130/300 done; 2137 qualifying works.
+[2026-09-23 15:54:52]   ...page 140/300 done; 2316 qualifying works.
+[2026-09-23 15:55:29]   --- 429 response ---
+[2026-09-23 15:55:29]   URL: https://archiveofourown.org/works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=1257&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc&work_search%5Bfandom_names%5D=Avatar%3A+The+Last+Airbender+%28Cartoon+2005%29&work_search%5Bcrossover%5D=F
+[2026-09-23 15:55:29]   Status: 429 
+[2026-09-23 15:55:29]   Retry-After header: 271
+[2026-09-23 15:55:29]   Response headers: {'alt-svc': 'h3=":443"; ma=86400', 'cache-control': 'no-cache', 'cf-cache-status': 'DYNAMIC', 'cf-ray': 'a3fabbe76b5a8c7f-BOS', 'content-length': '12', 'content-security-policy-report-only': "script-src 'unsafe-inline' 'unsafe-eval'; connect-src 'none'; report-uri https://csp-reporting.cloudflare.com/cdn-cgi/script_monitor/report?m=LKjiY_dP16nyOc_GkUJ5AyFM7DQhUtgCjfrN9locOfo-1790178929.8226576-1.0.1.1-zW23RhJylilflIgQeB6qMah29itK3C2CtbDJ_0Wt.Q5SYiRzz2_JMR54o0hoIR36j96MII3gM1yipZTFHqfX9SM.mFOkMtWWYwsIIOHqpEbtEq0bolZ9Wv6RA6k5I1IP1eY.wPdWjVnzCGgKUV3GmDl_KVo14jq19KWnlSFzsrmKPSarEDCEEpsIG_tyfQpl; report-to cf-csp-endpoint", 'content-type': 'text/plain', 'date': 'Wed, 23 Sep 2026 15:55:29 GMT', 'report-to': '{"group":"cf-csp-endpoint","max_age":86400,"endpoints":[{"url":"https://csp-reporting.cloudflare.com/cdn-cgi/script_monitor/report?m=LKjiY_dP16nyOc_GkUJ5AyFM7DQhUtgCjfrN9locOfo-1790178929.8226576-1.0.1.1-zW23RhJylilflIgQeB6qMah29itK3C2CtbDJ_0Wt.Q5SYiRzz2_JMR54o0hoIR36j96MII3gM1yipZTFHqfX9SM.mFOkMtWWYwsIIOHqpEbtEq0bolZ9Wv6RA6k5I1IP1eY.wPdWjVnzCGgKUV3GmDl_KVo14jq19KWnlSFzsrmKPSarEDCEEpsIG_tyfQpl"}]}', 'reporting-endpoints': 'cf-csp-endpoint="https://csp-reporting.cloudflare.com/cdn-cgi/script_monitor/report?m=LKjiY_dP16nyOc_GkUJ5AyFM7DQhUtgCjfrN9locOfo-1790178929.8226576-1.0.1.1-zW23RhJylilflIgQeB6qMah29itK3C2CtbDJ_0Wt.Q5SYiRzz2_JMR54o0hoIR36j96MII3gM1yipZTFHqfX9SM.mFOkMtWWYwsIIOHqpEbtEq0bolZ9Wv6RA6k5I1IP1eY.wPdWjVnzCGgKUV3GmDl_KVo14jq19KWnlSFzsrmKPSarEDCEEpsIG_tyfQpl"', 'retry-after': '271', 'server': 'cloudflare', 'set-cookie': '_otwarchive_session=eyJfcmFpbHMiOnsibWVzc2FnZSI6ImV5SnpaWE56YVc5dVgybGtJam9pTlRsbVpXRTJPVE0yTkdGaE1qQmlNVGcxWkRFd09ETTFOV014WW1ZeU56Y2lMQ0ozWVhKa1pXNHVkWE5sY2k1MWMyVnlMbXRsZVNJNlcxc3pNVGs0Tnpnd01WMHNJaVF5WVNReE5DUmpWekl3WWpsbWRrOTJTblphZUZkeFowcEpUbWxQSWwwc0lsOWpjM0ptWDNSdmEyVnVJam9pVlVsWk1uUlZhRlpLWkZoaFpUUlFURzl2Y1ROaWFsUm9XRVpCZDBaSllubzRWMDVMTUV4dWJIZHlTU0o5IiwiZXhwIjoiMjAyNi0xMC0wN1QxNTo1NToyOS44NTNaIiwicHVyIjoiY29va2llLl9vdHdhcmNoaXZlX3Nlc3Npb24ifX0%3D--742a95d9cc0e08332ee44d15135a988a16eb34ba; path=/; expires=Wed, 07 Oct 2026 15:55:29 GMT; HttpOnly; SameSite=Lax', 'x-request-id': '0a33a2dd-f821-46ef-bd21-3bea7ee6ee0f', 'x-runtime': '0.002678'}
+[2026-09-23 15:55:29]   Response body:
+[2026-09-23 15:55:29]   <html><head><meta name="color-scheme" content="light dark"></head><body><pre style="word-wrap: break-word; white-space: pre-wrap;">Retry later
+[2026-09-23 15:55:29] </pre></body></html>
+[2026-09-23 15:55:29]   ---------------------
+[2026-09-23 15:55:29]   AO3 asked for 271s. Waiting 276s before retrying...
+[2026-09-23 16:01:36]   ...page 150/300 done; 2498 qualifying works.
+[2026-09-23 16:03:44]   ...page 160/300 done; 2683 qualifying works.
+[2026-09-23 16:06:00]   ...page 170/300 done; 2858 qualifying works.
+[2026-09-23 16:08:07]   ...page 180/300 done; 3044 qualifying works.
+[2026-09-23 16:08:44]   --- 429 response ---
+[2026-09-23 16:08:44]   URL: https://archiveofourown.org/works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=1579&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc&work_search%5Bfandom_names%5D=Avatar%3A+The+Last+Airbender+%28Cartoon+2005%29&work_search%5Bcrossover%5D=F
+[2026-09-23 16:08:44]   Status: 429 
+[2026-09-23 16:08:44]   Retry-After header: 75
+[2026-09-23 16:08:44]   Response headers: {'alt-svc': 'h3=":443"; ma=86400', 'cache-control': 'no-cache', 'cf-cache-status': 'DYNAMIC', 'cf-ray': 'a3facf512fa28c7f-BOS', 'content-length': '12', 'content-type': 'text/plain', 'date': 'Wed, 23 Sep 2026 16:08:45 GMT', 'retry-after': '75', 'server': 'cloudflare', 'set-cookie': '_otwarchive_session=eyJfcmFpbHMiOnsibWVzc2FnZSI6ImV5SnpaWE56YVc5dVgybGtJam9pTlRsbVpXRTJPVE0yTkdGaE1qQmlNVGcxWkRFd09ETTFOV014WW1ZeU56Y2lMQ0ozWVhKa1pXNHVkWE5sY2k1MWMyVnlMbXRsZVNJNlcxc3pNVGs0Tnpnd01WMHNJaVF5WVNReE5DUmpWekl3WWpsbWRrOTJTblphZUZkeFowcEpUbWxQSWwwc0lsOWpjM0ptWDNSdmEyVnVJam9pVlVsWk1uUlZhRlpLWkZoaFpUUlFURzl2Y1ROaWFsUm9XRVpCZDBaSllubzRWMDVMTUV4dWJIZHlTU0o5IiwiZXhwIjoiMjAyNi0xMC0wN1QxNjowODo0NS4wMTdaIiwicHVyIjoiY29va2llLl9vdHdhcmNoaXZlX3Nlc3Npb24ifX0%3D--22c45b352208510b5a3f01ebd9440b1b3134528f; path=/; expires=Wed, 07 Oct 2026 16:08:45 GMT; HttpOnly; SameSite=Lax', 'strict-transport-security': 'max-age=172800', 'x-request-id': '19f8eb74-d174-4471-a4f9-367fa6a320bd', 'x-runtime': '0.002539'}
+[2026-09-23 16:08:44]   Response body:
+[2026-09-23 16:08:44]   <html><head><meta name="color-scheme" content="light dark"></head><body><pre style="word-wrap: break-word; white-space: pre-wrap;">Retry later
+[2026-09-23 16:08:44] </pre></body></html>
+[2026-09-23 16:08:44]   ---------------------
+[2026-09-23 16:08:44]   AO3 asked for 75s. Waiting 80s before retrying...
+[2026-09-23 16:10:05]   --- 429 response ---
+[2026-09-23 16:10:05]   URL: https://archiveofourown.org/works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=1579&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc&work_search%5Bfandom_names%5D=Avatar%3A+The+Last+Airbender+%28Cartoon+2005%29&work_search%5Bcrossover%5D=F
+[2026-09-23 16:10:05]   Status: 429 
+[2026-09-23 16:10:05]   Retry-After header: 195
+[2026-09-23 16:10:05]   Response headers: {'alt-svc': 'h3=":443"; ma=86400', 'cache-control': 'no-cache', 'cf-cache-status': 'DYNAMIC', 'cf-ray': 'a3fad1460ade8c7f-BOS', 'content-length': '12', 'content-type': 'text/plain', 'date': 'Wed, 23 Sep 2026 16:10:05 GMT', 'retry-after': '195', 'server': 'cloudflare', 'set-cookie': '_otwarchive_session=eyJfcmFpbHMiOnsibWVzc2FnZSI6ImV5SnpaWE56YVc5dVgybGtJam9pTlRsbVpXRTJPVE0yTkdGaE1qQmlNVGcxWkRFd09ETTFOV014WW1ZeU56Y2lMQ0ozWVhKa1pXNHVkWE5sY2k1MWMyVnlMbXRsZVNJNlcxc3pNVGs0Tnpnd01WMHNJaVF5WVNReE5DUmpWekl3WWpsbWRrOTJTblphZUZkeFowcEpUbWxQSWwwc0lsOWpjM0ptWDNSdmEyVnVJam9pVlVsWk1uUlZhRlpLWkZoaFpUUlFURzl2Y1ROaWFsUm9XRVpCZDBaSllubzRWMDVMTUV4dWJIZHlTU0o5IiwiZXhwIjoiMjAyNi0xMC0wN1QxNjoxMDowNS4xNjBaIiwicHVyIjoiY29va2llLl9vdHdhcmNoaXZlX3Nlc3Npb24ifX0%3D--9ad35d532963b8edf6a3c6a162921e5f4c0d70ca; path=/; expires=Wed, 07 Oct 2026 16:10:05 GMT; HttpOnly; SameSite=Lax', 'x-request-id': 'a943f2fb-c917-4a89-86e9-c6c631f3795d', 'x-runtime': '0.002613'}
+[2026-09-23 16:10:05]   Response body:
+[2026-09-23 16:10:05]   <html><head><meta name="color-scheme" content="light dark"></head><body><pre style="word-wrap: break-word; white-space: pre-wrap;">Retry later
+[2026-09-23 16:10:05] </pre></body></html>
+[2026-09-23 16:10:05]   ---------------------
+[2026-09-23 16:10:05]   AO3 asked for 195s. Waiting 200s before retrying...
+[2026-09-23 16:15:05]   ...page 190/300 done; 3218 qualifying works.
+[2026-09-23 16:17:16]   ...page 200/300 done; 3400 qualifying works.
+[2026-09-23 16:19:18]   ...page 210/300 done; 3580 qualifying works.
+[2026-09-23 16:21:23]   ...page 220/300 done; 3757 qualifying works.
+[2026-09-23 16:21:49]   --- 429 response ---
+[2026-09-23 16:21:49]   URL: https://archiveofourown.org/works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=1904&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc&work_search%5Bfandom_names%5D=Avatar%3A+The+Last+Airbender+%28Cartoon+2005%29&work_search%5Bcrossover%5D=F
+[2026-09-23 16:21:49]   Status: 429 
+[2026-09-23 16:21:49]   Retry-After header: 291
+[2026-09-23 16:21:49]   Response headers: {'alt-svc': 'h3=":443"; ma=86400', 'cache-control': 'no-cache', 'cf-cache-status': 'DYNAMIC', 'cf-ray': 'a3fae27719be8c7f-BOS', 'content-length': '12', 'content-type': 'text/plain', 'date': 'Wed, 23 Sep 2026 16:21:49 GMT', 'retry-after': '291', 'server': 'cloudflare', 'set-cookie': '_otwarchive_session=eyJfcmFpbHMiOnsibWVzc2FnZSI6ImV5SnpaWE56YVc5dVgybGtJam9pTlRsbVpXRTJPVE0yTkdGaE1qQmlNVGcxWkRFd09ETTFOV014WW1ZeU56Y2lMQ0ozWVhKa1pXNHVkWE5sY2k1MWMyVnlMbXRsZVNJNlcxc3pNVGs0Tnpnd01WMHNJaVF5WVNReE5DUmpWekl3WWpsbWRrOTJTblphZUZkeFowcEpUbWxQSWwwc0lsOWpjM0ptWDNSdmEyVnVJam9pVlVsWk1uUlZhRlpLWkZoaFpUUlFURzl2Y1ROaWFsUm9XRVpCZDBaSllubzRWMDVMTUV4dWJIZHlTU0o5IiwiZXhwIjoiMjAyNi0xMC0wN1QxNjoyMTo0OS4zMzJaIiwicHVyIjoiY29va2llLl9vdHdhcmNoaXZlX3Nlc3Npb24ifX0%3D--aa3e12611bb64144e1227d8aafab977f40f2ef59; path=/; expires=Wed, 07 Oct 2026 16:21:49 GMT; HttpOnly; SameSite=Lax', 'strict-transport-security': 'max-age=172800', 'x-request-id': '16de2013-26fa-4806-94d0-be461ee77832', 'x-runtime': '0.003859'}
+[2026-09-23 16:21:49]   Response body:
+[2026-09-23 16:21:49]   <html><head><meta name="color-scheme" content="light dark"></head><body><pre style="word-wrap: break-word; white-space: pre-wrap;">Retry later
+[2026-09-23 16:21:49] </pre></body></html>
+[2026-09-23 16:21:49]   ---------------------
+[2026-09-23 16:21:49]   AO3 asked for 291s. Waiting 296s before retrying...
+[2026-09-23 16:28:31]   ...page 230/300 done; 3947 qualifying works.
+[2026-09-23 16:30:42]   ...page 240/300 done; 4134 qualifying works.
+[2026-09-23 16:32:57]   ...page 250/300 done; 4328 qualifying works.
+[2026-09-23 16:35:05]   ...page 260/300 done; 4516 qualifying works.
+[2026-09-23 16:35:18]   --- 429 response ---
+[2026-09-23 16:35:18]   URL: https://archiveofourown.org/works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=2204&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc&work_search%5Bfandom_names%5D=Avatar%3A+The+Last+Airbender+%28Cartoon+2005%29&work_search%5Bcrossover%5D=F
+[2026-09-23 16:35:18]   Status: 429 
+[2026-09-23 16:35:18]   Retry-After header: 282
+[2026-09-23 16:35:18]   Response headers: {'alt-svc': 'h3=":443"; ma=86400', 'cache-control': 'no-cache', 'cf-cache-status': 'DYNAMIC', 'cf-ray': 'a3faf6369ddb8c7f-BOS', 'content-length': '12', 'content-security-policy-report-only': "script-src 'unsafe-inline' 'unsafe-eval'; connect-src 'none'; report-uri https://csp-reporting.cloudflare.com/cdn-cgi/script_monitor/report?m=wAJb7TytNh3mwWKi1bMmq5f4_NgvDJUAWKeLcf4xwFI-1790181318.1723597-1.0.1.1-cK7MeLasEfNU_8eORphIXOrZVBw7KCOxMhRmlBeMHgW4Wa0kMGNTsL_0tHzWR1LgwP.QUuQcWBc4Jg1_OA2Kab5tbWu.IwVmZgY_SuMJiblvHKtLWZJFJ8oG0ZKeas4EeRpWnvWP38vFDi7fLY7V9pfn4nlhos8zeGMu.8.7UXxzxjKIynt1bWQHh0LHNN1L; report-to cf-csp-endpoint", 'content-type': 'text/plain', 'date': 'Wed, 23 Sep 2026 16:35:18 GMT', 'report-to': '{"group":"cf-csp-endpoint","max_age":86400,"endpoints":[{"url":"https://csp-reporting.cloudflare.com/cdn-cgi/script_monitor/report?m=wAJb7TytNh3mwWKi1bMmq5f4_NgvDJUAWKeLcf4xwFI-1790181318.1723597-1.0.1.1-cK7MeLasEfNU_8eORphIXOrZVBw7KCOxMhRmlBeMHgW4Wa0kMGNTsL_0tHzWR1LgwP.QUuQcWBc4Jg1_OA2Kab5tbWu.IwVmZgY_SuMJiblvHKtLWZJFJ8oG0ZKeas4EeRpWnvWP38vFDi7fLY7V9pfn4nlhos8zeGMu.8.7UXxzxjKIynt1bWQHh0LHNN1L"}]}', 'reporting-endpoints': 'cf-csp-endpoint="https://csp-reporting.cloudflare.com/cdn-cgi/script_monitor/report?m=wAJb7TytNh3mwWKi1bMmq5f4_NgvDJUAWKeLcf4xwFI-1790181318.1723597-1.0.1.1-cK7MeLasEfNU_8eORphIXOrZVBw7KCOxMhRmlBeMHgW4Wa0kMGNTsL_0tHzWR1LgwP.QUuQcWBc4Jg1_OA2Kab5tbWu.IwVmZgY_SuMJiblvHKtLWZJFJ8oG0ZKeas4EeRpWnvWP38vFDi7fLY7V9pfn4nlhos8zeGMu.8.7UXxzxjKIynt1bWQHh0LHNN1L"', 'retry-after': '282', 'server': 'cloudflare', 'set-cookie': '_otwarchive_session=eyJfcmFpbHMiOnsibWVzc2FnZSI6ImV5SnpaWE56YVc5dVgybGtJam9pTlRsbVpXRTJPVE0yTkdGaE1qQmlNVGcxWkRFd09ETTFOV014WW1ZeU56Y2lMQ0ozWVhKa1pXNHVkWE5sY2k1MWMyVnlMbXRsZVNJNlcxc3pNVGs0Tnpnd01WMHNJaVF5WVNReE5DUmpWekl3WWpsbWRrOTJTblphZUZkeFowcEpUbWxQSWwwc0lsOWpjM0ptWDNSdmEyVnVJam9pVlVsWk1uUlZhRlpLWkZoaFpUUlFURzl2Y1ROaWFsUm9XRVpCZDBaSllubzRWMDVMTUV4dWJIZHlTU0o5IiwiZXhwIjoiMjAyNi0xMC0wN1QxNjozNToxOC4yMDFaIiwicHVyIjoiY29va2llLl9vdHdhcmNoaXZlX3Nlc3Npb24ifX0%3D--dd59e92745c8221f182d360fb576586770b49b3a; path=/; expires=Wed, 07 Oct 2026 16:35:18 GMT; HttpOnly; SameSite=Lax', 'x-request-id': '2bdfcf1d-7daa-48c1-b4fb-92280d378046', 'x-runtime': '0.002793'}
+[2026-09-23 16:35:18]   Response body:
+[2026-09-23 16:35:18]   <html><head><meta name="color-scheme" content="light dark"></head><body><pre style="word-wrap: break-word; white-space: pre-wrap;">Retry later
+[2026-09-23 16:35:18] </pre></body></html>
+[2026-09-23 16:35:18]   ---------------------
+[2026-09-23 16:35:18]   AO3 asked for 282s. Waiting 287s before retrying...
+[2026-09-23 16:42:15]   ...page 270/300 done; 4676 qualifying works.
+[2026-09-23 16:44:22]   ...page 280/300 done; 4851 qualifying works.
+[2026-09-23 16:46:30]   ...page 290/300 done; 5028 qualifying works.
+[2026-09-23 16:48:37]   ...page 300/300 done; 5213 qualifying works.
+[2026-09-23 16:48:37] 
+[2026-09-23 16:48:37] Appended 5214 new observation(s) to ao3_results.csv.
+[2026-09-23 16:48:37] Skipped 0 observation(s) already present under the same sampling condition.
+[2026-09-23 16:48:37]   Skipped: CSV is missing columns: role, fandom, category_filter, warning_filter, crossover_filter, chapter_filter, completion_filter, timeframe_filter
+[2026-09-23 16:48:37]   Skipped: CSV is missing columns: role, fandom, category_filter, warning_filter, crossover_filter, chapter_filter, completion_filter, timeframe_filter
+[2026-09-23 16:48:37] 
+[2026-09-23 16:48:37] No accumulated cohort exists for this filter combination yet.
+
+===== Run started 2026-09-23T21:00:54+00:00 =====
+[2026-09-23 21:00:54] (Logging this run to scraping_log.txt; errors to error_log.txt.)
+[2026-09-23 21:00:54] Found ao3_cookie.txt. Using the cookie from that file.
+[2026-09-23 21:00:54]   Parsed cookie name(s): __cf_bm, _cfuvid, _otwarchive_session, cf_clearance, user_credentials
+[2026-09-23 21:01:07]   Login verified: AO3 recognizes this cookie as a logged-in session.
+[2026-09-23 21:01:07] 
+[2026-09-23 21:01:28] Enter target AO3 work URL: 
+[2026-09-23 21:01:28] Fetching target work details...
+[2026-09-23 21:01:38] 
+[2026-09-23 21:01:38] --- Target Fic: 'Stargazing, Sunrises, and Other Signs of Life' ---
+[2026-09-23 21:01:38] Work ID: 89824931
+[2026-09-23 21:01:38] Fandom(s): Avatar: The Last Airbender (Cartoon 2005), Avatar: The Last Airbender & Related Fandoms
+[2026-09-23 21:01:38] Relationships: Katara/Zuko (Avatar)
+[2026-09-23 21:01:38] Words: 85,832 | Chapters: 9
+[2026-09-23 21:01:38] Hits: 5,485 | Kudos: 287 | Bookmarks: 81 | Comments: 100
+[2026-09-23 21:01:38] Kudos/Hits: 5.23%
+[2026-09-23 21:01:38] Bookmarks/Hits: 1.48%
+[2026-09-23 21:01:38] Kudos per 10k words: 33.44
+[2026-09-23 21:01:38] 
+[2026-09-23 21:01:38] --- Configure Comparison Cohort ---
+[2026-09-23 21:01:38] 
+[2026-09-23 21:01:38] Fandom scope:
+[2026-09-23 21:01:38] [0] Choose a target fandom
+[2026-09-23 21:01:38] [1] All fandoms
+[2026-09-23 21:02:13] Select fandom scope (0-1): 
+[2026-09-23 21:02:13] Target work fandoms:
+[2026-09-23 21:02:13] [1] Avatar: The Last Airbender (Cartoon 2005)
+[2026-09-23 21:02:13] [2] Avatar: The Last Airbender & Related Fandoms
+[2026-09-23 21:02:15] Choose fandom (1-2): 
+[2026-09-23 21:02:15] Category:
+[2026-09-23 21:02:15] [0] All
+[2026-09-23 21:02:15] [1] M/M
+[2026-09-23 21:02:15] [2] F/F
+[2026-09-23 21:02:15] [3] F/M
+[2026-09-23 21:02:15] [4] Multi
+[2026-09-23 21:02:15] [5] Gen
+[2026-09-23 21:02:16] Select category (0-5): 
+[2026-09-23 21:02:16] Archive warnings:
+[2026-09-23 21:02:16] [0] All
+[2026-09-23 21:02:16] [1] No Warnings Apply
+[2026-09-23 21:02:16] [2] Creator Chose Not To Use
+[2026-09-23 21:02:16] [3] Graphic Violence
+[2026-09-23 21:02:16] [4] Major Character Death
+[2026-09-23 21:02:16] [5] Rape/Non-Con
+[2026-09-23 21:02:16] [6] Underage
+[2026-09-23 21:02:16] Select warning (0-6): 
+[2026-09-23 21:02:16] Crossovers:
+[2026-09-23 21:02:16] [0] No crossovers (recommended)
+[2026-09-23 21:02:16] [1] All works
+[2026-09-23 21:02:16] [2] Crossovers only
+[2026-09-23 21:02:17] Select crossover option (0-2): 
+[2026-09-23 21:02:17] Chapters:
+[2026-09-23 21:02:17] [0] All
+[2026-09-23 21:02:17] [1] One-shots only
+[2026-09-23 21:02:17] [2] Same number as target
+[2026-09-23 21:02:17] [3] Multi-chapter only
+[2026-09-23 21:02:17] Select chapter filter (0-3): 
+[2026-09-23 21:02:17] Completion:
+[2026-09-23 21:02:17] [0] All
+[2026-09-23 21:02:17] [1] Complete only
+[2026-09-23 21:02:18] Select completion filter (0-1): 
+[2026-09-23 21:02:18] Timeframe:
+[2026-09-23 21:02:18] [0] All time
+[2026-09-23 21:02:18] [1] Last week
+[2026-09-23 21:02:18] [2] Last month
+[2026-09-23 21:02:18] [3] Last year
+[2026-09-23 21:02:18] [4] Custom range
+[2026-09-23 21:02:19] Select timeframe (0-4): 
+[2026-09-23 21:02:19] Checking the result count...
+[2026-09-23 21:02:20]   Using cached page count: 2574 page(s).
+[2026-09-23 21:02:20] Found 2574 result page(s).
+[2026-09-23 21:02:35] Start page (1-2574, blank = 1): End page (1-2574, blank = 2574): 
+[2026-09-23 21:02:35] Sampling mode:
+[2026-09-23 21:02:35] [0] All pages
+[2026-09-23 21:02:35] [1] Systematic pages
+[2026-09-23 21:02:35] [2] Random pages
+[2026-09-23 21:02:40] Select sampling mode (0-2): How many pages should be sampled? Sampling seed (blank = 2026): 
+[2026-09-23 21:02:40] Collecting cohort metadata. Only search-result cards are parsed for cohort works.
+[2026-09-23 21:02:40]   Selected 300 page(s): [10, 18, 25, 36, 57, 67, 77, 85, 91, 94, 99, 115, 120, 121, 125, 127, 128, 129, 130, 134]...
+[2026-09-23 21:02:40]   Page 10: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 18: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 25: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 36: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 57: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 67: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 77: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 85: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 91: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 94: loaded from cache (20 works).
+[2026-09-23 21:02:40]   ...page 10/300 done; 121 qualifying works.
+[2026-09-23 21:02:40]   Page 99: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 115: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 120: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 121: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 125: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 127: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 128: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 129: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 130: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 134: loaded from cache (20 works).
+[2026-09-23 21:02:40]   ...page 20/300 done; 251 qualifying works.
+[2026-09-23 21:02:40]   Page 147: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 149: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 152: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 215: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 232: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 242: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 252: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 254: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 258: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 260: loaded from cache (20 works).
+[2026-09-23 21:02:40]   ...page 30/300 done; 387 qualifying works.
+[2026-09-23 21:02:40]   Page 280: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 291: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 308: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 312: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 326: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 328: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 330: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 339: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 343: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 345: loaded from cache (20 works).
+[2026-09-23 21:02:40]   ...page 40/300 done; 551 qualifying works.
+[2026-09-23 21:02:40]   Page 350: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 361: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 363: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 383: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 405: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 409: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 417: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 418: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 442: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 448: loaded from cache (20 works).
+[2026-09-23 21:02:40]   ...page 50/300 done; 732 qualifying works.
+[2026-09-23 21:02:40]   Page 454: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 457: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 468: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 482: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 494: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 502: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 512: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 519: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 577: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 594: loaded from cache (20 works).
+[2026-09-23 21:02:40]   ...page 60/300 done; 902 qualifying works.
+[2026-09-23 21:02:40]   Page 607: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 625: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 628: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 635: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 639: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 642: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 658: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 659: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 664: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 665: loaded from cache (20 works).
+[2026-09-23 21:02:40]   ...page 70/300 done; 1075 qualifying works.
+[2026-09-23 21:02:40]   Page 702: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 705: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 707: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 709: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 713: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 718: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 720: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 727: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 733: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 740: loaded from cache (20 works).
+[2026-09-23 21:02:40]   ...page 80/300 done; 1235 qualifying works.
+[2026-09-23 21:02:40]   Page 750: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 753: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 754: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 766: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 767: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 769: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 773: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 788: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 801: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 803: loaded from cache (20 works).
+[2026-09-23 21:02:40]   ...page 90/300 done; 1412 qualifying works.
+[2026-09-23 21:02:40]   Page 807: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 813: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 817: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 822: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 834: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 836: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 859: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 864: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 866: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 875: loaded from cache (20 works).
+[2026-09-23 21:02:40]   ...page 100/300 done; 1584 qualifying works.
+[2026-09-23 21:02:40]   Page 878: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 880: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 896: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 914: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 919: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 922: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 924: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 944: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 949: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 951: loaded from cache (20 works).
+[2026-09-23 21:02:40]   ...page 110/300 done; 1768 qualifying works.
+[2026-09-23 21:02:40]   Page 953: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 954: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 955: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 964: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 976: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 983: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 997: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1000: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1012: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1016: loaded from cache (20 works).
+[2026-09-23 21:02:40]   ...page 120/300 done; 1956 qualifying works.
+[2026-09-23 21:02:40]   Page 1024: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1033: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1034: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1037: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1044: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1070: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1074: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1083: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1091: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1103: loaded from cache (20 works).
+[2026-09-23 21:02:40]   ...page 130/300 done; 2137 qualifying works.
+[2026-09-23 21:02:40]   Page 1109: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1128: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1160: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1164: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1183: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1188: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1214: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1220: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1224: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1229: loaded from cache (20 works).
+[2026-09-23 21:02:40]   ...page 140/300 done; 2316 qualifying works.
+[2026-09-23 21:02:40]   Page 1241: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1254: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1257: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1275: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1287: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1288: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1296: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1301: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1311: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1317: loaded from cache (20 works).
+[2026-09-23 21:02:40]   ...page 150/300 done; 2498 qualifying works.
+[2026-09-23 21:02:40]   Page 1319: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1331: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1333: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1353: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1361: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1369: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1371: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1372: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1377: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1388: loaded from cache (20 works).
+[2026-09-23 21:02:40]   ...page 160/300 done; 2683 qualifying works.
+[2026-09-23 21:02:40]   Page 1389: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1405: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1406: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1410: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1429: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1430: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1457: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1461: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1464: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1465: loaded from cache (20 works).
+[2026-09-23 21:02:40]   ...page 170/300 done; 2858 qualifying works.
+[2026-09-23 21:02:40]   Page 1480: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1495: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1504: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1510: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1513: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1516: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1526: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1531: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1536: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1563: loaded from cache (20 works).
+[2026-09-23 21:02:40]   ...page 180/300 done; 3044 qualifying works.
+[2026-09-23 21:02:40]   Page 1566: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1568: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1579: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1580: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1586: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1589: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1592: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1608: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1610: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1634: loaded from cache (20 works).
+[2026-09-23 21:02:40]   ...page 190/300 done; 3218 qualifying works.
+[2026-09-23 21:02:40]   Page 1654: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1660: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1663: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1675: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1679: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1688: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1696: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1714: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1739: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1768: loaded from cache (20 works).
+[2026-09-23 21:02:40]   ...page 200/300 done; 3400 qualifying works.
+[2026-09-23 21:02:40]   Page 1770: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1773: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1789: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1790: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1796: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1797: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1808: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1809: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1819: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1823: loaded from cache (20 works).
+[2026-09-23 21:02:40]   ...page 210/300 done; 3580 qualifying works.
+[2026-09-23 21:02:40]   Page 1826: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1827: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1829: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1834: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1836: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1840: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1842: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1853: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1866: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1898: loaded from cache (20 works).
+[2026-09-23 21:02:40]   ...page 220/300 done; 3757 qualifying works.
+[2026-09-23 21:02:40]   Page 1901: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1904: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1948: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1950: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1955: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1962: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1973: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 1978: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 2009: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 2010: loaded from cache (20 works).
+[2026-09-23 21:02:40]   ...page 230/300 done; 3947 qualifying works.
+[2026-09-23 21:02:40]   Page 2013: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 2016: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 2027: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 2042: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 2043: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 2047: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 2051: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 2054: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 2064: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 2071: loaded from cache (20 works).
+[2026-09-23 21:02:40]   ...page 240/300 done; 4134 qualifying works.
+[2026-09-23 21:02:40]   Page 2073: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 2074: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 2090: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 2092: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 2095: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 2098: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 2102: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 2111: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 2117: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 2134: loaded from cache (20 works).
+[2026-09-23 21:02:40]   ...page 250/300 done; 4328 qualifying works.
+[2026-09-23 21:02:40]   Page 2136: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 2147: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 2156: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 2157: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 2159: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 2165: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 2170: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 2175: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 2177: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 2194: loaded from cache (20 works).
+[2026-09-23 21:02:40]   ...page 260/300 done; 4516 qualifying works.
+[2026-09-23 21:02:40]   Page 2204: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 2217: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 2221: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 2222: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 2224: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 2228: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 2238: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 2240: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 2248: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 2252: loaded from cache (20 works).
+[2026-09-23 21:02:40]   ...page 270/300 done; 4676 qualifying works.
+[2026-09-23 21:02:40]   Page 2262: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 2270: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 2277: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 2286: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 2303: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 2339: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 2341: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 2364: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 2373: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 2376: loaded from cache (20 works).
+[2026-09-23 21:02:40]   ...page 280/300 done; 4851 qualifying works.
+[2026-09-23 21:02:40]   Page 2381: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 2382: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 2392: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 2436: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 2443: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 2445: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 2454: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 2459: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 2463: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 2469: loaded from cache (20 works).
+[2026-09-23 21:02:40]   ...page 290/300 done; 5028 qualifying works.
+[2026-09-23 21:02:40]   Page 2473: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 2506: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 2518: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 2522: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 2524: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 2534: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 2545: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 2550: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 2561: loaded from cache (20 works).
+[2026-09-23 21:02:40]   Page 2563: loaded from cache (20 works).
+[2026-09-23 21:02:40]   ...page 300/300 done; 5213 qualifying works.
+[2026-09-23 21:02:40] 
+[2026-09-23 21:02:40] Appended 5214 new observation(s) to ao3_results.csv.
+[2026-09-23 21:02:40] Skipped 0 observation(s) already present under the same sampling condition.
+[2026-09-23 21:02:41] 
+[2026-09-23 21:02:41] Saved accumulated distribution with 5213 cohort works.
+[2026-09-23 21:02:41] Distribution key: Avatar: The Last Airbender (Cartoon 2005)|cat0|warn0|cross1|chap0|comp0|time0
+[2026-09-23 21:02:41] 
+[2026-09-23 21:02:41] --- ACCUMULATED COHORT ---
+[2026-09-23 21:02:41] Sample size: 5213 works
+[2026-09-23 21:02:41] 
+[2026-09-23 21:02:41] Kudos/Hits:
+[2026-09-23 21:02:41]   Target: 5.23
+[2026-09-23 21:02:41]   Cohort mean: 7.57
+[2026-09-23 21:02:41]   Cohort median: 6.86
+[2026-09-23 21:02:41]   Target is above 35.1% of accumulated cohort works.
+[2026-09-23 21:02:41] 
+[2026-09-23 21:02:41] Bookmarks/Hits:
+[2026-09-23 21:02:41]   Target: 1.48
+[2026-09-23 21:02:41]   Cohort mean: 0.91
+[2026-09-23 21:02:41]   Cohort median: 0.72
+[2026-09-23 21:02:41]   Target is above 82.5% of accumulated cohort works.
+[2026-09-23 21:02:41] 
+[2026-09-23 21:02:41] Comments/Hits:
+[2026-09-23 21:02:41]   Target: 1.82
+[2026-09-23 21:02:41]   Cohort mean: 0.82
+[2026-09-23 21:02:41]   Cohort median: 0.49
+[2026-09-23 21:02:41]   Target is above 89.0% of accumulated cohort works.
+[2026-09-23 21:02:41] 
+[2026-09-23 21:02:41] Kudos per 10k words:
+[2026-09-23 21:02:41]   Target: 33.44
+[2026-09-23 21:02:41]   Cohort mean: 2400.70
+[2026-09-23 21:02:41]   Cohort median: 438.30
+[2026-09-23 21:02:41]   Target is above 8.5% of accumulated cohort works.
+[2026-09-23 21:02:41] 
+[2026-09-23 21:02:41] NOTE:
+[2026-09-23 21:02:41] These percentiles describe relative engagement within your selected cohort.
+[2026-09-23 21:02:41] They do not establish why readers preferred a work or prove causation.
+[2026-09-23 21:02:41] 
+[2026-09-23 21:02:41] Recommended next research step:
+[2026-09-23 21:02:41] Use this metadata dataset to select a smaller, matched M/M and F/F corpus for manual coding of relationship features such as emotional vulnerability, physical affection, conflict, romantic initiation, agency, and reciprocity.
