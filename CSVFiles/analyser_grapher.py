@@ -202,35 +202,43 @@ def plot_ecdfs(df):
 
 def plot_distributions(df):
     """
-    Box plots (median + IQR) rather than bar charts of means, for the
-    same right-skew reason as above -- the median is a more honest
-    "typical value" than the mean when outliers can drag the mean up.
-    Faceted by fandom rather than pooled: pooling fandoms together
-    risks Simpson's-paradox-style confounding, where a real pattern
-    within each fandom gets hidden or reversed once mixed together
-    (especially relevant here since your two fandoms differ a lot in
-    size and M/M:F/F ratio).
+    Box plots (median + IQR) showing engagement ratios by category and fandom.
+    Outliers (fliers) are preserved but clipped at the top of the axis via set_ylim().
     """
+    # Define max y-limits that show the main boxes clearly. 
+    # Any outlier higher than these values will be drawn clipped along the top border.
+    Y_LIMITS = {
+        "kudos_to_hits": (0, 25),       # Graph 1: Kudos / Hits (%)
+        "comments_to_hits": (0, 5),     # Graph 2: Comments / Hits (%)
+        "bookmarks_to_hits": (0, 3),    # Graph 3: Bookmarks / Hits (%)
+        "comments_to_kudos": (0, 50)    # Graph 4: Comments / Kudos (%)
+    }
+
     fig, axes = plt.subplots(1, len(ENGAGEMENT_METRICS), figsize=(24, 7))
+    
     for ax, (col, label) in zip(axes, ENGAGEMENT_METRICS):
         sns.boxplot(
             data=df, x="fandom", y=col, hue="category_clean", hue_order=CATEGORY_ORDER,
-            palette=CATEGORY_PALETTE, ax=ax, showfliers=True, flierprops=FLIER_PROPS,
+            palette=CATEGORY_PALETTE, ax=ax, 
+            showfliers=True,              # Keeps the outlier dots visible
+            flierprops=FLIER_PROPS        # Uses your custom flier styling
         )
-        ax.set_title(label)
+        ax.set_title(label, fontsize=14, pad=10)
         ax.set_ylabel(label)
         ax.set_xlabel("")
         ax.tick_params(axis="x", rotation=20)
 
-        # Annotate group sizes directly on the plot. Never show a
-        # summary comparison without the reader being able to see how
-        # much data it's based on -- a dramatic-looking median
-        # difference from 8 works means something very different than
-        # the same difference from 300 works.
+        # Set specific y-axis bounds to clip extreme fliers to the top boundary
+        if col in Y_LIMITS:
+            y_min, y_max = Y_LIMITS[col]
+            ax.set_ylim(y_min, y_max)
+
+        # Annotate group sizes (n=...) slightly below the top edge (at 92% height)
+        current_ymax = ax.get_ylim()[1]
         for k, fandom in enumerate(df["fandom"].unique()):
             for cat, offset in [("M/M", -0.2), ("F/F", 0.2)]:
                 n = ((df["fandom"] == fandom) & (df["category_clean"] == cat)).sum()
-                ax.text(k + offset, ax.get_ylim()[1] * 0.95, f"n={n}", ha="center", fontsize=8, color="gray")
+                ax.text(k + offset, current_ymax * 0.92, f"n={n}", ha="center", fontsize=8, color="gray")
 
     fig.suptitle("Engagement ratios by category and fandom (box = median/IQR)", y=1.03, fontsize=16)
     fig.tight_layout()
@@ -614,10 +622,10 @@ def run_group_comparisons(df):
     Benjamini-Hochberg FDR correction before being reported, rather
     than just printing a verbal warning about multiple comparisons.
     """
-    print("=" * 60)
+    print("~" * 60)
     print("MANN-WHITNEY U COMPARISONS (M/M vs F/F), BY FANDOM")
     print("DESCRIPTIVE / HYPOTHESIS-GENERATING ONLY")
-    print("=" * 60)
+    print("~" * 60)
 
     all_metrics = ENGAGEMENT_METRICS + WORD_NORMALIZED_METRICS
     results = []
