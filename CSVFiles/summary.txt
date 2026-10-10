@@ -1,0 +1,754 @@
+
+========================================================================
+RUN: 2026-10-09T16:36:40-04:00
+Data file: ao3_results.csv
+Figures folder: figures_raw/
+DATA NOTES:
+  Cohort rows: 58365; duplicate work_ids dropped: 461.
+  Rows excluded because category is not exactly M/M or F/F (includes multi-category works): 34881.
+  Filter check: M/M and F/F share the same warning/crossover/chapter/completion/timeframe filters.
+  date_updated range for F/F: 2008-03-12 to 2026-09-20 (n=3850).
+  date_updated range for M/M: 2007-12-22 to 2026-09-20 (n=19173).
+  Works per fandom x category:
+    category_clean   F/F    M/M
+    fandom_display             
+    Arcane:         1581   1584
+    Avatar:          378    881
+    Harry           1891  16708
+========================================================================
+
+### 01_engagement_ecdfs.png - Engagement distributions (ECDF)
+WHAT IT SHOWS: for each fandom (row) and ratio (column), the share of works at or below
+each value. A curve further RIGHT = generally higher engagement; a curve that rises
+quickly on the left = many low-engagement works. The x-axis is symlog (linear below 1,
+log above), so differences near zero are not exaggerated.
+NUMBERS (median/IQR/n per category):
+  Kudos / Hits (%):
+    [Arcane:] F/F: median 5.16 (IQR 3.41-7.43, n=1581); M/M: median 8.77 (IQR 6.14-12.10, n=1584)  -> M/M median higher by 3.61
+    [Avatar:] F/F: median 7.07 (IQR 4.64-9.96, n=378); M/M: median 8.59 (IQR 5.46-12.18, n=881)  -> M/M median higher by 1.52
+    [Harry] F/F: median 5.47 (IQR 3.16-8.53, n=1891); M/M: median 5.62 (IQR 3.56-8.24, n=16708)  -> M/M median higher by 0.15
+  Comments / Hits (%):
+    [Arcane:] F/F: median 0.33 (IQR 0.11-0.73, n=1581); M/M: median 0.61 (IQR 0.25-1.31, n=1584)  -> M/M median higher by 0.28
+    [Avatar:] F/F: median 0.43 (IQR 0.14-1.00, n=378); M/M: median 0.47 (IQR 0.17-0.97, n=881)  -> M/M median higher by 0.04
+    [Harry] F/F: median 0.38 (IQR 0.03-1.20, n=1891); M/M: median 0.26 (IQR 0.07-0.65, n=16708)  -> M/M median lower by 0.11
+  Bookmarks / Hits (%):
+    [Arcane:] F/F: median 0.57 (IQR 0.33-0.92, n=1581); M/M: median 0.92 (IQR 0.52-1.41, n=1584)  -> M/M median higher by 0.35
+    [Avatar:] F/F: median 0.63 (IQR 0.36-1.04, n=378); M/M: median 0.80 (IQR 0.44-1.27, n=881)  -> M/M median higher by 0.17
+    [Harry] F/F: median 0.43 (IQR 0.15-0.84, n=1891); M/M: median 0.51 (IQR 0.22-0.93, n=16708)  -> M/M median higher by 0.08
+  Comments / Kudos (%):
+    [Arcane:] F/F: median 5.81 (IQR 2.08-13.27, n=1581); M/M: median 6.71 (IQR 3.03-14.24, n=1584)  -> M/M median higher by 0.90
+    [Avatar:] F/F: median 5.70 (IQR 2.53-14.29, n=378); M/M: median 5.00 (IQR 2.34-11.36, n=881)  -> M/M median lower by 0.70
+    [Harry] F/F: median 7.32 (IQR 1.32-20.53, n=1739); M/M: median 4.85 (IQR 1.56-11.90, n=14311)  -> M/M median lower by 2.46
+CAUTION: ECDFs show the whole distribution; a median gap alone can hide a tail difference.
+
+### 02_engagement_boxplots.png - Engagement ratios by category and fandom
+WHAT IT SHOWS: the typical (median) and middle-50% (IQR) kudos, comment and bookmark
+rate per hit, plus comments per kudos, M/M vs F/F within each fandom. Dots are outliers.
+The y-axis is clipped to about the 1st-99th percentile of the pooled data.
+NUMBERS (median/IQR/n per category):
+  Kudos / Hits (%):
+    [Arcane:] F/F: median 5.16 (IQR 3.41-7.43, n=1581); M/M: median 8.77 (IQR 6.14-12.10, n=1584)  -> M/M median higher by 3.61
+    [Avatar:] F/F: median 7.07 (IQR 4.64-9.96, n=378); M/M: median 8.59 (IQR 5.46-12.18, n=881)  -> M/M median higher by 1.52
+    [Harry] F/F: median 5.47 (IQR 3.16-8.53, n=1891); M/M: median 5.62 (IQR 3.56-8.24, n=16708)  -> M/M median higher by 0.15
+  Comments / Hits (%):
+    [Arcane:] F/F: median 0.33 (IQR 0.11-0.73, n=1581); M/M: median 0.61 (IQR 0.25-1.31, n=1584)  -> M/M median higher by 0.28
+    [Avatar:] F/F: median 0.43 (IQR 0.14-1.00, n=378); M/M: median 0.47 (IQR 0.17-0.97, n=881)  -> M/M median higher by 0.04
+    [Harry] F/F: median 0.38 (IQR 0.03-1.20, n=1891); M/M: median 0.26 (IQR 0.07-0.65, n=16708)  -> M/M median lower by 0.11
+  Bookmarks / Hits (%):
+    [Arcane:] F/F: median 0.57 (IQR 0.33-0.92, n=1581); M/M: median 0.92 (IQR 0.52-1.41, n=1584)  -> M/M median higher by 0.35
+    [Avatar:] F/F: median 0.63 (IQR 0.36-1.04, n=378); M/M: median 0.80 (IQR 0.44-1.27, n=881)  -> M/M median higher by 0.17
+    [Harry] F/F: median 0.43 (IQR 0.15-0.84, n=1891); M/M: median 0.51 (IQR 0.22-0.93, n=16708)  -> M/M median higher by 0.08
+  Comments / Kudos (%):
+    [Arcane:] F/F: median 5.81 (IQR 2.08-13.27, n=1581); M/M: median 6.71 (IQR 3.03-14.24, n=1584)  -> M/M median higher by 0.90
+    [Avatar:] F/F: median 5.70 (IQR 2.53-14.29, n=378); M/M: median 5.00 (IQR 2.34-11.36, n=881)  -> M/M median lower by 0.70
+    [Harry] F/F: median 7.32 (IQR 1.32-20.53, n=1739); M/M: median 4.85 (IQR 1.56-11.90, n=14311)  -> M/M median lower by 2.46
+POINTS OUTSIDE THE VIEW (still in the data, just not drawn):
+  Kudos / Hits (%): 123 above / 0 below the visible range
+  Comments / Hits (%): 182 above / 0 below the visible range
+  Bookmarks / Hits (%): 130 above / 0 below the visible range
+  Comments / Kudos (%): 159 above / 0 below the visible range
+CAUTION: red n labels (n<10) are noise. Bookmarks/hits is the stronger enjoyment
+signal; comments reflect community norms as much as enjoyment.
+
+### 03_word_normalized_boxplots.png - Word-normalized engagement
+WHAT IT SHOWS: kudos, bookmarks and comments per 10,000 words, for text works of at least
+500 words (1217 shorter text work(s) excluded). It asks whether one category
+earns more engagement per unit of writing.
+NUMBERS (median/IQR/n per category):
+  Kudos per 10k words:
+    [Harry] F/F: median 157.27 (IQR 51.63-402.69, n=867); M/M: median 242.95 (IQR 61.12-751.28, n=7215)  -> M/M median higher by 85.68
+  Bookmarks per 10k words:
+    [Harry] F/F: median 15.19 (IQR 4.14-42.53, n=867); M/M: median 25.56 (IQR 5.33-79.31, n=7215)  -> M/M median higher by 10.37
+  Comments per 10k words:
+    [Harry] F/F: median 15.20 (IQR 3.39-40.45, n=867); M/M: median 15.21 (IQR 3.19-40.19, n=7215)  -> M/M median higher by 0.01
+POINTS OUTSIDE THE VIEW:
+  Kudos per 10k words: 978 above / 0 below the visible range
+  Bookmarks per 10k words: 414 above / 0 below the visible range
+  Comments per 10k words: 311 above / 0 below the visible range
+CAUTION: short works inflate per-word ratios; read alongside figure 06 (length).
+
+### 04_rating_proxy.png - Kudos/hits by rating
+WHAT IT SHOWS: kudos/hits split by rating tier, M/M vs F/F, per fandom. It checks whether
+a category gap survives within the same explicitness level.
+NUMBERS (median kudos/hits, IQR, n):
+  Kudos / Hits (%):
+    [Arcane: / General Audiences] F/F: median 7.31 (IQR 5.04-10.08, n=195); M/M: median 12.25 (IQR 8.75-15.38, n=257)  -> M/M median higher by 4.94
+    [Arcane: / Teen And Up Audiences] F/F: median 7.03 (IQR 4.68-9.14, n=303); M/M: median 10.69 (IQR 7.34-13.98, n=331)  -> M/M median higher by 3.67
+    [Arcane: / Mature] F/F: median 5.10 (IQR 3.45-7.16, n=326); M/M: median 8.55 (IQR 5.76-11.52, n=284)  -> M/M median higher by 3.45
+    [Arcane: / Explicit] F/F: median 4.24 (IQR 2.93-5.84, n=618); M/M: median 7.20 (IQR 5.02-9.53, n=620)  -> M/M median higher by 2.96
+    [Arcane: / Not Rated] F/F: median 5.03 (IQR 3.15-7.01, n=139); M/M: median 8.69 (IQR 6.87-11.92, n=92)  -> M/M median higher by 3.66
+    [Avatar: / General Audiences] F/F: median 8.45 (IQR 6.26-11.01, n=158); M/M: median 11.93 (IQR 8.19-15.06, n=199)  -> M/M median higher by 3.48
+    [Avatar: / Teen And Up Audiences] F/F: median 8.05 (IQR 5.51-10.14, n=108); M/M: median 9.89 (IQR 6.62-12.96, n=327)  -> M/M median higher by 1.84
+    [Avatar: / Mature] F/F: median 5.17 (IQR 3.24-7.35, n=44); M/M: median 7.94 (IQR 5.11-10.03, n=130)  -> M/M median higher by 2.77
+    [Avatar: / Explicit] F/F: median 3.07 (IQR 1.52-3.77, n=47); M/M: median 4.71 (IQR 3.55-7.00, n=165)  -> M/M median higher by 1.64
+    [Avatar: / Not Rated] F/F: median 6.75 (IQR 5.28-11.31, n=21); M/M: median 7.38 (IQR 4.65-11.92, n=60)  -> M/M median higher by 0.62
+    [Harry / General Audiences] F/F: median 7.07 (IQR 4.48-10.11, n=445); M/M: median 6.98 (IQR 4.61-9.79, n=3191)  -> M/M median lower by 0.09
+    [Harry / Teen And Up Audiences] F/F: median 6.42 (IQR 4.20-9.51, n=560); M/M: median 6.74 (IQR 4.48-9.59, n=4394)  -> M/M median higher by 0.32
+    [Harry / Mature] F/F: median 5.28 (IQR 2.95-7.93, n=366); M/M: median 5.15 (IQR 3.37-7.40, n=3227)  -> M/M median lower by 0.12
+    [Harry / Explicit] F/F: median 3.07 (IQR 1.75-4.41, n=394); M/M: median 4.24 (IQR 2.74-6.14, n=4343)  -> M/M median higher by 1.17
+    [Harry / Not Rated] F/F: median 6.16 (IQR 3.31-9.18, n=126); M/M: median 5.69 (IQR 3.58-8.14, n=1553)  -> M/M median lower by 0.48
+Points outside the shared view: 123 above / 0 below.
+CAUTION: CRUDE PROXY -- not your actual coded variable. Hypothesis-generating only. Rating = explicitness, not affection or emotion.
+
+### 05_warnings_proxy.png - Kudos/hits by intense-content warning
+WHAT IT SHOWS: kudos/hits for works with vs without a Major Character Death or Graphic
+Depictions of Violence warning, M/M vs F/F, per fandom. It checks whether darker content
+explains a category gap.
+NUMBERS (median kudos/hits, IQR, n):
+  Kudos / Hits (%):
+    [Arcane: / death/violence warning] F/F: median 4.20 (IQR 2.72-5.83, n=166); M/M: median 6.92 (IQR 5.24-10.24, n=138)  -> M/M median higher by 2.72
+    [Arcane: / no death/violence warning] F/F: median 5.32 (IQR 3.51-7.68, n=1415); M/M: median 8.92 (IQR 6.28-12.20, n=1446)  -> M/M median higher by 3.60
+    [Avatar: / death/violence warning] F/F: median 4.58 (IQR 3.16-5.27, n=17); M/M: median 5.83 (IQR 4.23-8.96, n=60)  -> M/M median higher by 1.26
+    [Avatar: / no death/violence warning] F/F: median 7.24 (IQR 4.71-10.04, n=361); M/M: median 8.77 (IQR 5.70-12.45, n=821)  -> M/M median higher by 1.53
+    [Harry / death/violence warning] F/F: median 4.28 (IQR 2.53-7.07, n=164); M/M: median 4.21 (IQR 2.76-6.18, n=1455)  -> M/M median lower by 0.07
+    [Harry / no death/violence warning] F/F: median 5.59 (IQR 3.25-8.66, n=1727); M/M: median 5.77 (IQR 3.69-8.45, n=15253)  -> M/M median higher by 0.18
+Points outside the shared view: 123 above / 0 below.
+CAUTION: CRUDE PROXY -- not your actual coded variable. Hypothesis-generating only. Works with 'Creator Chose Not To Use Archive Warnings'
+are counted as 'no warning' and may contain character death. Rape/Non-Con and Underage
+warnings are not part of this split.
+
+### 06_length_vs_engagement.png - Engagement vs word count
+WHAT IT SHOWS: each dot is a text work (log10 word count vs kudos/hits). Thick lines are the
+median per word-count bin; both categories share the same bin edges, so they are compared at
+the same lengths. Faded markers = bins with fewer than 5 works.
+NUMBERS:
+  F/F: n=1175, median words 1,717, Spearman rho(length, kudos/hits)=-0.08 (p=0.00779) -> longer works have lower kudos/hits
+  M/M: n=8124, median words 3,056, Spearman rho(length, kudos/hits)=-0.24 (p=1.12e-108) -> longer works have lower kudos/hits
+CAUTION: if the two categories have different length distributions, a raw category gap
+may partly be a length effect. Compare the lines at the same x position.
+
+### 07_supply_discovery_demand.png - Supply / discovery / demand
+WHAT IT SHOWS: three separate quantities instead of one 'popularity'.
+  Supply = number of works in the sample. Discovery = hits (log scale). Demand given
+  discovery = kudos/hits.
+SUPPLY (works in sample):
+  [Arcane: / F/F] 1581 works
+  [Arcane: / M/M] 1584 works
+  [Avatar: / F/F] 378 works
+  [Avatar: / M/M] 881 works
+  [Harry / F/F] 1891 works
+  [Harry / M/M] 16708 works
+DISCOVERY / DEMAND (median/IQR/n per category):
+  Hits:
+    [Arcane:] F/F: median 1941.00 (IQR 817.00-4445.00, n=1581); M/M: median 1258.00 (IQR 478.00-3121.75, n=1584)  -> M/M median lower by 683.00
+    [Avatar:] F/F: median 1666.50 (IQR 654.50-3692.75, n=378); M/M: median 2560.00 (IQR 1035.00-6460.00, n=881)  -> M/M median higher by 893.50
+    [Harry] F/F: median 772.00 (IQR 206.00-2591.50, n=1891); M/M: median 1760.00 (IQR 632.75-5107.50, n=16708)  -> M/M median higher by 988.00
+  Kudos / Hits (%):
+    [Arcane:] F/F: median 5.16 (IQR 3.41-7.43, n=1581); M/M: median 8.77 (IQR 6.14-12.10, n=1584)  -> M/M median higher by 3.61
+    [Avatar:] F/F: median 7.07 (IQR 4.64-9.96, n=378); M/M: median 8.59 (IQR 5.46-12.18, n=881)  -> M/M median higher by 1.52
+    [Harry] F/F: median 5.47 (IQR 3.16-8.53, n=1891); M/M: median 5.62 (IQR 3.56-8.24, n=16708)  -> M/M median higher by 0.15
+CAUTION: the supply panel reflects how many pages YOU sampled, not how many works exist
+on AO3, so it is not evidence about real supply. Hits and demand are the informative panels.
+
+### Statistical tests (printed to terminal; not a figure)
+WHAT IT SHOWS: for each fandom and metric, whether M/M and F/F distributions differ
+(Mann-Whitney U, two-sided; Benjamini-Hochberg FDR across all tests run). Cliff's delta is the
+effect size: -1 to +1, positive = M/M values tend to be higher; roughly |d|<0.15 negligible,
+<0.33 small, <0.47 medium, otherwise large. ** = FDR-adjusted p < 0.05.
+Groups need n >= 15 in BOTH categories or the test is skipped.
+[Arcane:]
+  Kudos / Hits (%)              : M/M median=8.77, F/F median=5.16, Cliff's d=+0.49, raw p=0.0000, FDR p=0.0000 ** (n_MM=1584, n_FF=1581)
+  Comments / Hits (%)           : M/M median=0.61, F/F median=0.33, Cliff's d=+0.27, raw p=0.0000, FDR p=0.0000 ** (n_MM=1584, n_FF=1581)
+  Bookmarks / Hits (%)          : M/M median=0.92, F/F median=0.57, Cliff's d=+0.31, raw p=0.0000, FDR p=0.0000 ** (n_MM=1584, n_FF=1581)
+  Comments / Kudos (%)          : M/M median=6.71, F/F median=5.81, Cliff's d=+0.08, raw p=0.0002, FDR p=0.0003 ** (n_MM=1584, n_FF=1581)
+  Kudos per 10k words           : skipped (n too small: M/M=0, F/F=0, need >=15)
+  Bookmarks per 10k words       : skipped (n too small: M/M=0, F/F=0, need >=15)
+  Comments per 10k words        : skipped (n too small: M/M=0, F/F=0, need >=15)
+[Avatar:]
+  Kudos / Hits (%)              : M/M median=8.59, F/F median=7.07, Cliff's d=+0.20, raw p=0.0000, FDR p=0.0000 ** (n_MM=881, n_FF=378)
+  Comments / Hits (%)           : M/M median=0.47, F/F median=0.43, Cliff's d=+0.03, raw p=0.3289, FDR p=0.3524 (n_MM=881, n_FF=378)
+  Bookmarks / Hits (%)          : M/M median=0.80, F/F median=0.63, Cliff's d=+0.14, raw p=0.0001, FDR p=0.0001 ** (n_MM=881, n_FF=378)
+  Comments / Kudos (%)          : M/M median=5.00, F/F median=5.70, Cliff's d=-0.06, raw p=0.0836, FDR p=0.0965 (n_MM=881, n_FF=378)
+  Kudos per 10k words           : skipped (n too small: M/M=0, F/F=0, need >=15)
+  Bookmarks per 10k words       : skipped (n too small: M/M=0, F/F=0, need >=15)
+  Comments per 10k words        : skipped (n too small: M/M=0, F/F=0, need >=15)
+[Harry]
+  Kudos / Hits (%)              : M/M median=5.62, F/F median=5.47, Cliff's d=+0.03, raw p=0.0330, FDR p=0.0413 ** (n_MM=16708, n_FF=1891)
+  Comments / Hits (%)           : M/M median=0.26, F/F median=0.38, Cliff's d=-0.10, raw p=0.0000, FDR p=0.0000 ** (n_MM=16708, n_FF=1891)
+  Bookmarks / Hits (%)          : M/M median=0.51, F/F median=0.43, Cliff's d=+0.09, raw p=0.0000, FDR p=0.0000 ** (n_MM=16708, n_FF=1891)
+  Comments / Kudos (%)          : M/M median=4.85, F/F median=7.32, Cliff's d=-0.11, raw p=0.0000, FDR p=0.0000 ** (n_MM=14311, n_FF=1739)
+  Kudos per 10k words           : M/M median=242.95, F/F median=157.27, Cliff's d=+0.14, raw p=0.0000, FDR p=0.0000 ** (n_MM=7215, n_FF=867)
+  Bookmarks per 10k words       : M/M median=25.56, F/F median=15.19, Cliff's d=+0.16, raw p=0.0000, FDR p=0.0000 ** (n_MM=7215, n_FF=867)
+  Comments per 10k words        : M/M median=15.21, F/F median=15.20, Cliff's d=-0.01, raw p=0.7832, FDR p=0.7832 (n_MM=7215, n_FF=867)
+CAUTION: works by the same author are not independent, so p-values are optimistic. A small
+p with a negligible Cliff's d is a detectable but unimportant difference.
+
+========================================================================
+RUN: 2026-10-10T13:30:40-04:00
+Data file: ao3_results.csv
+Figures folder: figures_raw/
+Groups: F/F, M/M, F/M, All works ('All works' = every unique cohort work, any category)
+DATA NOTES:
+  Cohort rows: 58365; duplicate work_ids dropped: 461.
+  19380 unique works are in none of ['F/F', 'M/M', 'F/M'] (Gen, Multi, Other, blank or multi-category tags); they appear only in 'All works'.
+    Most common of those: (blank): 11215; Gen: 6570; Multi: 1088; Other: 507
+  NOTE: stored is_text_work disagreed with words>0 on 10173 row(s) (counted across all groups); using words>0.
+  Filter check: all categories share the same warning/crossover/chapter/completion/timeframe filters.
+  date_updated range for F/F: 2008-03-12 to 2026-09-20 (n=3850).
+  date_updated range for M/M: 2007-12-22 to 2026-09-20 (n=19173).
+  date_updated range for F/M: 2007-12-06 to 2026-09-20 (n=15501).
+  date_updated range for All works: 2007-12-06 to 2026-09-20 (n=57904).
+  Works per fandom x group:
+    category_clean   F/F    M/M    F/M  All works
+    fandom_display                               
+    Arcane:         1581   1584    573       4861
+    Avatar:          378    881   1692       5213
+    Harry           1891  16708  13236      47830
+========================================================================
+
+### 01_engagement_ecdfs.png - Engagement distributions (ECDF)
+WHAT IT SHOWS: for each fandom (row) and ratio (column), the share of works at or below
+each value, for F/F, M/M, F/M and all works (dashed grey). A curve further RIGHT = generally
+higher engagement; a curve that rises quickly on the left = many low-engagement works. The
+x-axis is symlog (linear below 1, log above), so differences near zero are not exaggerated.
+NUMBERS (median/IQR/n per group):
+  Kudos / Hits (%):
+    [Arcane:]
+      F/F: median 5.16 (IQR 3.41-7.43, n=1581)
+      M/M: median 8.77 (IQR 6.14-12.10, n=1584)
+      F/M: median 6.37 (IQR 4.41-8.90, n=573)
+      All works: median 6.82 (IQR 4.38-10.15, n=4861)
+      median gaps -> M/M minus F/F: +3.61; M/M minus F/M: +2.40; F/F minus F/M: -1.21
+    [Avatar:]
+      F/F: median 7.07 (IQR 4.64-9.96, n=378)
+      M/M: median 8.59 (IQR 5.46-12.18, n=881)
+      F/M: median 5.36 (IQR 3.34-7.77, n=1692)
+      All works: median 6.86 (IQR 4.25-10.14, n=5213)
+      median gaps -> M/M minus F/F: +1.52; M/M minus F/M: +3.23; F/F minus F/M: +1.71
+    [Harry]
+      F/F: median 5.47 (IQR 3.16-8.53, n=1891)
+      M/M: median 5.62 (IQR 3.56-8.24, n=16708)
+      F/M: median 4.00 (IQR 2.33-6.24, n=13236)
+      All works: median 4.80 (IQR 2.86-7.46, n=47830)
+      median gaps -> M/M minus F/F: +0.15; M/M minus F/M: +1.63; F/F minus F/M: +1.47
+  Comments / Hits (%):
+    [Arcane:]
+      F/F: median 0.33 (IQR 0.11-0.73, n=1581)
+      M/M: median 0.61 (IQR 0.25-1.31, n=1584)
+      F/M: median 0.49 (IQR 0.11-1.09, n=573)
+      All works: median 0.48 (IQR 0.17-1.05, n=4861)
+      median gaps -> M/M minus F/F: +0.28; M/M minus F/M: +0.12; F/F minus F/M: -0.16
+    [Avatar:]
+      F/F: median 0.43 (IQR 0.14-1.00, n=378)
+      M/M: median 0.47 (IQR 0.17-0.97, n=881)
+      F/M: median 0.41 (IQR 0.13-0.95, n=1692)
+      All works: median 0.49 (IQR 0.18-1.01, n=5213)
+      median gaps -> M/M minus F/F: +0.04; M/M minus F/M: +0.06; F/F minus F/M: +0.02
+    [Harry]
+      F/F: median 0.38 (IQR 0.03-1.20, n=1891)
+      M/M: median 0.26 (IQR 0.07-0.65, n=16708)
+      F/M: median 0.32 (IQR 0.05-0.90, n=13236)
+      All works: median 0.30 (IQR 0.05-0.83, n=47830)
+      median gaps -> M/M minus F/F: -0.11; M/M minus F/M: -0.06; F/F minus F/M: +0.06
+  Bookmarks / Hits (%):
+    [Arcane:]
+      F/F: median 0.57 (IQR 0.33-0.92, n=1581)
+      M/M: median 0.92 (IQR 0.52-1.41, n=1584)
+      F/M: median 0.65 (IQR 0.33-1.03, n=573)
+      All works: median 0.71 (IQR 0.37-1.16, n=4861)
+      median gaps -> M/M minus F/F: +0.35; M/M minus F/M: +0.28; F/F minus F/M: -0.07
+    [Avatar:]
+      F/F: median 0.63 (IQR 0.36-1.04, n=378)
+      M/M: median 0.80 (IQR 0.44-1.27, n=881)
+      F/M: median 0.60 (IQR 0.33-1.03, n=1692)
+      All works: median 0.72 (IQR 0.39-1.23, n=5213)
+      median gaps -> M/M minus F/F: +0.17; M/M minus F/M: +0.20; F/F minus F/M: +0.03
+    [Harry]
+      F/F: median 0.43 (IQR 0.15-0.84, n=1891)
+      M/M: median 0.51 (IQR 0.22-0.93, n=16708)
+      F/M: median 0.47 (IQR 0.19-0.84, n=13236)
+      All works: median 0.50 (IQR 0.19-0.92, n=47830)
+      median gaps -> M/M minus F/F: +0.08; M/M minus F/M: +0.05; F/F minus F/M: -0.04
+  Comments / Kudos (%):
+    [Arcane:]
+      F/F: median 5.81 (IQR 2.08-13.27, n=1581)
+      M/M: median 6.71 (IQR 3.03-14.24, n=1584)
+      F/M: median 7.45 (IQR 2.05-16.67, n=573)
+      All works: median 6.67 (IQR 2.56-14.58, n=4861)
+      median gaps -> M/M minus F/F: +0.90; M/M minus F/M: -0.74; F/F minus F/M: -1.64
+    [Avatar:]
+      F/F: median 5.70 (IQR 2.53-14.29, n=378)
+      M/M: median 5.00 (IQR 2.34-11.36, n=881)
+      F/M: median 7.42 (IQR 3.02-16.67, n=1692)
+      All works: median 6.67 (IQR 2.78-15.00, n=5213)
+      median gaps -> M/M minus F/F: -0.70; M/M minus F/M: -2.42; F/F minus F/M: -1.72
+    [Harry]
+      F/F: median 7.32 (IQR 1.32-20.53, n=1739)
+      M/M: median 4.85 (IQR 1.56-11.90, n=14311)
+      F/M: median 8.57 (IQR 2.38-21.21, n=11610)
+      All works: median 6.58 (IQR 1.59-17.31, n=41491)
+      median gaps -> M/M minus F/F: -2.46; M/M minus F/M: -3.72; F/F minus F/M: -1.25
+CAUTION: ECDFs show the whole distribution; a median gap alone can hide a tail difference.
+'All works' contains the other three groups plus Gen/Multi/Other, so it sits between them by
+construction and is a reference, not a fourth independent category.
+
+### 02_engagement_boxplots.png - Engagement ratios by category and fandom
+WHAT IT SHOWS: the typical (median) and middle-50% (IQR) kudos, comment and bookmark
+rate per hit, plus comments per kudos, for F/F, M/M, F/M and all works within each fandom.
+Dots are outliers. The y-axis is clipped to about the 1st-99th percentile of all works.
+NUMBERS (median/IQR/n per group):
+  Kudos / Hits (%):
+    [Arcane:]
+      F/F: median 5.16 (IQR 3.41-7.43, n=1581)
+      M/M: median 8.77 (IQR 6.14-12.10, n=1584)
+      F/M: median 6.37 (IQR 4.41-8.90, n=573)
+      All works: median 6.82 (IQR 4.38-10.15, n=4861)
+      median gaps -> M/M minus F/F: +3.61; M/M minus F/M: +2.40; F/F minus F/M: -1.21
+    [Avatar:]
+      F/F: median 7.07 (IQR 4.64-9.96, n=378)
+      M/M: median 8.59 (IQR 5.46-12.18, n=881)
+      F/M: median 5.36 (IQR 3.34-7.77, n=1692)
+      All works: median 6.86 (IQR 4.25-10.14, n=5213)
+      median gaps -> M/M minus F/F: +1.52; M/M minus F/M: +3.23; F/F minus F/M: +1.71
+    [Harry]
+      F/F: median 5.47 (IQR 3.16-8.53, n=1891)
+      M/M: median 5.62 (IQR 3.56-8.24, n=16708)
+      F/M: median 4.00 (IQR 2.33-6.24, n=13236)
+      All works: median 4.80 (IQR 2.86-7.46, n=47830)
+      median gaps -> M/M minus F/F: +0.15; M/M minus F/M: +1.63; F/F minus F/M: +1.47
+  Comments / Hits (%):
+    [Arcane:]
+      F/F: median 0.33 (IQR 0.11-0.73, n=1581)
+      M/M: median 0.61 (IQR 0.25-1.31, n=1584)
+      F/M: median 0.49 (IQR 0.11-1.09, n=573)
+      All works: median 0.48 (IQR 0.17-1.05, n=4861)
+      median gaps -> M/M minus F/F: +0.28; M/M minus F/M: +0.12; F/F minus F/M: -0.16
+    [Avatar:]
+      F/F: median 0.43 (IQR 0.14-1.00, n=378)
+      M/M: median 0.47 (IQR 0.17-0.97, n=881)
+      F/M: median 0.41 (IQR 0.13-0.95, n=1692)
+      All works: median 0.49 (IQR 0.18-1.01, n=5213)
+      median gaps -> M/M minus F/F: +0.04; M/M minus F/M: +0.06; F/F minus F/M: +0.02
+    [Harry]
+      F/F: median 0.38 (IQR 0.03-1.20, n=1891)
+      M/M: median 0.26 (IQR 0.07-0.65, n=16708)
+      F/M: median 0.32 (IQR 0.05-0.90, n=13236)
+      All works: median 0.30 (IQR 0.05-0.83, n=47830)
+      median gaps -> M/M minus F/F: -0.11; M/M minus F/M: -0.06; F/F minus F/M: +0.06
+  Bookmarks / Hits (%):
+    [Arcane:]
+      F/F: median 0.57 (IQR 0.33-0.92, n=1581)
+      M/M: median 0.92 (IQR 0.52-1.41, n=1584)
+      F/M: median 0.65 (IQR 0.33-1.03, n=573)
+      All works: median 0.71 (IQR 0.37-1.16, n=4861)
+      median gaps -> M/M minus F/F: +0.35; M/M minus F/M: +0.28; F/F minus F/M: -0.07
+    [Avatar:]
+      F/F: median 0.63 (IQR 0.36-1.04, n=378)
+      M/M: median 0.80 (IQR 0.44-1.27, n=881)
+      F/M: median 0.60 (IQR 0.33-1.03, n=1692)
+      All works: median 0.72 (IQR 0.39-1.23, n=5213)
+      median gaps -> M/M minus F/F: +0.17; M/M minus F/M: +0.20; F/F minus F/M: +0.03
+    [Harry]
+      F/F: median 0.43 (IQR 0.15-0.84, n=1891)
+      M/M: median 0.51 (IQR 0.22-0.93, n=16708)
+      F/M: median 0.47 (IQR 0.19-0.84, n=13236)
+      All works: median 0.50 (IQR 0.19-0.92, n=47830)
+      median gaps -> M/M minus F/F: +0.08; M/M minus F/M: +0.05; F/F minus F/M: -0.04
+  Comments / Kudos (%):
+    [Arcane:]
+      F/F: median 5.81 (IQR 2.08-13.27, n=1581)
+      M/M: median 6.71 (IQR 3.03-14.24, n=1584)
+      F/M: median 7.45 (IQR 2.05-16.67, n=573)
+      All works: median 6.67 (IQR 2.56-14.58, n=4861)
+      median gaps -> M/M minus F/F: +0.90; M/M minus F/M: -0.74; F/F minus F/M: -1.64
+    [Avatar:]
+      F/F: median 5.70 (IQR 2.53-14.29, n=378)
+      M/M: median 5.00 (IQR 2.34-11.36, n=881)
+      F/M: median 7.42 (IQR 3.02-16.67, n=1692)
+      All works: median 6.67 (IQR 2.78-15.00, n=5213)
+      median gaps -> M/M minus F/F: -0.70; M/M minus F/M: -2.42; F/F minus F/M: -1.72
+    [Harry]
+      F/F: median 7.32 (IQR 1.32-20.53, n=1739)
+      M/M: median 4.85 (IQR 1.56-11.90, n=14311)
+      F/M: median 8.57 (IQR 2.38-21.21, n=11610)
+      All works: median 6.58 (IQR 1.59-17.31, n=41491)
+      median gaps -> M/M minus F/F: -2.46; M/M minus F/M: -3.72; F/F minus F/M: -1.25
+POINTS OUTSIDE THE VIEW (still in the data, just not drawn):
+  Kudos / Hits (%): 327 above / 0 below the visible range (counted over all works)
+  Comments / Hits (%): 459 above / 0 below the visible range (counted over all works)
+  Bookmarks / Hits (%): 373 above / 0 below the visible range (counted over all works)
+  Comments / Kudos (%): 406 above / 0 below the visible range (counted over all works)
+CAUTION: red n labels (n<10) are noise. Bookmarks/hits is the stronger enjoyment
+signal; comments reflect community norms as much as enjoyment.
+
+### 03_word_normalized_boxplots.png - Word-normalized engagement
+WHAT IT SHOWS: kudos, bookmarks and comments per 10,000 words, for text works of at least
+500 words (6228 shorter text work(s) excluded), for F/F, M/M, F/M and all works.
+It asks whether one category earns more engagement per unit of writing.
+NUMBERS (median/IQR/n per group):
+  Kudos per 10k words:
+    [Arcane:]
+      F/F: median 287.92 (IQR 86.51-745.28, n=1504)
+      M/M: median 291.62 (IQR 98.10-793.88, n=1511)
+      F/M: median 197.87 (IQR 73.09-456.22, n=539)
+      All works: median 249.52 (IQR 78.97-696.36, n=4567)
+      median gaps -> M/M minus F/F: +3.70; M/M minus F/M: +93.75; F/F minus F/M: +90.05
+    [Avatar:]
+      F/F: median 385.47 (IQR 137.36-884.39, n=337)
+      M/M: median 715.22 (IQR 214.42-1959.56, n=805)
+      F/M: median 265.91 (IQR 88.26-710.66, n=1537)
+      All works: median 375.37 (IQR 112.66-1081.41, n=4705)
+      median gaps -> M/M minus F/F: +329.75; M/M minus F/M: +449.30; F/F minus F/M: +119.55
+    [Harry]
+      F/F: median 166.39 (IQR 45.25-487.40, n=1417)
+      M/M: median 209.97 (IQR 32.26-782.94, n=14278)
+      F/M: median 117.26 (IQR 21.65-418.54, n=11752)
+      All works: median 122.36 (IQR 21.82-487.52, n=41478)
+      median gaps -> M/M minus F/F: +43.58; M/M minus F/M: +92.71; F/F minus F/M: +49.13
+  Bookmarks per 10k words:
+    [Arcane:]
+      F/F: median 29.77 (IQR 9.32-79.02, n=1504)
+      M/M: median 30.24 (IQR 9.80-80.61, n=1511)
+      F/M: median 20.37 (IQR 6.49-51.66, n=539)
+      All works: median 26.33 (IQR 8.27-71.14, n=4567)
+      median gaps -> M/M minus F/F: +0.47; M/M minus F/M: +9.87; F/F minus F/M: +9.40
+    [Avatar:]
+      F/F: median 42.46 (IQR 17.86-79.80, n=337)
+      M/M: median 64.25 (IQR 24.08-178.00, n=805)
+      F/M: median 31.83 (IQR 10.93-81.80, n=1537)
+      All works: median 42.33 (IQR 13.55-118.81, n=4705)
+      median gaps -> M/M minus F/F: +21.79; M/M minus F/M: +32.42; F/F minus F/M: +10.63
+    [Harry]
+      F/F: median 20.39 (IQR 5.43-56.02, n=1417)
+      M/M: median 38.41 (IQR 8.43-143.25, n=14278)
+      F/M: median 20.73 (IQR 4.57-68.38, n=11752)
+      All works: median 23.17 (IQR 4.88-85.71, n=41478)
+      median gaps -> M/M minus F/F: +18.02; M/M minus F/M: +17.68; F/F minus F/M: -0.34
+  Comments per 10k words:
+    [Arcane:]
+      F/F: median 18.16 (IQR 5.57-40.67, n=1504)
+      M/M: median 21.83 (IQR 8.17-48.87, n=1511)
+      F/M: median 18.33 (IQR 5.26-39.98, n=539)
+      All works: median 18.89 (IQR 6.22-42.60, n=4567)
+      median gaps -> M/M minus F/F: +3.68; M/M minus F/M: +3.50; F/F minus F/M: -0.18
+    [Avatar:]
+      F/F: median 23.87 (IQR 10.98-47.79, n=337)
+      M/M: median 37.95 (IQR 15.56-86.76, n=805)
+      F/M: median 21.80 (IQR 7.72-47.27, n=1537)
+      All works: median 27.77 (IQR 10.14-65.90, n=4705)
+      median gaps -> M/M minus F/F: +14.08; M/M minus F/M: +16.15; F/F minus F/M: +2.07
+    [Harry]
+      F/F: median 15.82 (IQR 3.79-42.70, n=1417)
+      M/M: median 18.67 (IQR 4.19-51.90, n=14278)
+      F/M: median 14.76 (IQR 2.51-44.58, n=11752)
+      All works: median 14.39 (IQR 2.44-43.22, n=41478)
+      median gaps -> M/M minus F/F: +2.85; M/M minus F/M: +3.92; F/F minus F/M: +1.07
+POINTS OUTSIDE THE VIEW:
+  Kudos per 10k words: 5113 above / 0 below the visible range (counted over all works)
+  Bookmarks per 10k words: 4480 above / 0 below the visible range (counted over all works)
+  Comments per 10k words: 2910 above / 0 below the visible range (counted over all works)
+CAUTION: short works inflate per-word ratios; read alongside figure 06 (length).
+
+### 04_rating_proxy.png - Kudos/hits by rating
+WHAT IT SHOWS: kudos/hits split by rating tier for F/F, M/M, F/M and all works, per fandom.
+It checks whether a category gap survives within the same explicitness level.
+NUMBERS (median kudos/hits, IQR, n):
+  Kudos / Hits (%):
+    [Arcane: / General Audiences]
+      F/F: median 7.31 (IQR 5.04-10.08, n=195)
+      M/M: median 12.25 (IQR 8.75-15.38, n=257)
+      F/M: median 8.77 (IQR 6.32-11.36, n=80)
+      All works: median 9.87 (IQR 6.55-13.26, n=850)
+      median gaps -> M/M minus F/F: +4.94; M/M minus F/M: +3.48; F/F minus F/M: -1.46
+    [Arcane: / Teen And Up Audiences]
+      F/F: median 7.03 (IQR 4.68-9.14, n=303)
+      M/M: median 10.69 (IQR 7.34-13.98, n=331)
+      F/M: median 8.27 (IQR 5.29-10.75, n=107)
+      All works: median 8.36 (IQR 5.56-11.54, n=1093)
+      median gaps -> M/M minus F/F: +3.67; M/M minus F/M: +2.42; F/F minus F/M: -1.25
+    [Arcane: / Mature]
+      F/F: median 5.10 (IQR 3.45-7.16, n=326)
+      M/M: median 8.55 (IQR 5.76-11.52, n=284)
+      F/M: median 5.88 (IQR 4.39-7.20, n=105)
+      All works: median 6.17 (IQR 3.95-9.08, n=913)
+      median gaps -> M/M minus F/F: +3.45; M/M minus F/M: +2.67; F/F minus F/M: -0.78
+    [Arcane: / Explicit]
+      F/F: median 4.24 (IQR 2.93-5.84, n=618)
+      M/M: median 7.20 (IQR 5.02-9.53, n=620)
+      F/M: median 5.32 (IQR 3.67-7.01, n=192)
+      All works: median 5.39 (IQR 3.59-7.70, n=1574)
+      median gaps -> M/M minus F/F: +2.96; M/M minus F/M: +1.88; F/F minus F/M: -1.09
+    [Arcane: / Not Rated]
+      F/F: median 5.03 (IQR 3.15-7.01, n=139)
+      M/M: median 8.69 (IQR 6.87-11.92, n=92)
+      F/M: median 6.79 (IQR 4.90-9.22, n=89)
+      All works: median 6.66 (IQR 4.29-9.35, n=431)
+      median gaps -> M/M minus F/F: +3.66; M/M minus F/M: +1.90; F/F minus F/M: -1.76
+    [Avatar: / General Audiences]
+      F/F: median 8.45 (IQR 6.26-11.01, n=158)
+      M/M: median 11.93 (IQR 8.19-15.06, n=199)
+      F/M: median 6.92 (IQR 4.80-9.22, n=526)
+      All works: median 8.52 (IQR 5.67-11.62, n=1788)
+      median gaps -> M/M minus F/F: +3.48; M/M minus F/M: +5.01; F/F minus F/M: +1.53
+    [Avatar: / Teen And Up Audiences]
+      F/F: median 8.05 (IQR 5.51-10.14, n=108)
+      M/M: median 9.89 (IQR 6.62-12.96, n=327)
+      F/M: median 5.81 (IQR 3.93-7.95, n=531)
+      All works: median 7.22 (IQR 4.67-10.42, n=1855)
+      median gaps -> M/M minus F/F: +1.84; M/M minus F/M: +4.08; F/F minus F/M: +2.24
+    [Avatar: / Mature]
+      F/F: median 5.17 (IQR 3.24-7.35, n=44)
+      M/M: median 7.94 (IQR 5.11-10.03, n=130)
+      F/M: median 4.52 (IQR 3.02-6.32, n=264)
+      All works: median 5.27 (IQR 3.37-7.95, n=618)
+      median gaps -> M/M minus F/F: +2.77; M/M minus F/M: +3.43; F/F minus F/M: +0.66
+    [Avatar: / Explicit]
+      F/F: median 3.07 (IQR 1.52-3.77, n=47)
+      M/M: median 4.71 (IQR 3.55-7.00, n=165)
+      F/M: median 3.03 (IQR 1.86-4.56, n=252)
+      All works: median 3.43 (IQR 1.97-5.08, n=554)
+      median gaps -> M/M minus F/F: +1.64; M/M minus F/M: +1.68; F/F minus F/M: +0.04
+    [Avatar: / Not Rated]
+      F/F: median 6.75 (IQR 5.28-11.31, n=21)
+      M/M: median 7.38 (IQR 4.65-11.92, n=60)
+      F/M: median 5.09 (IQR 3.18-7.00, n=119)
+      All works: median 6.24 (IQR 3.85-9.18, n=398)
+      median gaps -> M/M minus F/F: +0.62; M/M minus F/M: +2.29; F/F minus F/M: +1.66
+    [Harry / General Audiences]
+      F/F: median 7.07 (IQR 4.48-10.11, n=445)
+      M/M: median 6.98 (IQR 4.61-9.79, n=3191)
+      F/M: median 4.80 (IQR 2.89-7.14, n=2859)
+      All works: median 5.99 (IQR 3.61-8.91, n=11532)
+      median gaps -> M/M minus F/F: -0.09; M/M minus F/M: +2.18; F/F minus F/M: +2.27
+    [Harry / Teen And Up Audiences]
+      F/F: median 6.42 (IQR 4.20-9.51, n=560)
+      M/M: median 6.74 (IQR 4.48-9.59, n=4394)
+      F/M: median 4.67 (IQR 2.82-6.99, n=3633)
+      All works: median 5.52 (IQR 3.34-8.27, n=13143)
+      median gaps -> M/M minus F/F: +0.32; M/M minus F/M: +2.07; F/F minus F/M: +1.75
+    [Harry / Mature]
+      F/F: median 5.28 (IQR 2.95-7.93, n=366)
+      M/M: median 5.15 (IQR 3.37-7.40, n=3227)
+      F/M: median 3.85 (IQR 2.28-5.93, n=2545)
+      All works: median 4.37 (IQR 2.70-6.64, n=8486)
+      median gaps -> M/M minus F/F: -0.12; M/M minus F/M: +1.31; F/F minus F/M: +1.43
+    [Harry / Explicit]
+      F/F: median 3.07 (IQR 1.75-4.41, n=394)
+      M/M: median 4.24 (IQR 2.74-6.14, n=4343)
+      F/M: median 2.91 (IQR 1.71-4.62, n=3241)
+      All works: median 3.37 (IQR 2.03-5.22, n=9881)
+      median gaps -> M/M minus F/F: +1.17; M/M minus F/M: +1.33; F/F minus F/M: +0.16
+    [Harry / Not Rated]
+      F/F: median 6.16 (IQR 3.31-9.18, n=126)
+      M/M: median 5.69 (IQR 3.58-8.14, n=1553)
+      F/M: median 3.98 (IQR 2.40-6.22, n=958)
+      All works: median 5.00 (IQR 3.01-7.55, n=4788)
+      median gaps -> M/M minus F/F: -0.48; M/M minus F/M: +1.70; F/F minus F/M: +2.18
+Points outside the shared view: 327 above / 0 below (counted over all works).
+CAUTION: CRUDE PROXY -- not your actual coded variable. Hypothesis-generating only. Rating = explicitness, not affection or emotion.
+
+### 05_warnings_proxy.png - Kudos/hits by intense-content warning
+WHAT IT SHOWS: kudos/hits for works with vs without a Major Character Death or Graphic
+Depictions of Violence warning, for F/F, M/M, F/M and all works, per fandom. It checks whether
+darker content explains a category gap.
+NUMBERS (median kudos/hits, IQR, n):
+  Kudos / Hits (%):
+    [Arcane: / death/violence warning]
+      F/F: median 4.20 (IQR 2.72-5.83, n=166)
+      M/M: median 6.92 (IQR 5.24-10.24, n=138)
+      F/M: median 5.33 (IQR 3.69-7.11, n=64)
+      All works: median 5.29 (IQR 3.36-7.77, n=571)
+      median gaps -> M/M minus F/F: +2.72; M/M minus F/M: +1.59; F/F minus F/M: -1.13
+    [Arcane: / no death/violence warning]
+      F/F: median 5.32 (IQR 3.51-7.68, n=1415)
+      M/M: median 8.92 (IQR 6.28-12.20, n=1446)
+      F/M: median 6.50 (IQR 4.48-9.21, n=509)
+      All works: median 7.03 (IQR 4.55-10.42, n=4290)
+      median gaps -> M/M minus F/F: +3.60; M/M minus F/M: +2.42; F/F minus F/M: -1.18
+    [Avatar: / death/violence warning]
+      F/F: median 4.58 (IQR 3.16-5.27, n=17)
+      M/M: median 5.83 (IQR 4.23-8.96, n=60)
+      F/M: median 4.35 (IQR 2.74-6.28, n=160)
+      All works: median 5.34 (IQR 3.37-8.00, n=555)
+      median gaps -> M/M minus F/F: +1.26; M/M minus F/M: +1.48; F/F minus F/M: +0.23
+    [Avatar: / no death/violence warning]
+      F/F: median 7.24 (IQR 4.71-10.04, n=361)
+      M/M: median 8.77 (IQR 5.70-12.45, n=821)
+      F/M: median 5.46 (IQR 3.48-7.94, n=1532)
+      All works: median 7.09 (IQR 4.39-10.34, n=4658)
+      median gaps -> M/M minus F/F: +1.53; M/M minus F/M: +3.31; F/F minus F/M: +1.78
+    [Harry / death/violence warning]
+      F/F: median 4.28 (IQR 2.53-7.07, n=164)
+      M/M: median 4.21 (IQR 2.76-6.18, n=1455)
+      F/M: median 3.04 (IQR 1.88-4.78, n=1566)
+      All works: median 3.69 (IQR 2.27-5.83, n=6079)
+      median gaps -> M/M minus F/F: -0.07; M/M minus F/M: +1.17; F/F minus F/M: +1.24
+    [Harry / no death/violence warning]
+      F/F: median 5.59 (IQR 3.25-8.66, n=1727)
+      M/M: median 5.77 (IQR 3.69-8.45, n=15253)
+      F/M: median 4.13 (IQR 2.42-6.39, n=11670)
+      All works: median 5.00 (IQR 2.99-7.69, n=41751)
+      median gaps -> M/M minus F/F: +0.18; M/M minus F/M: +1.64; F/F minus F/M: +1.46
+Points outside the shared view: 327 above / 0 below (counted over all works).
+CAUTION: CRUDE PROXY -- not your actual coded variable. Hypothesis-generating only. Works with 'Creator Chose Not To Use Archive Warnings'
+are counted as 'no warning' and may contain character death. Rape/Non-Con and Underage
+warnings are not part of this split.
+
+### 06_length_vs_engagement.png - Engagement vs word count
+WHAT IT SHOWS: each dot is a text work (log10 word count vs kudos/hits) for F/F, M/M and F/M.
+Thick lines are the median per word-count bin; all groups, including the dashed 'all works'
+line, share the same bin edges, so they are compared at the same lengths. Faded markers = bins
+with fewer than 5 works.
+NUMBERS:
+  F/F: n=3797, median words 2,320, Spearman rho(length, kudos/hits)=-0.14 (p=3.71e-17) -> longer works have lower kudos/hits
+  M/M: n=18868, median words 2,729, Spearman rho(length, kudos/hits)=-0.14 (p=1.82e-83) -> longer works have lower kudos/hits
+  F/M: n=15205, median words 3,000, Spearman rho(length, kudos/hits)=-0.17 (p=1.88e-98) -> longer works have lower kudos/hits
+  All works: n=56978, median words 2,779, Spearman rho(length, kudos/hits)=-0.20 (p=0) -> longer works have lower kudos/hits
+CAUTION: if the groups have different length distributions, a raw category gap may partly
+be a length effect. Compare the lines at the same x position.
+
+### 07_supply_discovery_demand.png - Supply / discovery / demand
+WHAT IT SHOWS: three separate quantities instead of one 'popularity', for F/F, M/M, F/M and all works.
+  Supply = number of works in the sample. Discovery = hits (log scale). Demand given
+  discovery = kudos/hits.
+SUPPLY (works in sample):
+  [Arcane: / All works] 4861 works
+  [Arcane: / F/F] 1581 works
+  [Arcane: / F/M] 573 works
+  [Arcane: / M/M] 1584 works
+  [Avatar: / All works] 5213 works
+  [Avatar: / F/F] 378 works
+  [Avatar: / F/M] 1692 works
+  [Avatar: / M/M] 881 works
+  [Harry / All works] 47830 works
+  [Harry / F/F] 1891 works
+  [Harry / F/M] 13236 works
+  [Harry / M/M] 16708 works
+DISCOVERY / DEMAND (median/IQR/n per group):
+  Hits:
+    [Arcane:]
+      F/F: median 1941.00 (IQR 817.00-4445.00, n=1581)
+      M/M: median 1258.00 (IQR 478.00-3121.75, n=1584)
+      F/M: median 1079.00 (IQR 386.00-2789.00, n=573)
+      All works: median 1356.00 (IQR 489.00-3395.00, n=4861)
+      median gaps -> M/M minus F/F: -683.00; M/M minus F/M: +179.00; F/F minus F/M: +862.00
+    [Avatar:]
+      F/F: median 1666.50 (IQR 654.50-3692.75, n=378)
+      M/M: median 2560.00 (IQR 1035.00-6460.00, n=881)
+      F/M: median 1601.50 (IQR 699.00-3620.50, n=1692)
+      All works: median 1748.00 (IQR 674.00-4529.00, n=5213)
+      median gaps -> M/M minus F/F: +893.50; M/M minus F/M: +958.50; F/F minus F/M: +65.00
+    [Harry]
+      F/F: median 772.00 (IQR 206.00-2591.50, n=1891)
+      M/M: median 1760.00 (IQR 632.75-5107.50, n=16708)
+      F/M: median 1266.00 (IQR 432.75-3776.00, n=13236)
+      All works: median 1220.00 (IQR 386.00-3933.75, n=47830)
+      median gaps -> M/M minus F/F: +988.00; M/M minus F/M: +494.00; F/F minus F/M: -494.00
+  Kudos / Hits (%):
+    [Arcane:]
+      F/F: median 5.16 (IQR 3.41-7.43, n=1581)
+      M/M: median 8.77 (IQR 6.14-12.10, n=1584)
+      F/M: median 6.37 (IQR 4.41-8.90, n=573)
+      All works: median 6.82 (IQR 4.38-10.15, n=4861)
+      median gaps -> M/M minus F/F: +3.61; M/M minus F/M: +2.40; F/F minus F/M: -1.21
+    [Avatar:]
+      F/F: median 7.07 (IQR 4.64-9.96, n=378)
+      M/M: median 8.59 (IQR 5.46-12.18, n=881)
+      F/M: median 5.36 (IQR 3.34-7.77, n=1692)
+      All works: median 6.86 (IQR 4.25-10.14, n=5213)
+      median gaps -> M/M minus F/F: +1.52; M/M minus F/M: +3.23; F/F minus F/M: +1.71
+    [Harry]
+      F/F: median 5.47 (IQR 3.16-8.53, n=1891)
+      M/M: median 5.62 (IQR 3.56-8.24, n=16708)
+      F/M: median 4.00 (IQR 2.33-6.24, n=13236)
+      All works: median 4.80 (IQR 2.86-7.46, n=47830)
+      median gaps -> M/M minus F/F: +0.15; M/M minus F/M: +1.63; F/F minus F/M: +1.47
+CAUTION: pages were sampled randomly, but HOW MANY pages you scraped per cohort sets these counts,
+so the supply panel is not evidence about real supply on AO3. 'All works' counts add up the
+other cohorts plus Gen/Multi/Other works. Hits and demand are the informative panels.
+
+### Statistical tests (printed to terminal; not a figure)
+WHAT IT SHOWS: for each fandom, pair of categories and metric, whether the two distributions
+differ (Mann-Whitney U, two-sided; Benjamini-Hochberg FDR across ALL tests run). Pairs tested:
+  M/M vs F/F; M/M vs F/M; F/F vs F/M. 'All works' is not tested (it contains the others).
+Cliff's delta is the effect size: -1 to +1, positive = the FIRST group's values tend to be higher;
+roughly |d|<0.15 negligible, <0.33 small, <0.47 medium, otherwise large. ** = FDR-adjusted p < 0.05.
+Groups need n >= 15 in BOTH categories or the test is skipped.
+[Arcane:]
+  M/M vs F/F | Kudos / Hits (%)          : M/M median=8.77, F/F median=5.16, Cliff's d=+0.49, raw p=0.0000, FDR p=0.0000 ** (n_M/M=1584, n_F/F=1581)
+  M/M vs F/F | Comments / Hits (%)       : M/M median=0.61, F/F median=0.33, Cliff's d=+0.27, raw p=0.0000, FDR p=0.0000 ** (n_M/M=1584, n_F/F=1581)
+  M/M vs F/F | Bookmarks / Hits (%)      : M/M median=0.92, F/F median=0.57, Cliff's d=+0.31, raw p=0.0000, FDR p=0.0000 ** (n_M/M=1584, n_F/F=1581)
+  M/M vs F/F | Comments / Kudos (%)      : M/M median=6.71, F/F median=5.81, Cliff's d=+0.08, raw p=0.0002, FDR p=0.0003 ** (n_M/M=1584, n_F/F=1581)
+  M/M vs F/F | Kudos per 10k words       : M/M median=291.62, F/F median=287.92, Cliff's d=+0.02, raw p=0.2450, FDR p=0.2663 (n_M/M=1511, n_F/F=1504)
+  M/M vs F/F | Bookmarks per 10k words   : M/M median=30.24, F/F median=29.77, Cliff's d=+0.01, raw p=0.6329, FDR p=0.6431 (n_M/M=1511, n_F/F=1504)
+  M/M vs F/F | Comments per 10k words    : M/M median=21.83, F/F median=18.16, Cliff's d=+0.09, raw p=0.0000, FDR p=0.0000 ** (n_M/M=1511, n_F/F=1504)
+  M/M vs F/M | Kudos / Hits (%)          : M/M median=8.77, F/M median=6.37, Cliff's d=+0.34, raw p=0.0000, FDR p=0.0000 ** (n_M/M=1584, n_F/M=573)
+  M/M vs F/M | Comments / Hits (%)       : M/M median=0.61, F/M median=0.49, Cliff's d=+0.12, raw p=0.0000, FDR p=0.0000 ** (n_M/M=1584, n_F/M=573)
+  M/M vs F/M | Bookmarks / Hits (%)      : M/M median=0.92, F/M median=0.65, Cliff's d=+0.26, raw p=0.0000, FDR p=0.0000 ** (n_M/M=1584, n_F/M=573)
+  M/M vs F/M | Comments / Kudos (%)      : M/M median=6.71, F/M median=7.45, Cliff's d=-0.01, raw p=0.6552, FDR p=0.6552 (n_M/M=1584, n_F/M=573)
+  M/M vs F/M | Kudos per 10k words       : M/M median=291.62, F/M median=197.87, Cliff's d=+0.15, raw p=0.0000, FDR p=0.0000 ** (n_M/M=1511, n_F/M=539)
+  M/M vs F/M | Bookmarks per 10k words   : M/M median=30.24, F/M median=20.37, Cliff's d=+0.16, raw p=0.0000, FDR p=0.0000 ** (n_M/M=1511, n_F/M=539)
+  M/M vs F/M | Comments per 10k words    : M/M median=21.83, F/M median=18.33, Cliff's d=+0.12, raw p=0.0000, FDR p=0.0000 ** (n_M/M=1511, n_F/M=539)
+  F/F vs F/M | Kudos / Hits (%)          : F/F median=5.16, F/M median=6.37, Cliff's d=-0.20, raw p=0.0000, FDR p=0.0000 ** (n_F/F=1581, n_F/M=573)
+  F/F vs F/M | Comments / Hits (%)       : F/F median=0.33, F/M median=0.49, Cliff's d=-0.12, raw p=0.0000, FDR p=0.0000 ** (n_F/F=1581, n_F/M=573)
+  F/F vs F/M | Bookmarks / Hits (%)      : F/F median=0.57, F/M median=0.65, Cliff's d=-0.05, raw p=0.0847, FDR p=0.1007 (n_F/F=1581, n_F/M=573)
+  F/F vs F/M | Comments / Kudos (%)      : F/F median=5.81, F/M median=7.45, Cliff's d=-0.08, raw p=0.0074, FDR p=0.0099 ** (n_F/F=1581, n_F/M=573)
+  F/F vs F/M | Kudos per 10k words       : F/F median=287.92, F/M median=197.87, Cliff's d=+0.12, raw p=0.0000, FDR p=0.0000 ** (n_F/F=1504, n_F/M=539)
+  F/F vs F/M | Bookmarks per 10k words   : F/F median=29.77, F/M median=20.37, Cliff's d=+0.15, raw p=0.0000, FDR p=0.0000 ** (n_F/F=1504, n_F/M=539)
+  F/F vs F/M | Comments per 10k words    : F/F median=18.16, F/M median=18.33, Cliff's d=+0.03, raw p=0.2452, FDR p=0.2663 (n_F/F=1504, n_F/M=539)
+[Avatar:]
+  M/M vs F/F | Kudos / Hits (%)          : M/M median=8.59, F/F median=7.07, Cliff's d=+0.20, raw p=0.0000, FDR p=0.0000 ** (n_M/M=881, n_F/F=378)
+  M/M vs F/F | Comments / Hits (%)       : M/M median=0.47, F/F median=0.43, Cliff's d=+0.03, raw p=0.3289, FDR p=0.3512 (n_M/M=881, n_F/F=378)
+  M/M vs F/F | Bookmarks / Hits (%)      : M/M median=0.80, F/F median=0.63, Cliff's d=+0.14, raw p=0.0001, FDR p=0.0001 ** (n_M/M=881, n_F/F=378)
+  M/M vs F/F | Comments / Kudos (%)      : M/M median=5.00, F/F median=5.70, Cliff's d=-0.06, raw p=0.0836, FDR p=0.1007 (n_M/M=881, n_F/F=378)
+  M/M vs F/F | Kudos per 10k words       : M/M median=715.22, F/F median=385.47, Cliff's d=+0.25, raw p=0.0000, FDR p=0.0000 ** (n_M/M=805, n_F/F=337)
+  M/M vs F/F | Bookmarks per 10k words   : M/M median=64.25, F/F median=42.46, Cliff's d=+0.23, raw p=0.0000, FDR p=0.0000 ** (n_M/M=805, n_F/F=337)
+  M/M vs F/F | Comments per 10k words    : M/M median=37.95, F/F median=23.87, Cliff's d=+0.23, raw p=0.0000, FDR p=0.0000 ** (n_M/M=805, n_F/F=337)
+  M/M vs F/M | Kudos / Hits (%)          : M/M median=8.59, F/M median=5.36, Cliff's d=+0.43, raw p=0.0000, FDR p=0.0000 ** (n_M/M=881, n_F/M=1692)
+  M/M vs F/M | Comments / Hits (%)       : M/M median=0.47, F/M median=0.41, Cliff's d=+0.05, raw p=0.0278, FDR p=0.0350 ** (n_M/M=881, n_F/M=1692)
+  M/M vs F/M | Bookmarks / Hits (%)      : M/M median=0.80, F/M median=0.60, Cliff's d=+0.19, raw p=0.0000, FDR p=0.0000 ** (n_M/M=881, n_F/M=1692)
+  M/M vs F/M | Comments / Kudos (%)      : M/M median=5.00, F/M median=7.42, Cliff's d=-0.15, raw p=0.0000, FDR p=0.0000 ** (n_M/M=881, n_F/M=1692)
+  M/M vs F/M | Kudos per 10k words       : M/M median=715.22, F/M median=265.91, Cliff's d=+0.36, raw p=0.0000, FDR p=0.0000 ** (n_M/M=805, n_F/M=1537)
+  M/M vs F/M | Bookmarks per 10k words   : M/M median=64.25, F/M median=31.83, Cliff's d=+0.29, raw p=0.0000, FDR p=0.0000 ** (n_M/M=805, n_F/M=1537)
+  M/M vs F/M | Comments per 10k words    : M/M median=37.95, F/M median=21.80, Cliff's d=+0.24, raw p=0.0000, FDR p=0.0000 ** (n_M/M=805, n_F/M=1537)
+  F/F vs F/M | Kudos / Hits (%)          : F/F median=7.07, F/M median=5.36, Cliff's d=+0.26, raw p=0.0000, FDR p=0.0000 ** (n_F/F=378, n_F/M=1692)
+  F/F vs F/M | Comments / Hits (%)       : F/F median=0.43, F/M median=0.41, Cliff's d=+0.02, raw p=0.5706, FDR p=0.5893 (n_F/F=378, n_F/M=1692)
+  F/F vs F/M | Bookmarks / Hits (%)      : F/F median=0.63, F/M median=0.60, Cliff's d=+0.05, raw p=0.1466, FDR p=0.1710 (n_F/F=378, n_F/M=1692)
+  F/F vs F/M | Comments / Kudos (%)      : F/F median=5.70, F/M median=7.42, Cliff's d=-0.09, raw p=0.0094, FDR p=0.0124 ** (n_F/F=378, n_F/M=1692)
+  F/F vs F/M | Kudos per 10k words       : F/F median=385.47, F/M median=265.91, Cliff's d=+0.14, raw p=0.0001, FDR p=0.0001 ** (n_F/F=337, n_F/M=1537)
+  F/F vs F/M | Bookmarks per 10k words   : F/F median=42.46, F/M median=31.83, Cliff's d=+0.09, raw p=0.0073, FDR p=0.0099 ** (n_F/F=337, n_F/M=1537)
+  F/F vs F/M | Comments per 10k words    : F/F median=23.87, F/M median=21.80, Cliff's d=+0.03, raw p=0.4527, FDR p=0.4753 (n_F/F=337, n_F/M=1537)
+[Harry]
+  M/M vs F/F | Kudos / Hits (%)          : M/M median=5.62, F/F median=5.47, Cliff's d=+0.03, raw p=0.0330, FDR p=0.0408 ** (n_M/M=16708, n_F/F=1891)
+  M/M vs F/F | Comments / Hits (%)       : M/M median=0.26, F/F median=0.38, Cliff's d=-0.10, raw p=0.0000, FDR p=0.0000 ** (n_M/M=16708, n_F/F=1891)
+  M/M vs F/F | Bookmarks / Hits (%)      : M/M median=0.51, F/F median=0.43, Cliff's d=+0.09, raw p=0.0000, FDR p=0.0000 ** (n_M/M=16708, n_F/F=1891)
+  M/M vs F/F | Comments / Kudos (%)      : M/M median=4.85, F/F median=7.32, Cliff's d=-0.11, raw p=0.0000, FDR p=0.0000 ** (n_M/M=14311, n_F/F=1739)
+  M/M vs F/F | Kudos per 10k words       : M/M median=209.97, F/F median=166.39, Cliff's d=+0.06, raw p=0.0003, FDR p=0.0004 ** (n_M/M=14278, n_F/F=1417)
+  M/M vs F/F | Bookmarks per 10k words   : M/M median=38.41, F/F median=20.39, Cliff's d=+0.20, raw p=0.0000, FDR p=0.0000 ** (n_M/M=14278, n_F/F=1417)
+  M/M vs F/F | Comments per 10k words    : M/M median=18.67, F/F median=15.82, Cliff's d=+0.05, raw p=0.0009, FDR p=0.0013 ** (n_M/M=14278, n_F/F=1417)
+  M/M vs F/M | Kudos / Hits (%)          : M/M median=5.62, F/M median=4.00, Cliff's d=+0.28, raw p=0.0000, FDR p=0.0000 ** (n_M/M=16708, n_F/M=13236)
+  M/M vs F/M | Comments / Hits (%)       : M/M median=0.26, F/M median=0.32, Cliff's d=-0.05, raw p=0.0000, FDR p=0.0000 ** (n_M/M=16708, n_F/M=13236)
+  M/M vs F/M | Bookmarks / Hits (%)      : M/M median=0.51, F/M median=0.47, Cliff's d=+0.06, raw p=0.0000, FDR p=0.0000 ** (n_M/M=16708, n_F/M=13236)
+  M/M vs F/M | Comments / Kudos (%)      : M/M median=4.85, F/M median=8.57, Cliff's d=-0.18, raw p=0.0000, FDR p=0.0000 ** (n_M/M=14311, n_F/M=11610)
+  M/M vs F/M | Kudos per 10k words       : M/M median=209.97, F/M median=117.26, Cliff's d=+0.15, raw p=0.0000, FDR p=0.0000 ** (n_M/M=14278, n_F/M=11752)
+  M/M vs F/M | Bookmarks per 10k words   : M/M median=38.41, F/M median=20.73, Cliff's d=+0.18, raw p=0.0000, FDR p=0.0000 ** (n_M/M=14278, n_F/M=11752)
+  M/M vs F/M | Comments per 10k words    : M/M median=18.67, F/M median=14.76, Cliff's d=+0.07, raw p=0.0000, FDR p=0.0000 ** (n_M/M=14278, n_F/M=11752)
+  F/F vs F/M | Kudos / Hits (%)          : F/F median=5.47, F/M median=4.00, Cliff's d=+0.23, raw p=0.0000, FDR p=0.0000 ** (n_F/F=1891, n_F/M=13236)
+  F/F vs F/M | Comments / Hits (%)       : F/F median=0.38, F/M median=0.32, Cliff's d=+0.05, raw p=0.0003, FDR p=0.0004 ** (n_F/F=1891, n_F/M=13236)
+  F/F vs F/M | Bookmarks / Hits (%)      : F/F median=0.43, F/M median=0.47, Cliff's d=-0.03, raw p=0.0185, FDR p=0.0238 ** (n_F/F=1891, n_F/M=13236)
+  F/F vs F/M | Comments / Kudos (%)      : F/F median=7.32, F/M median=8.57, Cliff's d=-0.05, raw p=0.0010, FDR p=0.0014 ** (n_F/F=1739, n_F/M=11610)
+  F/F vs F/M | Kudos per 10k words       : F/F median=166.39, F/M median=117.26, Cliff's d=+0.11, raw p=0.0000, FDR p=0.0000 ** (n_F/F=1417, n_F/M=11752)
+  F/F vs F/M | Bookmarks per 10k words   : F/F median=20.39, F/M median=20.73, Cliff's d=-0.02, raw p=0.2210, FDR p=0.2532 (n_F/F=1417, n_F/M=11752)
+  F/F vs F/M | Comments per 10k words    : F/F median=15.82, F/M median=14.76, Cliff's d=+0.02, raw p=0.2410, FDR p=0.2663 (n_F/F=1417, n_F/M=11752)
+CAUTION: works by the same author are not independent, so p-values are optimistic. A small
+p with a negligible Cliff's d is a detectable but unimportant difference.
