@@ -11355,3 +11355,612 @@
 [2026-10-11 17:19:45] [1] All fandoms
 [2026-10-11 17:22:29] Select fandom scope (0-1): 
 [2026-10-11 17:22:29] Stopped by user.
+
+===== Run started 2026-10-11T17:25:53+00:00 =====
+[2026-10-11 17:25:53] (Logging this run to scraping_log.txt; errors to error_log.txt.)
+[2026-10-11 17:25:53] Found ao3_cookie.txt. Using the cookie from that file.
+[2026-10-11 17:25:53]   Parsed cookie name(s): __cf_bm, _cfuvid, _otwarchive_session, cf_clearance, remember_user_token, user_credentials, view_adult
+[2026-10-11 17:26:07]   Login verified: AO3 recognizes this cookie as a logged-in session.
+[2026-10-11 17:26:07] 
+[2026-10-11 17:26:10] Enter target AO3 work URL: 
+[2026-10-11 17:26:10] Fetching target work details...
+[2026-10-11 17:26:28] 
+[2026-10-11 17:26:28] --- Target Fic: 'A Malfoy Arangement' ---
+[2026-10-11 17:26:28] Work ID: 94275796
+[2026-10-11 17:26:28] Fandom(s): Harry Potter - J. K. Rowling
+[2026-10-11 17:26:28] Relationships: Draco Malfoy/Reader
+[2026-10-11 17:26:28] Words: 54,988 | Chapters: 12
+[2026-10-11 17:26:28] Hits: 137 | Kudos: 4 | Bookmarks: 4 | Comments: 1
+[2026-10-11 17:26:28] Kudos/Hits: 2.92%
+[2026-10-11 17:26:28] Bookmarks/Hits: 2.92%
+[2026-10-11 17:26:28] Kudos per 10k words: 0.73
+[2026-10-11 17:26:28] 
+[2026-10-11 17:26:28] --- Configure Comparison Cohort ---
+[2026-10-11 17:26:28] 
+[2026-10-11 17:26:28] Fandom scope:
+[2026-10-11 17:26:28] [0] Choose a target fandom
+[2026-10-11 17:26:28] [1] All fandoms
+[2026-10-11 17:26:32] Select fandom scope (0-1): 
+[2026-10-11 17:26:32] Category:
+[2026-10-11 17:26:32] [0] All
+[2026-10-11 17:26:32] [1] M/M
+[2026-10-11 17:26:32] [2] F/F
+[2026-10-11 17:26:32] [3] F/M
+[2026-10-11 17:26:32] [4] Multi
+[2026-10-11 17:26:32] [5] Gen
+[2026-10-11 17:26:49] Select category (0-5): 
+[2026-10-11 17:26:49] Archive warnings:
+[2026-10-11 17:26:49] [0] All
+[2026-10-11 17:26:49] [1] No Warnings Apply
+[2026-10-11 17:26:49] [2] Creator Chose Not To Use
+[2026-10-11 17:26:49] [3] Graphic Violence
+[2026-10-11 17:26:49] [4] Major Character Death
+[2026-10-11 17:26:49] [5] Rape/Non-Con
+[2026-10-11 17:26:49] [6] Underage
+[2026-10-11 17:26:51] Select warning (0-6): 
+[2026-10-11 17:26:51] Crossovers:
+[2026-10-11 17:26:51] [0] No crossovers (recommended)
+[2026-10-11 17:26:51] [1] All works
+[2026-10-11 17:26:51] [2] Crossovers only
+[2026-10-11 17:26:52] Select crossover option (0-2): 
+[2026-10-11 17:26:52] Chapters:
+[2026-10-11 17:26:52] [0] All
+[2026-10-11 17:26:52] [1] One-shots only
+[2026-10-11 17:26:52] [2] Same number as target
+[2026-10-11 17:26:52] [3] Multi-chapter only
+[2026-10-11 17:26:53] Select chapter filter (0-3): 
+[2026-10-11 17:26:53] Completion:
+[2026-10-11 17:26:53] [0] All
+[2026-10-11 17:26:53] [1] Complete only
+[2026-10-11 17:26:54] Select completion filter (0-1): 
+[2026-10-11 17:26:54] Timeframe:
+[2026-10-11 17:26:54] [0] All time
+[2026-10-11 17:26:54] [1] Last week
+[2026-10-11 17:26:54] [2] Last month
+[2026-10-11 17:26:54] [3] Last year
+[2026-10-11 17:26:54] [4] Custom range
+[2026-10-11 17:27:01] Select timeframe (0-4): Start date (YYYY-MM-DD, blank = no lower bound): End date (YYYY-MM-DD, blank = no upper bound): 
+[2026-10-11 17:27:01] Checking the result count...
+[2026-10-11 17:27:01]   Using cached page count: 2062 page(s).
+[2026-10-11 17:27:01] Found 2062 result page(s).
+[2026-10-11 17:27:05] Start page (1-2062, blank = 1): End page (1-2062, blank = 2062): 
+[2026-10-11 17:27:05] Sampling mode:
+[2026-10-11 17:27:05] [0] All pages
+[2026-10-11 17:27:05] [1] Systematic pages
+[2026-10-11 17:27:05] [2] Random pages
+[2026-10-11 17:27:28] Select sampling mode (0-2): How many pages should be sampled? Sampling seed (blank = 2026): 
+[2026-10-11 17:27:28] Collecting cohort metadata. Only search-result cards are parsed for cohort works.
+[2026-10-11 17:27:28]   Selected 33 page(s): [144, 210, 228, 363, 400, 430, 456, 522, 622, 705, 802, 911, 1015, 1126, 1165, 1213, 1348, 1535, 1590, 1651]...
+[2026-10-11 17:29:30]   ...page 10/33 done; 129 qualifying works.
+[2026-10-11 17:31:45]   ...page 20/33 done; 267 qualifying works.
+[2026-10-11 17:33:55]   ...page 30/33 done; 452 qualifying works.
+[2026-10-11 17:34:33]   ...page 33/33 done; 508 qualifying works.
+[2026-10-11 17:34:33] 
+[2026-10-11 17:34:33] Appended 509 new observation(s) to ao3_results.csv.
+[2026-10-11 17:34:33] Skipped 0 observation(s) already present under the same sampling condition.
+[2026-10-11 17:34:34] 
+[2026-10-11 17:34:34] Saved accumulated distribution with 880 cohort works.
+[2026-10-11 17:34:34] Distribution key: Harry Potter - J. K. Rowling|cat3|warn0|cross1|chap0|comp0|time4:2025-01-01:2026-01-01
+[2026-10-11 17:34:34] 
+[2026-10-11 17:34:34] --- ACCUMULATED COHORT ---
+[2026-10-11 17:34:34] Sample size: 880 works
+[2026-10-11 17:34:34] 
+[2026-10-11 17:34:34] Kudos/Hits:
+[2026-10-11 17:34:34]   Target: 2.92
+[2026-10-11 17:34:34]   Cohort mean: 5.10
+[2026-10-11 17:34:34]   Cohort median: 4.02
+[2026-10-11 17:34:34]   Target is above 34.5% of accumulated cohort works.
+[2026-10-11 17:34:34] 
+[2026-10-11 17:34:34] Bookmarks/Hits:
+[2026-10-11 17:34:34]   Target: 2.92
+[2026-10-11 17:34:34]   Cohort mean: 0.70
+[2026-10-11 17:34:34]   Cohort median: 0.62
+[2026-10-11 17:34:34]   Target is above 99.3% of accumulated cohort works.
+[2026-10-11 17:34:34] 
+[2026-10-11 17:34:34] Comments/Hits:
+[2026-10-11 17:34:34]   Target: 0.73
+[2026-10-11 17:34:34]   Cohort mean: 1.25
+[2026-10-11 17:34:34]   Cohort median: 0.60
+[2026-10-11 17:34:34]   Target is above 56.5% of accumulated cohort works.
+[2026-10-11 17:34:34] 
+[2026-10-11 17:34:34] Kudos per 10k words:
+[2026-10-11 17:34:34]   Target: 0.73
+[2026-10-11 17:34:34]   Cohort mean: 1227.03
+[2026-10-11 17:34:34]   Cohort median: 79.06
+[2026-10-11 17:34:34]   Target is above 2.2% of accumulated cohort works.
+[2026-10-11 17:34:34] 
+[2026-10-11 17:34:34] NOTE:
+[2026-10-11 17:34:34] These percentiles describe relative engagement within your selected cohort.
+[2026-10-11 17:34:34] They do not establish why readers preferred a work or prove causation.
+[2026-10-11 17:34:34] 
+[2026-10-11 17:34:34] Recommended next research step:
+[2026-10-11 17:34:34] Use this metadata dataset to select a smaller, matched M/M and F/F corpus for manual coding of relationship features such as emotional vulnerability, physical affection, conflict, romantic initiation, agency, and reciprocity.
+
+===== Run started 2026-10-11T17:35:22+00:00 =====
+[2026-10-11 17:35:22] (Logging this run to scraping_log.txt; errors to error_log.txt.)
+[2026-10-11 17:35:22] Found ao3_cookie.txt. Using the cookie from that file.
+[2026-10-11 17:35:22]   Parsed cookie name(s): __cf_bm, _cfuvid, _otwarchive_session, cf_clearance, remember_user_token, user_credentials, view_adult
+[2026-10-11 17:35:39]   Login verified: AO3 recognizes this cookie as a logged-in session.
+[2026-10-11 17:35:39] 
+[2026-10-11 17:36:16] Enter target AO3 work URL: 
+[2026-10-11 17:36:16] Fetching target work details...
+[2026-10-11 17:36:22] 
+[2026-10-11 17:36:22] --- Target Fic: 'A Malfoy Arangement' ---
+[2026-10-11 17:36:22] Work ID: 94275796
+[2026-10-11 17:36:22] Fandom(s): Harry Potter - J. K. Rowling
+[2026-10-11 17:36:22] Relationships: Draco Malfoy/Reader
+[2026-10-11 17:36:22] Words: 54,988 | Chapters: 12
+[2026-10-11 17:36:22] Hits: 137 | Kudos: 4 | Bookmarks: 4 | Comments: 1
+[2026-10-11 17:36:22] Kudos/Hits: 2.92%
+[2026-10-11 17:36:22] Bookmarks/Hits: 2.92%
+[2026-10-11 17:36:22] Kudos per 10k words: 0.73
+[2026-10-11 17:36:22] 
+[2026-10-11 17:36:22] --- Configure Comparison Cohort ---
+[2026-10-11 17:36:22] 
+[2026-10-11 17:36:22] Fandom scope:
+[2026-10-11 17:36:22] [0] Choose a target fandom
+[2026-10-11 17:36:22] [1] All fandoms
+[2026-10-11 17:36:27] Select fandom scope (0-1): 
+[2026-10-11 17:36:27] Category:
+[2026-10-11 17:36:27] [0] All
+[2026-10-11 17:36:27] [1] M/M
+[2026-10-11 17:36:27] [2] F/F
+[2026-10-11 17:36:27] [3] F/M
+[2026-10-11 17:36:27] [4] Multi
+[2026-10-11 17:36:27] [5] Gen
+[2026-10-11 17:36:29] Select category (0-5): 
+[2026-10-11 17:36:29] Archive warnings:
+[2026-10-11 17:36:29] [0] All
+[2026-10-11 17:36:29] [1] No Warnings Apply
+[2026-10-11 17:36:29] [2] Creator Chose Not To Use
+[2026-10-11 17:36:29] [3] Graphic Violence
+[2026-10-11 17:36:29] [4] Major Character Death
+[2026-10-11 17:36:29] [5] Rape/Non-Con
+[2026-10-11 17:36:29] [6] Underage
+[2026-10-11 17:36:30] Select warning (0-6): 
+[2026-10-11 17:36:30] Crossovers:
+[2026-10-11 17:36:30] [0] No crossovers (recommended)
+[2026-10-11 17:36:30] [1] All works
+[2026-10-11 17:36:30] [2] Crossovers only
+[2026-10-11 17:36:31] Select crossover option (0-2): 
+[2026-10-11 17:36:31] Chapters:
+[2026-10-11 17:36:31] [0] All
+[2026-10-11 17:36:31] [1] One-shots only
+[2026-10-11 17:36:31] [2] Same number as target
+[2026-10-11 17:36:31] [3] Multi-chapter only
+[2026-10-11 17:36:31] Select chapter filter (0-3): 
+[2026-10-11 17:36:31] Completion:
+[2026-10-11 17:36:31] [0] All
+[2026-10-11 17:36:31] [1] Complete only
+[2026-10-11 17:36:32] Select completion filter (0-1): 
+[2026-10-11 17:36:32] Timeframe:
+[2026-10-11 17:36:32] [0] All time
+[2026-10-11 17:36:32] [1] Last week
+[2026-10-11 17:36:32] [2] Last month
+[2026-10-11 17:36:32] [3] Last year
+[2026-10-11 17:36:32] [4] Custom range
+[2026-10-11 17:36:40] Select timeframe (0-4): Start date (YYYY-MM-DD, blank = no lower bound): End date (YYYY-MM-DD, blank = no upper bound): 
+[2026-10-11 17:36:40] Checking the result count...
+[2026-10-11 17:36:41]   Using cached page count: 1330 page(s).
+[2026-10-11 17:36:41] Found 1330 result page(s).
+[2026-10-11 17:36:42] Start page (1-1330, blank = 1): End page (1-1330, blank = 1330): 
+[2026-10-11 17:36:42] Sampling mode:
+[2026-10-11 17:36:42] [0] All pages
+[2026-10-11 17:36:42] [1] Systematic pages
+[2026-10-11 17:36:42] [2] Random pages
+[2026-10-11 17:36:57] Select sampling mode (0-2): How many pages should be sampled? Sampling seed (blank = 2026): 
+[2026-10-11 17:36:57] Collecting cohort metadata. Only search-result cards are parsed for cohort works.
+[2026-10-11 17:36:57]   Selected 13 page(s): [105, 353, 583, 674, 795, 826, 858, 929, 933, 959, 976, 1029, 1168]
+[2026-10-11 17:38:57]   ...page 10/13 done; 186 qualifying works.
+[2026-10-11 17:39:37]   ...page 13/13 done; 244 qualifying works.
+[2026-10-11 17:39:37] 
+[2026-10-11 17:39:37] Appended 245 new observation(s) to ao3_results.csv.
+[2026-10-11 17:39:37] Skipped 0 observation(s) already present under the same sampling condition.
+[2026-10-11 17:39:38] 
+[2026-10-11 17:39:38] Saved accumulated distribution with 676 cohort works.
+[2026-10-11 17:39:38] Distribution key: Harry Potter - J. K. Rowling|cat3|warn0|cross1|chap0|comp0|time4:2024-01-01:2025-01-01
+[2026-10-11 17:39:38] 
+[2026-10-11 17:39:38] --- ACCUMULATED COHORT ---
+[2026-10-11 17:39:38] Sample size: 676 works
+[2026-10-11 17:39:38] 
+[2026-10-11 17:39:38] Kudos/Hits:
+[2026-10-11 17:39:38]   Target: 2.92
+[2026-10-11 17:39:38]   Cohort mean: 4.68
+[2026-10-11 17:39:38]   Cohort median: 3.78
+[2026-10-11 17:39:38]   Target is above 38.3% of accumulated cohort works.
+[2026-10-11 17:39:38] 
+[2026-10-11 17:39:38] Bookmarks/Hits:
+[2026-10-11 17:39:38]   Target: 2.92
+[2026-10-11 17:39:38]   Cohort mean: 0.65
+[2026-10-11 17:39:38]   Cohort median: 0.54
+[2026-10-11 17:39:38]   Target is above 99.6% of accumulated cohort works.
+[2026-10-11 17:39:38] 
+[2026-10-11 17:39:38] Comments/Hits:
+[2026-10-11 17:39:38]   Target: 0.73
+[2026-10-11 17:39:38]   Cohort mean: 0.79
+[2026-10-11 17:39:38]   Cohort median: 0.37
+[2026-10-11 17:39:38]   Target is above 68.9% of accumulated cohort works.
+[2026-10-11 17:39:38] 
+[2026-10-11 17:39:38] Kudos per 10k words:
+[2026-10-11 17:39:38]   Target: 0.73
+[2026-10-11 17:39:38]   Cohort mean: 857.95
+[2026-10-11 17:39:38]   Cohort median: 140.60
+[2026-10-11 17:39:38]   Target is above 1.3% of accumulated cohort works.
+[2026-10-11 17:39:38] 
+[2026-10-11 17:39:38] NOTE:
+[2026-10-11 17:39:38] These percentiles describe relative engagement within your selected cohort.
+[2026-10-11 17:39:38] They do not establish why readers preferred a work or prove causation.
+[2026-10-11 17:39:38] 
+[2026-10-11 17:39:38] Recommended next research step:
+[2026-10-11 17:39:38] Use this metadata dataset to select a smaller, matched M/M and F/F corpus for manual coding of relationship features such as emotional vulnerability, physical affection, conflict, romantic initiation, agency, and reciprocity.
+
+===== Run started 2026-10-11T17:40:35+00:00 =====
+[2026-10-11 17:40:35] (Logging this run to scraping_log.txt; errors to error_log.txt.)
+[2026-10-11 17:40:35] Found ao3_cookie.txt. Using the cookie from that file.
+[2026-10-11 17:40:35]   Parsed cookie name(s): __cf_bm, _cfuvid, _otwarchive_session, cf_clearance, remember_user_token, user_credentials, view_adult
+[2026-10-11 17:40:51]   Login verified: AO3 recognizes this cookie as a logged-in session.
+[2026-10-11 17:40:51] 
+[2026-10-11 17:40:51] Enter target AO3 work URL: No target URL supplied.
+
+===== Run started 2026-10-11T17:41:05+00:00 =====
+[2026-10-11 17:41:05] (Logging this run to scraping_log.txt; errors to error_log.txt.)
+[2026-10-11 17:41:05] Found ao3_cookie.txt. Using the cookie from that file.
+[2026-10-11 17:41:05]   Parsed cookie name(s): __cf_bm, _cfuvid, _otwarchive_session, cf_clearance, remember_user_token, user_credentials, view_adult
+[2026-10-11 17:41:20]   Login verified: AO3 recognizes this cookie as a logged-in session.
+[2026-10-11 17:41:20] 
+[2026-10-11 17:41:27] Enter target AO3 work URL: 
+[2026-10-11 17:41:27] Fetching target work details...
+[2026-10-11 17:41:34] 
+[2026-10-11 17:41:34] --- Target Fic: 'A Malfoy Arangement' ---
+[2026-10-11 17:41:34] Work ID: 94275796
+[2026-10-11 17:41:34] Fandom(s): Harry Potter - J. K. Rowling
+[2026-10-11 17:41:34] Relationships: Draco Malfoy/Reader
+[2026-10-11 17:41:34] Words: 54,988 | Chapters: 12
+[2026-10-11 17:41:34] Hits: 137 | Kudos: 4 | Bookmarks: 4 | Comments: 1
+[2026-10-11 17:41:34] Kudos/Hits: 2.92%
+[2026-10-11 17:41:34] Bookmarks/Hits: 2.92%
+[2026-10-11 17:41:34] Kudos per 10k words: 0.73
+[2026-10-11 17:41:34] 
+[2026-10-11 17:41:34] --- Configure Comparison Cohort ---
+[2026-10-11 17:41:34] 
+[2026-10-11 17:41:34] Fandom scope:
+[2026-10-11 17:41:34] [0] Choose a target fandom
+[2026-10-11 17:41:34] [1] All fandoms
+[2026-10-11 17:41:38] Select fandom scope (0-1): 
+[2026-10-11 17:41:38] Category:
+[2026-10-11 17:41:38] [0] All
+[2026-10-11 17:41:38] [1] M/M
+[2026-10-11 17:41:38] [2] F/F
+[2026-10-11 17:41:38] [3] F/M
+[2026-10-11 17:41:38] [4] Multi
+[2026-10-11 17:41:38] [5] Gen
+[2026-10-11 17:41:41] Select category (0-5): 
+[2026-10-11 17:41:41] Archive warnings:
+[2026-10-11 17:41:41] [0] All
+[2026-10-11 17:41:41] [1] No Warnings Apply
+[2026-10-11 17:41:41] [2] Creator Chose Not To Use
+[2026-10-11 17:41:41] [3] Graphic Violence
+[2026-10-11 17:41:41] [4] Major Character Death
+[2026-10-11 17:41:41] [5] Rape/Non-Con
+[2026-10-11 17:41:41] [6] Underage
+[2026-10-11 17:41:41] Select warning (0-6): 
+[2026-10-11 17:41:41] Crossovers:
+[2026-10-11 17:41:41] [0] No crossovers (recommended)
+[2026-10-11 17:41:41] [1] All works
+[2026-10-11 17:41:41] [2] Crossovers only
+[2026-10-11 17:41:42] Select crossover option (0-2): 
+[2026-10-11 17:41:42] Chapters:
+[2026-10-11 17:41:42] [0] All
+[2026-10-11 17:41:42] [1] One-shots only
+[2026-10-11 17:41:42] [2] Same number as target
+[2026-10-11 17:41:42] [3] Multi-chapter only
+[2026-10-11 17:41:42] Select chapter filter (0-3): 
+[2026-10-11 17:41:42] Completion:
+[2026-10-11 17:41:42] [0] All
+[2026-10-11 17:41:42] [1] Complete only
+[2026-10-11 17:41:42] Select completion filter (0-1): 
+[2026-10-11 17:41:42] Timeframe:
+[2026-10-11 17:41:42] [0] All time
+[2026-10-11 17:41:42] [1] Last week
+[2026-10-11 17:41:42] [2] Last month
+[2026-10-11 17:41:42] [3] Last year
+[2026-10-11 17:41:42] [4] Custom range
+[2026-10-11 17:41:51] Select timeframe (0-4): Start date (YYYY-MM-DD, blank = no lower bound): End date (YYYY-MM-DD, blank = no upper bound): 
+[2026-10-11 17:41:51] Checking the result count...
+[2026-10-11 17:41:51]   Using cached page count: 2289 page(s).
+[2026-10-11 17:41:51] Found 2289 result page(s).
+[2026-10-11 17:41:53] Start page (1-2289, blank = 1): End page (1-2289, blank = 2289): 
+[2026-10-11 17:41:53] Sampling mode:
+[2026-10-11 17:41:53] [0] All pages
+[2026-10-11 17:41:53] [1] Systematic pages
+[2026-10-11 17:41:53] [2] Random pages
+[2026-10-11 17:42:04] Select sampling mode (0-2): How many pages should be sampled? Sampling seed (blank = 2026): 
+[2026-10-11 17:42:04] Collecting cohort metadata. Only search-result cards are parsed for cohort works.
+[2026-10-11 17:42:04]   Selected 16 page(s): [210, 522, 705, 802, 1015, 1165, 1348, 1590, 1651, 1716, 1858, 1866, 1917, 1951, 2024, 2058]
+[2026-10-11 17:44:15]   ...page 10/16 done; 180 qualifying works.
+[2026-10-11 17:45:23]   ...page 16/16 done; 294 qualifying works.
+[2026-10-11 17:45:23] 
+[2026-10-11 17:45:23] Appended 295 new observation(s) to ao3_results.csv.
+[2026-10-11 17:45:23] Skipped 0 observation(s) already present under the same sampling condition.
+[2026-10-11 17:45:23] 
+[2026-10-11 17:45:23] Saved accumulated distribution with 1146 cohort works.
+[2026-10-11 17:45:23] Distribution key: Harry Potter - J. K. Rowling|cat3|warn0|cross1|chap0|comp0|time4:2022-01-01:2024-01-01
+[2026-10-11 17:45:23] 
+[2026-10-11 17:45:23] --- ACCUMULATED COHORT ---
+[2026-10-11 17:45:23] Sample size: 1146 works
+[2026-10-11 17:45:23] 
+[2026-10-11 17:45:23] Kudos/Hits:
+[2026-10-11 17:45:23]   Target: 2.92
+[2026-10-11 17:45:23]   Cohort mean: 4.85
+[2026-10-11 17:45:23]   Cohort median: 4.13
+[2026-10-11 17:45:23]   Target is above 31.8% of accumulated cohort works.
+[2026-10-11 17:45:23] 
+[2026-10-11 17:45:23] Bookmarks/Hits:
+[2026-10-11 17:45:23]   Target: 2.92
+[2026-10-11 17:45:23]   Cohort mean: 0.62
+[2026-10-11 17:45:23]   Cohort median: 0.52
+[2026-10-11 17:45:23]   Target is above 99.6% of accumulated cohort works.
+[2026-10-11 17:45:23] 
+[2026-10-11 17:45:23] Comments/Hits:
+[2026-10-11 17:45:23]   Target: 0.73
+[2026-10-11 17:45:23]   Cohort mean: 0.82
+[2026-10-11 17:45:23]   Cohort median: 0.34
+[2026-10-11 17:45:23]   Target is above 71.5% of accumulated cohort works.
+[2026-10-11 17:45:23] 
+[2026-10-11 17:45:23] Kudos per 10k words:
+[2026-10-11 17:45:23]   Target: 0.73
+[2026-10-11 17:45:23]   Cohort mean: 1038.42
+[2026-10-11 17:45:23]   Cohort median: 184.94
+[2026-10-11 17:45:23]   Target is above 1.3% of accumulated cohort works.
+[2026-10-11 17:45:23] 
+[2026-10-11 17:45:23] NOTE:
+[2026-10-11 17:45:23] These percentiles describe relative engagement within your selected cohort.
+[2026-10-11 17:45:23] They do not establish why readers preferred a work or prove causation.
+[2026-10-11 17:45:23] 
+[2026-10-11 17:45:23] Recommended next research step:
+[2026-10-11 17:45:23] Use this metadata dataset to select a smaller, matched M/M and F/F corpus for manual coding of relationship features such as emotional vulnerability, physical affection, conflict, romantic initiation, agency, and reciprocity.
+
+===== Run started 2026-10-11T17:48:30+00:00 =====
+[2026-10-11 17:48:30] (Logging this run to scraping_log.txt; errors to error_log.txt.)
+[2026-10-11 17:48:30] Found ao3_cookie.txt. Using the cookie from that file.
+[2026-10-11 17:48:30]   Parsed cookie name(s): __cf_bm, _cfuvid, _otwarchive_session, cf_clearance, remember_user_token, user_credentials, view_adult
+[2026-10-11 17:48:43]   Login verified: AO3 recognizes this cookie as a logged-in session.
+[2026-10-11 17:48:43] 
+[2026-10-11 17:49:00] Enter target AO3 work URL: 
+[2026-10-11 17:49:00] Fetching target work details...
+[2026-10-11 17:49:07] 
+[2026-10-11 17:49:07] --- Target Fic: 'A Malfoy Arangement' ---
+[2026-10-11 17:49:07] Work ID: 94275796
+[2026-10-11 17:49:07] Fandom(s): Harry Potter - J. K. Rowling
+[2026-10-11 17:49:07] Relationships: Draco Malfoy/Reader
+[2026-10-11 17:49:07] Words: 54,988 | Chapters: 12
+[2026-10-11 17:49:07] Hits: 138 | Kudos: 4 | Bookmarks: 4 | Comments: 1
+[2026-10-11 17:49:07] Kudos/Hits: 2.90%
+[2026-10-11 17:49:07] Bookmarks/Hits: 2.90%
+[2026-10-11 17:49:07] Kudos per 10k words: 0.73
+[2026-10-11 17:49:07] 
+[2026-10-11 17:49:07] --- Configure Comparison Cohort ---
+[2026-10-11 17:49:07] 
+[2026-10-11 17:49:07] Fandom scope:
+[2026-10-11 17:49:07] [0] Choose a target fandom
+[2026-10-11 17:49:07] [1] All fandoms
+[2026-10-11 17:49:09] Select fandom scope (0-1): 
+[2026-10-11 17:49:09] Category:
+[2026-10-11 17:49:09] [0] All
+[2026-10-11 17:49:09] [1] M/M
+[2026-10-11 17:49:09] [2] F/F
+[2026-10-11 17:49:09] [3] F/M
+[2026-10-11 17:49:09] [4] Multi
+[2026-10-11 17:49:09] [5] Gen
+[2026-10-11 17:49:11] Select category (0-5): 
+[2026-10-11 17:49:11] Archive warnings:
+[2026-10-11 17:49:11] [0] All
+[2026-10-11 17:49:11] [1] No Warnings Apply
+[2026-10-11 17:49:11] [2] Creator Chose Not To Use
+[2026-10-11 17:49:11] [3] Graphic Violence
+[2026-10-11 17:49:11] [4] Major Character Death
+[2026-10-11 17:49:11] [5] Rape/Non-Con
+[2026-10-11 17:49:11] [6] Underage
+[2026-10-11 17:49:12] Select warning (0-6): 
+[2026-10-11 17:49:12] Crossovers:
+[2026-10-11 17:49:12] [0] No crossovers (recommended)
+[2026-10-11 17:49:12] [1] All works
+[2026-10-11 17:49:12] [2] Crossovers only
+[2026-10-11 17:49:12] Select crossover option (0-2): 
+[2026-10-11 17:49:12] Chapters:
+[2026-10-11 17:49:12] [0] All
+[2026-10-11 17:49:12] [1] One-shots only
+[2026-10-11 17:49:12] [2] Same number as target
+[2026-10-11 17:49:12] [3] Multi-chapter only
+[2026-10-11 17:49:13] Select chapter filter (0-3): 
+[2026-10-11 17:49:13] Completion:
+[2026-10-11 17:49:13] [0] All
+[2026-10-11 17:49:13] [1] Complete only
+[2026-10-11 17:49:13] Select completion filter (0-1): 
+[2026-10-11 17:49:13] Timeframe:
+[2026-10-11 17:49:13] [0] All time
+[2026-10-11 17:49:13] [1] Last week
+[2026-10-11 17:49:13] [2] Last month
+[2026-10-11 17:49:13] [3] Last year
+[2026-10-11 17:49:13] [4] Custom range
+[2026-10-11 17:49:21] Select timeframe (0-4): Start date (YYYY-MM-DD, blank = no lower bound): End date (YYYY-MM-DD, blank = no upper bound): 
+[2026-10-11 17:49:21] Checking the result count...
+[2026-10-11 17:49:24] Found 1660 result page(s).
+[2026-10-11 17:49:27] Start page (1-1660, blank = 1): End page (1-1660, blank = 1660): 
+[2026-10-11 17:49:27] Sampling mode:
+[2026-10-11 17:49:27] [0] All pages
+[2026-10-11 17:49:27] [1] Systematic pages
+[2026-10-11 17:49:27] [2] Random pages
+[2026-10-11 17:49:51] Select sampling mode (0-2): How many pages should be sampled? Sampling seed (blank = 2026): 
+[2026-10-11 17:49:51] Collecting cohort metadata. Only search-result cards are parsed for cohort works.
+[2026-10-11 17:49:51]   Selected 45 page(s): [72, 105, 182, 200, 228, 261, 311, 353, 401, 508, 563, 583, 607, 674, 768, 795, 826, 839, 855, 858]...
+[2026-10-11 17:51:48]   ...page 10/45 done; 194 qualifying works.
+[2026-10-11 17:54:00]   ...page 20/45 done; 386 qualifying works.
+[2026-10-11 17:56:12]   ...page 30/45 done; 584 qualifying works.
+[2026-10-11 17:58:22]   --- 429 response ---
+[2026-10-11 17:58:22]   URL: https://archiveofourown.org/works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=1477&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc&work_search%5Bfandom_names%5D=Harry+Potter+-+J.+K.+Rowling&work_search%5Bcategory_ids%5D%5B%5D=22&work_search%5Bcrossover%5D=F&work_search%5Bdate_from%5D=2010-01-01&work_search%5Bdate_to%5D=2018-01-01
+[2026-10-11 17:58:22]   Status: 429 
+[2026-10-11 17:58:22]   Retry-After header: 98
+[2026-10-11 17:58:22]   Response headers: {'alt-svc': 'h3=":443"; ma=86400', 'cache-control': 'no-cache', 'cf-cache-status': 'DYNAMIC', 'cf-ray': 'a48fc0a5eda6d700-IAD', 'content-length': '12', 'content-type': 'text/plain', 'date': 'Sun, 11 Oct 2026 17:58:22 GMT', 'priority': 'u=0,i', 'retry-after': '98', 'server': 'cloudflare', 'server-timing': 'cfExtPri', 'set-cookie': '_otwarchive_session=eyJfcmFpbHMiOnsibWVzc2FnZSI6ImV5SnpaWE56YVc5dVgybGtJam9pWVRnd01UYzVObVEzTmpjd016RTBNVFJoTnpkbE5tRm1NekU0TnpjM1ltSWlMQ0ozWVhKa1pXNHVkWE5sY2k1MWMyVnlMbXRsZVNJNlcxc3pNVGs0Tnpnd01WMHNJaVF5WVNReE5DUmpWekl3WWpsbWRrOTJTblphZUZkeFowcEpUbWxQSWwwc0lsOWpjM0ptWDNSdmEyVnVJam9pYlhwMGNqUlVZa2x2Y2xaVllVNU5aMVp0YlhsSFVHMTJVVVYyZWkxVGEzQkdRbVl5VXpWdWNWbFJjeUlzSW14aGJtZDFZV2RsWDJsa0lqb2laVzRpZlE9PSIsImV4cCI6IjIwMjYtMTAtMjVUMTc6NTg6MjIuNDI1WiIsInB1ciI6ImNvb2tpZS5fb3R3YXJjaGl2ZV9zZXNzaW9uIn19--ead986991693da7b94fb6d184d5947cc1971f15b; path=/; expires=Sun, 25 Oct 2026 17:58:22 GMT; HttpOnly; SameSite=Lax', 'strict-transport-security': 'max-age=172800', 'x-request-id': 'c8e328c9-1197-450b-81e5-72cd8dfac7e2', 'x-runtime': '0.003455'}
+[2026-10-11 17:58:22]   Response body:
+[2026-10-11 17:58:22]   <html><head><meta name="color-scheme" content="light dark"></head><body><pre style="word-wrap: break-word; white-space: pre-wrap;">Retry later
+[2026-10-11 17:58:22] </pre></body></html>
+[2026-10-11 17:58:22]   ---------------------
+[2026-10-11 17:58:22]   AO3 asked for 98s. Waiting 103s before retrying...
+[2026-10-11 18:00:07]   ...page 40/45 done; 781 qualifying works.
+[2026-10-11 18:01:14]   ...page 45/45 done; 872 qualifying works.
+[2026-10-11 18:01:14] 
+[2026-10-11 18:01:14] Appended 873 new observation(s) to ao3_results.csv.
+[2026-10-11 18:01:14] Skipped 0 observation(s) already present under the same sampling condition.
+[2026-10-11 18:01:14] 
+[2026-10-11 18:01:14] Saved accumulated distribution with 872 cohort works.
+[2026-10-11 18:01:14] Distribution key: Harry Potter - J. K. Rowling|cat3|warn0|cross1|chap0|comp0|time4:2010-01-01:2018-01-01
+[2026-10-11 18:01:14] 
+[2026-10-11 18:01:14] --- ACCUMULATED COHORT ---
+[2026-10-11 18:01:14] Sample size: 872 works
+[2026-10-11 18:01:14] 
+[2026-10-11 18:01:14] Kudos/Hits:
+[2026-10-11 18:01:14]   Target: 2.90
+[2026-10-11 18:01:14]   Cohort mean: 3.55
+[2026-10-11 18:01:14]   Cohort median: 3.25
+[2026-10-11 18:01:14]   Target is above 44.0% of accumulated cohort works.
+[2026-10-11 18:01:14] 
+[2026-10-11 18:01:14] Bookmarks/Hits:
+[2026-10-11 18:01:14]   Target: 2.90
+[2026-10-11 18:01:14]   Cohort mean: 0.43
+[2026-10-11 18:01:14]   Cohort median: 0.32
+[2026-10-11 18:01:14]   Target is above 99.7% of accumulated cohort works.
+[2026-10-11 18:01:14] 
+[2026-10-11 18:01:14] Comments/Hits:
+[2026-10-11 18:01:14]   Target: 0.72
+[2026-10-11 18:01:14]   Cohort mean: 0.30
+[2026-10-11 18:01:14]   Cohort median: 0.13
+[2026-10-11 18:01:14]   Target is above 90.9% of accumulated cohort works.
+[2026-10-11 18:01:14] 
+[2026-10-11 18:01:14] Kudos per 10k words:
+[2026-10-11 18:01:14]   Target: 0.73
+[2026-10-11 18:01:14]   Cohort mean: 580.28
+[2026-10-11 18:01:14]   Cohort median: 186.92
+[2026-10-11 18:01:14]   Target is above 1.7% of accumulated cohort works.
+[2026-10-11 18:01:14] 
+[2026-10-11 18:01:14] NOTE:
+[2026-10-11 18:01:14] These percentiles describe relative engagement within your selected cohort.
+[2026-10-11 18:01:14] They do not establish why readers preferred a work or prove causation.
+[2026-10-11 18:01:14] 
+[2026-10-11 18:01:14] Recommended next research step:
+[2026-10-11 18:01:14] Use this metadata dataset to select a smaller, matched M/M and F/F corpus for manual coding of relationship features such as emotional vulnerability, physical affection, conflict, romantic initiation, agency, and reciprocity.
+
+===== Run started 2026-10-11T18:02:47+00:00 =====
+[2026-10-11 18:02:47] (Logging this run to scraping_log.txt; errors to error_log.txt.)
+[2026-10-11 18:02:47] Found ao3_cookie.txt. Using the cookie from that file.
+[2026-10-11 18:02:47]   Parsed cookie name(s): __cf_bm, _cfuvid, _otwarchive_session, cf_clearance, remember_user_token, user_credentials, view_adult
+[2026-10-11 18:03:00]   Login verified: AO3 recognizes this cookie as a logged-in session.
+[2026-10-11 18:03:00] 
+[2026-10-11 18:03:30] Enter target AO3 work URL: 
+[2026-10-11 18:03:30] Fetching target work details...
+[2026-10-11 18:03:38] 
+[2026-10-11 18:03:38] --- Target Fic: 'Rewinding the Thread- Rewrite' ---
+[2026-10-11 18:03:38] Work ID: 94451171
+[2026-10-11 18:03:38] Fandom(s): Harry Potter - J. K. Rowling
+[2026-10-11 18:03:38] Relationships: Sirius Black/Severus Snape, James Potter/Lily Evans Potter
+[2026-10-11 18:03:38] Words: 6,775 | Chapters: 1
+[2026-10-11 18:03:38] Hits: 0 | Kudos: 0 | Bookmarks: 0 | Comments: 0
+[2026-10-11 18:03:38] Kudos/Hits: 0.00%
+[2026-10-11 18:03:38] Bookmarks/Hits: 0.00%
+[2026-10-11 18:03:38] Kudos per 10k words: 0.00
+[2026-10-11 18:03:38] 
+[2026-10-11 18:03:38] --- Configure Comparison Cohort ---
+[2026-10-11 18:03:38] 
+[2026-10-11 18:03:38] Fandom scope:
+[2026-10-11 18:03:38] [0] Choose a target fandom
+[2026-10-11 18:03:38] [1] All fandoms
+[2026-10-11 18:03:40] Select fandom scope (0-1): 
+[2026-10-11 18:03:40] Category:
+[2026-10-11 18:03:40] [0] All
+[2026-10-11 18:03:40] [1] M/M
+[2026-10-11 18:03:40] [2] F/F
+[2026-10-11 18:03:40] [3] F/M
+[2026-10-11 18:03:40] [4] Multi
+[2026-10-11 18:03:40] [5] Gen
+[2026-10-11 18:03:42] Select category (0-5): 
+[2026-10-11 18:03:42] Archive warnings:
+[2026-10-11 18:03:42] [0] All
+[2026-10-11 18:03:42] [1] No Warnings Apply
+[2026-10-11 18:03:42] [2] Creator Chose Not To Use
+[2026-10-11 18:03:42] [3] Graphic Violence
+[2026-10-11 18:03:42] [4] Major Character Death
+[2026-10-11 18:03:42] [5] Rape/Non-Con
+[2026-10-11 18:03:42] [6] Underage
+[2026-10-11 18:03:43] Select warning (0-6): 
+[2026-10-11 18:03:43] Crossovers:
+[2026-10-11 18:03:43] [0] No crossovers (recommended)
+[2026-10-11 18:03:43] [1] All works
+[2026-10-11 18:03:43] [2] Crossovers only
+[2026-10-11 18:03:44] Select crossover option (0-2): 
+[2026-10-11 18:03:44] Chapters:
+[2026-10-11 18:03:44] [0] All
+[2026-10-11 18:03:44] [1] One-shots only
+[2026-10-11 18:03:44] [2] Same number as target
+[2026-10-11 18:03:44] [3] Multi-chapter only
+[2026-10-11 18:03:44] Select chapter filter (0-3): 
+[2026-10-11 18:03:44] Completion:
+[2026-10-11 18:03:44] [0] All
+[2026-10-11 18:03:44] [1] Complete only
+[2026-10-11 18:03:44] Select completion filter (0-1): 
+[2026-10-11 18:03:44] Timeframe:
+[2026-10-11 18:03:44] [0] All time
+[2026-10-11 18:03:44] [1] Last week
+[2026-10-11 18:03:44] [2] Last month
+[2026-10-11 18:03:44] [3] Last year
+[2026-10-11 18:03:44] [4] Custom range
+[2026-10-11 18:03:52] Select timeframe (0-4): Start date (YYYY-MM-DD, blank = no lower bound): End date (YYYY-MM-DD, blank = no upper bound): 
+[2026-10-11 18:03:52] Checking the result count...
+[2026-10-11 18:03:54] Found 1809 result page(s).
+[2026-10-11 18:04:17] Start page (1-1809, blank = 1): End page (1-1809, blank = 1809): 
+[2026-10-11 18:04:17] Sampling mode:
+[2026-10-11 18:04:17] [0] All pages
+[2026-10-11 18:04:17] [1] Systematic pages
+[2026-10-11 18:04:17] [2] Random pages
+[2026-10-11 18:04:21] Select sampling mode (0-2): Sampling seed (blank = 2026): 
+[2026-10-11 18:04:21] Collecting cohort metadata. Only search-result cards are parsed for cohort works.
+[2026-10-11 18:04:21]   Selected 1781 page(s): [29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48]...
+[2026-10-11 18:04:25] 
+[2026-10-11 18:04:25] Appended 1 new observation(s) to ao3_results.csv.
+[2026-10-11 18:04:25] Skipped 0 observation(s) already present under the same sampling condition.
+[2026-10-11 18:04:25] 
+[2026-10-11 18:04:25] Stopped by user.
+
+===== Run started 2026-10-11T18:04:26+00:00 =====
+[2026-10-11 18:04:26] (Logging this run to scraping_log.txt; errors to error_log.txt.)
+[2026-10-11 18:04:26] Found ao3_cookie.txt. Using the cookie from that file.
+[2026-10-11 18:04:26]   Parsed cookie name(s): __cf_bm, _cfuvid, _otwarchive_session, cf_clearance, remember_user_token, user_credentials, view_adult
+[2026-10-11 18:04:42]   Login verified: AO3 recognizes this cookie as a logged-in session.
+[2026-10-11 18:04:42] 
+[2026-10-11 18:05:29] Enter target AO3 work URL: 
+[2026-10-11 18:05:29] Fetching target work details...
+[2026-10-11 18:05:36] 
+[2026-10-11 18:05:36] --- Target Fic: 'Rewinding the Thread- Rewrite' ---
+[2026-10-11 18:05:36] Work ID: 94451171
+[2026-10-11 18:05:36] Fandom(s): Harry Potter - J. K. Rowling
+[2026-10-11 18:05:36] Relationships: Sirius Black/Severus Snape, James Potter/Lily Evans Potter
+[2026-10-11 18:05:36] Words: 6,775 | Chapters: 1
+[2026-10-11 18:05:36] Hits: 0 | Kudos: 0 | Bookmarks: 0 | Comments: 0
+[2026-10-11 18:05:36] Kudos/Hits: 0.00%
+[2026-10-11 18:05:36] Bookmarks/Hits: 0.00%
+[2026-10-11 18:05:36] Kudos per 10k words: 0.00
+[2026-10-11 18:05:36] 
+[2026-10-11 18:05:36] --- Configure Comparison Cohort ---
+[2026-10-11 18:05:36] 
+[2026-10-11 18:05:36] Fandom scope:
+[2026-10-11 18:05:36] [0] Choose a target fandom
+[2026-10-11 18:05:36] [1] All fandoms
+[2026-10-11 18:05:38] Select fandom scope (0-1): 
+[2026-10-11 18:05:38] Category:
+[2026-10-11 18:05:38] [0] All
+[2026-10-11 18:05:38] [1] M/M
+[2026-10-11 18:05:38] [2] F/F
+[2026-10-11 18:05:38] [3] F/M
+[2026-10-11 18:05:38] [4] Multi
+[2026-10-11 18:05:38] [5] Gen
+[2026-10-11 18:36:40] Select category (0-5): 
+[2026-10-11 18:36:40] Stopped by user.

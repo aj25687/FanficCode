@@ -37,8 +37,12 @@ oct 11 1023 - pages 1-2749, all time, 130 random pages, seed 136, hp, f/f
 oct 11 1108 - pages 1-2062, 2025-01-01 to 2026-01-01, 23 random pages, seed 836, hp, f/m
 oct 11 1125 - pages 1-1330, 2024-01-01 to 2025-01-01, 23 random pages, seed 836, hp, f/m
 oct 11 1139 - pages 1-2289, 2022-01-01 to 2024-01-01, 46 random pages, seed 836, hp, f/m
-oct 11 1155 - pages 1-1-2798, 2018-01-01 to 2022-01-01, 92 random pages, seed 836, hp, f/m
-
+oct 11 1155 - pages 1-2798, 2018-01-01 to 2022-01-01, 92 random pages, seed 836, hp, f/m
+oct 11 1337 - pages 1-2062, 2025-01-01 to 2026-01-01, 33 random pages, seed 935, hp, f/m
+    Trying to make the stats make more sense and do it percentage-wise, not just 23 pages per yr
+oct 11 1340 - pages 1-1330, 2025-01-01 to 2026-01-01, 13 random pages, seed 935, hp, f/m
+oct 11 1145 - pages 1-2289, 2022-01-01 to 2024-01-01, 16 random pages, seed 935, hp, f/m
+oct 11 1145 - pages 1-1660, 2010-01-01 to 2018-01-01, 45 random pages, seed 935, hp, f/m
 
 
 HP F/M - have 4.9%, need 2.7% more - 361pages - 23 pages per year (2026-01-01 to 2010-01-01)
