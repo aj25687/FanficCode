@@ -11964,3 +11964,132 @@
 [2026-10-11 18:05:38] [5] Gen
 [2026-10-11 18:36:40] Select category (0-5): 
 [2026-10-11 18:36:40] Stopped by user.
+
+===== Run started 2026-10-11T20:19:17+00:00 =====
+[2026-10-11 20:19:17] (Logging this run to scraping_log.txt; errors to error_log.txt.)
+[2026-10-11 20:19:17] Found ao3_cookie.txt. Using the cookie from that file.
+[2026-10-11 20:19:17]   Parsed cookie name(s): __cf_bm, _cfuvid, _otwarchive_session, cf_clearance, user_credentials, view_adult
+[2026-10-11 20:19:33]   Login verified: AO3 recognizes this cookie as a logged-in session.
+[2026-10-11 20:19:33] 
+[2026-10-11 20:20:24] Enter target AO3 work URL: 
+[2026-10-11 20:20:24] Fetching target work details...
+[2026-10-11 20:20:35] 
+[2026-10-11 20:20:35] --- Target Fic: 'Avatar : A New Flame' ---
+[2026-10-11 20:20:35] Work ID: 93929271
+[2026-10-11 20:20:35] Fandom(s): Avatar: The Last Airbender (Cartoon 2005), Avatar: Legend of Korra, The Last Airbender: Chronicles of the Avatar Novels - Various Authors (Amulet Books)
+[2026-10-11 20:20:35] Relationships: Original Female Character/Original Female Character, Original Male/Original Male Character, Korra/Asami Sato
+[2026-10-11 20:20:35] Words: 6,904 | Chapters: 2
+[2026-10-11 20:20:35] Hits: 11 | Kudos: 0 | Bookmarks: 0 | Comments: 0
+[2026-10-11 20:20:35] Kudos/Hits: 0.00%
+[2026-10-11 20:20:35] Bookmarks/Hits: 0.00%
+[2026-10-11 20:20:35] Kudos per 10k words: 0.00
+[2026-10-11 20:20:35] 
+[2026-10-11 20:20:35] --- Configure Comparison Cohort ---
+[2026-10-11 20:20:35] 
+[2026-10-11 20:20:35] Fandom scope:
+[2026-10-11 20:20:35] [0] Choose a target fandom
+[2026-10-11 20:20:35] [1] All fandoms
+[2026-10-11 20:20:47] Select fandom scope (0-1): 
+[2026-10-11 20:20:47] Target work fandoms:
+[2026-10-11 20:20:47] [1] Avatar: The Last Airbender (Cartoon 2005)
+[2026-10-11 20:20:47] [2] Avatar: Legend of Korra
+[2026-10-11 20:20:47] [3] The Last Airbender: Chronicles of the Avatar Novels - Various Authors (Amulet Books)
+[2026-10-11 20:20:49] Choose fandom (1-3): 
+[2026-10-11 20:20:49] Category:
+[2026-10-11 20:20:49] [0] All
+[2026-10-11 20:20:49] [1] M/M
+[2026-10-11 20:20:49] [2] F/F
+[2026-10-11 20:20:49] [3] F/M
+[2026-10-11 20:20:49] [4] Multi
+[2026-10-11 20:20:49] [5] Gen
+[2026-10-11 20:20:51] Select category (0-5): 
+[2026-10-11 20:20:51] Archive warnings:
+[2026-10-11 20:20:51] [0] All
+[2026-10-11 20:20:51] [1] No Warnings Apply
+[2026-10-11 20:20:51] [2] Creator Chose Not To Use
+[2026-10-11 20:20:51] [3] Graphic Violence
+[2026-10-11 20:20:51] [4] Major Character Death
+[2026-10-11 20:20:51] [5] Rape/Non-Con
+[2026-10-11 20:20:51] [6] Underage
+[2026-10-11 20:20:52] Select warning (0-6): 
+[2026-10-11 20:20:52] Crossovers:
+[2026-10-11 20:20:52] [0] No crossovers (recommended)
+[2026-10-11 20:20:52] [1] All works
+[2026-10-11 20:20:52] [2] Crossovers only
+[2026-10-11 20:20:53] Select crossover option (0-2): 
+[2026-10-11 20:20:53] Chapters:
+[2026-10-11 20:20:53] [0] All
+[2026-10-11 20:20:53] [1] One-shots only
+[2026-10-11 20:20:53] [2] Same number as target
+[2026-10-11 20:20:53] [3] Multi-chapter only
+[2026-10-11 20:20:54] Select chapter filter (0-3): 
+[2026-10-11 20:20:54] Completion:
+[2026-10-11 20:20:54] [0] All
+[2026-10-11 20:20:54] [1] Complete only
+[2026-10-11 20:20:54] Select completion filter (0-1): 
+[2026-10-11 20:20:54] Timeframe:
+[2026-10-11 20:20:54] [0] All time
+[2026-10-11 20:20:54] [1] Last week
+[2026-10-11 20:20:54] [2] Last month
+[2026-10-11 20:20:54] [3] Last year
+[2026-10-11 20:20:54] [4] Custom range
+[2026-10-11 20:20:56] Select timeframe (0-4): 
+[2026-10-11 20:20:56] Checking the result count...
+[2026-10-11 20:21:01] Found 139 result page(s).
+[2026-10-11 20:21:03] Start page (1-139, blank = 1): End page (1-139, blank = 139): 
+[2026-10-11 20:21:03] Sampling mode:
+[2026-10-11 20:21:03] [0] All pages
+[2026-10-11 20:21:03] [1] Systematic pages
+[2026-10-11 20:21:03] [2] Random pages
+[2026-10-11 20:21:12] Select sampling mode (0-2): How many pages should be sampled? Sampling seed (blank = 2026): 
+[2026-10-11 20:21:12] Collecting cohort metadata. Only search-result cards are parsed for cohort works.
+[2026-10-11 20:21:12]   Selected 14 page(s): [6, 13, 36, 45, 51, 78, 86, 100, 108, 112, 114, 123, 124, 138]
+[2026-10-11 20:23:25]   ...page 10/14 done; 162 qualifying works.
+[2026-10-11 20:24:27]   ...page 14/14 done; 238 qualifying works.
+[2026-10-11 20:24:27] 
+[2026-10-11 20:24:27] Appended 239 new observation(s) to ao3_results.csv.
+[2026-10-11 20:24:27] Skipped 0 observation(s) already present under the same sampling condition.
+[2026-10-11 20:24:28] 
+[2026-10-11 20:24:28] Saved accumulated distribution with 238 cohort works.
+[2026-10-11 20:24:28] Distribution key: Avatar: The Last Airbender (Cartoon 2005)|cat4|warn0|cross1|chap0|comp0|time0
+[2026-10-11 20:24:28] 
+[2026-10-11 20:24:28] --- ACCUMULATED COHORT ---
+[2026-10-11 20:24:28] Sample size: 238 works
+[2026-10-11 20:24:28] 
+[2026-10-11 20:24:28] Kudos/Hits:
+[2026-10-11 20:24:28]   Target: 0.00
+[2026-10-11 20:24:28]   Cohort mean: 6.48
+[2026-10-11 20:24:28]   Cohort median: 5.42
+[2026-10-11 20:24:28]   Target is above 0.0% of accumulated cohort works.
+[2026-10-11 20:24:28] 
+[2026-10-11 20:24:28] Bookmarks/Hits:
+[2026-10-11 20:24:28]   Target: 0.00
+[2026-10-11 20:24:28]   Cohort mean: 0.83
+[2026-10-11 20:24:28]   Cohort median: 0.67
+[2026-10-11 20:24:28]   Target is above 0.0% of accumulated cohort works.
+[2026-10-11 20:24:28] 
+[2026-10-11 20:24:28] Comments/Hits:
+[2026-10-11 20:24:28]   Target: 0.00
+[2026-10-11 20:24:28]   Cohort mean: 0.96
+[2026-10-11 20:24:28]   Cohort median: 0.62
+[2026-10-11 20:24:28]   Target is above 0.0% of accumulated cohort works.
+[2026-10-11 20:24:28] 
+[2026-10-11 20:24:28] Kudos per 10k words:
+[2026-10-11 20:24:28]   Target: 0.00
+[2026-10-11 20:24:28]   Cohort mean: 985.32
+[2026-10-11 20:24:28]   Cohort median: 200.26
+[2026-10-11 20:24:28]   Target is above 0.0% of accumulated cohort works.
+[2026-10-11 20:24:28] 
+[2026-10-11 20:24:28] NOTE:
+[2026-10-11 20:24:28] These percentiles describe relative engagement within your selected cohort.
+[2026-10-11 20:24:28] They do not establish why readers preferred a work or prove causation.
+[2026-10-11 20:24:28] 
+[2026-10-11 20:24:28] Recommended next research step:
+[2026-10-11 20:24:28] Use this metadata dataset to select a smaller, matched M/M and F/F corpus for manual coding of relationship features such as emotional vulnerability, physical affection, conflict, romantic initiation, agency, and reciprocity.
+
+===== Run started 2026-10-11T20:29:30+00:00 =====
+[2026-10-11 20:29:30] (Logging this run to scraping_log.txt; errors to error_log.txt.)
+[2026-10-11 20:29:30] Found ao3_cookie.txt. Using the cookie from that file.
+[2026-10-11 20:29:30]   Parsed cookie name(s): __cf_bm, _cfuvid, _otwarchive_session, cf_clearance, user_credentials, view_adult
+[2026-10-11 20:29:30] 
+[2026-10-11 20:29:30] Stopped by user.
