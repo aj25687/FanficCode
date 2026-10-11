@@ -1,3 +1,5 @@
+HARRY POTTER:
+
 sept 10 1500 - pages 250-260
 sept 10 1830 - pages 300-310
 sept 10 1915 - pages 350-380 (timed out)
@@ -27,3 +29,22 @@ FANDOM: ALTA
 IMPORTANT: The date-published for lines 4376 to lines 11813 ARE NOT TRUE! those lines are trying to recover cached data and does not contain the real publiation date. 
 
 87107651
+----
+
+RESCRAPING TO MAKE SURE ALL PERCENTAGES OF SAMPLED:TRUE SUPPLY OF WORKS IS EVEN!
+oct 11 1023 - pages 1-2749, all time, 130 random pages, seed 136, hp, f/f
+    Goal: bring up 3% f/f  to 7.1%
+oct 11 1108 - pages 1-2062, 2025-01-01 to 2026-01-01, 23 random pages, seed 836, hp, f/m
+oct 11 1125 - pages 1-1330, 2024-01-01 to 2025-01-01, 23 random pages, seed 836, hp, f/m
+oct 11 1139 - pages 1-2289, 2022-01-01 to 2024-01-01, 46 random pages, seed 836, hp, f/m
+oct 11 1155 - pages 1-1-2798, 2018-01-01 to 2022-01-01, 92 random pages, seed 836, hp, f/m
+
+
+
+HP F/M - have 4.9%, need 2.7% more - 361pages - 23 pages per year (2026-01-01 to 2010-01-01)
+HP M/M - have 5.5%, need 1.6% more
+Arcane F/F - have 5.8%, need 1.3% more
+Arcane F/M - have 4.4%, need 2.7% more
+Arcane M/M - have 6.6%, need 0.5% more
+ALTA F/F - have 4.9%, need 2.2% more
+ATLA M/M - have 6.9%, need 0.2%

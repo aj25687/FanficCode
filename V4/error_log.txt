@@ -25610,3 +25610,91 @@ Call log:
   ---------------------
 
 ===== Error log started 2026-09-23T21:00:54+00:00 =====
+
+===== Error log started 2026-10-11T14:17:49+00:00 =====
+
+===== Error log started 2026-10-11T14:20:34+00:00 =====
+
+===== Error log started 2026-10-11T14:21:27+00:00 =====
+
+[2026-10-11 14:34:55 UTC] ERROR: HTTP 429 response details for https://archiveofourown.org/works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=1387&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc&work_search%5Bfandom_names%5D=Harry+Potter+-+J.+K.+Rowling&work_search%5Bcategory_ids%5D%5B%5D=116&work_search%5Bcrossover%5D=F:
+  --- 429 response ---
+  URL: https://archiveofourown.org/works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=1387&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc&work_search%5Bfandom_names%5D=Harry+Potter+-+J.+K.+Rowling&work_search%5Bcategory_ids%5D%5B%5D=116&work_search%5Bcrossover%5D=F
+  Status: 429 
+  Retry-After header: 305
+  Response headers: {'alt-svc': 'h3=":443"; ma=86400', 'cache-control': 'no-cache', 'cf-cache-status': 'DYNAMIC', 'cf-ray': 'a48e96a12a47d6fb-IAD', 'content-length': '12', 'content-type': 'text/plain', 'date': 'Sun, 11 Oct 2026 14:34:55 GMT', 'priority': 'u=0,i', 'retry-after': '305', 'server': 'cloudflare', 'server-timing': 'cfExtPri', 'set-cookie': '_otwarchive_session=eyJfcmFpbHMiOnsibWVzc2FnZSI6ImV5SnpaWE56YVc5dVgybGtJam9pWVRnd01UYzVObVEzTmpjd016RTBNVFJoTnpkbE5tRm1NekU0TnpjM1ltSWlMQ0ozWVhKa1pXNHVkWE5sY2k1MWMyVnlMbXRsZVNJNlcxc3pNVGs0Tnpnd01WMHNJaVF5WVNReE5DUmpWekl3WWpsbWRrOTJTblphZUZkeFowcEpUbWxQSWwwc0lsOWpjM0ptWDNSdmEyVnVJam9pYlhwMGNqUlVZa2x2Y2xaVllVNU5aMVp0YlhsSFVHMTJVVVYyZWkxVGEzQkdRbVl5VXpWdWNWbFJjeUlzSW14aGJtZDFZV2RsWDJsa0lqb2laVzRpZlE9PSIsImV4cCI6IjIwMjYtMTAtMjVUMTQ6MzQ6NTUuNTk4WiIsInB1ciI6ImNvb2tpZS5fb3R3YXJjaGl2ZV9zZXNzaW9uIn19--87b4b0ffd158fd8deec87a7c328baba7b4026722; path=/; expires=Sun, 25 Oct 2026 14:34:55 GMT; HttpOnly; SameSite=Lax', 'strict-transport-security': 'max-age=172800', 'x-request-id': '1642b50b-6191-4a98-8c5b-cd5e8e3c6cbf', 'x-runtime': '0.002996'}
+  Response body:
+  <html><head><meta name="color-scheme" content="light dark"></head><body><pre style="word-wrap: break-word; white-space: pre-wrap;">Retry later
+</pre></body></html>
+  ---------------------
+
+[2026-10-11 14:48:47 UTC] ERROR: HTTP 429 response details for https://archiveofourown.org/works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=2095&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc&work_search%5Bfandom_names%5D=Harry+Potter+-+J.+K.+Rowling&work_search%5Bcategory_ids%5D%5B%5D=116&work_search%5Bcrossover%5D=F:
+  --- 429 response ---
+  URL: https://archiveofourown.org/works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=2095&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc&work_search%5Bfandom_names%5D=Harry+Potter+-+J.+K.+Rowling&work_search%5Bcategory_ids%5D%5B%5D=116&work_search%5Bcrossover%5D=F
+  Status: 429 
+  Retry-After header: 73
+  Response headers: {'alt-svc': 'h3=":443"; ma=86400', 'cache-control': 'no-cache', 'cf-cache-status': 'DYNAMIC', 'cf-ray': 'a48eaaf08ac2fb02-IAD', 'content-length': '12', 'content-type': 'text/plain', 'date': 'Sun, 11 Oct 2026 14:48:47 GMT', 'priority': 'u=0,i', 'retry-after': '73', 'server': 'cloudflare', 'server-timing': 'cfExtPri', 'set-cookie': '_otwarchive_session=eyJfcmFpbHMiOnsibWVzc2FnZSI6ImV5SnpaWE56YVc5dVgybGtJam9pWVRnd01UYzVObVEzTmpjd016RTBNVFJoTnpkbE5tRm1NekU0TnpjM1ltSWlMQ0ozWVhKa1pXNHVkWE5sY2k1MWMyVnlMbXRsZVNJNlcxc3pNVGs0Tnpnd01WMHNJaVF5WVNReE5DUmpWekl3WWpsbWRrOTJTblphZUZkeFowcEpUbWxQSWwwc0lsOWpjM0ptWDNSdmEyVnVJam9pYlhwMGNqUlVZa2x2Y2xaVllVNU5aMVp0YlhsSFVHMTJVVVYyZWkxVGEzQkdRbVl5VXpWdWNWbFJjeUlzSW14aGJtZDFZV2RsWDJsa0lqb2laVzRpZlE9PSIsImV4cCI6IjIwMjYtMTAtMjVUMTQ6NDg6NDcuNDg0WiIsInB1ciI6ImNvb2tpZS5fb3R3YXJjaGl2ZV9zZXNzaW9uIn19--622df4b35669cac99e4e0febf32f34dcd0e4272d; path=/; expires=Sun, 25 Oct 2026 14:48:47 GMT; HttpOnly; SameSite=Lax', 'x-request-id': 'ad74da1c-e00e-4994-829a-5e216984ff6d', 'x-runtime': '0.003080'}
+  Response body:
+  <html><head><meta name="color-scheme" content="light dark"></head><body><pre style="word-wrap: break-word; white-space: pre-wrap;">Retry later
+</pre></body></html>
+  ---------------------
+
+[2026-10-11 14:50:05 UTC] ERROR: HTTP 429 response details for https://archiveofourown.org/works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=2095&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc&work_search%5Bfandom_names%5D=Harry+Potter+-+J.+K.+Rowling&work_search%5Bcategory_ids%5D%5B%5D=116&work_search%5Bcrossover%5D=F:
+  --- 429 response ---
+  URL: https://archiveofourown.org/works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=2095&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc&work_search%5Bfandom_names%5D=Harry+Potter+-+J.+K.+Rowling&work_search%5Bcategory_ids%5D%5B%5D=116&work_search%5Bcrossover%5D=F
+  Status: 429 
+  Retry-After header: 195
+  Response headers: {'alt-svc': 'h3=":443"; ma=86400', 'cache-control': 'no-cache', 'cf-cache-status': 'DYNAMIC', 'cf-ray': 'a48eacd9be8adcf3-ORD', 'content-length': '12', 'content-security-policy-report-only': "script-src 'unsafe-inline' 'unsafe-eval'; connect-src 'none'; report-uri https://csp-reporting.cloudflare.com/cdn-cgi/script_monitor/report?m=IsytWYXNMePp7ChLHNeK3iYjRUGSHto3x69n2H.bNsI-1791730205.7126083-1.0.1.1-nEaI0hTjrLrKBiVRlncsqwE5bLY_YUqPRG7ARAcub89.JCKzjh1zvgzlUBAJXYIg301LER8FNEHZ40Dk3_SD9pFn1eguedBGjkKMtlQPp1YCWQSM56VbmF8KBUReLDImKsClbJEpSsoum9RyMok3hgNBa1.hdRaZf.9dWMc.UGxGoU3fYRL4tkZTLKMZ.txd; report-to cf-csp-endpoint", 'content-type': 'text/plain', 'date': 'Sun, 11 Oct 2026 14:50:05 GMT', 'priority': 'u=0,i', 'report-to': '{"group":"cf-csp-endpoint","max_age":86400,"endpoints":[{"url":"https://csp-reporting.cloudflare.com/cdn-cgi/script_monitor/report?m=IsytWYXNMePp7ChLHNeK3iYjRUGSHto3x69n2H.bNsI-1791730205.7126083-1.0.1.1-nEaI0hTjrLrKBiVRlncsqwE5bLY_YUqPRG7ARAcub89.JCKzjh1zvgzlUBAJXYIg301LER8FNEHZ40Dk3_SD9pFn1eguedBGjkKMtlQPp1YCWQSM56VbmF8KBUReLDImKsClbJEpSsoum9RyMok3hgNBa1.hdRaZf.9dWMc.UGxGoU3fYRL4tkZTLKMZ.txd"}]}', 'reporting-endpoints': 'cf-csp-endpoint="https://csp-reporting.cloudflare.com/cdn-cgi/script_monitor/report?m=IsytWYXNMePp7ChLHNeK3iYjRUGSHto3x69n2H.bNsI-1791730205.7126083-1.0.1.1-nEaI0hTjrLrKBiVRlncsqwE5bLY_YUqPRG7ARAcub89.JCKzjh1zvgzlUBAJXYIg301LER8FNEHZ40Dk3_SD9pFn1eguedBGjkKMtlQPp1YCWQSM56VbmF8KBUReLDImKsClbJEpSsoum9RyMok3hgNBa1.hdRaZf.9dWMc.UGxGoU3fYRL4tkZTLKMZ.txd"', 'retry-after': '195', 'server': 'cloudflare', 'server-timing': 'cfExtPri', 'set-cookie': '_otwarchive_session=eyJfcmFpbHMiOnsibWVzc2FnZSI6ImV5SnpaWE56YVc5dVgybGtJam9pWVRnd01UYzVObVEzTmpjd016RTBNVFJoTnpkbE5tRm1NekU0TnpjM1ltSWlMQ0ozWVhKa1pXNHVkWE5sY2k1MWMyVnlMbXRsZVNJNlcxc3pNVGs0Tnpnd01WMHNJaVF5WVNReE5DUmpWekl3WWpsbWRrOTJTblphZUZkeFowcEpUbWxQSWwwc0lsOWpjM0ptWDNSdmEyVnVJam9pYlhwMGNqUlVZa2x2Y2xaVllVNU5aMVp0YlhsSFVHMTJVVVYyZWkxVGEzQkdRbVl5VXpWdWNWbFJjeUlzSW14aGJtZDFZV2RsWDJsa0lqb2laVzRpZlE9PSIsImV4cCI6IjIwMjYtMTAtMjVUMTQ6NTA6MDUuNzQxWiIsInB1ciI6ImNvb2tpZS5fb3R3YXJjaGl2ZV9zZXNzaW9uIn19--8edef788ae4c80534d3f498d99408d6990ebbcbb; path=/; expires=Sun, 25 Oct 2026 14:50:05 GMT; HttpOnly; SameSite=Lax', 'x-request-id': '0b463569-958e-4587-a410-4d902987b172', 'x-runtime': '0.002685'}
+  Response body:
+  <html><head><meta name="color-scheme" content="light dark"></head><body><pre style="word-wrap: break-word; white-space: pre-wrap;">Retry later
+</pre></body></html>
+  ---------------------
+
+===== Error log started 2026-10-11T15:09:54+00:00 =====
+
+===== Error log started 2026-10-11T15:12:39+00:00 =====
+
+===== Error log started 2026-10-11T15:14:42+00:00 =====
+
+===== Error log started 2026-10-11T15:16:00+00:00 =====
+
+===== Error log started 2026-10-11T15:22:25+00:00 =====
+
+===== Error log started 2026-10-11T15:37:45+00:00 =====
+
+[2026-10-11 15:48:53 UTC] ERROR: HTTP 429 response details for https://archiveofourown.org/works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=2123&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc&work_search%5Bfandom_names%5D=Harry+Potter+-+J.+K.+Rowling&work_search%5Bcategory_ids%5D%5B%5D=22&work_search%5Bcrossover%5D=F&work_search%5Bdate_from%5D=2022-01-01&work_search%5Bdate_to%5D=2024-01-01:
+  --- 429 response ---
+  URL: https://archiveofourown.org/works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=2123&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc&work_search%5Bfandom_names%5D=Harry+Potter+-+J.+K.+Rowling&work_search%5Bcategory_ids%5D%5B%5D=22&work_search%5Bcrossover%5D=F&work_search%5Bdate_from%5D=2022-01-01&work_search%5Bdate_to%5D=2024-01-01
+  Status: 429 
+  Retry-After header: 67
+  Response headers: {'alt-svc': 'h3=":443"; ma=86400', 'cache-control': 'no-cache', 'cf-cache-status': 'DYNAMIC', 'cf-ray': 'a48f02f87d6ef304-IAD', 'content-length': '12', 'content-type': 'text/plain', 'date': 'Sun, 11 Oct 2026 15:48:53 GMT', 'priority': 'u=0,i', 'retry-after': '67', 'server': 'cloudflare', 'server-timing': 'cfExtPri', 'set-cookie': '_otwarchive_session=eyJfcmFpbHMiOnsibWVzc2FnZSI6ImV5SnpaWE56YVc5dVgybGtJam9pWVRnd01UYzVObVEzTmpjd016RTBNVFJoTnpkbE5tRm1NekU0TnpjM1ltSWlMQ0ozWVhKa1pXNHVkWE5sY2k1MWMyVnlMbXRsZVNJNlcxc3pNVGs0Tnpnd01WMHNJaVF5WVNReE5DUmpWekl3WWpsbWRrOTJTblphZUZkeFowcEpUbWxQSWwwc0lsOWpjM0ptWDNSdmEyVnVJam9pYlhwMGNqUlVZa2x2Y2xaVllVNU5aMVp0YlhsSFVHMTJVVVYyZWkxVGEzQkdRbVl5VXpWdWNWbFJjeUlzSW14aGJtZDFZV2RsWDJsa0lqb2laVzRpZlE9PSIsImV4cCI6IjIwMjYtMTAtMjVUMTU6NDg6NTMuMzQ1WiIsInB1ciI6ImNvb2tpZS5fb3R3YXJjaGl2ZV9zZXNzaW9uIn19--79be68d1df7161a49b0e399652726ee65a0bb3ed; path=/; expires=Sun, 25 Oct 2026 15:48:53 GMT; HttpOnly; SameSite=Lax', 'strict-transport-security': 'max-age=172800', 'x-request-id': '11820c32-5151-46b0-9c77-11fb16e8a7bc', 'x-runtime': '0.002943'}
+  Response body:
+  <html><head><meta name="color-scheme" content="light dark"></head><body><pre style="word-wrap: break-word; white-space: pre-wrap;">Retry later
+</pre></body></html>
+  ---------------------
+
+===== Error log started 2026-10-11T15:54:17+00:00 =====
+
+[2026-10-11 16:05:46 UTC] ERROR: HTTP 429 response details for https://archiveofourown.org/works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=1402&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc&work_search%5Bfandom_names%5D=Harry+Potter+-+J.+K.+Rowling&work_search%5Bcategory_ids%5D%5B%5D=22&work_search%5Bcrossover%5D=F&work_search%5Bdate_from%5D=2018-01-01&work_search%5Bdate_to%5D=2022-01-01:
+  --- 429 response ---
+  URL: https://archiveofourown.org/works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=1402&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc&work_search%5Bfandom_names%5D=Harry+Potter+-+J.+K.+Rowling&work_search%5Bcategory_ids%5D%5B%5D=22&work_search%5Bcrossover%5D=F&work_search%5Bdate_from%5D=2018-01-01&work_search%5Bdate_to%5D=2022-01-01
+  Status: 429 
+  Retry-After header: 254
+  Response headers: {'alt-svc': 'h3=":443"; ma=86400', 'cache-control': 'no-cache', 'cf-cache-status': 'DYNAMIC', 'cf-ray': 'a48f1bb4bb228243-ORD', 'content-length': '12', 'content-type': 'text/plain', 'date': 'Sun, 11 Oct 2026 16:05:46 GMT', 'priority': 'u=0,i', 'retry-after': '254', 'server': 'cloudflare', 'server-timing': 'cfExtPri', 'set-cookie': '_otwarchive_session=eyJfcmFpbHMiOnsibWVzc2FnZSI6ImV5SnpaWE56YVc5dVgybGtJam9pWVRnd01UYzVObVEzTmpjd016RTBNVFJoTnpkbE5tRm1NekU0TnpjM1ltSWlMQ0ozWVhKa1pXNHVkWE5sY2k1MWMyVnlMbXRsZVNJNlcxc3pNVGs0Tnpnd01WMHNJaVF5WVNReE5DUmpWekl3WWpsbWRrOTJTblphZUZkeFowcEpUbWxQSWwwc0lsOWpjM0ptWDNSdmEyVnVJam9pYlhwMGNqUlVZa2x2Y2xaVllVNU5aMVp0YlhsSFVHMTJVVVYyZWkxVGEzQkdRbVl5VXpWdWNWbFJjeUlzSW14aGJtZDFZV2RsWDJsa0lqb2laVzRpZlE9PSIsImV4cCI6IjIwMjYtMTAtMjVUMTY6MDU6NDYuMzc5WiIsInB1ciI6ImNvb2tpZS5fb3R3YXJjaGl2ZV9zZXNzaW9uIn19--a0e6d5e2b589315e28f69e40fc60d1434260998b; path=/; expires=Sun, 25 Oct 2026 16:05:46 GMT; HttpOnly; SameSite=Lax', 'strict-transport-security': 'max-age=172800', 'x-request-id': '5d4843d9-8d6f-468b-a40a-e7e116031b84', 'x-runtime': '0.001890'}
+  Response body:
+  <html><head><meta name="color-scheme" content="light dark"></head><body><pre style="word-wrap: break-word; white-space: pre-wrap;">Retry later
+</pre></body></html>
+  ---------------------
+
+[2026-10-11 16:38:44 UTC] ERROR: HTTP 429 response details for https://archiveofourown.org/works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=2231&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc&work_search%5Bfandom_names%5D=Harry+Potter+-+J.+K.+Rowling&work_search%5Bcategory_ids%5D%5B%5D=22&work_search%5Bcrossover%5D=F&work_search%5Bdate_from%5D=2018-01-01&work_search%5Bdate_to%5D=2022-01-01:
+  --- 429 response ---
+  URL: https://archiveofourown.org/works/search?utf8=%E2%9C%93&commit=Sort+and+Filter&page=2231&work_search%5Bsort_column%5D=revised_at&work_search%5Bsort_direction%5D=desc&work_search%5Bfandom_names%5D=Harry+Potter+-+J.+K.+Rowling&work_search%5Bcategory_ids%5D%5B%5D=22&work_search%5Bcrossover%5D=F&work_search%5Bdate_from%5D=2018-01-01&work_search%5Bdate_to%5D=2022-01-01
+  Status: 429 
+  Retry-After header: 76
+  Response headers: {'alt-svc': 'h3=":443"; ma=86400', 'cache-control': 'no-cache', 'cf-cache-status': 'DYNAMIC', 'cf-ray': 'a48f4c008ff25810-ORD', 'content-length': '12', 'content-type': 'text/plain', 'date': 'Sun, 11 Oct 2026 16:38:44 GMT', 'priority': 'u=0,i', 'retry-after': '76', 'server': 'cloudflare', 'server-timing': 'cfExtPri', 'set-cookie': '_otwarchive_session=eyJfcmFpbHMiOnsibWVzc2FnZSI6ImV5SnpaWE56YVc5dVgybGtJam9pWVRnd01UYzVObVEzTmpjd016RTBNVFJoTnpkbE5tRm1NekU0TnpjM1ltSWlMQ0ozWVhKa1pXNHVkWE5sY2k1MWMyVnlMbXRsZVNJNlcxc3pNVGs0Tnpnd01WMHNJaVF5WVNReE5DUmpWekl3WWpsbWRrOTJTblphZUZkeFowcEpUbWxQSWwwc0lsOWpjM0ptWDNSdmEyVnVJam9pYlhwMGNqUlVZa2x2Y2xaVllVNU5aMVp0YlhsSFVHMTJVVVYyZWkxVGEzQkdRbVl5VXpWdWNWbFJjeUlzSW14aGJtZDFZV2RsWDJsa0lqb2laVzRpZlE9PSIsImV4cCI6IjIwMjYtMTAtMjVUMTY6Mzg6NDQuNTkwWiIsInB1ciI6ImNvb2tpZS5fb3R3YXJjaGl2ZV9zZXNzaW9uIn19--b4885c8b0e4b814ab0115e60195f11e08ad7d276; path=/; expires=Sun, 25 Oct 2026 16:38:44 GMT; HttpOnly; SameSite=Lax', 'x-request-id': 'd78ce8d2-c9cc-48c1-b54c-f7b763299990', 'x-runtime': '0.002638'}
+  Response body:
+  <html><head><meta name="color-scheme" content="light dark"></head><body><pre style="word-wrap: break-word; white-space: pre-wrap;">Retry later
+</pre></body></html>
+  ---------------------
+
+===== Error log started 2026-10-11T17:19:14+00:00 =====

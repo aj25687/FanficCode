@@ -2,13 +2,14 @@
 Exploratory analysis of ao3_results.csv: engagement patterns by relationship category.
 
 Groups shown in every graph:
-    F/F        works whose category tag is exactly F/F
-    M/M        works whose category tag is exactly M/M
-    F/M        works whose category tag is exactly F/M (AO3's name for "M/F")
-    All works  every unique cohort work in the CSV, whatever its category
-               (including Gen, Multi, Other and multi-category works). It is a
-               reference line, NOT a population estimate: its mix is set by how
-               many pages you scraped for each category.
+    F/F        every work that LISTS F/F (a work tagged F/F and M/M is in both groups)
+    M/M        every work that lists M/M
+    F/M        every work that lists F/M (AO3's name for "M/F")
+    All works  every unique work in the CSV (Gen, Multi, Other and uncategorised
+               works too), reweighted to AO3's real category mix when live or
+               cached supply counts are available.
+    Categories are read from BOTH the `category` and `warnings` columns,
+    because the scraper can file AO3's multi-category label under warnings.
 
 Usage:
     python3 analyser_grapher.py [path-to-ao3_results.csv]
@@ -19,6 +20,7 @@ Outputs:
                         summary of each figure, with numbers from your data
 """
 
+import argparse
 import sys
 import warnings as pywarnings
 from datetime import datetime
@@ -32,13 +34,39 @@ from scipy import stats
 
 pywarnings.filterwarnings("ignore", category=FutureWarning)
 
-CSV_PATH = sys.argv[1] if len(sys.argv) > 1 else "ao3_results.csv"
+parser = argparse.ArgumentParser(description="AO3 engagement analysis by relationship category.")
+parser.add_argument("csv", nargs="?", default="ao3_results.csv", help="path to ao3_results.csv")
+parser.add_argument("--refresh-supply", action="store_true",
+                    help="ignore cached supply counts and fetch them from AO3 again")
+parser.add_argument("--no-fetch", action="store_true",
+                    help="never contact AO3; use cached or manual supply counts")
+parser.add_argument("--scraper-path", default=None,
+                    help="path to ao3statswithplaywright.py (default: FanficCode/V4/)")
+ARGS = parser.parse_args()
+CSV_PATH = ARGS.csv
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+try:
+    from ao3_supply import collect_supply, apply_supply_weights
+except ImportError as _err:  # ao3_supply.py not next to this file, or a package is missing
+    collect_supply = apply_supply_weights = None
+    # Python deletes the 'as' name when the except block ends, so keep the text.
+    SUPPLY_IMPORT_ERROR = f"{_err.__class__.__name__}: {_err}"
 OUTPUT_DIR = Path("figures_raw")
 SUMMARY_FILE = "summary.txt"
 
 sns.set_theme(style="whitegrid", context="talk")
 
 ALL_LABEL = "All works"
+WEIGHTED_ALL = {"on": False}  # set True once the all-works group is reweighted to true supply
+
+
+def display_label(cat):
+    if cat == ALL_LABEL and WEIGHTED_ALL["on"]:
+        return "All works (weighted)"
+    return cat
+
+
 PURE_CATEGORIES = ["F/F", "M/M", "F/M"]
 ALL_GROUPS = PURE_CATEGORIES + [ALL_LABEL]
 
@@ -138,10 +166,10 @@ def unique_works(df):
 def _fmt_cat(group, col, cat):
     v = group.loc[group["category_clean"] == cat, col].dropna()
     if len(v) == 0:
-        return f"{cat}: no data", None
+        return f"{display_label(cat)}: no data", None
     q1, med, q3 = np.percentile(v, [25, 50, 75])
     flag = "  [n<10: noisy]" if len(v) < MIN_N_NOISY else ""
-    return f"{cat}: median {med:.2f} (IQR {q1:.2f}-{q3:.2f}, n={len(v)}){flag}", med
+    return f"{display_label(cat)}: median {med:.2f} (IQR {q1:.2f}-{q3:.2f}, n={len(v)}){flag}", med
 
 
 def compare_lines(df, col, label, by):
@@ -193,7 +221,7 @@ def annotate_group_counts(ax, k, count_fn):
 
 def category_legend_handles():
     from matplotlib.patches import Patch
-    return [Patch(facecolor=CATEGORY_PALETTE[c], edgecolor="black", label=c) for c in CATEGORY_ORDER]
+    return [Patch(facecolor=CATEGORY_PALETTE[c], edgecolor="black", label=display_label(c)) for c in CATEGORY_ORDER]
 
 
 def use_shared_legend(fig, axes):
@@ -231,6 +259,62 @@ def set_robust_ylim(ax, values, note=True):
 
 
 # ============================================================
+# Reading category / warning labels
+# ============================================================
+#
+# AO3 shows ONE icon per required tag, and for a work with several categories
+# its title is a comma-joined string ("F/F, M/M"). The scraper only recognises
+# single labels, so such strings can end up in the `warnings` column, and
+# labels can generally land in the wrong one of the two columns. So both
+# columns are read, split on commas, and every label is sorted by what it is.
+
+CATEGORY_NAMES = ["F/F", "M/M", "F/M", "Gen", "Multi", "Other"]
+CATEGORY_TOKENS = {"f/f": "F/F", "m/m": "M/M", "f/m": "F/M", "gen": "Gen", "multi": "Multi", "other": "Other"}
+NO_CATEGORY_TOKENS = {"", "no category", "none"}
+WARNING_TOKENS = {
+    "no archive warnings apply": "No Archive Warnings Apply",
+    "creator chose not to use archive warnings": "Creator Chose Not To Use Archive Warnings",
+    "graphic depictions of violence": "Graphic Depictions Of Violence",
+    "major character death": "Major Character Death",
+    "rape/non-con": "Rape/Non-Con",
+    "underage": "Underage",
+    "underage sex": "Underage Sex",
+}
+
+
+def parse_labels(category_text, warnings_text):
+    """Sort every label in both columns into categories or warnings.
+    Returns (categories, warnings, category_was_in_warnings_column,
+    warning_was_in_category_column, unrecognised_labels)."""
+    cats, warns, unknown = [], [], []
+    moved_cat = moved_warn = False
+    for source, text in (("category", category_text), ("warnings", warnings_text)):
+        if not isinstance(text, str):
+            continue
+        for token in text.split(","):
+            token = token.strip()
+            key = token.lower()
+            if key in NO_CATEGORY_TOKENS:
+                continue
+            if key in CATEGORY_TOKENS:
+                name = CATEGORY_TOKENS[key]
+                if name not in cats:
+                    cats.append(name)
+                moved_cat = moved_cat or source == "warnings"
+            elif key in WARNING_TOKENS:
+                name = WARNING_TOKENS[key]
+                if name not in warns:
+                    warns.append(name)
+                moved_warn = moved_warn or source == "category"
+            else:
+                # Unknown label: keep it with the warnings (where the scraper put it) and report it.
+                if token not in warns:
+                    warns.append(token)
+                unknown.append(token)
+    return cats, warns, moved_cat, moved_warn, unknown
+
+
+# ============================================================
 # Load
 # ============================================================
 
@@ -246,28 +330,54 @@ def load_data(path, summary_notes):
 
     df = df[df["role"] == "cohort"].copy()
     n_before = len(df)
+    df = df.dropna(subset=["work_id"])
     df = df.drop_duplicates(subset=["work_id"], keep="first")
-    n_dupes = n_before - len(df)
-    summary_notes.append(f"Cohort rows: {n_before}; duplicate work_ids dropped: {n_dupes}.")
+    summary_notes.append(f"Cohort rows: {n_before}; duplicates / rows without a work_id dropped: {n_before - len(df)}.")
 
-    df["category_clean"] = df["category"].fillna("").str.strip()
+    # --- categories and warnings, read from BOTH columns ---
+    parsed = [parse_labels(c, w) for c, w in zip(df["category"], df["warnings"])]
+    for name in CATEGORY_NAMES:
+        df[f"has_{name}"] = [name in p[0] for p in parsed]
+    df["n_categories"] = [len(p[0]) for p in parsed]
+    df["categories"] = ["|".join(sorted(p[0])) for p in parsed]
+    df["warnings_clean"] = [", ".join(p[1]) for p in parsed]
 
-    # Rows that belong to no single pure category (Gen, Multi, Other, blank, or
-    # tagged with several categories). They count in 'All works' only.
-    other = df.loc[~df["category_clean"].isin(PURE_CATEGORIES), "category_clean"]
+    n_moved_cat = sum(p[2] for p in parsed)
+    n_moved_warn = sum(p[3] for p in parsed)
+    n_multi = int((df["n_categories"] > 1).sum())
+    n_none = int((df["n_categories"] == 0).sum())
     summary_notes.append(
-        f"{len(other)} unique works are in none of {PURE_CATEGORIES} (Gen, Multi, Other, blank or "
-        f"multi-category tags); they appear only in '{ALL_LABEL}'."
+        f"Category labels found in the `warnings` column: {n_moved_cat} works; warning labels found in the "
+        f"`category` column: {n_moved_warn} works (both columns were read and re-sorted)."
     )
-    if len(other):
-        top = other.replace("", "(blank)").value_counts().head(8)
-        summary_notes.append("  Most common of those: " + "; ".join(f"{k}: {v}" for k, v in top.items()))
+    summary_notes.append(
+        f"Works listing several categories: {n_multi} (each counts in EVERY category it lists); "
+        f"works with no category at all: {n_none}."
+    )
+    unknown = pd.Series([u for p in parsed for u in p[4]])
+    if len(unknown):
+        top = unknown.value_counts().head(6)
+        msg = ("NOTE: labels that are neither a known category nor a known warning (kept with the warnings): "
+               + "; ".join(f"'{k}' x{v}" for k, v in top.items()))
+        print(msg)
+        summary_notes.append(msg)
 
-    # Stack: each pure category once, plus every unique work as 'All works'.
-    pure = df[df["category_clean"].isin(PURE_CATEGORIES)].copy()
+    summary_notes.append("Works listing each category (a work can appear in several rows):")
+    summary_notes.append("  " + "; ".join(f"{n}: {int(df[f'has_{n}'].sum())}" for n in CATEGORY_NAMES))
+    for a, b in GAP_PAIRS:
+        both = int((df[f"has_{a}"] & df[f"has_{b}"]).sum())
+        summary_notes.append(f"  tagged with both {a} and {b}: {both}")
+
+    # Stack: one copy of each work per category it lists, plus every unique work as 'All works'.
+    pieces = []
+    for cat in PURE_CATEGORIES:
+        part = df[df[f"has_{cat}"]].copy()
+        part["category_clean"] = cat
+        pieces.append(part)
     everything = df.copy()
     everything["category_clean"] = ALL_LABEL
-    df = pd.concat([pure, everything], ignore_index=True)
+    pieces.append(everything)
+    df = pd.concat(pieces, ignore_index=True)
 
     present = set(df["category_clean"].unique())
     set_groups(present)
@@ -407,7 +517,7 @@ def plot_ecdfs(df, output_dir, summary):
                 y = np.arange(1, len(values) + 1) / len(values)
                 is_all = cat == ALL_LABEL
                 ax.plot(
-                    values, y, label=f"{cat} (n={len(values)})", color=color,
+                    values, y, label=f"{display_label(cat)} (n={len(values)})", color=color,
                     linewidth=2.5 if is_all else 2, linestyle="--" if is_all else "-",
                     alpha=0.9 if is_all else 1.0,
                 )
@@ -545,7 +655,7 @@ def plot_word_normalized(df, output_dir, summary):
     print(f"Saved: {output_dir / '03_word_normalized_boxplots.png'}")
 
     lines = [
-        f"WHAT IT SHOWS: kudos, bookmarks and comments per 10,000 words, for text works of at least",
+        "WHAT IT SHOWS: kudos, bookmarks and comments per 10,000 words, for text works of at least",
         f"{MIN_WORDS_FOR_NORMALIZATION} words ({n_excluded} shorter text work(s) excluded), for F/F, M/M, F/M and all works.",
         "It asks whether one category earns more engagement per unit of writing.",
         "NUMBERS (median/IQR/n per group):",
@@ -627,7 +737,7 @@ def plot_rating_proxy(df, output_dir, summary):
 
 def plot_warnings_proxy(df, output_dir, summary):
     df = df.copy()
-    df["has_intense_warning"] = df["warnings"].fillna("").str.contains(
+    df["has_intense_warning"] = df["warnings_clean"].fillna("").str.contains(
         "Major Character Death|Graphic Depictions Of Violence", case=False
     )
     fandoms = df["fandom_display"].dropna().unique()
@@ -701,6 +811,10 @@ def plot_length_relationship(df, output_dir, summary):
     shared_bin_edges = None
     if len(all_text) >= n_bins * 6:
         _, shared_bin_edges = pd.qcut(all_text["log_words"], q=n_bins, duplicates="drop", retbins=True)
+        shared_bin_edges = np.asarray(shared_bin_edges, dtype=float)
+        # Stretch the outer edges so no work in any group falls outside the bins.
+        shared_bin_edges[0] = min(shared_bin_edges[0], text_df["log_words"].min())
+        shared_bin_edges[-1] = max(shared_bin_edges[-1], text_df["log_words"].max())
 
     for cat in CATEGORY_ORDER:
         color = CATEGORY_PALETTE[cat]
@@ -711,7 +825,7 @@ def plot_length_relationship(df, output_dir, summary):
             ax.scatter(subset["log_words"], subset["kudos_to_hits"], alpha=0.2, s=18, color=color,
                        label=f"{cat} (n={len(subset)})")
         else:
-            ax.plot([], [], color=color, linestyle="--", linewidth=3, label=f"{cat} median line (n={len(subset)})")
+            ax.plot([], [], color=color, linestyle="--", linewidth=3, label=f"{display_label(cat)} median line (n={len(subset)})")
 
         if shared_bin_edges is not None and len(subset) >= n_bins:
             # include_lowest=True keeps the shortest work(s) in the first bin.
@@ -747,9 +861,11 @@ def plot_length_relationship(df, output_dir, summary):
         if len(s) >= 3:
             rho, p = stats.spearmanr(s["log_words"], s["kudos_to_hits"])
             direction = "longer works have higher kudos/hits" if rho > 0 else "longer works have lower kudos/hits"
+            # The weighted all-works group is a resample (repeated works), so its p-value would mislead.
+            p_txt = "" if cat == ALL_LABEL else f" (p={p:.3g})"
             lines.append(
-                f"  {cat}: n={len(s)}, median words {s['words'].median():,.0f}, "
-                f"Spearman rho(length, kudos/hits)={rho:.2f} (p={p:.3g}) -> {direction}"
+                f"  {display_label(cat)}: n={len(s)}, median words {s['words'].median():,.0f}, "
+                f"Spearman rho(length, kudos/hits)={rho:.2f}{p_txt} -> {direction}"
             )
         else:
             lines.append(f"  {cat}: n={len(s)} (too few for a correlation)")
@@ -855,10 +971,15 @@ def run_group_comparisons(df, summary):
         for a, b in pairs:
             for col, label, source in plan:
                 fdf = source[source["fandom_display"] == fandom]
-                va = fdf.loc[fdf["category_clean"] == a, col].dropna()
-                vb = fdf.loc[fdf["category_clean"] == b, col].dropna()
+                ra = fdf[fdf["category_clean"] == a]
+                rb = fdf[fdf["category_clean"] == b]
+                # A work tagged with BOTH categories would sit in both samples, which the test
+                # does not allow (the groups must not share works), so it is left out of this pair.
+                shared = set(ra["work_id"]) & set(rb["work_id"])
+                va = ra.loc[~ra["work_id"].isin(shared), col].dropna()
+                vb = rb.loc[~rb["work_id"].isin(shared), col].dropna()
                 base = {"fandom": fandom, "pair": (a, b), "label": label,
-                        "n_a": len(va), "n_b": len(vb)}
+                        "n_a": len(va), "n_b": len(vb), "n_shared": len(shared)}
                 if len(va) < MIN_GROUP_N_FOR_TEST or len(vb) < MIN_GROUP_N_FOR_TEST:
                     results.append({**base, "skipped": True})
                     continue
@@ -877,6 +998,8 @@ def run_group_comparisons(df, summary):
         "WHAT IT SHOWS: for each fandom, pair of categories and metric, whether the two distributions",
         "differ (Mann-Whitney U, two-sided; Benjamini-Hochberg FDR across ALL tests run). Pairs tested:",
         "  " + "; ".join(f"{a} vs {b}" for a, b in pairs) + ". 'All works' is not tested (it contains the others).",
+        "Works tagged with BOTH categories of a pair are left out of that pair's test so the two groups",
+        "share no works (the number left out is shown as 'overlap excluded').",
         "Cliff's delta is the effect size: -1 to +1, positive = the FIRST group's values tend to be higher;",
         "roughly |d|<0.15 negligible, <0.33 small, <0.47 medium, otherwise large. ** = FDR-adjusted p < 0.05.",
         f"Groups need n >= {MIN_GROUP_N_FOR_TEST} in BOTH categories or the test is skipped.",
@@ -895,12 +1018,89 @@ def run_group_comparisons(df, summary):
                 flag = " **" if r["p_adj"] < 0.05 else ""
                 txt = (f"  {a} vs {b} | {r['label']:26s}: {a} median={r['median_a']:.2f}, "
                        f"{b} median={r['median_b']:.2f}, Cliff's d={r['delta']:+.2f}, "
-                       f"raw p={r['p']:.4f}, FDR p={r['p_adj']:.4f}{flag} (n_{a}={r['n_a']}, n_{b}={r['n_b']})")
+                       f"raw p={r['p']:.4f}, FDR p={r['p_adj']:.4f}{flag} "
+                       f"(n_{a}={r['n_a']}, n_{b}={r['n_b']}, overlap excluded={r['n_shared']})")
             print(txt)
             lines.append(txt)
     lines.append("CAUTION: works by the same author are not independent, so p-values are optimistic. A small")
     lines.append("p with a negligible Cliff's d is a detectable but unimportant difference.")
     summary.add("Statistical tests (printed to terminal; not a figure)", lines)
+
+
+# ============================================================
+# Plot 8: sample vs true supply
+# ============================================================
+
+SUPPLY_CATEGORIES = ["F/F", "M/M", "F/M", "Gen", "Multi", "Other"]
+
+
+def plot_sample_vs_supply(table, meta, supply, output_dir, summary):
+    tdf = pd.DataFrame(table)
+    fandoms = list(meta.keys())
+    fig, axes = plt.subplots(1, len(fandoms), figsize=(8.5 * len(fandoms), 6.5), squeeze=False, sharey=True)
+    axes = axes[0]
+    for ax, fandom in zip(axes, fandoms):
+        f = tdf[tdf["fandom"] == fandom].set_index("category").reindex(SUPPLY_CATEGORIES)
+        x = np.arange(len(SUPPLY_CATEGORIES))
+        w = 0.27
+        for offset, col, label, color in [
+            (-w, "true_share", "True AO3 share", "#333333"),
+            (0, "sample_share", "Your sample (unweighted)", "#E69F00"),
+            (w, "weighted_share", "Your sample after weighting", "#009E73"),
+        ]:
+            ax.bar(x + offset, f[col] * 100, w, label=label, color=color)
+            for xi, v in enumerate(f[col]):
+                ax.text(xi + offset, v * 100 + 0.6, f"{v * 100:.0f}", ha="center", fontsize=8)
+        ax.set_xticks(x)
+        ax.set_xticklabels(SUPPLY_CATEGORIES, fontsize=11)
+        ax.set_title(fandom)
+        ax.set_ylabel("% of works listing it", fontsize=13)
+        ax.legend(fontsize=9)
+    fig.suptitle("Share of works listing each category: real AO3 vs your sample (bars can add to >100%: works list several)",
+                 y=1.02, fontsize=14)
+    fig.tight_layout()
+    fig.savefig(output_dir / "08_sample_vs_true_supply.png", dpi=150, bbox_inches="tight")
+    plt.close(fig)
+    print(f"Saved: {output_dir / '08_sample_vs_true_supply.png'}")
+
+    flt = supply["filters"]
+    lines = [
+        "WHAT IT SHOWS: for each fandom, the share of works that LIST each category on AO3 itself (dark),",
+        "in your sample's all-works set (orange), and in the weighted all-works set used in the other",
+        "figures (green). A work that lists two categories counts in both, so shares add to more than 100%.",
+        "Where dark and orange differ, your sample over- or under-represents that category. Weights are",
+        "found by raking: each work's weight is adjusted until the weighted share of works listing each",
+        "category matches AO3's. F/F, M/M and F/M groups are not changed by the weighting.",
+        f"HOW THE TRUE COUNTS WERE OBTAINED: AO3 search with crossover={flt['crossover']}, warnings={flt['warning']},",
+        f"completion={flt['completion']}, timeframe={flt['timeframe']}"
+        + (", hits >= 50 (same floor as the scraper)." if supply["hits_floor"] else ", no hits floor."),
+        "(Fandoms whose source says 'manual' use your own counts, which have NO hits floor.)",
+        "NUMBERS:",
+    ]
+    for fandom, m in meta.items():
+        lines.append(f"[{fandom}] source: {m['provenance']}")
+        lines.append(f"  all-works count used: {m['all_count']:,} ({m['all_count_source']})")
+        lines.append(
+            f"  effective sample size after weighting: {m['ess']:,.0f} of {m['n']:,} works "
+            f"(smaller = the weights lean on fewer works, so the weighted line is less precise)."
+        )
+        lines.append(
+            f"  largest remaining miss between weighted and true share: {m['max_err'] * 100:.2f} points"
+            + (f"; {m['n_capped']} weights were capped" if m["n_capped"] else "")
+        )
+        for r in table:
+            if r["fandom"] != fandom:
+                continue
+            lines.append(
+                f"  {r['category']:>5}: true {r['true_count']:,} ({r['true_share']:.1%}) | "
+                f"sample {r['sample_n']:,} ({r['sample_share']:.1%}) | after weighting {r['weighted_share']:.1%} | "
+                f"you sampled {r['rate']:.1%} of them | average weight x{r['avg_weight']:.2f}"
+            )
+    lines.append("CAUTION: Gen/Multi/Other are only as representative as the way those works entered your CSV")
+    lines.append("(they arrive as by-products of other scrapes unless you scraped with the category filter off).")
+    lines.append("A low sampling rate in one category (often the hits floor removing low-traffic works) shows")
+    lines.append("up here as a bar mismatch.")
+    summary.add("08_sample_vs_true_supply.png - Sample mix vs real AO3 mix", lines)
 
 
 # ============================================================
@@ -927,7 +1127,27 @@ def main():
     check_filter_consistency(df, notes)
     summarize_sample(df, notes)
 
+    # --- Real AO3 supply: reweight the 'All works' group to the true category mix ---
+    supply, table, meta = None, [], {}
+    if collect_supply is None:
+        notes.append(f"WARNING: supply module unavailable ({SUPPLY_IMPORT_ERROR}); 'All works' is unweighted.")
+    else:
+        supply = collect_supply(
+            unique_works(df), refresh=ARGS.refresh_supply, no_fetch=ARGS.no_fetch,
+            scraper_path=ARGS.scraper_path, notes=notes,
+        )
+    if supply:
+        df, table, meta, weight_notes = apply_supply_weights(df, supply, ALL_LABEL)
+        notes += weight_notes
+        if meta:
+            WEIGHTED_ALL["on"] = True
+            notes.append("'All works' is REWEIGHTED to AO3's real category mix (weighted resample, seed 2026).")
+    if not WEIGHTED_ALL["on"]:
+        notes.append("WARNING: 'All works' is the UNWEIGHTED sample (mix set by how many pages you scraped).")
+
     summary = Summary()
+    if meta:
+        plot_sample_vs_supply(table, meta, supply, OUTPUT_DIR, summary)
     plot_ecdfs(df, OUTPUT_DIR, summary)
     plot_distributions(df, OUTPUT_DIR, summary)
     plot_word_normalized(df, OUTPUT_DIR, summary)
@@ -939,13 +1159,14 @@ def main():
 
     header = (
         [f"Data file: {CSV_PATH}", f"Figures folder: {OUTPUT_DIR}/",
-         f"Groups: {', '.join(CATEGORY_ORDER)} ('{ALL_LABEL}' = every unique cohort work, any category)",
+         f"Groups: {', '.join(CATEGORY_ORDER)} ('{ALL_LABEL}' = every unique cohort work, any category; "
+         + ("reweighted to AO3's real category mix)" if WEIGHTED_ALL["on"] else "NOT reweighted)"),
          "DATA NOTES:"]
         + ["  " + n for n in notes]
     )
     summary.write(SUMMARY_FILE, header)
 
-    print(f"\nAll 7 figures successfully saved to ./{OUTPUT_DIR}/")
+    print(f"\nAll figures successfully saved to ./{OUTPUT_DIR}/")
 
 
 if __name__ == "__main__":
