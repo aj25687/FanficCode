@@ -73,25 +73,28 @@ class SupplyError(Exception):
 # ============================================================
 
 def load_scraper(explicit=None):
-    """Import the scraper file by path (its main() only runs under __main__)."""
+    """Import the scraper file by path (its main() only runs under __main__).
+    Searches next to this file and up its parent folders, in V4/ and FanficCode/V4/."""
     here = Path(__file__).resolve().parent
     candidates = []
     if explicit:
         candidates.append(Path(explicit))
-    candidates += [
-        Path("FanficCode/V4") / SCRAPER_FILENAME,
-        here.parent / "FanficCode" / "V4" / SCRAPER_FILENAME,
-        here / SCRAPER_FILENAME,
-        Path("..") / "FanficCode" / "V4" / SCRAPER_FILENAME,
-    ]
+    for folder in [Path.cwd(), here, *here.parents][:6]:
+        candidates += [
+            folder / SCRAPER_FILENAME,
+            folder / "V4" / SCRAPER_FILENAME,
+            folder / "FanficCode" / "V4" / SCRAPER_FILENAME,
+        ]
     for path in candidates:
         if path.exists():
+            print(f"  Using scraper: {path}")
             spec = importlib.util.spec_from_file_location("ao3_scraper_module", str(path))
             module = importlib.util.module_from_spec(spec)
             spec.loader.exec_module(module)
             return module
     raise SupplyError(
-        f"Could not find {SCRAPER_FILENAME}. Pass --scraper-path /path/to/{SCRAPER_FILENAME}."
+        f"Could not find {SCRAPER_FILENAME} (looked in V4/ and FanficCode/V4/ near this file). "
+        f"Pass --scraper-path /full/path/to/{SCRAPER_FILENAME}."
     )
 
 
@@ -347,10 +350,10 @@ def apply_supply_weights(df, supply, all_label="All works", seed=2026):
         source = "AO3 all-works count"
         if all_count <= 0:
             all_count, source = category_sum, "ASSUMED = sum of category counts (no all-works count available)"
-            notes.append(f"NOTE: {fandom}: no all-works count, so shares assume works list one category each.")
+            notes.append(f"NOTE: '{fandom}': no all-works count, so shares assume works list one category each.")
         elif category_sum / all_count > 1.02:
             notes.append(
-                f"NOTE: {fandom}: category counts add up to {category_sum / all_count:.0%} of all works "
+                f"NOTE: '{fandom}': category counts add up to {category_sum / all_count:.0%} of all works "
                 f"because works list several categories (expected); the weighting accounts for this."
             )
 
@@ -359,7 +362,7 @@ def apply_supply_weights(df, supply, all_label="All works", seed=2026):
         w, err, n_capped = rake_weights(X, targets)
         if err > 0.01:
             notes.append(
-                f"WARNING: {fandom}: weighting could not match every category share "
+                f"WARNING: '{fandom}': weighting could not match every category share "
                 f"(largest miss {err * 100:.1f} points); a category may be missing from your sample."
             )
 

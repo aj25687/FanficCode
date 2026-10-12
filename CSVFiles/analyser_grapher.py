@@ -17,7 +17,7 @@ Usage:
 Outputs:
     figures_raw/*.png   the 7 figures
     summary.txt         appended on every run: a timestamped plain-language
-                        summary of each figure, with numbers from your data
+                        summary of each figure, with numbers from the data
 """
 
 import argparse
@@ -129,7 +129,7 @@ FILTER_COLUMNS_TO_MATCH = [
     "completion_filter", "timeframe_filter",
 ]
 
-PROXY_CAVEAT = "CRUDE PROXY -- not your actual coded variable. Hypothesis-generating only."
+PROXY_CAVEAT = "CRUDE PROXY -- not the actual coded variable. Hypothesis-generating only."
 
 
 # ============================================================
@@ -885,7 +885,7 @@ def plot_supply_discovery_demand(df, output_dir, summary):
 
     counts = df.groupby(["fandom_display", "category_clean"]).size().reset_index(name="count")
     sns.barplot(data=counts, x="fandom_display", y="count", hue="category_clean", hue_order=CATEGORY_ORDER, palette=CATEGORY_PALETTE, ax=axes[0])
-    axes[0].set_title("Supply: works in YOUR sample")
+    axes[0].set_title("Supply: works in the collected sample")
     axes[0].set_ylabel("Number of works")
     axes[0].set_xlabel("")
 
@@ -1045,8 +1045,8 @@ def plot_sample_vs_supply(table, meta, supply, output_dir, summary):
         w = 0.27
         for offset, col, label, color in [
             (-w, "true_share", "True AO3 share", "#333333"),
-            (0, "sample_share", "Your sample (unweighted)", "#E69F00"),
-            (w, "weighted_share", "Your sample after weighting", "#009E73"),
+            (0, "sample_share", "The collected sample (unweighted)", "#E69F00"),
+            (w, "weighted_share", "The sample after weighting", "#009E73"),
         ]:
             ax.bar(x + offset, f[col] * 100, w, label=label, color=color)
             for xi, v in enumerate(f[col]):
@@ -1056,7 +1056,7 @@ def plot_sample_vs_supply(table, meta, supply, output_dir, summary):
         ax.set_title(fandom)
         ax.set_ylabel("% of works listing it", fontsize=13)
         ax.legend(fontsize=9)
-    fig.suptitle("Share of works listing each category: real AO3 vs your sample (bars can add to >100%: works list several)",
+    fig.suptitle("Share of works listing each category: real AO3 vs the sample (bars can add to >100%: works list several)",
                  y=1.02, fontsize=14)
     fig.tight_layout()
     fig.savefig(output_dir / "08_sample_vs_true_supply.png", dpi=150, bbox_inches="tight")
@@ -1066,15 +1066,15 @@ def plot_sample_vs_supply(table, meta, supply, output_dir, summary):
     flt = supply["filters"]
     lines = [
         "WHAT IT SHOWS: for each fandom, the share of works that LIST each category on AO3 itself (dark),",
-        "in your sample's all-works set (orange), and in the weighted all-works set used in the other",
+        "in the sample's all-works set (orange), and in the weighted all-works set used in the other",
         "figures (green). A work that lists two categories counts in both, so shares add to more than 100%.",
-        "Where dark and orange differ, your sample over- or under-represents that category. Weights are",
+        "Where dark and orange differ, the sample over- or under-represents that category. Weights are",
         "found by raking: each work's weight is adjusted until the weighted share of works listing each",
         "category matches AO3's. F/F, M/M and F/M groups are not changed by the weighting.",
         f"HOW THE TRUE COUNTS WERE OBTAINED: AO3 search with crossover={flt['crossover']}, warnings={flt['warning']},",
         f"completion={flt['completion']}, timeframe={flt['timeframe']}"
         + (", hits >= 50 (same floor as the scraper)." if supply["hits_floor"] else ", no hits floor."),
-        "(Fandoms whose source says 'manual' use your own counts, which have NO hits floor.)",
+        "(Fandoms whose source says 'manual' use the own counts, which have NO hits floor.)",
         "NUMBERS:",
     ]
     for fandom, m in meta.items():
@@ -1096,7 +1096,7 @@ def plot_sample_vs_supply(table, meta, supply, output_dir, summary):
                 f"sample {r['sample_n']:,} ({r['sample_share']:.1%}) | after weighting {r['weighted_share']:.1%} | "
                 f"you sampled {r['rate']:.1%} of them | average weight x{r['avg_weight']:.2f}"
             )
-    lines.append("CAUTION: Gen/Multi/Other are only as representative as the way those works entered your CSV")
+    lines.append("CAUTION: Gen/Multi/Other are only as representative as the way those works entered the CSV")
     lines.append("(they arrive as by-products of other scrapes unless you scraped with the category filter off).")
     lines.append("A low sampling rate in one category (often the hits floor removing low-traffic works) shows")
     lines.append("up here as a bar mismatch.")
