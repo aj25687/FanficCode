@@ -12,13 +12,14 @@
 #   pandas, numpy        data tables and numbers (scraper + grapher)
 #   matplotlib, seaborn  plotting (grapher)
 #   scipy                Mann-Whitney tests and correlations (grapher)
+#   statsmodels          the joint regression model (grapher)
 #   beautifulsoup4       reads AO3 HTML, imported as bs4 (scraper + supply counts)
 #   playwright           drives the real browser (scraper + supply counts)
 # ------------------------------------------------------------------
 
 SCRIPT_DIR="${0:A:h}"
 VENV_DIR="${SCRIPT_DIR}/.venv"
-PACKAGES=(pandas numpy matplotlib seaborn scipy beautifulsoup4 playwright)
+PACKAGES=(pandas numpy matplotlib seaborn scipy statsmodels beautifulsoup4 playwright)
 
 setup_ao3_env() {
   if ! command -v python3 >/dev/null 2>&1; then
@@ -45,7 +46,7 @@ setup_ao3_env() {
   python -m playwright install chromium || return 1
 
   echo "Checking imports ..."
-  python -c "import pandas, numpy, matplotlib, seaborn, scipy, bs4, playwright; print('All packages import correctly.')" || return 1
+  python -c "import pandas, numpy, matplotlib, seaborn, scipy, statsmodels, bs4, playwright; print('All packages import correctly.')" || return 1
 
   echo ""
   echo "Done. Environment: $VENV_DIR"

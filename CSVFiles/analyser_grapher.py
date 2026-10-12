@@ -11,13 +11,17 @@ Groups shown in every graph:
     Categories are read from BOTH the `category` and `warnings` columns,
     because the scraper can file AO3's multi-category label under warnings.
 
+Extra outputs: 09 single- vs multi-category works, 10 joint regression
+(needs statsmodels), 11 ship analysis. After the first run, fill in the
+`canon` column of ship_canon_labels.csv and run again to add canon status.
+
 Usage:
     python3 analyser_grapher.py [path-to-ao3_results.csv]
 
 Outputs:
     figures_raw/*.png   the 7 figures
     summary.txt         appended on every run: a timestamped plain-language
-                        summary of each figure, with numbers from the data
+                        summary of each figure, with numbers from your data
 """
 
 import argparse
@@ -129,7 +133,7 @@ FILTER_COLUMNS_TO_MATCH = [
     "completion_filter", "timeframe_filter",
 ]
 
-PROXY_CAVEAT = "CRUDE PROXY -- not the actual coded variable. Hypothesis-generating only."
+PROXY_CAVEAT = "CRUDE PROXY -- not your actual coded variable. Hypothesis-generating only."
 
 
 # ============================================================
@@ -885,7 +889,7 @@ def plot_supply_discovery_demand(df, output_dir, summary):
 
     counts = df.groupby(["fandom_display", "category_clean"]).size().reset_index(name="count")
     sns.barplot(data=counts, x="fandom_display", y="count", hue="category_clean", hue_order=CATEGORY_ORDER, palette=CATEGORY_PALETTE, ax=axes[0])
-    axes[0].set_title("Supply: works in the collected sample")
+    axes[0].set_title("Supply: works in YOUR sample")
     axes[0].set_ylabel("Number of works")
     axes[0].set_xlabel("")
 
@@ -1045,8 +1049,8 @@ def plot_sample_vs_supply(table, meta, supply, output_dir, summary):
         w = 0.27
         for offset, col, label, color in [
             (-w, "true_share", "True AO3 share", "#333333"),
-            (0, "sample_share", "The collected sample (unweighted)", "#E69F00"),
-            (w, "weighted_share", "The sample after weighting", "#009E73"),
+            (0, "sample_share", "Your sample (unweighted)", "#E69F00"),
+            (w, "weighted_share", "Your sample after weighting", "#009E73"),
         ]:
             ax.bar(x + offset, f[col] * 100, w, label=label, color=color)
             for xi, v in enumerate(f[col]):
@@ -1056,7 +1060,7 @@ def plot_sample_vs_supply(table, meta, supply, output_dir, summary):
         ax.set_title(fandom)
         ax.set_ylabel("% of works listing it", fontsize=13)
         ax.legend(fontsize=9)
-    fig.suptitle("Share of works listing each category: real AO3 vs the sample (bars can add to >100%: works list several)",
+    fig.suptitle("Share of works listing each category: real AO3 vs your sample (bars can add to >100%: works list several)",
                  y=1.02, fontsize=14)
     fig.tight_layout()
     fig.savefig(output_dir / "08_sample_vs_true_supply.png", dpi=150, bbox_inches="tight")
@@ -1066,15 +1070,15 @@ def plot_sample_vs_supply(table, meta, supply, output_dir, summary):
     flt = supply["filters"]
     lines = [
         "WHAT IT SHOWS: for each fandom, the share of works that LIST each category on AO3 itself (dark),",
-        "in the sample's all-works set (orange), and in the weighted all-works set used in the other",
+        "in your sample's all-works set (orange), and in the weighted all-works set used in the other",
         "figures (green). A work that lists two categories counts in both, so shares add to more than 100%.",
-        "Where dark and orange differ, the sample over- or under-represents that category. Weights are",
+        "Where dark and orange differ, your sample over- or under-represents that category. Weights are",
         "found by raking: each work's weight is adjusted until the weighted share of works listing each",
         "category matches AO3's. F/F, M/M and F/M groups are not changed by the weighting.",
         f"HOW THE TRUE COUNTS WERE OBTAINED: AO3 search with crossover={flt['crossover']}, warnings={flt['warning']},",
         f"completion={flt['completion']}, timeframe={flt['timeframe']}"
         + (", hits >= 50 (same floor as the scraper)." if supply["hits_floor"] else ", no hits floor."),
-        "(Fandoms whose source says 'manual' use the own counts, which have NO hits floor.)",
+        "(Fandoms whose source says 'manual' use your own counts, which have NO hits floor.)",
         "NUMBERS:",
     ]
     for fandom, m in meta.items():
@@ -1096,11 +1100,560 @@ def plot_sample_vs_supply(table, meta, supply, output_dir, summary):
                 f"sample {r['sample_n']:,} ({r['sample_share']:.1%}) | after weighting {r['weighted_share']:.1%} | "
                 f"you sampled {r['rate']:.1%} of them | average weight x{r['avg_weight']:.2f}"
             )
-    lines.append("CAUTION: Gen/Multi/Other are only as representative as the way those works entered the CSV")
+    lines.append("CAUTION: Gen/Multi/Other are only as representative as the way those works entered your CSV")
     lines.append("(they arrive as by-products of other scrapes unless you scraped with the category filter off).")
     lines.append("A low sampling rate in one category (often the hits floor removing low-traffic works) shows")
     lines.append("up here as a bar mismatch.")
     summary.add("08_sample_vs_true_supply.png - Sample mix vs real AO3 mix", lines)
+
+
+# ============================================================
+# Deeper analyses (figures 09-11): single-category works, joint models, ships
+# ============================================================
+
+try:
+    import statsmodels.api as sm
+except ImportError:  # the model section reports this instead of crashing
+    sm = None
+
+DEEP_METRICS = [("bookmarks_to_hits", "Bookmarks / Hits (%)"), ("kudos_to_hits", "Kudos / Hits (%)")]
+CONTRASTS = [("M/M", "F/F"), ("M/M", "F/M"), ("F/F", "F/M")]
+CONTRAST_COLORS = {"M/M vs F/F": "#1B9E77", "M/M vs F/M": "#7570B3", "F/F vs F/M": "#D95F02"}
+MIN_SHIP_WORKS = 10          # a ship needs this many sampled works to appear as a point
+CANON_FILE = "ship_canon_labels.csv"
+LEAVE_OUT_STEPS = (0, 1, 3, 5, 10)
+
+
+def cliffs_delta(a, b):
+    """Cliff's delta (>0: a tends higher than b) and the Mann-Whitney p-value."""
+    u, p = stats.mannwhitneyu(a, b, alternative="two-sided")
+    return 2 * u / (len(a) * len(b)) - 1, p
+
+
+def lighten(hex_color, amount=0.55):
+    h = hex_color.lstrip("#")
+    r, g, b = (int(h[i:i + 2], 16) for i in (0, 2, 4))
+    return "#{:02x}{:02x}{:02x}".format(*(int(c + (255 - c) * amount) for c in (r, g, b)))
+
+
+# ------------------------------------------------------------
+# Item 4: works listing ONE category vs works listing several
+# ------------------------------------------------------------
+
+def plot_pure_vs_mixed(df, output_dir, summary):
+    from matplotlib.patches import Patch
+
+    d = df[df["category_clean"].isin(PURE_CATEGORIES)].copy()
+    if d.empty:
+        return
+    d["subgroup"] = d["category_clean"] + np.where(d["n_categories"] == 1, " only", " + others")
+    wanted = [f"{c} only" for c in PURE_CATEGORIES] + [f"{c} + others" for c in PURE_CATEGORIES]
+    order = [s for s in wanted if s in set(d["subgroup"])]
+    palette = {s: (CATEGORY_PALETTE[s.split(" ")[0]] if s.endswith("only")
+                   else lighten(CATEGORY_PALETTE[s.split(" ")[0]])) for s in order}
+    fandoms = list(d["fandom_display"].dropna().unique())
+    width = 0.8 / len(order)
+    offsets = {s: -0.4 + width * (i + 0.5) for i, s in enumerate(order)}
+    unique_d = d.drop_duplicates("work_id")
+
+    fig, axes = plt.subplots(len(DEEP_METRICS), 1, figsize=(17, 7 * len(DEEP_METRICS)))
+    for ax, (col, label) in zip(axes, DEEP_METRICS):
+        sns.boxplot(data=d, x="fandom_display", y=col, hue="subgroup", hue_order=order, palette=palette,
+                    ax=ax, showfliers=True, flierprops=FLIER_PROPS)
+        ax.set_title(label)
+        ax.set_ylabel(label)
+        ax.set_xlabel("")
+        set_robust_ylim(ax, unique_d[col])
+        ax.tick_params(axis="x", pad=22)
+        leg = ax.get_legend()
+        if leg is not None:
+            leg.remove()
+        for k, f in enumerate(fandoms):
+            for s in order:
+                n = int(((d["fandom_display"] == f) & (d["subgroup"] == s)).sum())
+                annotate_n(ax, k + offsets[s], n)
+    fig.legend(handles=[Patch(facecolor=palette[s], edgecolor="black", label=s) for s in order],
+               title="Works that list...", loc="center left", bbox_to_anchor=(1.0, 0.5), frameon=True)
+    fig.suptitle("Works listing ONLY one category (dark) vs that category plus others (light)", y=1.0, fontsize=16)
+    fig.tight_layout()
+    fig.savefig(output_dir / "09_single_vs_multi_category.png", dpi=150, bbox_inches="tight")
+    plt.close(fig)
+    print(f"Saved: {output_dir / '09_single_vs_multi_category.png'}")
+
+    lines = [
+        "WHAT IT SHOWS: each category split into works that list ONLY that category (dark boxes) and works that",
+        "list it together with other categories (light boxes). A work tagged F/F and M/M appears in both light",
+        "groups. The dark groups share no works, so they are the cleanest category comparison available.",
+        "SHARE OF EACH CATEGORY THAT IS MULTI-CATEGORY:",
+    ]
+    for f in fandoms:
+        for c in PURE_CATEGORIES:
+            sub = d[(d["fandom_display"] == f) & (d["category_clean"] == c)]
+            if len(sub):
+                n_mixed = int((sub["n_categories"] > 1).sum())
+                lines.append(f"  [{f}] {c}: {len(sub) - n_mixed:,} list only {c}; {n_mixed:,} also list others "
+                             f"({n_mixed / len(sub):.0%})")
+    lines.append("NUMBERS (median/IQR/n):")
+    for col, label in DEEP_METRICS:
+        lines.append(f"  {label}:")
+        for f in fandoms:
+            lines.append(f"    [{f}]")
+            for s in order:
+                v = d.loc[(d["fandom_display"] == f) & (d["subgroup"] == s), col].dropna()
+                if len(v):
+                    q1, med, q3 = np.percentile(v, [25, 50, 75])
+                    lines.append(f"      {s}: median {med:.2f} (IQR {q1:.2f}-{q3:.2f}, n={len(v)})")
+
+    tests = []
+    for f in fandoms:
+        fd = d[d["fandom_display"] == f]
+        for col, label in DEEP_METRICS:
+            groups = {s: fd.loc[fd["subgroup"] == s, col].dropna() for s in order}
+            pairs = [(f"{a} only", f"{b} only") for a, b in CONTRASTS] + \
+                    [(f"{c} only", f"{c} + others") for c in PURE_CATEGORIES]
+            for x, y in pairs:
+                if x in groups and y in groups and min(len(groups[x]), len(groups[y])) >= MIN_GROUP_N_FOR_TEST:
+                    delta, p = cliffs_delta(groups[x], groups[y])
+                    tests.append({"fandom": f, "label": label, "x": x, "y": y, "delta": delta, "p": p,
+                                  "mx": groups[x].median(), "my": groups[y].median(),
+                                  "nx": len(groups[x]), "ny": len(groups[y])})
+    if tests:
+        for t, p_adj in zip(tests, benjamini_hochberg([t["p"] for t in tests])):
+            t["p_adj"] = p_adj
+    lines.append("COMPARISONS (Cliff's delta: positive = first group higher; ** = FDR-adjusted p < 0.05):")
+    for f in fandoms:
+        lines.append(f"  [{f}]")
+        for t in tests:
+            if t["fandom"] == f:
+                flag = " **" if t["p_adj"] < 0.05 else ""
+                lines.append(f"    {t['x']} vs {t['y']} | {t['label']}: {t['mx']:.2f} vs {t['my']:.2f}, "
+                             f"d={t['delta']:+.2f}, FDR p={t['p_adj']:.4f}{flag} (n={t['nx']}, {t['ny']})")
+    lines.append("CAUTION: 'only' vs '+ others' compares works that differ in more than the tag (multi-category works")
+    lines.append("tend to be longer or broader), so a gap here is a flag to investigate, not a finding about tagging.")
+    summary.add("09_single_vs_multi_category.png - Works listing one category vs several", lines)
+
+
+# ------------------------------------------------------------
+# Ships (used by the models and by figure 11)
+# ------------------------------------------------------------
+
+def primary_ship(text):
+    """First romantic ('/') relationship listed, name order ignored."""
+    if not isinstance(text, str):
+        return None
+    for token in text.split(","):
+        if "/" in token:
+            parts = [p.strip() for p in token.split("/") if p.strip()]
+            if len(parts) >= 2:
+                return " / ".join(sorted(parts))
+    return None
+
+
+def add_ship_columns(uw):
+    uw = uw.copy()
+    uw["primary_ship"] = uw["relationships"].map(primary_ship) if "relationships" in uw.columns else None
+    key = uw["fandom_display"].astype(str) + "|" + uw["primary_ship"].astype(str)
+    sizes = uw.dropna(subset=["primary_ship"]).assign(_k=key).groupby("_k").size()
+    uw["ship_n"] = key.map(sizes)
+    return uw
+
+
+def ship_table(uw):
+    s = uw.dropna(subset=["primary_ship", "fandom_display"])
+    if s.empty:
+        return pd.DataFrame()
+    g = s.groupby(["fandom_display", "primary_ship"]).agg(
+        n_works=("work_id", "size"), bm_median=("bookmarks_to_hits", "median"),
+        kudos_median=("kudos_to_hits", "median"),
+        ff=("has_F/F", "sum"), mm=("has_M/M", "sum"), fm=("has_F/M", "sum"),
+    ).reset_index()
+    best = g[["ff", "mm", "fm"]].idxmax(axis=1).map({"ff": "F/F", "mm": "M/M", "fm": "F/M"})
+    g["group"] = np.where(g[["ff", "mm", "fm"]].max(axis=1) > 0, best, "other")
+    return g
+
+
+def load_canon_labels():
+    if not Path(CANON_FILE).exists():
+        return None
+    c = pd.read_csv(CANON_FILE, dtype=str).fillna("")
+    c["canon"] = c["canon"].str.strip().str.lower()
+    c = c[c["canon"].isin(["canon", "implied", "non-canon"])]
+    return c if len(c) else None
+
+
+def attach_canon(uw, canon):
+    mapping = {(r["fandom"], r["ship"]): r["canon"] for _, r in canon.iterrows()}
+    uw = uw.copy()
+    uw["canon_label"] = [mapping.get((f, s), "unlabelled") for f, s in zip(uw["fandom_display"], uw["primary_ship"])]
+    return uw
+
+
+def write_canon_template(ships, per_fandom=25):
+    """One-off helper: a CSV of the biggest ships for you to label canon / implied / non-canon."""
+    if ships.empty or Path(CANON_FILE).exists():
+        return
+    rows = []
+    for f, g in ships.groupby("fandom_display"):
+        top = g.sort_values("n_works", ascending=False).head(per_fandom)
+        rows.append(pd.DataFrame({"fandom": f, "ship": top["primary_ship"], "group": top["group"],
+                                  "n_works": top["n_works"], "canon": ""}))
+    pd.concat(rows).to_csv(CANON_FILE, index=False)
+    print(f"\nWrote {CANON_FILE}: fill its 'canon' column with canon / implied / non-canon, then re-run.")
+
+
+# ------------------------------------------------------------
+# Item 5: joint model (everything at once)
+# ------------------------------------------------------------
+
+def _model_frame(uw):
+    d = uw[(uw["hits"] > 0) & uw["is_text_work"] & (uw["words"] > 0)].dropna(subset=["fandom_display", "rating"]).copy()
+    chapters = pd.to_numeric(d["chapters"], errors="coerce") if "chapters" in d.columns else pd.Series(1, index=d.index)
+    d["chapters"] = chapters.fillna(1).clip(lower=1)
+    for c in CATEGORY_NAMES:
+        d[f"cat_{c}"] = d[f"has_{c}"].astype(float)
+    wc = d["warnings_clean"].fillna("")
+    d["warn_intense"] = wc.str.contains("Major Character Death|Graphic Depictions Of Violence", case=False).astype(float)
+    d["warn_other"] = wc.str.contains("Rape/Non-Con|Underage", case=False).astype(float)
+    d["warn_unchosen"] = wc.str.contains("Creator Chose Not To Use", case=False).astype(float)
+
+    def z(s):
+        sd = s.std()
+        return (s - s.mean()) / sd if sd and sd > 0 else s * 0.0
+
+    d["z_log_words"] = z(np.log10(d["words"]))
+    d["z_log_hits"] = z(np.log10(d["hits"]))
+    d["z_log_chapters"] = z(np.log10(d["chapters"]))
+    has_ship = d["ship_n"].notna()
+    d["no_ship"] = (~has_ship).astype(float)
+    log_ship = np.log10(d["ship_n"].where(has_ship, 1))
+    d["z_log_ship_size"] = z(log_ship.where(has_ship)).fillna(0.0)
+    return d
+
+
+DROPPED_TERMS = set()
+
+
+def _drop_redundant(X):
+    """Keep columns in order, skipping any that is an exact combination of the ones before it
+    (e.g. 'Gen' and 'no ship' being the same works). Earlier columns win, and the category terms
+    come first, so they are never the ones dropped. Dropped names are reported in the summary."""
+    values = X.to_numpy(float)
+    kept = []
+    for j, name in enumerate(X.columns):
+        trial = kept + [j]
+        if np.linalg.matrix_rank(values[:, trial]) == len(trial):
+            kept = trial
+        else:
+            DROPPED_TERMS.add(name)
+    return X.iloc[:, kept]
+
+
+def _design(d, pooled, spec_b, use_canon):
+    cols = [f"cat_{c}" for c in CATEGORY_NAMES] + [
+        "warn_intense", "warn_other", "warn_unchosen", "z_log_words", "z_log_hits", "z_log_chapters"]
+    X = d[cols].copy()
+    rating = pd.get_dummies(d["rating"], prefix="rating").astype(float)
+    ref = "rating_General Audiences" if "rating_General Audiences" in rating.columns else rating.columns[0]
+    X = pd.concat([X, rating.drop(columns=[ref])], axis=1)
+    if pooled:
+        fd = pd.get_dummies(d["fandom_display"], prefix="fandom").astype(float)
+        X = pd.concat([X, fd.iloc[:, 1:]], axis=1)
+    if spec_b:
+        X["z_log_ship_size"] = d["z_log_ship_size"]
+        X["no_ship"] = d["no_ship"]
+        if use_canon:
+            for lab in ("canon", "implied", "unlabelled"):
+                X[f"canon_{lab}"] = (d["canon_label"] == lab).astype(float)
+    X = X.loc[:, X.std() > 0]
+    return _drop_redundant(sm.add_constant(X, has_constant="add"))
+
+
+def _fit_glm(d, outcome, pooled, spec_b, use_canon):
+    X = _design(d, pooled, spec_b, use_canon)
+    hits = d["hits"].to_numpy(float)
+    y = np.minimum(d[outcome].to_numpy(float), hits) / hits
+    model = sm.GLM(y, X, family=sm.families.Binomial(), var_weights=hits)
+    with pywarnings.catch_warnings():
+        pywarnings.simplefilter("ignore")
+        return model.fit(cov_type="HC1")
+
+
+def _contrast(res, a, b):
+    na, nb = f"cat_{a}", f"cat_{b}"
+    if na not in res.params.index or nb not in res.params.index:
+        return None
+    cov = res.cov_params()
+    diff = res.params[na] - res.params[nb]
+    se = float(np.sqrt(cov.loc[na, na] + cov.loc[nb, nb] - 2 * cov.loc[na, nb]))
+    return {"diff": float(diff), "se": se, "rr": float(np.exp(diff)),
+            "lo": float(np.exp(diff - 1.96 * se)), "hi": float(np.exp(diff + 1.96 * se))}
+
+
+def run_models(uw, has_canon, output_dir, summary):
+    title = "10_joint_model_effects.png - Category effects with everything controlled at once"
+    if sm is None:
+        summary.add(title, ["SKIPPED: statsmodels is not installed (pip install statsmodels)."])
+        print("Skipping models: pip install statsmodels")
+        return
+    d = _model_frame(uw)
+    fandoms = list(d["fandom_display"].unique())
+    scopes = ["All fandoms"] + fandoms
+    outcomes = [("bookmarks", "Bookmarks per visit"), ("kudos", "Kudos per visit")]
+    specs = [("A", False), ("B", True)]
+
+    results, pooled_fit = [], {}
+    for outcome, _ in outcomes:
+        for spec, spec_b in specs:
+            for scope in scopes:
+                sub = d if scope == "All fandoms" else d[d["fandom_display"] == scope]
+                if len(sub) < 200:
+                    continue
+                res = _fit_glm(sub, outcome, scope == "All fandoms", spec_b, has_canon)
+                if scope == "All fandoms":
+                    pooled_fit[(outcome, spec)] = res
+                for a, b in CONTRASTS:
+                    ct = _contrast(res, a, b)
+                    if ct:
+                        results.append({"outcome": outcome, "spec": spec, "scope": scope, "a": a, "b": b,
+                                        "n": int(res.nobs), **ct})
+
+    rows = [(s, a, b) for s in scopes for a, b in CONTRASTS]
+    ypos = {r: len(rows) - 1 - i for i, r in enumerate(rows)}
+    fig, axes = plt.subplots(1, 2, figsize=(18, 0.5 * len(rows) + 3), sharey=True)
+    for ax, (outcome, ttl) in zip(axes, outcomes):
+        for r in results:
+            if r["outcome"] != outcome:
+                continue
+            color = CONTRAST_COLORS[f"{r['a']} vs {r['b']}"]
+            y = ypos[(r["scope"], r["a"], r["b"])] + (0.14 if r["spec"] == "A" else -0.14)
+            ax.errorbar(r["rr"], y, xerr=[[r["rr"] - r["lo"]], [r["hi"] - r["rr"]]],
+                        fmt="o" if r["spec"] == "A" else "s", color=color,
+                        mfc="white" if r["spec"] == "A" else color, capsize=2, markersize=6)
+        ax.axvline(1, color="black", linewidth=1)
+        ax.set_xscale("log")
+        ax.set_xticks([0.5, 0.75, 1, 1.5, 2, 3])
+        ax.xaxis.set_major_formatter(plt.matplotlib.ticker.ScalarFormatter())
+        ax.minorticks_off()
+        ax.set_title(f"{ttl}\n(rate ratio, 95% interval; right of 1 = first group converts more visits)", fontsize=12)
+        ax.set_xlabel("Rate ratio (log scale)")
+    axes[0].set_yticks(list(ypos.values()))
+    axes[0].set_yticklabels([f"{s.rstrip(':')}: {a} vs {b}" for s, a, b in rows], fontsize=10)
+    from matplotlib.lines import Line2D
+    handles = [Line2D([0], [0], color=c, lw=3, label=k) for k, c in CONTRAST_COLORS.items()] + [
+        Line2D([0], [0], marker="o", color="gray", mfc="white", lw=0, label="A: length, hits, rating, warnings"),
+        Line2D([0], [0], marker="s", color="gray", lw=0,
+               label="B: A + ship popularity" + (" + canon" if has_canon else ""))]
+    fig.legend(handles=handles, loc="center left", bbox_to_anchor=(1.0, 0.5), frameon=True)
+    fig.suptitle("Category effects after controlling for length, hits, rating, warnings (A) and ship (B)", y=1.0, fontsize=15)
+    fig.tight_layout()
+    fig.savefig(output_dir / "10_joint_model_effects.png", dpi=150, bbox_inches="tight")
+    plt.close(fig)
+    print(f"Saved: {output_dir / '10_joint_model_effects.png'}")
+
+    lines = [
+        "WHAT IT SHOWS: the M/M vs F/F, M/M vs F/M and F/F vs F/M gaps in how often a VISIT turns into a bookmark",
+        "(or kudos), after controlling for everything at once: fandom, rating, warnings, length, number of chapters,",
+        "how many hits the work has (casual traffic) and, in model B, how big the work's ship is in your sample"
+        + (" and its canon label." if has_canon else ". (No canon labels filled in yet.)"),
+        "METHOD: binomial regression with each visit as a trial (a standard way to model 'X out of N visits'),",
+        "with standard errors that do not assume the textbook variance (HC1). A rate ratio of 1.30 means a visit",
+        "to the first group's work is about 30% more likely to end in a bookmark than a visit to the second's,",
+        "all else equal. A work listing several categories counts toward each of them. 95% intervals that",
+        "exclude 1 mean the gap is distinguishable from zero. Open circles = model A, filled squares = model B.",
+        f"WORKS USED: {len(d):,} text works with hits>0 (works with unusable length data are left out).",
+    ]
+    for outcome, ttl in outcomes:
+        for spec, _ in specs:
+            sel = [r for r in results if r["outcome"] == outcome and r["spec"] == spec]
+            if not sel:
+                continue
+            lines.append(f"{ttl.upper()} - model {spec}:")
+            for scope in scopes:
+                parts = [f"{r['a']} vs {r['b']}: x{r['rr']:.2f} ({r['lo']:.2f}-{r['hi']:.2f})"
+                         for r in sel if r["scope"] == scope]
+                if parts:
+                    n = next(r["n"] for r in sel if r["scope"] == scope)
+                    lines.append(f"  [{scope.rstrip(':')}, n={n:,}] " + "; ".join(parts))
+    lines.append("DO THE FANDOMS DIFFER? (difference in the M/M vs F/F effect between two fandoms, log scale;")
+    lines.append("a small p means the M/M advantage genuinely differs between those fandoms):")
+    for outcome, ttl in outcomes:
+        for spec, _ in specs:
+            sel = {r["scope"]: r for r in results if r["outcome"] == outcome and r["spec"] == spec
+                   and (r["a"], r["b"]) == ("M/M", "F/F") and r["scope"] != "All fandoms"}
+            names = list(sel)
+            for i in range(len(names)):
+                for j in range(i + 1, len(names)):
+                    r1, r2 = sel[names[i]], sel[names[j]]
+                    z = (r1["diff"] - r2["diff"]) / np.sqrt(r1["se"] ** 2 + r2["se"] ** 2)
+                    p = 2 * (1 - stats.norm.cdf(abs(z)))
+                    lines.append(f"  {ttl}, model {spec}: {names[i].rstrip(':')} vs {names[j].rstrip(':')}: z={z:+.2f}, p={p:.4f}")
+    res = pooled_fit.get(("bookmarks", "A"))
+    if res is not None:
+        lines.append("ALL OTHER TERMS (bookmarks, model A, all fandoms): rate ratio per term. Continuous terms are")
+        lines.append("per +1 standard deviation; category terms compare against works listing NO category.")
+        conf = res.conf_int()
+        for name in res.params.index:
+            if name == "const":
+                continue
+            lines.append(f"  {name}: x{np.exp(res.params[name]):.2f} "
+                         f"({np.exp(conf.loc[name, 0]):.2f}-{np.exp(conf.loc[name, 1]):.2f})")
+        explained = 1 - res.deviance / res.null_deviance if res.null_deviance else float("nan")
+        lines.append(f"  Share of the variation in bookmark rate explained by model A: {explained:.1%}")
+    if DROPPED_TERMS:
+        lines.append("TERMS DROPPED AS REDUNDANT (identical to a combination of other terms in at least one model): "
+                     + ", ".join(sorted(DROPPED_TERMS)))
+    lines.append("CAUTION: association, not cause. Works by the same author are not independent (no author column),")
+    lines.append("so intervals are somewhat too narrow. Ship popularity is measured from YOUR sample, and canon")
+    lines.append("status only enters if you fill in ship_canon_labels.csv.")
+    summary.add(title, lines)
+
+
+# ------------------------------------------------------------
+# Item 6: ships and canon
+# ------------------------------------------------------------
+
+def _leave_out(uw, fandom, outcome, a, b):
+    fd = uw[uw["fandom_display"] == fandom]
+    A = fd[fd[f"has_{a}"] & ~fd[f"has_{b}"]]
+    B = fd[fd[f"has_{b}"] & ~fd[f"has_{a}"]]
+    top_a = A["primary_ship"].value_counts().index.tolist()
+    top_b = B["primary_ship"].value_counts().index.tolist()
+    out = []
+    for k in LEAVE_OUT_STEPS:
+        A2 = A[~A["primary_ship"].isin(top_a[:k])] if k else A
+        B2 = B[~B["primary_ship"].isin(top_b[:k])] if k else B
+        va, vb = A2[outcome].dropna(), B2[outcome].dropna()
+        if min(len(va), len(vb)) >= MIN_GROUP_N_FOR_TEST:
+            delta, _ = cliffs_delta(va, vb)
+            out.append((k, delta, len(va), len(vb)))
+    return out
+
+
+def plot_ship_analyses(uw, ships, has_canon, output_dir, summary):
+    title = "11_ship_analysis.png - Ships: concentration, leave-top-ships-out, ship-level view"
+    if ships.empty:
+        summary.add(title, ["SKIPPED: no romantic ('/') relationships found in the relationships column."])
+        return
+    fandoms = list(uw["fandom_display"].dropna().unique())
+    fig, axes = plt.subplots(3, len(fandoms), figsize=(7 * len(fandoms), 17), squeeze=False)
+    conc_lines, leave_lines, ship_lines = [], [], []
+    canon_markers = {"canon": "o", "implied": "s", "non-canon": "X", "unlabelled": "o"}
+
+    for j, f in enumerate(fandoms):
+        fd = uw[uw["fandom_display"] == f]
+
+        # Row 1: how concentrated each category is in a few ships
+        ax = axes[0][j]
+        top1, top5, ticks = [], [], []
+        conc_lines.append(f"  [{f}]")
+        for c in PURE_CATEGORIES:
+            members = fd[fd[f"has_{c}"]]
+            with_ship = members.dropna(subset=["primary_ship"])
+            counts = with_ship["primary_ship"].value_counts()
+            if counts.empty:
+                top1.append(0)
+                top5.append(0)
+                ticks.append(f"{c}\n(no ships)")
+                continue
+            top1.append(counts.iloc[0] / counts.sum() * 100)
+            top5.append(counts.head(5).sum() / counts.sum() * 100)
+            ticks.append(f"{c}\n(ship listed: {len(with_ship) / len(members):.0%})")
+            conc_lines.append(
+                f"    {c}: top ship '{counts.index[0]}' = {top1[-1]:.0f}% of works with a ship; top 5 = {top5[-1]:.0f}%. "
+                f"Top 3: " + "; ".join(f"{s} ({n})" for s, n in counts.head(3).items()))
+        x = np.arange(len(PURE_CATEGORIES))
+        ax.bar(x - 0.2, top1, 0.4, label="Biggest ship", color="#444444")
+        ax.bar(x + 0.2, top5, 0.4, label="Top 5 ships", color="#999999")
+        for xi, (a1, a5) in enumerate(zip(top1, top5)):
+            ax.text(xi - 0.2, a1 + 1, f"{a1:.0f}", ha="center", fontsize=9)
+            ax.text(xi + 0.2, a5 + 1, f"{a5:.0f}", ha="center", fontsize=9)
+        ax.set_xticks(x)
+        ax.set_xticklabels(ticks, fontsize=10)
+        ax.set_ylim(0, 118)
+        ax.set_title(f"{f.rstrip(':')}\nShare of works held by the biggest ships", fontsize=13)
+        ax.set_ylabel("% of works that list a ship", fontsize=11)
+        if j == 0:
+            ax.legend(loc="upper center", ncol=2, fontsize=9)
+
+        # Row 2: does the M/M gap survive removing each group's biggest ships?
+        ax = axes[1][j]
+        leave_lines.append(f"  [{f}]")
+        for (a, b), style in zip(CONTRASTS[:2], ["-", "--"]):
+            for outcome, olabel in DEEP_METRICS:
+                res = _leave_out(uw, f, outcome, a, b)
+                if not res:
+                    continue
+                if outcome == "bookmarks_to_hits":
+                    ax.plot([r[0] for r in res], [r[1] for r in res], style, marker="o", linewidth=2.5,
+                            color=CONTRAST_COLORS[f"{a} vs {b}"], label=f"{a} vs {b}")
+                leave_lines.append(f"    {a} vs {b} | {olabel}: " + "; ".join(
+                    f"top {k} removed d={dl:+.2f} (n={na},{nb})" for k, dl, na, nb in res))
+        ax.axhline(0, color="black", linewidth=1)
+        ax.set_xticks(list(LEAVE_OUT_STEPS))
+        ax.set_xlabel("Biggest ships removed from each group")
+        ax.set_ylabel("Cliff's delta, bookmarks per hit", fontsize=11)
+        ax.set_title("Is the gap just a few mega-ships?")
+        ax.legend()
+
+        # Row 3: every ship as a point
+        ax = axes[2][j]
+        sh = ships[(ships["fandom_display"] == f) & (ships["n_works"] >= MIN_SHIP_WORKS)].copy()
+        if has_canon and "canon_label" in uw.columns:
+            lab = uw.dropna(subset=["primary_ship"]).groupby(["fandom_display", "primary_ship"])["canon_label"].agg(
+                lambda s: s.mode().iloc[0])
+            sh["canon_label"] = [lab.get((f, s), "unlabelled") for s in sh["primary_ship"]]
+        else:
+            sh["canon_label"] = "unlabelled"
+        for cat, color in list(CATEGORY_PALETTE.items())[:3] + [("other", "#BBBBBB")]:
+            for lbl, mk in canon_markers.items():
+                part = sh[(sh["group"] == cat) & (sh["canon_label"] == lbl)]
+                if part.empty:
+                    continue
+                ax.scatter(np.log10(part["n_works"]), part["bm_median"], s=55, color=color, marker=mk, alpha=0.75,
+                           edgecolor="black", linewidth=0.4,
+                           label=f"{cat}" + (f", {lbl}" if has_canon else ""))
+        for _, r in sh.sort_values("n_works", ascending=False).head(4).iterrows():
+            ax.annotate(r["primary_ship"][:30], (np.log10(r["n_works"]), r["bm_median"]), fontsize=7,
+                        xytext=(4, 4), textcoords="offset points")
+        ax.set_xlabel("Ship size: works in your sample (log10)")
+        ax.set_ylabel("Ship's median bookmarks per hit (%)", fontsize=11)
+        ax.set_title(f"Each point = one ship with at least {MIN_SHIP_WORKS} works", fontsize=12)
+        handles, labels = ax.get_legend_handles_labels()
+        uniq = dict(zip(labels, handles))
+        ax.legend(uniq.values(), uniq.keys(), fontsize=8)
+
+        ship_lines.append(f"  [{f}] ships with >= {MIN_SHIP_WORKS} works, one value per ship:")
+        groups = {c: sh.loc[sh["group"] == c, "bm_median"].dropna() for c in PURE_CATEGORIES}
+        for c, v in groups.items():
+            if len(v):
+                ship_lines.append(f"    {c}: {len(v)} ships, median of ship medians {v.median():.2f}")
+        for a, b in CONTRASTS:
+            if min(len(groups[a]), len(groups[b])) >= 5:
+                dl, p = cliffs_delta(groups[a], groups[b])
+                ship_lines.append(f"    {a} ships vs {b} ships: Cliff's d={dl:+.2f}, p={p:.3f} "
+                                  f"(n={len(groups[a])}, {len(groups[b])} ships)")
+
+    fig.suptitle("Ships: how concentrated, whether the gap survives without mega-ships, and ship-by-ship view",
+                 y=1.0, fontsize=16)
+    fig.tight_layout()
+    fig.savefig(output_dir / "11_ship_analysis.png", dpi=150, bbox_inches="tight")
+    plt.close(fig)
+    print(f"Saved: {output_dir / '11_ship_analysis.png'}")
+
+    lines = [
+        "WHAT IT SHOWS: ship = the FIRST romantic ('/') relationship listed on a work (names order-insensitive).",
+        "Row 1: how much of each category is a handful of ships. Row 2: the M/M advantage in bookmarks per hit",
+        "after removing each group's biggest 1, 3, 5, 10 ships (the groups share no works): if the line stays above",
+        "zero, the gap is not driven by a few mega-ships. Row 3: every ship as one point (size vs median bookmark",
+        "rate), so M/M and F/F ships can be compared at the same popularity"
+        + ("; marker shape = your canon label." if has_canon else ". Fill in " + CANON_FILE + " to add canon status."),
+        "HOW CONCENTRATED, AND WHICH SHIPS DOMINATE (use these names to fill in the canon file):",
+    ] + conc_lines + ["LEAVE-THE-BIGGEST-SHIPS-OUT (Cliff's delta; positive = first group higher):"] + leave_lines + \
+        ["SHIP-LEVEL COMPARISON (every ship counts once, however many works it has):"] + ship_lines + [
+        "CAUTION: only works that list a romantic ship are included, and only the first one is used, so works",
+        "about several ships are filed under one. Ship popularity here is your sample's count, not AO3's.",
+        "Ship-level groups are small, so treat those p-values as rough guides."]
+    summary.add(title, lines)
 
 
 # ============================================================
@@ -1126,6 +1679,9 @@ def main():
 
     check_filter_consistency(df, notes)
     summarize_sample(df, notes)
+
+    # Unweighted unique works (plus ship columns) for the models and ship analyses below.
+    uw0 = add_ship_columns(unique_works(df))
 
     # --- Real AO3 supply: reweight the 'All works' group to the true category mix ---
     supply, table, meta = None, [], {}
@@ -1156,6 +1712,18 @@ def main():
     plot_length_relationship(df, OUTPUT_DIR, summary)
     plot_supply_discovery_demand(df, OUTPUT_DIR, summary)
     run_group_comparisons(df, summary)
+
+    # --- deeper analyses: single- vs multi-category, joint models, ships / canon ---
+    plot_pure_vs_mixed(df, OUTPUT_DIR, summary)
+    ships = ship_table(uw0)
+    canon = load_canon_labels()
+    if canon is not None:
+        uw0 = attach_canon(uw0, canon)
+        notes.append(f"Canon labels loaded for {len(canon)} ships from {CANON_FILE}.")
+    run_models(uw0, canon is not None, OUTPUT_DIR, summary)
+    plot_ship_analyses(uw0, ships, canon is not None, OUTPUT_DIR, summary)
+    if canon is None:
+        write_canon_template(ships)
 
     header = (
         [f"Data file: {CSV_PATH}", f"Figures folder: {OUTPUT_DIR}/",
