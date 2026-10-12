@@ -35,6 +35,7 @@ import numpy as np
 import pandas as pd
 import seaborn as sns
 from scipy import stats
+import traceback
 
 pywarnings.filterwarnings("ignore", category=FutureWarning)
 
@@ -70,6 +71,14 @@ def display_label(cat):
         return "All works (weighted)"
     return cat
 
+def safe(title, fn, *args):
+    try:
+        return fn(*args)
+    except Exception:
+        tb = traceback.format_exc()
+        print(f"\n!!! {title} FAILED:\n{tb}")
+        summary.add(f"{title} - FAILED", tb.splitlines())
+        return None 
 
 PURE_CATEGORIES = ["F/F", "M/M", "F/M"]
 ALL_GROUPS = PURE_CATEGORIES + [ALL_LABEL]
@@ -1392,7 +1401,7 @@ def _contrast(res, a, b):
 def run_models(uw, has_canon, output_dir, summary):
     title = "10_joint_model_effects.png - Category effects with everything controlled at once"
     if sm is None:
-        summary.add(title, ["SKIPPED: statsmodels is not installed (pip install statsmodels)."])
+        summary.add(title, ["SKIPPED: statsmodels is not installed (pip3 install statsmodels)."])
         print("Skipping models: pip install statsmodels")
         return
     d = _model_frame(uw)
@@ -1655,6 +1664,120 @@ def plot_ship_analyses(uw, ships, has_canon, output_dir, summary):
         "Ship-level groups are small, so treat those p-values as rough guides."]
     summary.add(title, lines)
 
+# ------------------------------------------------------------
+# Figure 12: category gaps before and after controls (no ship data needed)
+# PASTE this block into analyser_grapher.py, right after plot_ship_analyses().
+# Then in main(), right after the run_models(...) line, add:
+#     plot_no_ship_summary(uw0, OUTPUT_DIR, summary)
+# Untested on real data. Uses helpers already in the grapher:
+# _model_frame, _fit_glm, _contrast, _drop_redundant, CATEGORY_NAMES, CONTRASTS.
+# ------------------------------------------------------------
+
+def _fit_unadjusted(d, outcome, pooled):
+    """Category terms only (plus fandom when pooled): the 'before controls' version."""
+    X = d[[f"cat_{c}" for c in CATEGORY_NAMES]].copy()
+    if pooled:
+        fd = pd.get_dummies(d["fandom_display"], prefix="fandom").astype(float)
+        X = pd.concat([X, fd.iloc[:, 1:]], axis=1)
+    X = X.loc[:, X.std() > 0]
+    X = _drop_redundant(sm.add_constant(X, has_constant="add"))
+    hits = d["hits"].to_numpy(float)
+    y = np.minimum(d[outcome].to_numpy(float), hits) / hits
+    model = sm.GLM(y, X, family=sm.families.Binomial(), var_weights=hits)
+    with pywarnings.catch_warnings():
+        pywarnings.simplefilter("ignore")
+        return model.fit(cov_type="HC1")
+
+
+def plot_no_ship_summary(uw, output_dir, summary):
+    title = "12_no_ship_summary.png - Category gaps before and after controls (no ship data needed)"
+    if sm is None:
+        print("!!! Figure 12 skipped: statsmodels missing (pip install statsmodels)")
+        summary.add(title, ["SKIPPED: statsmodels is not installed."])
+        return
+
+    d = _model_frame(uw)
+    scopes = ["All fandoms"] + list(d["fandom_display"].unique())
+    outcomes = [("bookmarks", "Bookmarks per visit"), ("kudos", "Kudos per visit")]
+
+    results = []
+    for outcome, _ in outcomes:
+        for scope in scopes:
+            sub = d if scope == "All fandoms" else d[d["fandom_display"] == scope]
+            if len(sub) < 200:
+                continue
+            pooled = scope == "All fandoms"
+            fits = {
+                "Before controls": _fit_unadjusted(sub, outcome, pooled),
+                "After controls": _fit_glm(sub, outcome, pooled, False, False),
+            }
+            for kind, res in fits.items():
+                for a, b in CONTRASTS:
+                    ct = _contrast(res, a, b)
+                    if ct:
+                        results.append({"outcome": outcome, "scope": scope, "kind": kind,
+                                        "a": a, "b": b, "n": int(res.nobs), **ct})
+
+    if not results:
+        print("!!! Figure 12 skipped: not enough works to fit the models")
+        summary.add(title, ["SKIPPED: not enough works to fit the models."])
+        return
+
+    rows = [(s, a, b) for s in scopes for a, b in CONTRASTS]
+    ypos = {r: len(rows) - 1 - i for i, r in enumerate(rows)}
+    fig, axes = plt.subplots(1, 2, figsize=(18, 0.5 * len(rows) + 3), sharey=True)
+    for ax, (outcome, ttl) in zip(axes, outcomes):
+        for r in results:
+            if r["outcome"] != outcome:
+                continue
+            before = r["kind"] == "Before controls"
+            color = CONTRAST_COLORS[f"{r['a']} vs {r['b']}"]
+            y = ypos[(r["scope"], r["a"], r["b"])] + (0.14 if before else -0.14)
+            ax.errorbar(r["rr"], y, xerr=[[r["rr"] - r["lo"]], [r["hi"] - r["rr"]]],
+                        fmt="o" if before else "s", color=color,
+                        mfc="white" if before else color, capsize=2, markersize=6)
+        ax.axvline(1, color="black", linewidth=1)
+        ax.set_xscale("log")
+        ax.set_xticks([0.5, 0.75, 1, 1.5, 2, 3])
+        ax.xaxis.set_major_formatter(plt.matplotlib.ticker.ScalarFormatter())
+        ax.minorticks_off()
+        ax.set_title(f"{ttl}\n(right of 1 = first group converts more visits)", fontsize=12)
+        ax.set_xlabel("Rate ratio (log scale)")
+    axes[0].set_yticks(list(ypos.values()))
+    axes[0].set_yticklabels([f"{s}: {a} vs {b}" for s, a, b in rows], fontsize=10)
+
+    from matplotlib.lines import Line2D
+    handles = [Line2D([0], [0], color=c, lw=3, label=k) for k, c in CONTRAST_COLORS.items()] + [
+        Line2D([0], [0], marker="o", color="gray", mfc="white", lw=0, label="Before controls"),
+        Line2D([0], [0], marker="s", color="gray", lw=0,
+               label="After length, chapters, hits, rating, warnings")]
+    fig.legend(handles=handles, loc="center left", bbox_to_anchor=(1.0, 0.5), frameon=True)
+    fig.suptitle("Do the category gaps survive controls? (no relationship/ship data used)", y=1.0, fontsize=15)
+    fig.tight_layout()
+    fig.savefig(output_dir / "12_no_ship_summary.png", dpi=150, bbox_inches="tight")
+    plt.close(fig)
+    print(f"Saved: {output_dir / '12_no_ship_summary.png'}")
+
+    lines = [
+        "WHAT IT SHOWS: the same category gaps as figure 10, but only two versions: before any controls",
+        "(hollow circles) and after controlling for length, chapters, hits, rating, warnings and fandom",
+        "(filled squares). If a hollow and filled point sit close together, those controls did not explain",
+        "the gap. No ship or canon information is used.",
+        "NUMBERS (rate ratio, 95% interval; 1.00 = no difference):",
+    ]
+    for outcome, ttl in outcomes:
+        lines.append(f"{ttl.upper()}:")
+        for scope in scopes:
+            for a, b in CONTRASTS:
+                pair = {r["kind"]: r for r in results
+                        if r["outcome"] == outcome and r["scope"] == scope and r["a"] == a and r["b"] == b}
+                if len(pair) == 2:
+                    u, c = pair["Before controls"], pair["After controls"]
+                    lines.append(f"  [{scope}] {a} vs {b}: before x{u['rr']:.2f} ({u['lo']:.2f}-{u['hi']:.2f}); "
+                                 f"after x{c['rr']:.2f} ({c['lo']:.2f}-{c['hi']:.2f})")
+    lines.append("CAUTION: association, not cause. Same-author works are not independent, so intervals are")
+    lines.append("somewhat too narrow. Ship popularity and canon status are NOT controlled here.")
+    summary.add(title, lines)
 
 # ============================================================
 # Main
@@ -1712,18 +1835,21 @@ def main():
     plot_length_relationship(df, OUTPUT_DIR, summary)
     plot_supply_discovery_demand(df, OUTPUT_DIR, summary)
     run_group_comparisons(df, summary)
-
+    plot_no_ship_summary(uw0, OUTPUT_DIR, summary)
+    
     # --- deeper analyses: single- vs multi-category, joint models, ships / canon ---
-    plot_pure_vs_mixed(df, OUTPUT_DIR, summary)
+    safe("09 single vs multi", plot_pure_vs_mixed, df, OUTPUT_DIR, summary)
     ships = ship_table(uw0)
+    print(f"Ships found: {len(ships)} rows; relationships non-empty: "
+        f"{uw0['relationships'].notna().sum() if 'relationships' in uw0 else 'NO COLUMN'}")
     canon = load_canon_labels()
     if canon is not None:
         uw0 = attach_canon(uw0, canon)
         notes.append(f"Canon labels loaded for {len(canon)} ships from {CANON_FILE}.")
-    run_models(uw0, canon is not None, OUTPUT_DIR, summary)
-    plot_ship_analyses(uw0, ships, canon is not None, OUTPUT_DIR, summary)
+    safe("10 joint model", run_models, uw0, canon is not None, OUTPUT_DIR, summary)
+    safe("11 ship analysis", plot_ship_analyses, uw0, ships, canon is not None, OUTPUT_DIR, summary)
     if canon is None:
-        write_canon_template(ships)
+        safe("canon template", write_canon_template, ships)
 
     header = (
         [f"Data file: {CSV_PATH}", f"Figures folder: {OUTPUT_DIR}/",

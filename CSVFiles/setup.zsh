@@ -19,7 +19,7 @@
 
 SCRIPT_DIR="${0:A:h}"
 VENV_DIR="${SCRIPT_DIR}/.venv"
-PACKAGES=(pandas numpy matplotlib seaborn scipy statsmodels beautifulsoup4 playwright)
+PACKAGES=(pandas numpy matplotlib seaborn scipy statsmodels beautifulsoup4 playwright statsmodels)
 
 setup_ao3_env() {
   if ! command -v python3 >/dev/null 2>&1; then
