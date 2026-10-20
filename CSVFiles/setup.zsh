@@ -37,16 +37,16 @@ setup_ao3_env() {
   source "$VENV_DIR/bin/activate" || return 1
 
   echo "Upgrading pip ..."
-  python -m pip install --upgrade pip || return 1
+  python3 -m pip install --upgrade pip || return 1
 
   echo "Installing: ${PACKAGES[*]} ..."
-  python -m pip install --upgrade "${PACKAGES[@]}" || return 1
+  python3 -m pip install --upgrade "${PACKAGES[@]}" || return 1
 
   echo "Downloading Playwright's Chromium browser (used when Google Chrome isn't installed) ..."
-  python -m playwright install chromium || return 1
+  python3 -m playwright install chromium || return 1
 
   echo "Checking imports ..."
-  python -c "import pandas, numpy, matplotlib, seaborn, scipy, statsmodels, bs4, playwright; print('All packages import correctly.')" || return 1
+  python3 -c "import pandas, numpy, matplotlib, seaborn, scipy, statsmodels, bs4, playwright; print('All packages import correctly.')" || return 1
 
   echo ""
   echo "Done. Environment: $VENV_DIR"
