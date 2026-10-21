@@ -1,32 +1,22 @@
 
 #!/usr/bin/env python3
 """
-ao3_stratified_sampler.py
-=========================
-Two-phase stratified sampler for hand-coding AO3 works.
+ao3_enrich_sample.py
+====================
+Reads ao3_testing_sample.csv (which has URLs already filled in),
+visits each work's individual AO3 page, and populates every column
+from the full work metadata.
 
-Phase 1  (offline, instant):
-  Reads ao3_results.csv, computes a proportionally stratified sample
-  (95% CI, 5% ME, M/M / F/F / F/M shares match population), and
-  saves hand_coding_sample.csv immediately.
-
-Phase 2  (online, Playwright):
-  Visits each sampled work's individual page on AO3 to fill in the
-  FULL tag set (relationships, characters, freeform/additional tags,
-  date_published) that search-result blurbs don't expose.
-  Saves after every work so progress is never lost.
+Multi-value tags use " | " (pipe) as separator, never commas.
 
 Usage:
-    python3 ao3_stratified_sampler.py                           # defaults
-    python3 ao3_stratified_sampler.py path/to/ao3_results.csv   # custom CSV
-    python3 ao3_stratified_sampler.py --seed 42                 # reproducible
-    python3 ao3_stratified_sampler.py --skip-scrape             # Phase 1 only
+    python3 ao3_enrich_sample.py
+    python3 ao3_enrich_sample.py --csv path/to/ao3_testing_sample.csv
+    python3 ao3_enrich_sample.py --cookie-file ao3_cookie.txt
 """
 
 import argparse
 import csv
-import json
-import math
 import os
 import random
 import re
@@ -36,91 +26,24 @@ import traceback
 from datetime import datetime, timezone
 from email.utils import parsedate_to_datetime
 
-import numpy as np
-import pandas as pd
-
-# Playwright is only imported when Phase 2 runs
-# (so --skip-scrape works without it installed)
-
 # ── CLI ──────────────────────────────────────────────────────
-parser = argparse.ArgumentParser(
-    description="Stratified sample from ao3_results.csv, then enrich via Playwright."
-)
-parser.add_argument(
-    "csv", nargs="?", default="ao3_results.csv",
-    help="Path to ao3_results.csv (default: current directory)."
-)
-parser.add_argument(
-    "--confidence", type=float, default=0.95,
-    help="Confidence level (default 0.95)."
-)
-parser.add_argument(
-    "--margin", type=float, default=0.05,
-    help="Margin of error (default 0.05)."
-)
-parser.add_argument(
-    "--seed", type=int, default=None,
-    help="Random seed for reproducibility."
-)
-parser.add_argument(
-    "--out", default="hand_coding_sample.csv",
-    help="Output CSV filename (default: hand_coding_sample.csv)."
-)
-parser.add_argument(
-    "--skip-scrape", action="store_true",
-    help="Save the sample CSV (Phase 1) but skip the Playwright tag enrichment (Phase 2)."
-)
-parser.add_argument(
-    "--enrich-only", action="store_true",
-    help="Skip sampling; only run Phase 2 on an existing hand_coding_sample.csv."
-)
-parser.add_argument(
-    "--cookie-file", default="ao3_cookie.txt",
-    help="Path to ao3_cookie.txt for logged-in access (default: ao3_cookie.txt)."
-)
+parser = argparse.ArgumentParser(description="Enrich AO3 sample CSV via Playwright.")
+parser.add_argument("--csv", default="ao3_testing_sample.csv", help="Input/output CSV file.")
+parser.add_argument("--cookie-file", default="ao3_cookie.txt", help="AO3 cookie file.")
 ARGS = parser.parse_args()
 
+# Resolve to ABSOLUTE path immediately so there's zero ambiguity
+CSV_PATH = os.path.abspath(ARGS.csv)
 
 # ── Constants ────────────────────────────────────────────────
-Z_SCORES = {0.90: 1.645, 0.95: 1.96, 0.99: 2.576}
-Z = Z_SCORES.get(ARGS.confidence, 1.96)
-E = ARGS.margin
+TAG_SEP = " | "
 
-ERROR_LOG = "sampler_error_log.txt"
-
-CATEGORY_TOKENS = {
-    "f/f": "F/F", "m/m": "M/M", "f/m": "F/M",
-    "gen": "Gen", "multi": "Multi", "other": "Other",
-}
-NO_CATEGORY_TOKENS = {"", "no category", "none"}
-TARGET_STRATA = ["F/F", "M/M", "F/M"]
-
-# AO3 individual work page: the <dd> CSS classes for each tag type.
-# When you visit archiveofourown.org/works/XXXXX, the tags live in a
-# <dl class="work meta group"> with these <dd> elements:
-#   <dd class="rating tags">       → rating
-#   <dd class="warning tags">      → archive warnings
-#   <dd class="category tags">     → category (M/M, F/F, etc.)
-#   <dd class="relationship tags"> → relationship tags
-#   <dd class="character tags">    → character tags
-#   <dd class="freeform tags">     → additional / freeform tags
-# BeautifulSoup's class_ matching is partial, so class_="relationship"
-# matches <dd class="relationship tags">.
-TAG_DD_CLASSES = {
-    "rating":       "rating",
-    "warnings":     "warning",
-    "category":     "category",
-    "relationships":"relationship",
-    "characters":   "character",
-    "freeform_tags":"freeform",
-}
-
-# Pacing: same as the main scraper (10-15 s between page loads)
-REQUEST_GAP_SECONDS = (10.0, 15.0)
+ERROR_LOG = "enrich_error_log.txt"
+REQUEST_GAP = (10.0, 15.0)
 RETRY_AFTER_GRACE = 5
 CHALLENGE_WAIT = 30
-MAX_CONSECUTIVE_FAILURES = 3
-ORIGIN_ERROR_STATUSES = frozenset({520, 521, 522, 523, 524, 525, 526, 527})
+MAX_CONSECUTIVE_FAILURES = 5
+ORIGIN_ERRORS = frozenset({520, 521, 522, 523, 524, 525, 526, 527})
 
 COOKIE_DOMAIN = ".archiveofourown.org"
 DEFAULT_COOKIES = [
@@ -129,279 +52,143 @@ DEFAULT_COOKIES = [
 
 HEADLESS_UA_TOKEN = "HeadlessChrome"
 HEADLESS = os.environ.get("AO3_HEADLESS", "").strip().lower() in {"1", "true", "yes"}
-BROWSER_PROFILE = os.path.join(
-    os.path.dirname(os.path.abspath(__file__)), "ao3_browser_profile"
-)
+BROWSER_PROFILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "ao3_browser_profile")
 
-# ── Output CSV columns (in order) ───────────────────────────
-OUTPUT_FIELDS = [
-    "sample_id",
-    "work_id",
-    "url",
-    "title",
-    "fandom",
-    "fandoms",
-    "stratum",
-    # Tag columns (populated fully in Phase 2)
-    "rating",
-    "warnings",
-    "category",
-    "relationships",
-    "characters",
-    "freeform_tags",
-    # Dates
-    "date_published",
-    "date_updated",
-    # Stats
-    "words",
-    "chapters",
-    "language",
-    "hits",
-    "kudos",
-    "bookmarks",
-    "comments",
-    # Engagement ratios
-    "kudos_to_hits",
-    "bookmarks_to_hits",
-    "comments_to_hits",
+# CSV columns in the exact order you specified
+CSV_FIELDS = [
+    "sample_id", "work_id", "url", "title", "fandom",
+    "rating", "warnings", "category",
+    "relationships", "characters", "freeform_tags",
+    "date_published", "date_updated",
+    "words", "chapters", "language",
+    "hits", "kudos", "bookmarks", "comments",
+    "kudos_to_hits", "bookmarks_to_hits", "comments_to_hits",
     "comments_to_kudos",
-    "kudos_per_10k_words",
-    "bookmarks_per_10k_words",
-    "comments_per_10k_words",
-    # Phase 2 status
+    "kudos_per_10k_words", "bookmarks_per_10k_words", "comments_per_10k_words",
     "tags_enriched",
-    # Blank hand-coding columns
-    "your_code_1",
-    "your_code_2",
-    "notes",
 ]
 
 
 # ── Error logging ────────────────────────────────────────────
-def log_error(message, exception=None):
+def log_error(msg, exc=None):
     try:
         with open(ERROR_LOG, "a", encoding="utf-8") as f:
             ts = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
-            f.write(f"\n[{ts}] {message}\n")
-            if exception:
-                f.write("".join(traceback.format_exception(
-                    type(exception), exception, exception.__traceback__
-                )))
+            f.write(f"\n[{ts}] {msg}\n")
+            if exc:
+                f.write("".join(traceback.format_exception(type(exc), exc, exc.__traceback__)))
     except Exception:
         pass
 
 
 # ══════════════════════════════════════════════════════════════
-# PHASE 1: STRATIFIED SAMPLING
+# CSV I/O
 # ══════════════════════════════════════════════════════════════
 
-def parse_categories(category_text, warnings_text):
-    """Read category labels from both the category and warnings columns.
-    (The scraper sometimes places category info in warnings and vice versa,
-    as noted in your summary.txt: '11090 works had category labels in the
-    warnings column'.)"""
-    cats = []
-    for text in (category_text, warnings_text):
-        if not isinstance(text, str):
-            continue
-        for token in text.split(","):
-            key = token.strip().lower()
-            if key in NO_CATEGORY_TOKENS:
-                continue
-            if key in CATEGORY_TOKENS:
-                name = CATEGORY_TOKENS[key]
-                if name not in cats:
-                    cats.append(name)
-    return cats
+def read_csv(path):
+    """Read CSV, stripping whitespace from all headers and values.
+    Also normalises None / NaN-like values to empty strings."""
+    with open(path, "r", newline="", encoding="utf-8") as f:
+        reader = csv.DictReader(f)
+        reader.fieldnames = [h.strip() for h in reader.fieldnames]
+        rows = []
+        for raw in reader:
+            cleaned = {}
+            for k, v in raw.items():
+                key = k.strip() if k else k
+                val = v.strip() if isinstance(v, str) else ""
+                if val.lower() in ("nan", "none", "null"):
+                    val = ""
+                cleaned[key] = val
+            rows.append(cleaned)
+    return rows
 
 
-def cochran_sample_size(N, z=1.96, e=0.05, p=0.5):
-    """Cochran formula with finite population correction."""
-    n0 = (z ** 2 * p * (1 - p)) / (e ** 2)
-    n = n0 / (1 + (n0 - 1) / N)
-    return math.ceil(n)
+def save_csv(path, rows):
+    """Write CSV atomically: write to a temp file first, then rename.
+    This prevents half-written files if the script is killed mid-write.
+    Uses QUOTE_ALL so every field is double-quoted in the output."""
+
+    tmp_path = path + ".tmp"
+
+    try:
+        with open(tmp_path, "w", newline="", encoding="utf-8") as f:
+            writer = csv.DictWriter(
+                f,
+                fieldnames=CSV_FIELDS,
+                extrasaction="ignore",
+                restval="",
+                quoting=csv.QUOTE_ALL,
+            )
+            writer.writeheader()
+            for row in rows:
+                # Ensure every expected field exists in the row dict
+                safe_row = {}
+                for field in CSV_FIELDS:
+                    val = row.get(field, "")
+                    if val is None:
+                        val = ""
+                    safe_row[field] = val
+                writer.writerow(safe_row)
+
+            # Force flush to disk
+            f.flush()
+            os.fsync(f.fileno())
+
+        # Atomic rename (overwrites old file)
+        if os.path.exists(path):
+            # On Windows, os.rename fails if target exists
+            # so we remove first as a safety measure
+            backup = path + ".bak"
+            try:
+                if os.path.exists(backup):
+                    os.remove(backup)
+                os.rename(path, backup)
+            except OSError:
+                pass
+        os.rename(tmp_path, path)
+        return True
+
+    except Exception as e:
+        log_error(f"SAVE FAILED: {e}", e)
+        print(f"\n    *** SAVE FAILED: {e} ***")
+        # Try a desperate fallback direct write
+        try:
+            with open(path, "w", newline="", encoding="utf-8") as f:
+                writer = csv.DictWriter(
+                    f, fieldnames=CSV_FIELDS, extrasaction="ignore",
+                    restval="", quoting=csv.QUOTE_ALL,
+                )
+                writer.writeheader()
+                for row in rows:
+                    safe_row = {field: row.get(field, "") or "" for field in CSV_FIELDS}
+                    writer.writerow(safe_row)
+                f.flush()
+                os.fsync(f.fileno())
+            print(f"    *** Fallback save succeeded ***")
+            return True
+        except Exception as e2:
+            log_error(f"FALLBACK SAVE ALSO FAILED: {e2}", e2)
+            print(f"    *** FALLBACK SAVE ALSO FAILED: {e2} ***")
+            return False
 
 
-def run_phase1(csv_path, out_path, seed):
-    """Sample from ao3_results.csv and save hand_coding_sample.csv."""
-    from pathlib import Path
-
-    if not Path(csv_path).exists():
-        sys.exit(f"ERROR: cannot find {csv_path}.")
-
-    print(f"Reading {csv_path} ...")
-    df = pd.read_csv(csv_path, dtype={"work_id": str})
-
-    if "role" in df.columns:
-        df = df[df["role"] == "cohort"].copy()
-
-    n_raw = len(df)
-    df = df.dropna(subset=["work_id"]).drop_duplicates(subset=["work_id"], keep="first")
-    print(f"  Raw cohort rows: {n_raw}; unique works after dedup: {len(df)}")
-
-    # Parse categories from both columns
-    df["_cats"] = [
-        parse_categories(c, w)
-        for c, w in zip(df["category"], df.get("warnings", pd.Series(dtype=str)))
-    ]
-
-    for cat in TARGET_STRATA:
-        df[f"has_{cat}"] = df["_cats"].apply(lambda cats, c=cat: c in cats)
-
-    # Assign each work to ONE stratum (rarest first so smallest group is protected)
-    stratum_sizes = {cat: df[f"has_{cat}"].sum() for cat in TARGET_STRATA}
-    priority = sorted(TARGET_STRATA, key=lambda c: stratum_sizes[c])
-
-    def assign_stratum(cats):
-        for cat in priority:
-            if cat in cats:
-                return cat
-        return "Other"
-
-    df["stratum"] = df["_cats"].apply(assign_stratum)
-
-    pop_counts = df["stratum"].value_counts()
-    N_total = len(df)
-
-    print(f"\n{'='*55}")
-    print("POPULATION BREAKDOWN")
-    print(f"{'='*55}")
-    for s in TARGET_STRATA + ["Other"]:
-        n = pop_counts.get(s, 0)
-        pct = n / N_total * 100
-        print(f"  {s:>6}: {n:>6,} works  ({pct:5.1f}%)")
-    print(f"  {'TOTAL':>6}: {N_total:>6,} works")
-
-    # Cochran sample size
-    n_needed = cochran_sample_size(N_total, z=Z, e=E)
-    print(f"\nCochran sample size (95% CI, 5% ME, N={N_total:,}): {n_needed}")
-
-    # Proportional allocation
-    strata_list = TARGET_STRATA + (["Other"] if pop_counts.get("Other", 0) > 0 else [])
-    stratum_alloc = {}
-    allocated = 0
-    for i, s in enumerate(strata_list):
-        pop_n = pop_counts.get(s, 0)
-        if pop_n == 0:
-            stratum_alloc[s] = 0
-            continue
-        if i == len(strata_list) - 1:
-            stratum_alloc[s] = n_needed - allocated
-        else:
-            alloc = round(n_needed * (pop_n / N_total))
-            stratum_alloc[s] = min(alloc, pop_n)
-            allocated += stratum_alloc[s]
-
-    # Guarantee at least 2 per target stratum
-    for s in TARGET_STRATA:
-        pop_n = pop_counts.get(s, 0)
-        if pop_n > 0 and stratum_alloc.get(s, 0) < 2:
-            stratum_alloc[s] = min(2, pop_n)
-
-    print(f"\n{'='*55}")
-    print("SAMPLE ALLOCATION (proportional)")
-    print(f"{'='*55}")
-    total_sample = 0
-    for s in strata_list:
-        alloc = stratum_alloc.get(s, 0)
-        pop_n = pop_counts.get(s, 0)
-        pct = alloc / n_needed * 100 if n_needed else 0
-        pop_pct = pop_n / N_total * 100
-        print(f"  {s:>6}: draw {alloc:>4} of {pop_n:>6,}  "
-              f"(sample {pct:5.1f}% | population {pop_pct:5.1f}%)")
-        total_sample += alloc
-    print(f"  {'TOTAL':>6}: {total_sample:>4} works to hand code")
-
-    # Draw the sample
-    rng = np.random.default_rng(seed)
-    pieces = []
-    for s in strata_list:
-        pool = df[df["stratum"] == s]
-        n_draw = stratum_alloc.get(s, 0)
-        if n_draw == 0 or pool.empty:
-            continue
-        chosen = pool.sample(n=n_draw, random_state=rng.integers(0, 2**31))
-        pieces.append(chosen)
-
-    sample = pd.concat(pieces, ignore_index=True)
-    sample = sample.sample(frac=1, random_state=rng.integers(0, 2**31)).reset_index(drop=True)
-
-    # Build output
-    rows = []
-    for idx, row in sample.iterrows():
-        wid = str(row["work_id"])
-        out_row = {
-            "sample_id": idx + 1,
-            "work_id": wid,
-            "url": f"https://archiveofourown.org/works/{wid}",
-            "title": row.get("title", ""),
-            "fandom": row.get("fandom", ""),
-            "fandoms": row.get("fandoms", ""),
-            "stratum": row["stratum"],
-            "rating": row.get("rating", ""),
-            "warnings": row.get("warnings", ""),
-            "category": row.get("category", ""),
-            "relationships": row.get("relationships", ""),
-            "characters": "",          # filled in Phase 2
-            "freeform_tags": "",       # filled in Phase 2
-            "date_published": row.get("date_published", ""),
-            "date_updated": row.get("date_updated", ""),
-            "words": row.get("words", ""),
-            "chapters": row.get("chapters", ""),
-            "language": row.get("language", ""),
-            "hits": row.get("hits", ""),
-            "kudos": row.get("kudos", ""),
-            "bookmarks": row.get("bookmarks", ""),
-            "comments": row.get("comments", ""),
-            "kudos_to_hits": row.get("kudos_to_hits", ""),
-            "bookmarks_to_hits": row.get("bookmarks_to_hits", ""),
-            "comments_to_hits": row.get("comments_to_hits", ""),
-            "comments_to_kudos": row.get("comments_to_kudos", ""),
-            "kudos_per_10k_words": row.get("kudos_per_10k_words", ""),
-            "bookmarks_per_10k_words": row.get("bookmarks_per_10k_words", ""),
-            "comments_per_10k_words": row.get("comments_per_10k_words", ""),
-            "tags_enriched": "no",
-            "your_code_1": "",
-            "your_code_2": "",
-            "notes": "",
-        }
-        rows.append(out_row)
-
-    # Write the CSV
-    with open(out_path, "w", newline="", encoding="utf-8") as f:
-        writer = csv.DictWriter(f, fieldnames=OUTPUT_FIELDS)
-        writer.writeheader()
-        writer.writerows(rows)
-
-    print(f"\n✓ Phase 1 complete: saved {len(rows)} works to {out_path}")
-
-    # Verification
-    out_df = pd.DataFrame(rows)
-    print(f"\n{'='*55}")
-    print("VERIFICATION: does the sample match the population?")
-    print(f"{'='*55}")
-    print(f"  {'Stratum':>8}  {'Pop %':>7}  {'Sample %':>9}  {'Diff':>6}")
-    for s in strata_list:
-        pop_pct = pop_counts.get(s, 0) / N_total * 100
-        samp_pct = (out_df["stratum"] == s).sum() / len(out_df) * 100
-        diff = samp_pct - pop_pct
-        flag = " ⚠" if abs(diff) > 2 else ""
-        print(f"  {s:>8}  {pop_pct:6.1f}%  {samp_pct:8.1f}%  {diff:+5.1f}%{flag}")
-    print(f"\nTotal: {len(rows)} works | CI: {ARGS.confidence*100:.0f}% | ME: ±{ARGS.margin*100:.0f}%")
-    if seed is not None:
-        print(f"Seed: {seed}")
-
-    return len(rows)
+def verify_save(path, expected_enriched_count):
+    """Read the file back and count how many rows have tags_enriched=yes.
+    Returns the actual count so we can confirm the save worked."""
+    try:
+        rows = read_csv(path)
+        actual = sum(1 for r in rows if r.get("tags_enriched", "").strip().lower() == "yes")
+        return actual, len(rows)
+    except Exception as e:
+        return -1, -1
 
 
 # ══════════════════════════════════════════════════════════════
-# PHASE 2: PLAYWRIGHT TAG ENRICHMENT
+# BROWSER SESSION
 # ══════════════════════════════════════════════════════════════
 
 class BrowserSession:
-    """Minimal Playwright browser session, matching the rate limiting
-    and interstitial handling of ao3statswithplaywright.py."""
-
     def __init__(self):
         self._pw = None
         self._ctx = None
@@ -424,7 +211,6 @@ class BrowserSession:
         self._warm_up()
 
     def _launch(self):
-        from playwright.sync_api import Error as PwError
         ctx = self._launch_ctx()
         page = ctx.pages[0] if ctx.pages else ctx.new_page()
         ua = self._fix_ua(page)
@@ -465,7 +251,7 @@ class BrowserSession:
             )
 
     def _throttle(self):
-        gap = random.uniform(*REQUEST_GAP_SECONDS)
+        gap = random.uniform(*REQUEST_GAP)
         if self._last_req is not None:
             remaining = gap - (time.monotonic() - self._last_req)
             if remaining > 0:
@@ -479,20 +265,18 @@ class BrowserSession:
             self._page.goto("https://archiveofourown.org/", wait_until="domcontentloaded")
             self._settle()
         except (PwError, PwTimeout) as e:
-            log_error("Warm-up failed.", e)
+            log_error("Warm up failed.", e)
 
     def _settle(self):
-        """Wait for Cloudflare interstitial to clear."""
         from playwright.sync_api import Error as PwError
         try:
             body = self._page.content()
         except PwError:
             time.sleep(2)
             body = self._page.content()
-        if not _looks_like_challenge(body):
+        if not _is_challenge(body):
             return body
-        print("  Interstitial detected. Waiting for it to clear"
-              f"{'' if HEADLESS else ' (solve it in the browser window if needed)'}...")
+        print("    Interstitial detected. Waiting for it to clear...")
         deadline = time.monotonic() + CHALLENGE_WAIT
         while time.monotonic() < deadline:
             time.sleep(2)
@@ -500,8 +284,8 @@ class BrowserSession:
                 body = self._page.content()
             except PwError:
                 continue
-            if not _looks_like_challenge(body):
-                print("  Interstitial cleared.")
+            if not _is_challenge(body):
+                print("    Interstitial cleared.")
                 return body
         return body
 
@@ -537,12 +321,12 @@ class BrowserSession:
             headers = {}
         body = self._settle()
         self._last_req = time.monotonic()
-        if status == 200 and _looks_like_challenge(body):
+        if status == 200 and _is_challenge(body):
             status, reason = 403, "Cloudflare challenge"
-        return _Response(status, body, headers, reason, self._page.url)
+        return _Resp(status, body, headers, reason, self._page.url)
 
     def close(self):
-        for obj in (self._ctx, ):
+        for obj in (self._ctx,):
             if obj:
                 try: obj.close()
                 except: pass
@@ -552,7 +336,7 @@ class BrowserSession:
         self._pw = self._ctx = self._page = None
 
 
-class _Response:
+class _Resp:
     def __init__(self, status_code, text, headers, reason, url):
         self.status_code = status_code
         self.text = text
@@ -561,7 +345,7 @@ class _Response:
         self.url = url
 
 
-def _looks_like_challenge(body):
+def _is_challenge(body):
     if not body:
         return False
     low = body.lower()
@@ -602,7 +386,7 @@ def _get_with_retry(browser, url, max_retries=3):
         except (PwError, PwTimeout) as e:
             log_error(f"Network error for {url}", e)
             wait = 10 * (attempt + 1)
-            print(f"  Network error. Waiting {wait}s ({attempt+1}/{max_retries})...")
+            print(f"    Network error. Waiting {wait}s ({attempt+1}/{max_retries})...")
             time.sleep(wait)
             resp = None
             continue
@@ -611,12 +395,12 @@ def _get_with_retry(browser, url, max_retries=3):
                 resp.headers.get("Retry-After") or resp.headers.get("retry-after")
             )
             wait = (ra + RETRY_AFTER_GRACE) if ra else 15 * (attempt + 1)
-            print(f"  429 rate-limited. Waiting {wait}s...")
+            print(f"    429 rate limited. Waiting {wait}s...")
             time.sleep(wait)
             continue
-        if resp.status_code in ORIGIN_ERROR_STATUSES or resp.status_code == 0:
+        if resp.status_code in ORIGIN_ERRORS or resp.status_code == 0:
             wait = 20 * (attempt + 1)
-            print(f"  HTTP {resp.status_code} (origin error). Waiting {wait}s...")
+            print(f"    HTTP {resp.status_code} (origin error). Waiting {wait}s...")
             time.sleep(wait)
             continue
         return resp
@@ -649,18 +433,21 @@ def _parse_cookie_file(path):
     return cookies
 
 
-def _extract_meta_tags(soup, dd_class):
-    """Extract tag text from a <dd class="[dd_class] tags"> element
-    on an AO3 individual work page.  Each tag is an <a> inside an
-    <li> inside a <ul class="commas">."""
-    from bs4 import BeautifulSoup as _BS
+# ══════════════════════════════════════════════════════════════
+# AO3 WORK PAGE PARSER
+# ══════════════════════════════════════════════════════════════
+
+def _extract_tags(soup, dd_class):
+    """Extract all tag texts from <dd class="[dd_class] tags">.
+    Returns them joined with " | " (pipe), NEVER commas."""
     node = soup.find("dd", class_=dd_class)
     if node is None:
         return ""
     links = [a.get_text(" ", strip=True) for a in node.select("li a")]
     if links:
-        return ", ".join(links)
-    return node.get_text(" ", strip=True)
+        return TAG_SEP.join(links)
+    text = node.get_text(" ", strip=True)
+    return text
 
 
 def _extract_stat(stats_dl, class_name):
@@ -672,179 +459,85 @@ def _extract_stat(stats_dl, class_name):
     return int(m.group()) if m else 0
 
 
-def _scrape_work_tags(browser, work_id):
-    """Visit archiveofourown.org/works/{work_id} and return a dict
-    of the full tag set plus date_published."""
+def scrape_work(browser, url):
+    """Visit a single AO3 work page and extract ALL metadata."""
     from bs4 import BeautifulSoup
 
-    url = f"https://archiveofourown.org/works/{work_id}"
     resp = _get_with_retry(browser, url)
-
     if resp is None or resp.status_code != 200:
         code = resp.status_code if resp else "no response"
         return {"_error": f"HTTP {code}"}
 
     soup = BeautifulSoup(resp.text, "html.parser")
 
-    # Verify we actually got a work page
     stats_dl = soup.find("dl", class_="stats")
     if stats_dl is None:
-        return {"_error": "no stats found (may be restricted/deleted)"}
+        return {"_error": "no stats found (restricted/deleted?)"}
 
     result = {}
 
-    # Full tags from the work meta section
-    for col_name, dd_class in TAG_DD_CLASSES.items():
-        result[col_name] = _extract_meta_tags(soup, dd_class)
+    # Work ID from URL
+    m = re.search(r"/works/(\d+)", url)
+    result["work_id"] = m.group(1) if m else ""
+    result["url"] = url
 
     # Title
     title_node = soup.find("h2", class_="title")
-    if title_node:
-        result["title"] = title_node.get_text(" ", strip=True)
+    result["title"] = title_node.get_text(" ", strip=True) if title_node else ""
 
-    # Fandoms
+    # Fandom
     fandom_links = soup.select("dd.fandom.tags ul.commas li a")
     if fandom_links:
-        result["fandoms"] = ", ".join(
-            a.get_text(" ", strip=True) for a in fandom_links
-        )
         result["fandom"] = fandom_links[0].get_text(" ", strip=True)
+    else:
+        result["fandom"] = ""
 
-    # Date published / updated (from the stats block)
+    # All tag types (pipe separated)
+    result["rating"]        = _extract_tags(soup, "rating")
+    result["warnings"]      = _extract_tags(soup, "warning")
+    result["category"]      = _extract_tags(soup, "category")
+    result["relationships"] = _extract_tags(soup, "relationship")
+    result["characters"]    = _extract_tags(soup, "character")
+    result["freeform_tags"] = _extract_tags(soup, "freeform")
+
+    # Dates
     pub_node = stats_dl.find("dd", class_="published")
     upd_node = stats_dl.find("dd", class_="status")
-    if pub_node:
-        result["date_published"] = pub_node.get_text(" ", strip=True)
-    if upd_node:
-        result["date_updated"] = upd_node.get_text(" ", strip=True)
+    result["date_published"] = pub_node.get_text(" ", strip=True) if pub_node else ""
+    result["date_updated"]   = upd_node.get_text(" ", strip=True) if upd_node else result["date_published"]
 
-    # Refresh stats while we're here
-    result["hits"] = _extract_stat(stats_dl, "hits")
-    result["kudos"] = _extract_stat(stats_dl, "kudos")
+    # Stats
+    result["hits"]      = _extract_stat(stats_dl, "hits")
+    result["kudos"]     = _extract_stat(stats_dl, "kudos")
     result["bookmarks"] = _extract_stat(stats_dl, "bookmarks")
-    result["comments"] = _extract_stat(stats_dl, "comments")
-    result["words"] = _extract_stat(stats_dl, "words")
+    result["comments"]  = _extract_stat(stats_dl, "comments")
+    result["words"]     = _extract_stat(stats_dl, "words")
 
     ch_node = stats_dl.find("dd", class_="chapters")
     if ch_node:
         ch_m = re.search(r"(\d+)\s*/", ch_node.get_text(" ", strip=True))
         result["chapters"] = int(ch_m.group(1)) if ch_m else 1
+    else:
+        result["chapters"] = 1
 
     lang_node = soup.find("dd", class_="language")
-    if lang_node:
-        result["language"] = lang_node.get_text(" ", strip=True)
+    result["language"] = lang_node.get_text(" ", strip=True) if lang_node else ""
+
+    # Engagement ratios
+    h = result["hits"]
+    k = result["kudos"]
+    b = result["bookmarks"]
+    c = result["comments"]
+    w = result["words"]
+    result["kudos_to_hits"]           = round(k / h * 100, 4) if h > 0 else 0
+    result["bookmarks_to_hits"]       = round(b / h * 100, 4) if h > 0 else 0
+    result["comments_to_hits"]        = round(c / h * 100, 4) if h > 0 else 0
+    result["comments_to_kudos"]       = round(c / k * 100, 4) if k > 0 else 0
+    result["kudos_per_10k_words"]     = round(k / w * 10000, 4) if w > 0 else 0
+    result["bookmarks_per_10k_words"] = round(b / w * 10000, 4) if w > 0 else 0
+    result["comments_per_10k_words"]  = round(c / w * 10000, 4) if w > 0 else 0
 
     return result
-
-
-def _recompute_ratios(row):
-    """Recalculate engagement ratios from the refreshed stats."""
-    h = int(row.get("hits") or 0)
-    k = int(row.get("kudos") or 0)
-    b = int(row.get("bookmarks") or 0)
-    c = int(row.get("comments") or 0)
-    w = int(row.get("words") or 0)
-    row["kudos_to_hits"] = round(k / h * 100, 4) if h > 0 else 0
-    row["bookmarks_to_hits"] = round(b / h * 100, 4) if h > 0 else 0
-    row["comments_to_hits"] = round(c / h * 100, 4) if h > 0 else 0
-    row["comments_to_kudos"] = round(c / k * 100, 4) if k > 0 else 0
-    row["kudos_per_10k_words"] = round(k / w * 10000, 4) if w > 0 else 0
-    row["bookmarks_per_10k_words"] = round(b / w * 10000, 4) if w > 0 else 0
-    row["comments_per_10k_words"] = round(c / w * 10000, 4) if w > 0 else 0
-    return row
-
-
-def _save_rows(out_path, rows):
-    """Overwrite the CSV with current rows (preserves hand-coding work)."""
-    with open(out_path, "w", newline="", encoding="utf-8") as f:
-        writer = csv.DictWriter(f, fieldnames=OUTPUT_FIELDS, extrasaction="ignore")
-        writer.writeheader()
-        writer.writerows(rows)
-
-
-def run_phase2(out_path, cookie_file):
-    """Visit each work's page to fill in full tags."""
-    if not os.path.exists(out_path):
-        sys.exit(f"ERROR: {out_path} not found. Run Phase 1 first.")
-
-    # Read existing sample
-    with open(out_path, "r", newline="", encoding="utf-8") as f:
-        reader = csv.DictReader(f)
-        rows = list(reader)
-
-    todo = [i for i, r in enumerate(rows) if r.get("tags_enriched", "no") != "yes"]
-    if not todo:
-        print("All works already enriched. Nothing to do.")
-        return
-
-    print(f"\nPhase 2: {len(todo)} works need tag enrichment.")
-    print("Starting Playwright browser...\n")
-
-    browser = BrowserSession()
-
-    # Load cookies
-    cookies = _parse_cookie_file(cookie_file)
-    if cookies:
-        browser.add_cookies(cookies)
-        print(f"  Loaded cookies from {cookie_file}: {', '.join(sorted(cookies.keys()))}")
-
-    browser.start()
-    consecutive_failures = 0
-
-    try:
-        for progress, idx in enumerate(todo, start=1):
-            row = rows[idx]
-            wid = row["work_id"]
-            print(f"  [{progress}/{len(todo)}] Work {wid}: ", end="", flush=True)
-
-            try:
-                enriched = _scrape_work_tags(browser, wid)
-            except Exception as e:
-                log_error(f"Exception scraping work {wid}", e)
-                print(f"exception ({e.__class__.__name__}). Skipping.")
-                consecutive_failures += 1
-                if consecutive_failures >= MAX_CONSECUTIVE_FAILURES:
-                    print("\nToo many consecutive failures. Stopping Phase 2.")
-                    print("Re-run later; already-enriched works are saved.")
-                    break
-                continue
-
-            if "_error" in enriched:
-                print(f"{enriched['_error']}. Skipping.")
-                consecutive_failures += 1
-                if consecutive_failures >= MAX_CONSECUTIVE_FAILURES:
-                    print("\nToo many consecutive failures. Stopping Phase 2.")
-                    break
-                continue
-
-            consecutive_failures = 0
-
-            # Merge enriched data into the row
-            for key, val in enriched.items():
-                if key.startswith("_"):
-                    continue
-                if key in row:
-                    row[key] = val
-
-            row = _recompute_ratios(row)
-            row["tags_enriched"] = "yes"
-            rows[idx] = row
-
-            rels = enriched.get("relationships", "")
-            chars = enriched.get("characters", "")
-            print(f"✓  rels={len(rels.split(',')) if rels else 0}  "
-                  f"chars={len(chars.split(',')) if chars else 0}  "
-                  f"freeform={len(enriched.get('freeform_tags','').split(',')) if enriched.get('freeform_tags') else 0}")
-
-            # Save after every work so progress is never lost
-            _save_rows(out_path, rows)
-
-    finally:
-        browser.close()
-
-    done = sum(1 for r in rows if r.get("tags_enriched") == "yes")
-    print(f"\n✓ Phase 2 complete: {done}/{len(rows)} works enriched.")
-    print(f"  Saved to {out_path}")
 
 
 # ══════════════════════════════════════════════════════════════
@@ -852,28 +545,170 @@ def run_phase2(out_path, cookie_file):
 # ══════════════════════════════════════════════════════════════
 
 def main():
-    if not ARGS.enrich_only:
-        run_phase1(ARGS.csv, ARGS.out, ARGS.seed)
+    print(f"CSV file: {CSV_PATH}")
+    print(f"File exists: {os.path.exists(CSV_PATH)}")
+
+    if not os.path.exists(CSV_PATH):
+        sys.exit(f"ERROR: {CSV_PATH} not found.")
+
+    file_size = os.path.getsize(CSV_PATH)
+    print(f"File size: {file_size:,} bytes")
+
+    # Read existing CSV
+    rows = read_csv(CSV_PATH)
+    print(f"Rows read: {len(rows)}")
+
+    if rows:
+        print(f"Columns: {list(rows[0].keys())}")
+        # Show first row as sanity check
+        r0 = rows[0]
+        print(f"First row sample_id={r0.get('sample_id','')} "
+              f"work_id={r0.get('work_id','')} "
+              f"tags_enriched='{r0.get('tags_enriched','')}'")
+
+    # Figure out which rows need enrichment
+    todo = []
+    for i, r in enumerate(rows):
+        enriched_val = r.get("tags_enriched", "").strip().lower()
+        if enriched_val == "yes":
+            continue
+        url = r.get("url", "").strip()
+        if url and "archiveofourown.org/works/" in url:
+            todo.append(i)
+
+    already_done = len(rows) - len(todo)
+    print(f"\nAlready enriched: {already_done}")
+    print(f"Need enrichment: {len(todo)}")
+
+    if not todo:
+        print("\nAll works already enriched! Nothing to do.")
+        return
+
+    # Quick save test BEFORE starting the browser
+    print("\nTesting CSV save...")
+    saved_ok = save_csv(CSV_PATH, rows)
+    if saved_ok:
+        verify_count, verify_total = verify_save(CSV_PATH, already_done)
+        print(f"Save test passed: {verify_total} rows written, "
+              f"{verify_count} marked enriched, "
+              f"file size = {os.path.getsize(CSV_PATH):,} bytes")
     else:
-        print("--enrich-only: skipping Phase 1 (sampling).")
+        sys.exit("ERROR: Cannot write to CSV file. Check file permissions.")
 
-    if not ARGS.skip_scrape:
-        print("\n" + "="*55)
-        print("PHASE 2: TAG ENRICHMENT VIA PLAYWRIGHT")
-        print("="*55)
-        print("This will open a browser and visit each work's page")
-        print("to get the full tags (relationships, characters, freeform).")
-        print(f"Rate: ~1 work every 10-15 seconds (respecting AO3's limits).\n")
+    # Start the browser
+    print(f"\nStarting browser to enrich {len(todo)} works...")
+    print(f"Rate: ~1 work every 10 to 15 seconds.\n")
 
-        run_phase2(ARGS.out, ARGS.cookie_file)
+    browser = BrowserSession()
+
+    cookies = _parse_cookie_file(ARGS.cookie_file)
+    if cookies:
+        browser.add_cookies(cookies)
+        print(f"Loaded cookies: {', '.join(sorted(cookies.keys()))}")
+
+    browser.start()
+    consecutive_failures = 0
+    enriched_this_run = 0
+
+    try:
+        for progress, idx in enumerate(todo, start=1):
+            row = rows[idx]
+            url = row.get("url", "").strip()
+            sid = row.get("sample_id", "?")
+
+            print(f"  [{progress}/{len(todo)}] #{sid} {url}")
+            print(f"    Scraping... ", end="", flush=True)
+
+            try:
+                data = scrape_work(browser, url)
+            except Exception as e:
+                log_error(f"Exception scraping {url}", e)
+                print(f"EXCEPTION ({e.__class__.__name__}: {e})")
+                consecutive_failures += 1
+                if consecutive_failures >= MAX_CONSECUTIVE_FAILURES:
+                    print("\n*** Too many consecutive failures. Stopping. ***")
+                    print("Re-run to resume from where it stopped.")
+                    break
+                continue
+
+            if "_error" in data:
+                print(f"ERROR: {data['_error']}")
+                consecutive_failures += 1
+                if consecutive_failures >= MAX_CONSECUTIVE_FAILURES:
+                    print("\n*** Too many consecutive failures. Stopping. ***")
+                    print("Re-run to resume from where it stopped.")
+                    break
+                continue
+
+            consecutive_failures = 0
+
+            # Update the row with ALL scraped data
+            for key in CSV_FIELDS:
+                if key == "sample_id":
+                    continue
+                if key == "tags_enriched":
+                    continue
+                if key in data:
+                    row[key] = data[key]
+
+            row["tags_enriched"] = "yes"
+            rows[idx] = row
+            enriched_this_run += 1
+
+            n_rels  = len(data.get("relationships", "").split(TAG_SEP)) if data.get("relationships") else 0
+            n_chars = len(data.get("characters", "").split(TAG_SEP)) if data.get("characters") else 0
+            n_free  = len(data.get("freeform_tags", "").split(TAG_SEP)) if data.get("freeform_tags") else 0
+            print(f"OK  rels={n_rels} chars={n_chars} freeform={n_free}")
+
+            # Save after every work
+            print(f"    Saving... ", end="", flush=True)
+            saved_ok = save_csv(CSV_PATH, rows)
+            if saved_ok:
+                new_size = os.path.getsize(CSV_PATH)
+                total_enriched = already_done + enriched_this_run
+                print(f"SAVED ({new_size:,} bytes, {total_enriched} total enriched)")
+            else:
+                print(f"*** SAVE FAILED ***")
+                log_error(f"Save failed after enriching work {sid}")
+
+            # Verify every 10 works
+            if enriched_this_run % 10 == 0:
+                v_count, v_total = verify_save(CSV_PATH, already_done + enriched_this_run)
+                if v_count != already_done + enriched_this_run:
+                    print(f"    *** VERIFY MISMATCH: expected {already_done + enriched_this_run} "
+                          f"enriched but file has {v_count} ***")
+                    log_error(f"Verify mismatch: expected {already_done + enriched_this_run}, got {v_count}")
+                else:
+                    print(f"    Verified: {v_count}/{v_total} enriched in file")
+
+    except KeyboardInterrupt:
+        print("\n\nStopped by user. Saving progress...")
+        save_csv(CSV_PATH, rows)
+        print("Progress saved.")
+
+    finally:
+        browser.close()
+
+    # Final verification
+    print(f"\n{'='*55}")
+    print("FINAL VERIFICATION")
+    print(f"{'='*55}")
+    v_count, v_total = verify_save(CSV_PATH, already_done + enriched_this_run)
+    print(f"  File: {CSV_PATH}")
+    print(f"  File size: {os.path.getsize(CSV_PATH):,} bytes")
+    print(f"  Total rows: {v_total}")
+    print(f"  Enriched: {v_count}")
+    print(f"  Remaining: {v_total - v_count}")
+    print(f"  Enriched this run: {enriched_this_run}")
+
+    if v_count != already_done + enriched_this_run:
+        print(f"\n  *** WARNING: Expected {already_done + enriched_this_run} enriched "
+              f"but file has {v_count}. Check {ERROR_LOG} ***")
     else:
-        print("\n--skip-scrape: Phase 2 skipped.")
-        print(f"Run later with:  python3 {sys.argv[0]} --enrich-only")
+        print(f"\n  Everything checks out!")
 
-    print("\nOutput columns:")
-    for c in OUTPUT_FIELDS:
-        print(f"  • {c}")
-    print("\nHappy coding! 🎉")
+    print(f"\nTag separator: \"{TAG_SEP}\"")
+    print("To split in Python:  row['relationships'].split(' | ')")
 
 
 if __name__ == "__main__":
