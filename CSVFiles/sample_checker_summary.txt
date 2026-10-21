@@ -1,0 +1,228 @@
+Loaded 382 works from ao3_testing_sample.csv
+
+======================================================================
+FANDOM BREAKDOWN IN SAMPLE
+======================================================================
+     Harry Potter:  308 sampled  /  718,412 population
+           Arcane:   32 sampled  /   66,102 population
+           Avatar:   35 sampled  /   57,034 population
+          Unknown:    7 sampled  (no population data)
+            TOTAL:  382 sampled
+
+======================================================================
+HARRY POTTER  (308 sampled  /  718,412 population)
+======================================================================
+
+  RATINGS
+  ------------------------------------------------------------------
+  Tag                                                  Pop%  Samp%    Diff          Count
+  Teen And Up Audiences                               26.4%  29.9%   +3.5%   ~     92/308
+  General Audiences                                   24.6%  18.8%   -5.8%   !     58/308
+  Explicit                                            18.5%  19.8%   +1.3%   ok    61/308
+  Mature                                              16.8%  21.1%   +4.3%   ~     65/308
+  Not Rated                                           13.7%  10.4%   -3.3%   ~     32/308
+  >> RATINGS verdict: WATCH (worst deviation: 5.8 pp)
+
+  WARNINGS
+  ------------------------------------------------------------------
+  Tag                                                  Pop%  Samp%    Diff          Count
+  No Archive Warnings Apply                           43.9%  48.9%   +4.9%   ~    172/352
+  Creator Chose Not To Use Archive Warnings           34.8%  26.7%   -8.1%   !     94/352
+  Graphic Depictions Of Violence                       8.3%   8.0%   -0.3%   ok    28/352
+  Major Character Death                                6.4%   8.2%   +1.8%   ok    29/352
+  Underage Sex                                         3.8%   4.8%   +1.0%   ok    17/352
+  Rape/Non-Con                                         2.7%   3.4%   +0.7%   ok    12/352
+  >> WARNINGS verdict: WATCH (worst deviation: 8.1 pp)
+    (top-N tags cover 352 of 352 tag slots = 100% coverage)
+
+  CATEGORIES
+  ------------------------------------------------------------------
+  Tag                                                  Pop%  Samp%    Diff          Count
+  M/M                                                 37.2%  36.4%   -0.9%   ok   136/374
+  F/M                                                 33.2%  37.2%   +4.0%   ~    139/374
+  Gen                                                 13.6%   9.9%   -3.7%   ~     37/374
+  F/F                                                  7.7%   9.4%   +1.6%   ok    35/374
+  Multi                                                5.9%   4.8%   -1.1%   ok    18/374
+  Other                                                2.3%   2.4%   +0.1%   ok     9/374
+  >> CATEGORIES verdict: ACCEPTABLE (worst deviation: 4.0 pp)
+    (top-N tags cover 374 of 374 tag slots = 100% coverage)
+
+  CHARACTERS
+  ------------------------------------------------------------------
+  Tag                                                  Pop%  Samp%    Diff          Count
+  Harry Potter                                        19.8%  23.5%   +3.7%   ~    181/771
+  Hermione Granger                                    13.9%  14.4%   +0.5%   ok   111/771
+  Draco Malfoy                                        12.8%  12.6%   -0.2%   ok    97/771
+  Sirius Black                                         9.8%   8.6%   -1.2%   ok    66/771
+  Ron Weasley                                          8.9%   8.2%   -0.7%   ok    63/771
+  Remus Lupin                                          8.6%   7.5%   -1.1%   ok    58/771
+  Severus Snape                                        7.9%   7.3%   -0.6%   ok    56/771
+  James Potter                                         7.4%   6.4%   -1.0%   ok    49/771
+  Lily Evans Potter                                    5.7%   4.4%   -1.2%   ok    34/771
+  Ginny Weasley                                        5.3%   7.3%   +1.9%   ok    56/771
+  >> CHARACTERS verdict: ACCEPTABLE (worst deviation: 3.7 pp)
+    (top-N tags cover 771 of 1622 tag slots = 48% coverage)
+
+  RELATIONSHIPS
+  ------------------------------------------------------------------
+  Tag                                                  Pop%  Samp%    Diff          Count
+  Draco Malfoy/Harry Potter                           22.7%  20.4%   -2.3%   ok    40/196
+  Sirius Black/Remus Lupin                            18.7%  18.9%   +0.2%   ok    37/196
+  Hermione Granger/Draco Malfoy                       12.5%  16.3%   +3.8%   ~     32/196
+  James Potter/Lily Evans Potter                      12.5%   8.2%   -4.3%   ~     16/196
+  Hermione Granger/Ron Weasley                         7.7%   6.1%   -1.6%   ok    12/196
+  Regulus Black/James Potter                           7.3%  10.7%   +3.4%   ~     21/196
+  Harry Potter/Ginny Weasley                           6.5%  10.2%   +3.7%   ~     20/196
+  Harry Potter/Severus Snape                           5.6%   3.6%   -2.1%   ok     7/196
+  Marlene McKinnon/Dorcas Meadowes                     3.3%   3.6%   +0.3%   ok     7/196
+  Hermione Granger/Harry Potter                        3.2%   2.0%   -1.2%   ok     4/196
+  >> RELATIONSHIPS verdict: ACCEPTABLE (worst deviation: 4.3 pp)
+    (top-N tags cover 196 of 588 tag slots = 33% coverage)
+
+======================================================================
+ARCANE  (32 sampled  /  66,102 population)
+======================================================================
+
+  RATINGS
+  ------------------------------------------------------------------
+  Tag                                                  Pop%  Samp%    Diff          Count
+  Explicit                                            32.4%  15.6%  -16.8%  !!!     5/32
+  Teen And Up Audiences                               22.5%  25.0%   +2.5%   ok     8/32
+  Mature                                              18.8%  31.2%  +12.4%  !!!    10/32
+  General Audiences                                   16.4%  21.9%   +5.5%   !      7/32
+  Not Rated                                            9.8%   6.2%   -3.6%   ~      2/32
+  >> RATINGS verdict: PROBLEM (worst deviation: 16.8 pp)
+
+  WARNINGS
+  ------------------------------------------------------------------
+  Tag                                                  Pop%  Samp%    Diff          Count
+  No Archive Warnings Apply                           48.0%  54.3%   +6.3%   !     19/35
+  Creator Chose Not To Use Archive Warnings           32.5%  25.7%   -6.7%   !      9/35
+  Graphic Depictions Of Violence                      10.4%   8.6%   -1.8%   ok     3/35
+  Major Character Death                                5.3%  11.4%   +6.1%   !      4/35
+  Rape/Non-Con                                         2.3%   0.0%   -2.3%   ok     0/35
+  Underage Sex                                         1.5%   0.0%   -1.5%   ok     0/35
+  >> WARNINGS verdict: WATCH (worst deviation: 6.7 pp)
+    (top-N tags cover 35 of 35 tag slots = 100% coverage)
+
+  CATEGORIES
+  ------------------------------------------------------------------
+  Tag                                                  Pop%  Samp%    Diff          Count
+  F/F                                                 36.0%  40.5%   +4.5%   ~     17/42
+  M/M                                                 31.3%  26.2%   -5.1%   !     11/42
+  F/M                                                 17.1%  11.9%   -5.2%   !      5/42
+  Gen                                                  8.8%  11.9%   +3.1%   ~      5/42
+  Multi                                                4.0%   4.8%   +0.8%   ok     2/42
+  Other                                                2.8%   4.8%   +2.0%   ok     2/42
+  >> CATEGORIES verdict: WATCH (worst deviation: 5.2 pp)
+    (top-N tags cover 42 of 42 tag slots = 100% coverage)
+
+  CHARACTERS
+  ------------------------------------------------------------------
+  Tag                                                  Pop%  Samp%    Diff          Count
+  Vi (League of Legends)                              15.4%  15.7%   +0.2%   ok    13/83
+  Jayce (League of Legends)                           15.2%  15.7%   +0.5%   ok    13/83
+  Viktor (League of Legends)                          14.6%  18.1%   +3.5%   ~     15/83
+  Caitlyn (League of Legends)                         14.4%  14.5%   +0.1%   ok    12/83
+  Jinx (League of Legends)                            12.6%   6.0%   -6.6%   !      5/83
+  Ekko (League of Legends)                             7.0%   4.8%   -2.1%   ok     4/83
+  Silco (Arcane: League of Legends)                    6.1%   7.2%   +1.2%   ok     6/83
+  Mel Medarda                                          5.5%   6.0%   +0.5%   ok     5/83
+  Sevika (Arcane: League of Legends)                   4.8%   6.0%   +1.3%   ok     5/83
+  Vander (League of Legends)                           4.5%   6.0%   +1.5%   ok     5/83
+  >> CHARACTERS verdict: WATCH (worst deviation: 6.6 pp)
+    (top-N tags cover 83 of 108 tag slots = 77% coverage)
+
+  RELATIONSHIPS
+  ------------------------------------------------------------------
+  Tag                                                  Pop%  Samp%    Diff          Count
+  Jayce/Viktor (League of Legends)                    30.6%  30.0%   -0.6%   ok     9/30
+  Caitlyn/Vi (League of Legends)                      30.5%  40.0%   +9.5%   !     12/30
+  Ekko/Jinx (League of Legends)                        9.8%   3.3%   -6.4%   !      1/30
+  Jayce & Viktor (League of Legends)                   6.8%   6.7%   -0.1%   ok     2/30
+  Jinx & Vi (League of Legends)                        5.6%   6.7%   +1.1%   ok     2/30
+  Caitlyn & Vi (League of Legends)                     5.1%   3.3%   -1.8%   ok     1/30
+  Silco (Arcane: League of Legends)/Vander (League of Legends)   3.2%   3.3%   +0.1%   ok     1/30
+  Jayce (League of Legends)/Mel Medarda                3.1%   3.3%   +0.2%   ok     1/30
+  Jinx (League of Legends) & Silco (Arcane: League of Legends)   2.8%   0.0%   -2.8%   ok     0/30
+  Luxanna "Lux" Crownguard/Jinx                        2.6%   3.3%   +0.8%   ok     1/30
+  >> RELATIONSHIPS verdict: WATCH (worst deviation: 9.5 pp)
+    (top-N tags cover 30 of 52 tag slots = 58% coverage)
+
+======================================================================
+AVATAR  (35 sampled  /  57,034 population)
+======================================================================
+
+  RATINGS
+  ------------------------------------------------------------------
+  Tag                                                  Pop%  Samp%    Diff          Count
+  Teen And Up Audiences                               35.5%  28.6%   -6.9%   !     10/35
+  General Audiences                                   33.3%  42.9%   +9.6%   !     15/35
+  Mature                                              11.9%  14.3%   +2.4%   ok     5/35
+  Explicit                                            10.9%  11.4%   +0.5%   ok     4/35
+  Not Rated                                            8.4%   2.9%   -5.5%   !      1/35
+  >> RATINGS verdict: WATCH (worst deviation: 9.6 pp)
+
+  WARNINGS
+  ------------------------------------------------------------------
+  Tag                                                  Pop%  Samp%    Diff          Count
+  No Archive Warnings Apply                           53.8%  57.9%   +4.1%   ~     22/38
+  Creator Chose Not To Use Archive Warnings           27.1%  15.8%  -11.3%  !!!     6/38
+  Graphic Depictions Of Violence                       8.8%  10.5%   +1.8%   ok     4/38
+  Major Character Death                                5.4%   5.3%   -0.2%   ok     2/38
+  Underage Sex                                         2.8%   5.3%   +2.5%   ok     2/38
+  Rape/Non-Con                                         2.1%   5.3%   +3.1%   ~      2/38
+  >> WARNINGS verdict: PROBLEM (worst deviation: 11.3 pp)
+    (top-N tags cover 38 of 38 tag slots = 100% coverage)
+
+  CATEGORIES
+  ------------------------------------------------------------------
+  Tag                                                  Pop%  Samp%    Diff          Count
+  F/M                                                 36.2%  48.4%  +12.2%  !!!    15/31
+  Gen                                                 25.3%  19.4%   -6.0%   !      6/31
+  M/M                                                 19.3%  19.4%   +0.1%   ok     6/31
+  F/F                                                 11.7%   9.7%   -2.0%   ok     3/31
+  Multi                                                5.3%   3.2%   -2.1%   ok     1/31
+  Other                                                2.1%   0.0%   -2.1%   ok     0/31
+  >> CATEGORIES verdict: PROBLEM (worst deviation: 12.2 pp)
+    (top-N tags cover 31 of 31 tag slots = 100% coverage)
+
+  CHARACTERS
+  ------------------------------------------------------------------
+  Tag                                                  Pop%  Samp%    Diff          Count
+  Zuko (Avatar)                                       21.3%  23.4%   +2.2%   ok    30/128
+  Katara (Avatar)                                     14.7%  14.1%   -0.7%   ok    18/128
+  Sokka (Avatar)                                      13.6%   8.6%   -5.0%   ~     11/128
+  Aang (Avatar)                                       11.3%  14.1%   +2.7%   ok    18/128
+  Toph Beifong                                         8.6%   7.8%   -0.8%   ok    10/128
+  Azula (Avatar)                                       8.4%   7.0%   -1.4%   ok     9/128
+  Iroh (Avatar)                                        7.1%   7.8%   +0.8%   ok    10/128
+  Suki (Avatar)                                        5.8%   3.1%   -2.6%   ok     4/128
+  Mai (Avatar)                                         4.9%   7.8%   +2.9%   ok    10/128
+  Ty Lee (Avatar)                                      4.3%   6.2%   +1.9%   ok     8/128
+  >> CHARACTERS verdict: ACCEPTABLE (worst deviation: 5.0 pp)
+    (top-N tags cover 128 of 172 tag slots = 74% coverage)
+
+  RELATIONSHIPS
+  ------------------------------------------------------------------
+  Tag                                                  Pop%  Samp%    Diff          Count
+  Katara/Zuko (Avatar)                                20.5%  23.5%   +3.0%   ok     8/34
+  Sokka/Zuko (Avatar)                                 19.4%   8.8%  -10.6%  !!!     3/34
+  Aang/Katara (Avatar)                                14.2%  11.8%   -2.5%   ok     4/34
+  Sokka/Suki (Avatar)                                  8.8%   8.8%   +0.0%   ok     3/34
+  Mai/Zuko (Avatar)                                    7.7%   5.9%   -1.8%   ok     2/34
+  Iroh & Zuko (Avatar)                                 7.4%  11.8%   +4.4%   ~      4/34
+  Azula & Zuko (Avatar)                                7.0%   5.9%   -1.1%   ok     2/34
+  The Gaang & Zuko (Avatar)                            5.6%  11.8%   +6.2%   !      4/34
+  Katara & Zuko (Avatar)                               4.8%   8.8%   +4.0%   ~      3/34
+  Sokka & Zuko (Avatar)                                4.5%   2.9%   -1.6%   ok     1/34
+  >> RELATIONSHIPS verdict: PROBLEM (worst deviation: 10.6 pp)
+    (top-N tags cover 34 of 76 tag slots = 45% coverage)
+
+======================================================================
+LEGEND
+======================================================================
+   ok  = within 3 pp  (representative)
+    ~  = 3 to 5 pp    (acceptable, monitor)
+    !  = 5 to 10 pp   (notable deviation)
+   !!! = >10 pp       (sample may not be representative)
