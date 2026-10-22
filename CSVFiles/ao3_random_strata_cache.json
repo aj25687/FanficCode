@@ -1,0 +1,638 @@
+{
+ "strata": {
+  "Avatar||rating||Mature||Avatar: The Last Airbender||exclude": {
+   "built_at": "2026-10-22T00:56:08+00:00",
+   "date_mode": "inclusive",
+   "leaves": [
+    {
+     "from": null,
+     "to": null,
+     "count": 57063
+    }
+   ]
+  },
+  "Avatar||rating||Not Rated||Avatar: The Last Airbender||exclude": {
+   "built_at": "2026-10-22T00:56:33+00:00",
+   "date_mode": "inclusive",
+   "leaves": [
+    {
+     "from": null,
+     "to": null,
+     "count": 57063
+    }
+   ]
+  },
+  "Avatar||relationships||Katara & Zuko (Avatar)||Avatar: The Last Airbender (Cartoon 2005)||exclude||tag_id": {
+   "built_at": "2026-10-22T21:44:24+00:00",
+   "date_mode": "inclusive",
+   "leaves": [
+    {
+     "from": null,
+     "to": null,
+     "count": 2179
+    }
+   ]
+  },
+  "Avatar||relationships||Sokka/Suki (Avatar)||Avatar: The Last Airbender (Cartoon 2005)||exclude||tag_id": {
+   "built_at": "2026-10-22T21:47:44+00:00",
+   "date_mode": "inclusive",
+   "leaves": [
+    {
+     "from": null,
+     "to": null,
+     "count": 3844
+    }
+   ]
+  },
+  "Avatar||relationships||Sokka/Zuko (Avatar)||Avatar: The Last Airbender (Cartoon 2005)||exclude||tag_id": {
+   "built_at": "2026-10-22T21:50:03+00:00",
+   "date_mode": "inclusive",
+   "leaves": [
+    {
+     "from": null,
+     "to": null,
+     "count": 8719
+    }
+   ]
+  },
+  "Avatar||rating||Mature||Avatar: The Last Airbender (Cartoon 2005)||exclude||tag_id": {
+   "built_at": "2026-10-22T21:50:38+00:00",
+   "date_mode": "inclusive",
+   "leaves": [
+    {
+     "from": null,
+     "to": null,
+     "count": 6164
+    }
+   ]
+  },
+  "Avatar||rating||Not Rated||Avatar: The Last Airbender (Cartoon 2005)||exclude||tag_id": {
+   "built_at": "2026-10-22T21:51:18+00:00",
+   "date_mode": "inclusive",
+   "leaves": [
+    {
+     "from": null,
+     "to": null,
+     "count": 4149
+    }
+   ]
+  },
+  "Avatar||warnings||No Archive Warnings Apply||Avatar: The Last Airbender (Cartoon 2005)||exclude||tag_id": {
+   "built_at": "2026-10-22T21:52:41+00:00",
+   "date_mode": "inclusive",
+   "leaves": [
+    {
+     "from": null,
+     "to": null,
+     "count": 31231
+    }
+   ]
+  },
+  "Arcane||characters||Jinx (League of Legends)||Arcane: League of Legends (Cartoon 2021)||exclude||tag_id": {
+   "built_at": "2026-10-22T21:54:02+00:00",
+   "date_mode": "inclusive",
+   "leaves": [
+    {
+     "from": null,
+     "to": null,
+     "count": 22210
+    }
+   ]
+  }
+ },
+ "date_mode": {
+  "mode": "inclusive",
+  "checked": "2026-10-22T21:10:52+00:00"
+ },
+ "sidebar": {
+  "Harry Potter": {
+   "tag": "Harry Potter - J. K. Rowling",
+   "fetched_at": "2026-10-22T21:43:27+00:00",
+   "total": 718671,
+   "data": {
+    "rating": {},
+    "warnings": {
+     "no archive warnings apply": {
+      "id": "16",
+      "name": "No Archive Warnings Apply",
+      "count": 347773
+     },
+     "creator chose not to use archive warnings": {
+      "id": "14",
+      "name": "Creator Chose Not To Use Archive Warnings",
+      "count": 275320
+     },
+     "graphic depictions of violence": {
+      "id": "17",
+      "name": "Graphic Depictions Of Violence",
+      "count": 65349
+     },
+     "major character death": {
+      "id": "18",
+      "name": "Major Character Death",
+      "count": 50986
+     },
+     "underage sex": {
+      "id": "20",
+      "name": "Underage Sex",
+      "count": 30451
+     },
+     "rape/non-con": {
+      "id": "19",
+      "name": "Rape/Non-Con",
+      "count": 21702
+     }
+    },
+    "category": {
+     "m/m": {
+      "id": "23",
+      "name": "M/M",
+      "count": 302211
+     },
+     "f/m": {
+      "id": "22",
+      "name": "F/M",
+      "count": 269241
+     },
+     "gen": {
+      "id": "21",
+      "name": "Gen",
+      "count": 110675
+     },
+     "f/f": {
+      "id": "116",
+      "name": "F/F",
+      "count": 62697
+     },
+     "multi": {
+      "id": "2246",
+      "name": "Multi",
+      "count": 48068
+     },
+     "other": {
+      "id": "24",
+      "name": "Other",
+      "count": 18521
+     }
+    },
+    "characters": {
+     "harry potter": {
+      "id": "1803",
+      "name": "Harry Potter",
+      "count": 293256
+     },
+     "hermione granger": {
+      "id": "1048",
+      "name": "Hermione Granger",
+      "count": 206161
+     },
+     "draco malfoy": {
+      "id": "1589",
+      "name": "Draco Malfoy",
+      "count": 189839
+     },
+     "sirius black": {
+      "id": "321",
+      "name": "Sirius Black",
+      "count": 145449
+     },
+     "ron weasley": {
+      "id": "2211",
+      "name": "Ron Weasley",
+      "count": 131476
+     },
+     "remus lupin": {
+      "id": "1049",
+      "name": "Remus Lupin",
+      "count": 128209
+     },
+     "severus snape": {
+      "id": "966",
+      "name": "Severus Snape",
+      "count": 117040
+     },
+     "james potter": {
+      "id": "967",
+      "name": "James Potter",
+      "count": 109238
+     },
+     "lily evans potter": {
+      "id": "15935",
+      "name": "Lily Evans Potter",
+      "count": 83845
+     },
+     "ginny weasley": {
+      "id": "2174",
+      "name": "Ginny Weasley",
+      "count": 79253
+     }
+    },
+    "relationships": {
+     "draco malfoy/harry potter": {
+      "id": "99",
+      "name": "Draco Malfoy/Harry Potter",
+      "count": 89144
+     },
+     "sirius black/remus lupin": {
+      "id": "1110",
+      "name": "Sirius Black/Remus Lupin",
+      "count": 73431
+     },
+     "hermione granger/draco malfoy": {
+      "id": "10760",
+      "name": "Hermione Granger/Draco Malfoy",
+      "count": 49127
+     },
+     "james potter/lily evans potter": {
+      "id": "18827",
+      "name": "James Potter/Lily Evans Potter",
+      "count": 49016
+     },
+     "hermione granger/ron weasley": {
+      "id": "3458",
+      "name": "Hermione Granger/Ron Weasley",
+      "count": 30223
+     },
+     "regulus black/james potter": {
+      "id": "119457",
+      "name": "Regulus Black/James Potter",
+      "count": 28638
+     },
+     "harry potter/ginny weasley": {
+      "id": "3548",
+      "name": "Harry Potter/Ginny Weasley",
+      "count": 25366
+     },
+     "harry potter/severus snape": {
+      "id": "1600",
+      "name": "Harry Potter/Severus Snape",
+      "count": 22139
+     },
+     "marlene mckinnon/dorcas meadowes": {
+      "id": "121510",
+      "name": "Marlene McKinnon/Dorcas Meadowes",
+      "count": 12762
+     },
+     "hermione granger/harry potter": {
+      "id": "9510",
+      "name": "Hermione Granger/Harry Potter",
+      "count": 12641
+     }
+    }
+   }
+  },
+  "Arcane": {
+   "tag": "Arcane: League of Legends (Cartoon 2021)",
+   "fetched_at": "2026-10-22T21:43:42+00:00",
+   "total": 66149,
+   "data": {
+    "rating": {},
+    "warnings": {
+     "no archive warnings apply": {
+      "id": "16",
+      "name": "No Archive Warnings Apply",
+      "count": 34386
+     },
+     "creator chose not to use archive warnings": {
+      "id": "14",
+      "name": "Creator Chose Not To Use Archive Warnings",
+      "count": 23269
+     },
+     "graphic depictions of violence": {
+      "id": "17",
+      "name": "Graphic Depictions Of Violence",
+      "count": 7466
+     },
+     "major character death": {
+      "id": "18",
+      "name": "Major Character Death",
+      "count": 3811
+     },
+     "rape/non-con": {
+      "id": "19",
+      "name": "Rape/Non-Con",
+      "count": 1676
+     },
+     "underage sex": {
+      "id": "20",
+      "name": "Underage Sex",
+      "count": 1082
+     }
+    },
+    "category": {
+     "f/f": {
+      "id": "116",
+      "name": "F/F",
+      "count": 27581
+     },
+     "m/m": {
+      "id": "23",
+      "name": "M/M",
+      "count": 23986
+     },
+     "f/m": {
+      "id": "22",
+      "name": "F/M",
+      "count": 13051
+     },
+     "gen": {
+      "id": "21",
+      "name": "Gen",
+      "count": 6750
+     },
+     "multi": {
+      "id": "2246",
+      "name": "Multi",
+      "count": 3067
+     },
+     "other": {
+      "id": "24",
+      "name": "Other",
+      "count": 2114
+     }
+    },
+    "characters": {
+     "vi (league of legends)": {
+      "id": "1330578",
+      "name": "Vi (League of Legends)",
+      "count": 28529
+     },
+     "jayce (league of legends)": {
+      "id": "1620124",
+      "name": "Jayce (League of Legends)",
+      "count": 28118
+     },
+     "viktor (league of legends)": {
+      "id": "2791320",
+      "name": "Viktor (League of Legends)",
+      "count": 26974
+     },
+     "caitlyn (league of legends)": {
+      "id": "1330577",
+      "name": "Caitlyn (League of Legends)",
+      "count": 26570
+     },
+     "jinx (league of legends)": {
+      "id": "2774622",
+      "name": "Jinx (League of Legends)",
+      "count": 23314
+     },
+     "ekko (league of legends)": {
+      "id": "5280751",
+      "name": "Ekko (League of Legends)",
+      "count": 12880
+     },
+     "silco (arcane: league of legends)": {
+      "id": "67171633",
+      "name": "Silco (Arcane: League of Legends)",
+      "count": 11212
+     },
+     "mel medarda": {
+      "id": "67084381",
+      "name": "Mel Medarda",
+      "count": 10242
+     },
+     "sevika (arcane: league of legends)": {
+      "id": "67215136",
+      "name": "Sevika (Arcane: League of Legends)",
+      "count": 8795
+     },
+     "vander (league of legends)": {
+      "id": "67006162",
+      "name": "Vander (League of Legends)",
+      "count": 8412
+     }
+    },
+    "relationships": {
+     "jayce/viktor (league of legends)": {
+      "id": "3528179",
+      "name": "Jayce/Viktor (League of Legends)",
+      "count": 21536
+     },
+     "caitlyn/vi (league of legends)": {
+      "id": "1330576",
+      "name": "Caitlyn/Vi (League of Legends)",
+      "count": 21444
+     },
+     "ekko/jinx (league of legends)": {
+      "id": "8725123",
+      "name": "Ekko/Jinx (League of Legends)",
+      "count": 6875
+     },
+     "jayce & viktor (league of legends)": {
+      "id": "38308792",
+      "name": "Jayce & Viktor (League of Legends)",
+      "count": 4786
+     },
+     "jinx & vi (league of legends)": {
+      "id": "67032925",
+      "name": "Jinx & Vi (League of Legends)",
+      "count": 3906
+     },
+     "caitlyn & vi (league of legends)": {
+      "id": "67545070",
+      "name": "Caitlyn & Vi (League of Legends)",
+      "count": 3585
+     },
+     "silco (arcane: league of legends)/vander (league of legends)": {
+      "id": "67285087",
+      "name": "Silco (Arcane: League of Legends)/Vander (League of Legends)",
+      "count": 2250
+     },
+     "jayce (league of legends)/mel medarda": {
+      "id": "67084405",
+      "name": "Jayce (League of Legends)/Mel Medarda",
+      "count": 2187
+     },
+     "jinx (league of legends) & silco (arcane: league of legends)": {
+      "id": "67219069",
+      "name": "Jinx (League of Legends) & Silco (Arcane: League of Legends)",
+      "count": 2001
+     },
+     "luxanna \"lux\" crownguard/jinx": {
+      "id": "3264704",
+      "name": "Luxanna \"Lux\" Crownguard/Jinx",
+      "count": 1807
+     }
+    }
+   }
+  },
+  "Avatar": {
+   "tag": "Avatar: The Last Airbender (Cartoon 2005)",
+   "fetched_at": "2026-10-22T21:43:56+00:00",
+   "total": 57074,
+   "data": {
+    "rating": {},
+    "warnings": {
+     "no archive warnings apply": {
+      "id": "16",
+      "name": "No Archive Warnings Apply",
+      "count": 33343
+     },
+     "creator chose not to use archive warnings": {
+      "id": "14",
+      "name": "Creator Chose Not To Use Archive Warnings",
+      "count": 16775
+     },
+     "graphic depictions of violence": {
+      "id": "17",
+      "name": "Graphic Depictions Of Violence",
+      "count": 5424
+     },
+     "major character death": {
+      "id": "18",
+      "name": "Major Character Death",
+      "count": 3365
+     },
+     "underage sex": {
+      "id": "20",
+      "name": "Underage Sex",
+      "count": 1729
+     },
+     "rape/non-con": {
+      "id": "19",
+      "name": "Rape/Non-Con",
+      "count": 1319
+     }
+    },
+    "category": {
+     "f/m": {
+      "id": "22",
+      "name": "F/M",
+      "count": 23998
+     },
+     "gen": {
+      "id": "21",
+      "name": "Gen",
+      "count": 16784
+     },
+     "m/m": {
+      "id": "23",
+      "name": "M/M",
+      "count": 12775
+     },
+     "f/f": {
+      "id": "116",
+      "name": "F/F",
+      "count": 7737
+     },
+     "multi": {
+      "id": "2246",
+      "name": "Multi",
+      "count": 3537
+     },
+     "other": {
+      "id": "24",
+      "name": "Other",
+      "count": 1418
+     }
+    },
+    "characters": {
+     "zuko (avatar)": {
+      "id": "6855",
+      "name": "Zuko (Avatar)",
+      "count": 38213
+     },
+     "katara (avatar)": {
+      "id": "38490",
+      "name": "Katara (Avatar)",
+      "count": 26462
+     },
+     "sokka (avatar)": {
+      "id": "38489",
+      "name": "Sokka (Avatar)",
+      "count": 24369
+     },
+     "aang (avatar)": {
+      "id": "6854",
+      "name": "Aang (Avatar)",
+      "count": 20333
+     },
+     "toph beifong": {
+      "id": "511038",
+      "name": "Toph Beifong",
+      "count": 15470
+     },
+     "azula (avatar)": {
+      "id": "38743",
+      "name": "Azula (Avatar)",
+      "count": 15163
+     },
+     "iroh (avatar)": {
+      "id": "35856",
+      "name": "Iroh (Avatar)",
+      "count": 12668
+     },
+     "suki (avatar)": {
+      "id": "35862",
+      "name": "Suki (Avatar)",
+      "count": 10355
+     },
+     "mai (avatar)": {
+      "id": "35855",
+      "name": "Mai (Avatar)",
+      "count": 8889
+     },
+     "ty lee (avatar)": {
+      "id": "38054",
+      "name": "Ty Lee (Avatar)",
+      "count": 7746
+     }
+    },
+    "relationships": {
+     "katara/zuko (avatar)": {
+      "id": "51109",
+      "name": "Katara/Zuko (Avatar)",
+      "count": 9436
+     },
+     "sokka/zuko (avatar)": {
+      "id": "51132",
+      "name": "Sokka/Zuko (Avatar)",
+      "count": 8912
+     },
+     "aang/katara (avatar)": {
+      "id": "289747",
+      "name": "Aang/Katara (Avatar)",
+      "count": 6544
+     },
+     "sokka/suki (avatar)": {
+      "id": "51124",
+      "name": "Sokka/Suki (Avatar)",
+      "count": 4054
+     },
+     "mai/zuko (avatar)": {
+      "id": "146483",
+      "name": "Mai/Zuko (Avatar)",
+      "count": 3516
+     },
+     "iroh & zuko (avatar)": {
+      "id": "146486",
+      "name": "Iroh & Zuko (Avatar)",
+      "count": 3403
+     },
+     "azula & zuko (avatar)": {
+      "id": "478913",
+      "name": "Azula & Zuko (Avatar)",
+      "count": 3228
+     },
+     "the gaang & zuko (avatar)": {
+      "id": "23210724",
+      "name": "The Gaang & Zuko (Avatar)",
+      "count": 2556
+     },
+     "katara & zuko (avatar)": {
+      "id": "280259",
+      "name": "Katara & Zuko (Avatar)",
+      "count": 2214
+     },
+     "sokka & zuko (avatar)": {
+      "id": "431833",
+      "name": "Sokka & Zuko (Avatar)",
+      "count": 2087
+     }
+    }
+   }
+  }
+ },
+ "style": {}
+}
